@@ -53,7 +53,7 @@ const testimonials = [
   },
   {
     quote:
-      "Compliance was our biggest concern when evaluating platforms. MixCare's PDPO and SOC 2 certifications, plus their dedicated compliance team, gave us full confidence.",
+      "Compliance was our biggest concern when evaluating platforms. MixCare's PDPO and ISO 27001 certifications, plus their dedicated compliance team, gave us full confidence.",
     name: "Thomas Ng",
     title: "Chief Risk Officer",
     company: "Manulife (HK)",

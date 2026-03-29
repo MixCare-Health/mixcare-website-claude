@@ -96,7 +96,6 @@ export const zhCN: Translations = {
       costSaved: "节省30%成本",
       costSavedSub: "对比传统方案",
       compliance: "符合PDPO规定",
-      soc2: "SOC 2认证",
       services: "逾3,000项服务",
       servicesSub: "健康市集",
     },

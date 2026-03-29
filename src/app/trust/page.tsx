@@ -9,11 +9,10 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Trust & Compliance | MixCare Health",
   description:
-    "Enterprise-grade security, PDPO and GDPR compliance, SOC 2 Type II certified. Learn how MixCare protects your data.",
+    "Enterprise-grade security, PDPO and GDPR compliance, ISO 27001 certified. Learn how MixCare protects your data.",
 };
 
 const certifications = [
-  { label: "SOC 2 Type II", desc: "Independently audited annually. Last audit: Q4 2024.", detail: "Covers security, availability, processing integrity, confidentiality, and privacy." },
   { label: "ISO 27001", desc: "Certified information security management.", detail: "Comprehensive framework for managing information security risks." },
   { label: "GDPR Compliant", desc: "Full EU General Data Protection Regulation compliance.", detail: "Data minimisation, purpose limitation, and subject rights fully implemented." },
   { label: "PDPO (HK)", desc: "Personal Data Privacy Ordinance — Hong Kong.", detail: "Aligned with all 6 Data Protection Principles under Cap. 486." },
@@ -183,7 +182,7 @@ export default function TrustPage() {
             ))}
           </div>
           <p className="mt-8 text-sm text-slate-500">
-            Enterprise clients can request our full SOC 2 report and security questionnaire at{" "}
+            Enterprise clients can request our full security documentation and questionnaire at{" "}
             <a
               href="mailto:security@mixcarehealth.com"
               className="font-semibold hover:underline"

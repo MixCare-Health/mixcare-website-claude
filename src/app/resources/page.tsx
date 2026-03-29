@@ -120,7 +120,7 @@ const faqs = [
   },
   {
     q: "Is MixCare compliant with PDPO and GDPR?",
-    a: "Yes. MixCare is fully compliant with Hong Kong's PDPO (Cap. 486), Singapore's PDPA, and the EU's GDPR. We are also SOC 2 Type II certified and ISO 27001 certified. Full documentation is available on request.",
+    a: "Yes. MixCare is fully compliant with Hong Kong's PDPO (Cap. 486), Singapore's PDPA, and the EU's GDPR. We are also ISO 27001 certified. Full documentation is available on request.",
   },
   {
     q: "Can we white-label the marketplace?",

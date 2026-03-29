@@ -96,7 +96,6 @@ export const zhTW: Translations = {
       costSaved: "節省30%成本",
       costSavedSub: "對比傳統計劃",
       compliance: "符合PDPO規定",
-      soc2: "ISO27001:2022認證",
       services: "逾3,000項服務",
       servicesSub: "健康市集",
     },

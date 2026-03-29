@@ -83,7 +83,6 @@ export default function ContactSection() {
             <div className="flex flex-wrap gap-3 pt-4">
               {[
                 "HIPAA Compliant",
-                "SOC 2 Type II",
                 "ISO 27001",
                 "PDPO Compliant",
               ].map((badge) => (

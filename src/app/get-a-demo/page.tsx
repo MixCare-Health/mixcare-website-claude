@@ -113,7 +113,7 @@ export default function GetADemoPage() {
 
               {/* Trust badges */}
               <div className="flex flex-wrap gap-2 mt-6">
-                {["SOC 2 Type II", "PDPO (HK)", "GDPR Compliant", "ISO 27001"].map((b) => (
+                {["PDPO (HK)", "GDPR Compliant", "ISO 27001"].map((b) => (
                   <span
                     key={b}
                     className="px-3 py-1 rounded-lg text-xs font-semibold border"

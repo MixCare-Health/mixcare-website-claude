@@ -174,10 +174,7 @@ export default function HeroSection() {
             </div>
             <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-lg px-4 py-3 border border-slate-100 flex items-center gap-2">
               <ShieldCheck size={18} style={{ color: S }} />
-              <div>
-                <p className="text-xs font-bold text-black">{h.compliance}</p>
-                <p className="text-xs text-slate-400">{h.soc2}</p>
-              </div>
+              <p className="text-xs font-bold text-black">{h.compliance}</p>
             </div>
             <div className="absolute top-1/2 -left-8 bg-white rounded-2xl shadow-lg px-4 py-3 border border-slate-100 flex items-center gap-2">
               <Users size={18} style={{ color: "#f97316" }} />

@@ -95,7 +95,6 @@ export const en = {
       costSaved: "30% Cost Saved",
       costSavedSub: "vs. traditional plans",
       compliance: "PDPO Compliant",
-      soc2: "SOC 2 Certified",
       services: "3,000+ Services",
       servicesSub: "Wellness marketplace",
     },

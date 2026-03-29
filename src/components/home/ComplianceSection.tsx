@@ -9,7 +9,6 @@ const P = "#10AF97";
 const S = "#0A3D59";
 
 const badges = [
-  { label: "SOC 2 Type II", desc: "Annually audited" },
   { label: "GDPR Compliant", desc: "EU data privacy" },
   { label: "PDPO (HK)", desc: "HK privacy ordinance" },
   { label: "ISO 27001", desc: "Information security" },

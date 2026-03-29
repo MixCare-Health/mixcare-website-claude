@@ -137,7 +137,7 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-white/10">
           <p className="text-xs text-slate-500 uppercase tracking-widest mb-3">{t.footer.certifiedCompliant}</p>
           <div className="flex flex-wrap gap-3 mb-8">
-            {["SOC 2 Type II", "GDPR Compliant", "PDPO (HK)", "ISO 27001", "HKMA Aligned"].map(
+            {["GDPR Compliant", "PDPO (HK)", "ISO 27001", "HKMA Aligned"].map(
               (badge) => (
                 <span
                   key={badge}
