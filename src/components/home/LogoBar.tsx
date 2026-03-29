@@ -1,0 +1,47 @@
+"use client";
+
+import { useLanguage } from "@/contexts/LanguageContext";
+
+const logos = [
+  { name: "AXA",       src: "/logos/mixcare-health-client-axa.png" },
+  { name: "PwC",       src: "/logos/mixcare-health-client-pwc.png" },
+  { name: "Blue",      src: "/logos/mixcare-health-client-chubblife.png" },
+  { name: "Chubb",     src: "/logos/mixcare-health-client-blue.png" },
+  { name: "Chinalife", src: "/logos/mixcare-health-client-chubblife.png" },
+  { name: "Mercer",    src: "/logos/mixcare-health-client-mercer.png" },
+  { name: "PP",        src: "/logos/mixcare-health-client-pp.png" },
+  { name: "Nova",      src: "/logos/mixcare-health-client-nova.png" },
+  { name: "HKBN",      src: "/logos/mixcare-health-client-hkbn.png" },
+  { name: "Cyberport", src: "/logos/mixcare-health-client-cyberport.png" },
+];
+
+export default function LogoBar() {
+  const { t } = useLanguage();
+
+  return (
+    <section className="py-12 bg-white border-y border-slate-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p className="text-center text-xs font-semibold text-slate-400 uppercase tracking-widest mb-8">
+          {t.home.logoBar.label}
+        </p>
+        <div className="overflow-hidden">
+          <div className="flex gap-6 animate-scroll-logos" style={{ width: "max-content" }}>
+            {[...logos, ...logos].map((logo, i) => (
+              <div
+                key={`${logo.name}-${i}`}
+                className="flex items-center justify-center px-4 opacity-60 hover:opacity-100 transition-all duration-300 cursor-default"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={logo.src}
+                  alt={logo.name}
+                  style={{ height: "80px", width: "auto", objectFit: "contain" }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

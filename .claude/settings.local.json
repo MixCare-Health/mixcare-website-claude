@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//private/tmp/**)",
+      "Bash(npx create-next-app@latest mixcare-health --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-git)",
+      "Bash(npm install:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(xargs kill:*)",
+      "Bash(npm i:*)",
+      "Skill(update-config)",
+      "Skill(update-config:*)",
+      "Bash(find /Users/kelvinchu/.claude/projects/-Users-kelvinchu-MixCare-Health-Website/ -name *.json)",
+      "Bash(npm run:*)"
+    ]
+  },
+  "disableAllHooks": true
+}
