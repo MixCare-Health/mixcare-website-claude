@@ -238,7 +238,6 @@ export const en = {
             "Deliver more value to corporate clients with a modern, flexible benefits platform",
             "Configure and present tailored benefit proposals across medical, wellness, and lifestyle categories",
             "Single dashboard to manage multiple client accounts, renewals, and utilisation reports",
-            "Strengthen client retention with ongoing engagement tools beyond annual renewal cycles",
             "White-label options available to reinforce your brand with every client touchpoint",
           ],
         },
