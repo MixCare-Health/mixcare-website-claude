@@ -15,7 +15,22 @@ export function proxy(request: NextRequest) {
       const url = request.nextUrl.clone();
       url.pathname = basePath;
 
-      const response = NextResponse.rewrite(url);
+      // Update the Cookie header in the forwarded request so server components
+      // (which read from request cookies, not response cookies) see the new locale immediately.
+      const requestHeaders = new Headers(request.headers);
+      const existingCookies = request.headers.get("cookie") ?? "";
+      const updatedCookies = existingCookies
+        .split(";")
+        .map((c) => c.trim())
+        .filter((c) => !c.startsWith("locale="))
+        .concat(`locale=${locale}`)
+        .join("; ");
+      requestHeaders.set("cookie", updatedCookies);
+
+      const response = NextResponse.rewrite(url, {
+        request: { headers: requestHeaders },
+      });
+      // Also set on the response so the browser persists the cookie for future requests.
       response.cookies.set("locale", locale, {
         path: "/",
         maxAge: 31536000,
