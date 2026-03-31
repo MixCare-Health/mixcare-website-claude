@@ -84,10 +84,9 @@ export default function AudiencePageTemplate({
   return (
     <>
       {/* Hero */}
-      <section className="pt-24 pb-16 relative overflow-hidden">
-        <div className="absolute inset-0 -z-10" style={{ background: bgGradient }} />
+      <section className="pt-24 pb-16 relative overflow-hidden" style={{ background: bgGradient }}>
         <div
-          className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-20 -z-10 blur-3xl"
+          className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-20 blur-3xl pointer-events-none"
           style={{ background: `radial-gradient(circle, ${accentColor}, transparent)` }}
         />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

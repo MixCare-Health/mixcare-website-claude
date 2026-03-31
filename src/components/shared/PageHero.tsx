@@ -36,10 +36,9 @@ export default function PageHero({
   bgGradient = "linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fff7ed 100%)",
 }: PageHeroProps) {
   return (
-    <section className="pt-24 pb-16 relative overflow-hidden">
-      <div className="absolute inset-0 -z-10" style={{ background: bgGradient }} />
+    <section className="pt-24 pb-16 relative overflow-hidden" style={{ background: bgGradient }}>
       <div
-        className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-20 -z-10 blur-3xl"
+        className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-20 blur-3xl pointer-events-none"
         style={{ background: `radial-gradient(circle, ${iconColor}, transparent)` }}
       />
 
