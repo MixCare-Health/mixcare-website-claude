@@ -51,7 +51,7 @@ export default async function WellnessMarketplacePage() {
         ctaLabel={p.hero.cta}
         ctaHref={localePath(locale, "/get-a-demo")}
         iconColor="#f97316"
-        bgGradient="linear-gradient(135deg, #fff7ed 0%, #f0fdfa 50%, #eff6ff 100%)"
+        bgGradient="linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fff7ed 100%)"
       />
 
       <BenefitsGrid

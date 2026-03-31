@@ -35,7 +35,7 @@ export default async function SmallBusinessPage() {
         headlineHighlight={p.headlineHighlight}
         subheadline={p.sub}
         accentColor="#f97316"
-        bgGradient="linear-gradient(135deg, #fff7ed 0%, #f0fdfa 50%, #eff6ff 100%)"
+        bgGradient="linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fff7ed 100%)"
         ctaLabel={p.cta}
         ctaHref={localePath(locale, "/start-now")}
         secondaryCtaLabel={p.secondaryCta}

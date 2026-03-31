@@ -101,7 +101,7 @@ export default function StartNowPage() {
       {/* Hero */}
       <section
         className="pt-28 pb-16 text-center relative overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #fff7ed 0%, #f0fdfa 50%, #eff6ff 100%)" }}
+        style={{ background: "linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fff7ed 100%)" }}
       >
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-20 -z-10 blur-3xl" style={{ background: "radial-gradient(circle, #f97316, transparent)" }} />
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">

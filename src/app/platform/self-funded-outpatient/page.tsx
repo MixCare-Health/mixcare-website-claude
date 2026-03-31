@@ -49,7 +49,7 @@ export default async function SelfFundedOutpatientPage() {
         secondaryCtaAnnotation={p.hero.calculatorAnnotation}
         secondaryCtaAnnotationIndent={locale !== "en" ? "20%" : undefined}
         iconColor="#0d9488"
-        bgGradient="linear-gradient(135deg, #f0fdfa 0%, #ecfdf5 50%, #f0f4ff 100%)"
+        bgGradient="linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fff7ed 100%)"
       />
 
       <PainPointsCarousel

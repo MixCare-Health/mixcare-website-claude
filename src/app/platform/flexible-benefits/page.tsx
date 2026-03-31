@@ -42,7 +42,7 @@ export default async function FlexibleBenefitsPage() {
         ctaLabel={p.hero.cta}
         ctaHref={localePath(locale, "/get-a-demo")}
         iconColor="#7c3aed"
-        bgGradient="linear-gradient(135deg, #f5f3ff 0%, #eff6ff 50%, #f0fdfa 100%)"
+        bgGradient="linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fff7ed 100%)"
       />
 
       <BenefitsGrid

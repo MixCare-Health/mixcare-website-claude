@@ -35,7 +35,7 @@ export default async function InsurersPage() {
         headlineHighlight={p.headlineHighlight}
         subheadline={p.sub}
         accentColor="#0d9488"
-        bgGradient="linear-gradient(135deg, #f0fdfa 0%, #ecfdf5 50%, #f0f4ff 100%)"
+        bgGradient="linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fff7ed 100%)"
         ctaLabel={p.cta}
         ctaHref={localePath(locale, "/get-a-demo")}
         challenges={p.challenges}

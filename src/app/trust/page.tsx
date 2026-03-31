@@ -41,7 +41,7 @@ export default function TrustPage() {
       {/* Hero */}
       <section
         className="pt-28 pb-20 text-center relative overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #f5f3ff 100%)" }}
+        style={{ background: "linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fff7ed 100%)" }}
       >
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-20 -z-10 blur-3xl" style={{ background: "radial-gradient(circle, #0d9488, transparent)" }} />
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">

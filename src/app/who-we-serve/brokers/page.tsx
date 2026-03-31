@@ -35,7 +35,7 @@ export default async function BrokersPage() {
         headlineHighlight={p.headlineHighlight}
         subheadline={p.sub}
         accentColor="#1e3a5f"
-        bgGradient="linear-gradient(135deg, #eff6ff 0%, #f0fdfa 50%, #fff7ed 100%)"
+        bgGradient="linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fff7ed 100%)"
         ctaLabel={p.cta}
         ctaHref={localePath(locale, "/partners")}
         secondaryCtaLabel={p.secondaryCta}

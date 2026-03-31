@@ -42,7 +42,7 @@ export default async function WellnessHubPage() {
         ctaLabel={p.hero.cta}
         ctaHref={localePath(locale, "/get-a-demo")}
         iconColor="#0891b2"
-        bgGradient="linear-gradient(135deg, #ecfeff 0%, #f0fdfa 50%, #eff6ff 100%)"
+        bgGradient="linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fff7ed 100%)"
       />
 
       <BenefitsGrid

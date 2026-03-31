@@ -44,7 +44,7 @@ export default function GetADemoPage() {
       {/* Minimal header for demo page */}
       <AppNavbar />
 
-      <section className="pt-28 pb-20 min-h-screen relative overflow-hidden" style={{ background: "linear-gradient(135deg, #f0fdfa 0%, #ecfdf5 50%, #f0f4ff 100%)" }}>
+      <section className="pt-28 pb-20 min-h-screen relative overflow-hidden" style={{ background: "linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fff7ed 100%)" }}>
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-20 -z-10 blur-3xl" style={{ background: "radial-gradient(circle, #0d9488, transparent)" }} />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">

@@ -35,7 +35,7 @@ export default async function EnterprisesPage() {
         headlineHighlight={p.headlineHighlight}
         subheadline={p.sub}
         accentColor="#7c3aed"
-        bgGradient="linear-gradient(135deg, #f5f3ff 0%, #eff6ff 50%, #f0fdfa 100%)"
+        bgGradient="linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fff7ed 100%)"
         ctaLabel={p.cta}
         ctaHref={localePath(locale, "/get-a-demo")}
         challenges={p.challenges}
