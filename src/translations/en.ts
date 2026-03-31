@@ -559,6 +559,254 @@ export const en = {
     },
   },
 
+  flexibleSpendingAccount: {
+    meta: {
+      title: "Flexible Spending Account (FSA) | MixCare Health",
+      description: "Create and manage FSA wallets for healthcare, wellness, and lifestyle expenses. Fully customisable for any company size.",
+    },
+    hero: {
+      badge: "Flexible Spending Account",
+      headline: "Next-Generation",
+      headlineHighlight: "Flexible Spending Accounts",
+      sub: "Create FSA wallets for healthcare, wellness, and lifestyle expenses. Fully configurable for any company size, any industry, any benefit philosophy.",
+      cta: "Get a Demo",
+    },
+    benefits: {
+      headline: "Everything you need in an FSA platform",
+      items: [
+        { title: "FSA Wallet Creation", desc: "Create and manage wallets for healthcare, wellness, or lifestyle expenses for employees or policyholders. Multiple wallet types, multiple funding rules — all in one admin portal." },
+        { title: "Diverse Spending Categories", desc: "Support mental health, fitness programs, medical checkups, nutrition, dental, vision, and more. 30+ categories that cover everything employees actually care about." },
+        { title: "Customizable Configurations", desc: "Align with any employer requirement, suiting companies of all sizes from SMB to enterprise. Set rollover rules, contribution limits, eligible categories, and approval workflows." },
+      ],
+    },
+    categories: {
+      headline: "30+ spending categories",
+      sub: "Cover what matters most to your employees — from traditional medical to modern wellness, mental health, and lifestyle.",
+      items: [
+        "Medical Checkups", "Mental Health", "Fitness & Gym", "Nutrition",
+        "Dental & Vision", "Pharmacy", "Wellness Retreats", "Health Screenings",
+      ],
+      more: "+22",
+      moreLabel: "More categories",
+    },
+    adminEmployee: {
+      headline: "Powerful for admins. Simple for employees.",
+      adminTitle: "Admin View",
+      adminItems: [
+        "Create and configure multiple wallet types",
+        "Set funding amounts, rollover rules, and expiry",
+        "Define eligible spending categories per wallet",
+        "Approve or auto-approve transactions",
+        "Real-time utilisation and budget dashboards",
+        "Bulk employee import and management",
+      ],
+      employeeTitle: "Employee View",
+      employeeItems: [
+        "View all benefit wallets in one mobile app",
+        "Browse eligible services and providers",
+        "Pay with FSA wallet — no out-of-pocket",
+        "Submit claims with photo receipts",
+        "Track spending and remaining balance",
+        "Receive notifications for new top-ups",
+      ],
+    },
+    ecosystem: {
+      headline: "Connected to the full MixCare ecosystem",
+      sub: "FSA wallets integrate seamlessly with the Wellness Marketplace, Wellness Hub, and outpatient network — employees spend in one place, you manage in one portal.",
+      tags: ["Wellness Marketplace", "Wellness Hub", "Panel Doctor Network", "HR Systems"],
+    },
+    testimonial: {
+      quote: "The FSA platform is exactly what we needed — flexible enough for our complex benefit structure but simple enough that employees actually use it. Utilisation jumped from 45% to 91%.",
+      name: "Marcus Chen",
+      title: "Head of HR",
+      company: "Jardine Matheson",
+    },
+    cta: {
+      headline: "Ready to launch your FSA program?",
+      sub: "Talk to our team about configuring the right FSA structure for your organisation — from a simple wellness wallet to a full multi-tier benefit program.",
+      label: "Get a Demo",
+      secondaryLabel: "Start Now — Free Setup",
+    },
+  },
+
+  wellnessMarketplace: {
+    meta: {
+      title: "Wellness Marketplace | MixCare Health",
+      description: "A curated marketplace for employee wellness — 500+ services redeemable with FSA wallets. White-label options for insurers, brokers, and enterprises.",
+    },
+    hero: {
+      badge: "Wellness Marketplace",
+      headline: "A Curated Marketplace for",
+      headlineHighlight: "Employee Wellness",
+      sub: "500+ wellness services, seamlessly redeemable with FSA wallets or pre-funded accounts. White-label options available for insurers, brokers, and enterprises.",
+      cta: "Get a Demo",
+    },
+    benefits: {
+      headline: "Why the MixCare Marketplace is different",
+      items: [
+        { title: "Service Redemption", desc: "Employees or policyholders redeem and purchase wellness services using FSA wallets or pre-funded accounts seamlessly. No receipts, no reimbursements — just instant access." },
+        { title: "Wide Service Array", desc: "Yoga classes, nutrition counseling, gym memberships, wellness retreats, mental health support, and beyond. 500+ services from verified providers across Asia-Pacific." },
+        { title: "Custom-Branded Marketplace", desc: "Deliver a white-label marketplace aligned with your insurer, broker, or enterprise branding and objectives. Your logo, your colours, your domain — powered by MixCare." },
+      ],
+    },
+    categories: {
+      headline: "500+ services across 6 categories",
+      sub: "From daily fitness to intensive wellness retreats — there's something for every employee, every lifestyle.",
+      items: [
+        { label: "Fitness & Gym", count: "80+ services" },
+        { label: "Mental Health", count: "60+ services" },
+        { label: "Nutrition", count: "45+ services" },
+        { label: "Wellness Retreats", count: "30+ services" },
+        { label: "Medical Screenings", count: "50+ services" },
+        { label: "Group Classes", count: "70+ services" },
+      ],
+    },
+    whiteLabelSection: {
+      badge: "White-Label Option",
+      headline: "Your brand. Our marketplace.",
+      sub: "Deploy a fully branded wellness marketplace under your own identity. Your clients see your logo, your domain, your design — backed by MixCare's 500+ curated services and seamless payment infrastructure.",
+      items: [
+        "Custom domain (wellness.yourcompany.com)",
+        "Brand colours, logo, and typography",
+        "Curated service selection per client",
+        "Integrated FSA payment rails",
+        "Dedicated provider management portal",
+      ],
+    },
+    providerCta: {
+      headline: "Are you a wellness provider?",
+      sub: "Partner with MixCare to reach thousands of corporate employees across Asia-Pacific. Get listed in the marketplace, access digital booking, and receive cashless payments.",
+      label: "Become a Partner →",
+    },
+    testimonial: {
+      quote: "Our employees now actually use their wellness benefits. After launching MixCare's marketplace, benefit utilisation jumped from 38% to 87% in two quarters.",
+      name: "Sarah Lam",
+      title: "Compensation & Benefits Manager",
+      company: "CK Hutchison Holdings",
+    },
+    cta: {
+      headline: "Build your wellness marketplace today",
+      sub: "Talk to our team about deploying a white-label or standard wellness marketplace for your organisation or clients.",
+      label: "Get a Demo",
+      secondaryLabel: "Become a Provider",
+    },
+  },
+
+  flexibleBenefits: {
+    meta: {
+      title: "Flexible Benefits Solution | MixCare Health",
+      description: "Personalised benefit packages that adapt to every individual. Scalable top-up and top-down structures for SMBs and enterprises.",
+    },
+    hero: {
+      badge: "Flexible Benefits Solution",
+      headline: "Benefits That Adapt to",
+      headlineHighlight: "Every Individual",
+      sub: "Personalised benefit packages based on health, wellness, and financial priorities. One platform for startups and Fortune 500s alike.",
+      cta: "Get a Demo",
+    },
+    benefits: {
+      headline: "The future of employee benefits",
+      items: [
+        { title: "Personalised Packages", desc: "Employees or members select benefit packages based on their individual health, wellness, and financial priorities. No one-size-fits-all — every person builds their own ideal benefit set." },
+        { title: "Scalable Structures", desc: "Top-up or top-down benefit structures deliver scalable options for small businesses through to large enterprises. Start simple, grow complex — the platform adapts as you do." },
+        { title: "Data-Driven Administration", desc: "Simplify benefit management with analytics-driven platforms designed for flexibility and easy administrative oversight. Make informed decisions with real-time utilisation data." },
+      ],
+    },
+    comparison: {
+      headline: "Traditional vs. Flexible Benefits",
+      traditionalTitle: "Traditional Benefits",
+      flexibleTitle: "MixCare Flexible Benefits",
+      traditional: [
+        "Same plan for all employees",
+        "Rigid annual review cycle",
+        "Low utilisation (avg. 42%)",
+        "High admin overhead",
+        "No personalisation",
+        "Binary opt-in/out",
+      ],
+      flexible: [
+        "Each employee builds their own plan",
+        "Continuous, real-time adjustments",
+        "High utilisation (avg. 88%)",
+        "Automated administration",
+        "Full personalisation engine",
+        "Granular benefit selection",
+      ],
+    },
+    howItWorks: {
+      headline: "How configuration works",
+      steps: [
+        { step: "01", title: "Admin sets the budget", desc: "Define a total benefit budget per employee (or tier). Choose top-up (company pays base, employees add) or top-down (full budget, employees allocate)." },
+        { step: "02", title: "Employees personalise", desc: "Each employee logs in and selects their benefit categories. Some want more mental health, others fitness, others dental. The platform accommodates all preferences." },
+        { step: "03", title: "Live analytics dashboard", desc: "Track utilisation by benefit type, demographic, and cost centre. Identify under-used categories, rebalance budgets, and report to finance — all in real time." },
+      ],
+    },
+    stats: [
+      { value: "88%", label: "Avg. benefit utilisation" },
+      { value: "2x", label: "Employee satisfaction uplift" },
+      { value: "95%", label: "Admin time reduction" },
+      { value: "2→500+", label: "Scales from SMB to enterprise" },
+    ],
+    testimonial: {
+      quote: "Flexible benefits changed everything. Our employees feel genuinely valued because they choose what matters to them. Retention improved 35% in the first year.",
+      name: "David Kwong",
+      title: "CHRO",
+      company: "HKEX Listed Financial Group",
+    },
+    cta: {
+      headline: "Ready to personalise your benefits?",
+      sub: "Discover how MixCare's flexible benefits platform can increase utilisation, improve employee satisfaction, and simplify administration.",
+      label: "Get a Demo",
+      secondaryLabel: "Start Now — Free Setup",
+    },
+  },
+
+  wellnessHub: {
+    meta: {
+      title: "Wellness Hub | MixCare Health",
+      description: "One hub connecting every wellness solution. Integrate with insurance policies, HR systems, and wellness programs without friction.",
+    },
+    hero: {
+      badge: "Wellness Hub",
+      headline: "One Hub. Every Wellness Solution.",
+      headlineHighlight: "Fully Integrated.",
+      sub: "Connect health, medical, and wellness in a single digital platform. Integrate with insurance policies, HR systems, and wellness programs without friction.",
+      cta: "Get a Demo",
+    },
+    benefits: {
+      headline: "The hub that connects everything",
+      items: [
+        { title: "Connected Ecosystem", desc: "Bring together a diverse ecosystem of health, medical, and wellness solutions in one centralised platform. Employees access everything — GP visits, FSA, marketplace, mental health — from a single login." },
+        { title: "Seamless Integration", desc: "Integrate with insurance policies, wellness programs, or employee benefits portals without friction. Pre-built connectors for major HR platforms, plus a full REST API for custom integrations." },
+        { title: "Industry Customisation", desc: "Customise offerings for brokers, enterprises, wellness providers, and small businesses with tailored experiences. Every stakeholder gets the view and features most relevant to them." },
+      ],
+    },
+    ecosystem: {
+      headline: "The MixCare Ecosystem",
+      sub: "Every stakeholder connected. Every service accessible. One intelligent platform.",
+      nodes: ["Insurers", "Employers", "Providers", "Employees", "Brokers"],
+    },
+    integrations: {
+      headline: "Pre-built integrations",
+      sub: "Connect to your existing HR, payroll, and insurance systems in days — not months.",
+      items: ["Workday", "SAP SuccessFactors", "Oracle HCM", "BambooHR", "AXA Portal", "Manulife Connect", "Blue Cross", "FWD Direct"],
+      apiHeadline: "Open API for custom integrations",
+      apiSub: "Our REST API and webhooks let you build any custom integration. Comprehensive documentation, sandbox environment, and dedicated developer support included.",
+      apiCta: "Request API Access →",
+    },
+    testimonial: {
+      quote: "Wellness Hub is the backbone of our entire benefit stack. Everything is connected — our insurance policies, FSA wallets, and 200 wellness providers — in one place our employees actually use.",
+      name: "Kevin Tam",
+      title: "Group Head of Benefits",
+      company: "HSBC Life Hong Kong",
+    },
+    cta: {
+      headline: "Connect your entire wellness ecosystem",
+      sub: "See how Wellness Hub can unify your health, insurance, and wellness infrastructure in a single platform.",
+      label: "Get a Demo",
+    },
+  },
+
   contact: {
     headline: "Get in",
     headlineHighlight: "touch",

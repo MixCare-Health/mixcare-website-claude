@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import type { Locale } from "@/lib/locale";
 import { getTranslations, type Translations } from "@/translations";
 
@@ -24,6 +24,11 @@ export function LanguageProvider({
   initialLocale: Locale;
 }) {
   const [locale, setLocaleState] = useState<Locale>(initialLocale);
+
+  // Sync when server re-renders with a new locale (e.g. after locale URL navigation)
+  useEffect(() => {
+    setLocaleState(initialLocale);
+  }, [initialLocale]);
 
   const setLocale = (l: Locale, basePath = "/") => {
     setLocaleState(l);

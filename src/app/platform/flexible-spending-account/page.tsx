@@ -6,6 +6,9 @@ import PageTestimonial from "@/components/shared/PageTestimonial";
 import BottomCTA from "@/components/shared/BottomCTA";
 import { Wallet, Settings, BarChart3, Heart, Dumbbell, Brain, Eye, Pill, Apple } from "lucide-react";
 import type { Metadata } from "next";
+import { getLocale } from "@/lib/locale.server";
+import { getTranslations } from "@/translations";
+import { localePath } from "@/lib/locale";
 
 export const metadata: Metadata = {
   title: "Flexible Spending Account (FSA) | MixCare Health",
@@ -13,53 +16,39 @@ export const metadata: Metadata = {
     "Create and manage FSA wallets for healthcare, wellness, and lifestyle expenses. Fully customisable for any company size.",
 };
 
-const benefits = [
-  {
-    icon: Wallet,
-    title: "FSA Wallet Creation",
-    desc: "Create and manage wallets for healthcare, wellness, or lifestyle expenses for employees or policyholders. Multiple wallet types, multiple funding rules — all in one admin portal.",
-  },
-  {
-    icon: Heart,
-    title: "Diverse Spending Categories",
-    desc: "Support mental health, fitness programs, medical checkups, nutrition, dental, vision, and more. 30+ categories that cover everything employees actually care about.",
-  },
-  {
-    icon: Settings,
-    title: "Customizable Configurations",
-    desc: "Align with any employer requirement, suiting companies of all sizes from SMB to enterprise. Set rollover rules, contribution limits, eligible categories, and approval workflows.",
-  },
-];
+const categoryIcons = [Heart, Brain, Dumbbell, Apple, Eye, Pill, Wallet, BarChart3];
+const categoryColors = ["#0d9488", "#7c3aed", "#f97316", "#16a34a", "#0891b2", "#dc2626", "#d97706", "#1e3a5f"];
 
-const categories = [
-  { icon: Heart, label: "Medical Checkups", color: "#0d9488" },
-  { icon: Brain, label: "Mental Health", color: "#7c3aed" },
-  { icon: Dumbbell, label: "Fitness & Gym", color: "#f97316" },
-  { icon: Apple, label: "Nutrition", color: "#16a34a" },
-  { icon: Eye, label: "Dental & Vision", color: "#0891b2" },
-  { icon: Pill, label: "Pharmacy", color: "#dc2626" },
-  { icon: Wallet, label: "Wellness Retreats", color: "#d97706" },
-  { icon: BarChart3, label: "Health Screenings", color: "#1e3a5f" },
-];
+const benefitIcons = [Wallet, Heart, Settings];
 
-export default function FSAPage() {
+export default async function FSAPage() {
+  const locale = await getLocale();
+  const t = getTranslations(locale);
+  const p = t.flexibleSpendingAccount;
+
+  const benefits = p.benefits.items.map((item: { title: string; desc: string }, i: number) => ({
+    icon: benefitIcons[i],
+    title: item.title,
+    desc: item.desc,
+  }));
+
   return (
     <main>
       <AppNavbar />
 
       <PageHero
-        badge="Flexible Spending Account"
-        headline="Next-Generation"
-        headlineHighlight="Flexible Spending Accounts"
-        subheadline="Create FSA wallets for healthcare, wellness, and lifestyle expenses. Fully configurable for any company size, any industry, any benefit philosophy."
-        ctaLabel="Get a Demo"
-        ctaHref="/get-a-demo"
+        badge={p.hero.badge}
+        headline={p.hero.headline}
+        headlineHighlight={p.hero.headlineHighlight}
+        subheadline={p.hero.sub}
+        ctaLabel={p.hero.cta}
+        ctaHref={localePath(locale, "/get-a-demo")}
         iconColor="#1e3a5f"
         bgGradient="linear-gradient(135deg, #eff6ff 0%, #f0fdfa 50%, #fff7ed 100%)"
       />
 
       <BenefitsGrid
-        headline="Everything you need in an FSA platform"
+        headline={p.benefits.headline}
         benefits={benefits}
         accentColor="#1e3a5f"
       />
@@ -69,33 +58,36 @@ export default function FSAPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-extrabold text-slate-900 mb-4">
-              30+ spending categories
+              {p.categories.headline}
             </h2>
             <p className="text-lg text-slate-600 max-w-xl mx-auto">
-              Cover what matters most to your employees — from traditional medical to modern
-              wellness, mental health, and lifestyle.
+              {p.categories.sub}
             </p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {categories.map((cat) => (
-              <div
-                key={cat.label}
-                className="bg-white rounded-2xl p-6 text-center border border-slate-100 hover:shadow-md transition-all hover:-translate-y-0.5"
-              >
+            {p.categories.items.map((label: string, i: number) => {
+              const Icon = categoryIcons[i];
+              const color = categoryColors[i];
+              return (
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3"
-                  style={{ backgroundColor: cat.color + "15" }}
+                  key={label}
+                  className="bg-white rounded-2xl p-6 text-center border border-slate-100 hover:shadow-md transition-all hover:-translate-y-0.5"
                 >
-                  <cat.icon size={24} style={{ color: cat.color }} />
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3"
+                    style={{ backgroundColor: color + "15" }}
+                  >
+                    <Icon size={24} style={{ color }} />
+                  </div>
+                  <p className="text-sm font-semibold text-slate-800">{label}</p>
                 </div>
-                <p className="text-sm font-semibold text-slate-800">{cat.label}</p>
-              </div>
-            ))}
+              );
+            })}
             <div
               className="bg-white rounded-2xl p-6 text-center border border-dashed border-slate-200 hover:shadow-md transition-all flex flex-col items-center justify-center"
             >
-              <p className="text-2xl font-extrabold text-slate-400">+22</p>
-              <p className="text-sm text-slate-400 mt-1">More categories</p>
+              <p className="text-2xl font-extrabold text-slate-400">{p.categories.more}</p>
+              <p className="text-sm text-slate-400 mt-1">{p.categories.moreLabel}</p>
             </div>
           </div>
         </div>
@@ -105,7 +97,7 @@ export default function FSAPage() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 text-center mb-10">
-            Powerful for admins. Simple for employees.
+            {p.adminEmployee.headline}
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div
@@ -113,17 +105,10 @@ export default function FSAPage() {
               style={{ backgroundColor: "#f0fdfa" }}
             >
               <h3 className="text-xl font-bold text-slate-900 mb-5" style={{ color: "#0d9488" }}>
-                Admin View
+                {p.adminEmployee.adminTitle}
               </h3>
               <ul className="space-y-3">
-                {[
-                  "Create and configure multiple wallet types",
-                  "Set funding amounts, rollover rules, and expiry",
-                  "Define eligible spending categories per wallet",
-                  "Approve or auto-approve transactions",
-                  "Real-time utilisation and budget dashboards",
-                  "Bulk employee import and management",
-                ].map((item) => (
+                {p.adminEmployee.adminItems.map((item: string) => (
                   <li key={item} className="flex items-center gap-2 text-sm text-slate-700">
                     <div
                       className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
@@ -141,17 +126,10 @@ export default function FSAPage() {
               style={{ backgroundColor: "#eff6ff" }}
             >
               <h3 className="text-xl font-bold text-slate-900 mb-5" style={{ color: "#1e3a5f" }}>
-                Employee View
+                {p.adminEmployee.employeeTitle}
               </h3>
               <ul className="space-y-3">
-                {[
-                  "View all benefit wallets in one mobile app",
-                  "Browse eligible services and providers",
-                  "Pay with FSA wallet — no out-of-pocket",
-                  "Submit claims with photo receipts",
-                  "Track spending and remaining balance",
-                  "Receive notifications for new top-ups",
-                ].map((item) => (
+                {p.adminEmployee.employeeItems.map((item: string) => (
                   <li key={item} className="flex items-center gap-2 text-sm text-slate-700">
                     <div
                       className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
@@ -176,44 +154,41 @@ export default function FSAPage() {
             style={{ borderColor: "#1e3a5f30", backgroundColor: "#eff6ff" }}
           >
             <h3 className="text-xl font-bold text-slate-900 mb-3">
-              Connected to the full MixCare ecosystem
+              {p.ecosystem.headline}
             </h3>
             <p className="text-slate-600 mb-5">
-              FSA wallets integrate seamlessly with the Wellness Marketplace, Wellness Hub,
-              and outpatient network — employees spend in one place, you manage in one portal.
+              {p.ecosystem.sub}
             </p>
             <div className="flex flex-wrap justify-center gap-3">
-              {["Wellness Marketplace", "Wellness Hub", "Panel Doctor Network", "HR Systems"].map(
-                (item) => (
-                  <span
-                    key={item}
-                    className="px-4 py-2 rounded-xl text-sm font-semibold"
-                    style={{ backgroundColor: "#1e3a5f15", color: "#1e3a5f" }}
-                  >
-                    {item}
-                  </span>
-                )
-              )}
+              {p.ecosystem.tags.map((item: string) => (
+                <span
+                  key={item}
+                  className="px-4 py-2 rounded-xl text-sm font-semibold"
+                  style={{ backgroundColor: "#1e3a5f15", color: "#1e3a5f" }}
+                >
+                  {item}
+                </span>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       <PageTestimonial
-        quote="The FSA platform is exactly what we needed — flexible enough for our complex benefit structure but simple enough that employees actually use it. Utilisation jumped from 45% to 91%."
-        name="Marcus Chen"
-        title="Head of HR"
-        company="Jardine Matheson"
+        quote={p.testimonial.quote}
+        name={p.testimonial.name}
+        title={p.testimonial.title}
+        company={p.testimonial.company}
         accentColor="#1e3a5f"
       />
 
       <BottomCTA
-        headline="Ready to launch your FSA program?"
-        sub="Talk to our team about configuring the right FSA structure for your organisation — from a simple wellness wallet to a full multi-tier benefit program."
-        ctaLabel="Get a Demo"
-        ctaHref="/get-a-demo"
-        secondaryLabel="Start Now — Free Setup"
-        secondaryHref="/start-now"
+        headline={p.cta.headline}
+        sub={p.cta.sub}
+        ctaLabel={p.cta.label}
+        ctaHref={localePath(locale, "/get-a-demo")}
+        secondaryLabel={p.cta.secondaryLabel}
+        secondaryHref={localePath(locale, "/start-now")}
       />
 
       <Footer />

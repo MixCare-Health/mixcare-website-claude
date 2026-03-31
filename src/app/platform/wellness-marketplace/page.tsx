@@ -7,6 +7,9 @@ import BottomCTA from "@/components/shared/BottomCTA";
 import Link from "next/link";
 import { ShoppingBag, RefreshCw, Layers, Star, Dumbbell, Brain, Apple, Leaf, Stethoscope, Users } from "lucide-react";
 import type { Metadata } from "next";
+import { getLocale } from "@/lib/locale.server";
+import { getTranslations } from "@/translations";
+import { localePath } from "@/lib/locale";
 
 export const metadata: Metadata = {
   title: "Wellness Marketplace | MixCare Health",
@@ -14,51 +17,45 @@ export const metadata: Metadata = {
     "A curated marketplace for employee wellness — 500+ services redeemable with FSA wallets. White-label options for insurers, brokers, and enterprises.",
 };
 
-const benefits = [
-  {
-    icon: RefreshCw,
-    title: "Service Redemption",
-    desc: "Employees or policyholders redeem and purchase wellness services using FSA wallets or pre-funded accounts seamlessly. No receipts, no reimbursements — just instant access.",
-  },
-  {
-    icon: Layers,
-    title: "Wide Service Array",
-    desc: "Yoga classes, nutrition counseling, gym memberships, wellness retreats, mental health support, and beyond. 500+ services from verified providers across Asia-Pacific.",
-  },
-  {
-    icon: ShoppingBag,
-    title: "Custom-Branded Marketplace",
-    desc: "Deliver a white-label marketplace aligned with your insurer, broker, or enterprise branding and objectives. Your logo, your colours, your domain — powered by MixCare.",
-  },
-];
+const benefitIcons = [RefreshCw, Layers, ShoppingBag];
+const categoryIcons = [Dumbbell, Brain, Apple, Leaf, Stethoscope, Users];
+const categoryColors = ["#f97316", "#7c3aed", "#16a34a", "#0d9488", "#0891b2", "#d97706"];
 
-const categories = [
-  { icon: Dumbbell, label: "Fitness & Gym", count: "80+ services", color: "#f97316" },
-  { icon: Brain, label: "Mental Health", count: "60+ services", color: "#7c3aed" },
-  { icon: Apple, label: "Nutrition", count: "45+ services", color: "#16a34a" },
-  { icon: Leaf, label: "Wellness Retreats", count: "30+ services", color: "#0d9488" },
-  { icon: Stethoscope, label: "Medical Screenings", count: "50+ services", color: "#0891b2" },
-  { icon: Users, label: "Group Classes", count: "70+ services", color: "#d97706" },
-];
+export default async function WellnessMarketplacePage() {
+  const locale = await getLocale();
+  const t = getTranslations(locale);
+  const p = t.wellnessMarketplace;
 
-export default function WellnessMarketplacePage() {
+  const benefits = p.benefits.items.map((item, i) => ({
+    icon: benefitIcons[i],
+    title: item.title,
+    desc: item.desc,
+  }));
+
+  const categories = p.categories.items.map((item, i) => ({
+    icon: categoryIcons[i],
+    label: item.label,
+    count: item.count,
+    color: categoryColors[i],
+  }));
+
   return (
     <main>
       <AppNavbar />
 
       <PageHero
-        badge="Wellness Marketplace"
-        headline="A Curated Marketplace for"
-        headlineHighlight="Employee Wellness"
-        subheadline="500+ wellness services, seamlessly redeemable with FSA wallets or pre-funded accounts. White-label options available for insurers, brokers, and enterprises."
-        ctaLabel="Get a Demo"
-        ctaHref="/get-a-demo"
+        badge={p.hero.badge}
+        headline={p.hero.headline}
+        headlineHighlight={p.hero.headlineHighlight}
+        subheadline={p.hero.sub}
+        ctaLabel={p.hero.cta}
+        ctaHref={localePath(locale, "/get-a-demo")}
         iconColor="#f97316"
         bgGradient="linear-gradient(135deg, #fff7ed 0%, #f0fdfa 50%, #eff6ff 100%)"
       />
 
       <BenefitsGrid
-        headline="Why the MixCare Marketplace is different"
+        headline={p.benefits.headline}
         benefits={benefits}
         accentColor="#f97316"
       />
@@ -68,11 +65,10 @@ export default function WellnessMarketplacePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-extrabold text-slate-900 mb-4">
-              500+ services across 6 categories
+              {p.categories.headline}
             </h2>
             <p className="text-lg text-slate-600 max-w-xl mx-auto">
-              From daily fitness to intensive wellness retreats — there&apos;s something for every
-              employee, every lifestyle.
+              {p.categories.sub}
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
@@ -103,24 +99,16 @@ export default function WellnessMarketplacePage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: "#f97316" }}>
-                White-Label Option
+                {p.whiteLabelSection.badge}
               </p>
               <h2 className="text-3xl font-extrabold text-slate-900 mb-5">
-                Your brand. Our marketplace.
+                {p.whiteLabelSection.headline}
               </h2>
               <p className="text-slate-600 leading-relaxed mb-6">
-                Deploy a fully branded wellness marketplace under your own identity. Your
-                clients see your logo, your domain, your design — backed by MixCare&apos;s
-                500+ curated services and seamless payment infrastructure.
+                {p.whiteLabelSection.sub}
               </p>
               <ul className="space-y-3 mb-8">
-                {[
-                  "Custom domain (wellness.yourcompany.com)",
-                  "Brand colours, logo, and typography",
-                  "Curated service selection per client",
-                  "Integrated FSA payment rails",
-                  "Dedicated provider management portal",
-                ].map((item) => (
+                {p.whiteLabelSection.items.map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm text-slate-700">
                     <div
                       className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
@@ -169,38 +157,37 @@ export default function WellnessMarketplacePage() {
             style={{ borderColor: "#f9731630", backgroundColor: "#fff7ed" }}
           >
             <h3 className="text-xl font-bold text-slate-900 mb-3">
-              Are you a wellness provider?
+              {p.providerCta.headline}
             </h3>
             <p className="text-slate-600 mb-5">
-              Partner with MixCare to reach thousands of corporate employees across Asia-Pacific.
-              Get listed in the marketplace, access digital booking, and receive cashless payments.
+              {p.providerCta.sub}
             </p>
             <Link
-              href="/partners"
+              href={localePath(locale, "/partners")}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm text-white"
               style={{ backgroundColor: "#f97316" }}
             >
-              Become a Partner →
+              {p.providerCta.label}
             </Link>
           </div>
         </div>
       </section>
 
       <PageTestimonial
-        quote="Our employees now actually use their wellness benefits. After launching MixCare's marketplace, benefit utilisation jumped from 38% to 87% in two quarters."
-        name="Sarah Lam"
-        title="Compensation & Benefits Manager"
-        company="CK Hutchison Holdings"
+        quote={p.testimonial.quote}
+        name={p.testimonial.name}
+        title={p.testimonial.title}
+        company={p.testimonial.company}
         accentColor="#f97316"
       />
 
       <BottomCTA
-        headline="Build your wellness marketplace today"
-        sub="Talk to our team about deploying a white-label or standard wellness marketplace for your organisation or clients."
-        ctaLabel="Get a Demo"
-        ctaHref="/get-a-demo"
-        secondaryLabel="Become a Provider"
-        secondaryHref="/partners"
+        headline={p.cta.headline}
+        sub={p.cta.sub}
+        ctaLabel={p.cta.label}
+        ctaHref={localePath(locale, "/get-a-demo")}
+        secondaryLabel={p.cta.secondaryLabel}
+        secondaryHref={localePath(locale, "/partners")}
       />
 
       <Footer />
