@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { Button } from "@heroui/react";
 import {
   ChevronDown,
@@ -49,7 +49,7 @@ const audienceHrefs = [
 const audienceIcons = [Shield, Briefcase, Building2, Store, Users];
 
 export default function AppNavbar() {
-  const { t, locale, setLocale } = useLanguage();
+  const { t, locale } = useLanguage();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [platformOpen, setPlatformOpen] = useState(false);
   const [audienceOpen, setAudienceOpen] = useState(false);
@@ -58,8 +58,7 @@ export default function AppNavbar() {
   const [mobileAudienceOpen, setMobileAudienceOpen] = useState(false);
   const [mobileLangOpen, setMobileLangOpen] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
-  const platformRef = useRef<HTMLDivElement>(null);
+const platformRef = useRef<HTMLDivElement>(null);
   const audienceRef = useRef<HTMLDivElement>(null);
   const langRef = useRef<HTMLDivElement>(null);
 
@@ -81,11 +80,12 @@ export default function AppNavbar() {
   }, []);
 
   const handleLocaleChange = (l: Locale) => {
-    setLocale(l);
     setLangOpen(false);
     setMobileLangOpen(false);
     const { basePath } = parseLocalePath(pathname);
-    router.push(`/${LOCALE_URL[l]}${basePath === "/" ? "" : basePath}`);
+    // Full navigation (not router.push) so the server always re-renders with the
+    // new locale cookie — bypasses Next.js Router Cache which would serve stale content.
+    window.location.href = `/${LOCALE_URL[l]}${basePath === "/" ? "" : basePath}`;
   };
 
   return (

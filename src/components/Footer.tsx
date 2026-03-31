@@ -5,7 +5,7 @@ import { Twitter, Linkedin, Facebook, Instagram, Globe, ChevronDown } from "luci
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LOCALES, LOCALE_LABELS, LOCALE_URL, localePath, parseLocalePath } from "@/lib/locale";
 import type { Locale } from "@/lib/locale";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 
 const P = "#10AF97";
@@ -18,9 +18,8 @@ const socialLinks = [
 ];
 
 export default function Footer() {
-  const { t, locale, setLocale } = useLanguage();
-  const router = useRouter();
-  const pathname = usePathname();
+  const { t, locale } = useLanguage();
+const pathname = usePathname();
   const [langOpen, setLangOpen] = useState(false);
   const langRef = useRef<HTMLDivElement>(null);
 
@@ -33,10 +32,11 @@ export default function Footer() {
   }, []);
 
   const handleLocaleChange = (l: Locale) => {
-    setLocale(l);
     setLangOpen(false);
     const { basePath } = parseLocalePath(pathname);
-    router.push(`/${LOCALE_URL[l]}${basePath === "/" ? "" : basePath}`);
+    // Full navigation so the server re-renders with the new locale cookie,
+    // bypassing the Next.js Router Cache.
+    window.location.href = `/${LOCALE_URL[l]}${basePath === "/" ? "" : basePath}`;
   };
 
   const footerColumns = [
