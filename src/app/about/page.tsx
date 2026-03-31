@@ -26,9 +26,10 @@ export default async function AboutPage() {
 
       {/* Hero */}
       <section
-        className="pt-28 pb-20"
+        className="pt-28 pb-20 relative overflow-hidden"
         style={{ background: "linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fff7ed 100%)" }}
       >
+        <div className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-20 -z-10 blur-3xl" style={{ background: "radial-gradient(circle, #0d9488, transparent)" }} />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div
             className="inline-block px-4 py-2 rounded-full text-sm font-bold mb-5"

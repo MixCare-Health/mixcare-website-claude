@@ -139,9 +139,10 @@ export default function ResourcesPage() {
 
       {/* Hero */}
       <section
-        className="pt-28 pb-16 text-center"
+        className="pt-28 pb-16 text-center relative overflow-hidden"
         style={{ background: "linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fff7ed 100%)" }}
       >
+        <div className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-20 -z-10 blur-3xl" style={{ background: "radial-gradient(circle, #0d9488, transparent)" }} />
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 mb-5">
             Resources & Insights
