@@ -461,6 +461,104 @@ export const en = {
     success: { title: "Application received!", sub: "Our partnerships team will review your application and be in touch within 2 business days." },
   },
 
+  selfFundedOutpatient: {
+    meta: {
+      title: "Self-Funded Outpatient Services | MixCare Health",
+      description: "AI-powered outpatient claims processing with a 2,000+ panel doctor network across Hong Kong, Macau, and Singapore.",
+    },
+    hero: {
+      badge: "Self-Funded Outpatient Services",
+      headline: "Take Control of Outpatient",
+      headlineHighlight: "Healthcare Costs",
+      sub: "AI-powered claims processing, cashless panel doctor access, and customisable stop-loss plans — giving you full visibility and control over outpatient spending.",
+      cta: "Get a Demo",
+    },
+    benefits: {
+      headline: "Three capabilities. Infinite configurations.",
+      items: [
+        {
+          title: "Customisable Benefit Plans",
+          desc: "Help employers implement stop-loss mechanisms and better control medical spending with tailored plan configurations. Define coverage limits, co-pay structures, and eligible categories to match your exact needs.",
+        },
+        {
+          title: "Panel Doctor Network",
+          desc: "2,000+ panel doctors across Hong Kong, Macau, and Singapore offering cashless consultation experiences. Employees simply show their digital card and receive care — no upfront payment, no reimbursement hassle.",
+        },
+        {
+          title: "AI-Powered Claims Processing",
+          desc: "Streamline claims with advanced AI — ensuring accurate, speedy payouts while minimising fraud risk. Our engine processes 98% of claims within 24 hours with automated anomaly detection.",
+        },
+      ],
+    },
+    howItWorks: {
+      headline: "How the platform works",
+      sub: "From plan configuration to real-time analytics — MixCare handles the full outpatient benefits lifecycle.",
+      items: [
+        {
+          title: "Stop-Loss Configuration",
+          desc: "Set individual and aggregate stop-loss thresholds. Once a limit is reached, claims automatically route to your reinsurer or insurer layer — giving you predictable cost control.",
+          metric: "Reduce budget variance by up to 40%",
+        },
+        {
+          title: "Cashless Doctor Experience",
+          desc: "Employees locate and book panel doctors via the MixCare app. Consultations are cashless — the doctor submits directly to our system, eliminating manual reimbursement entirely.",
+          metric: "2,000+ doctors across HK, MO, SG",
+        },
+        {
+          title: "AI Fraud Detection",
+          desc: "Our AI model analyses every claim against a library of fraud patterns, duplicate indicators, and anomalous billing codes. Suspicious claims are flagged for review before payout.",
+          metric: "Fraud detection rate >95%",
+        },
+        {
+          title: "Real-Time Claims Dashboard",
+          desc: "Track all claims in real time — approvals, pending reviews, rejections, and trends. Export reports for finance, HR, or your insurer with one click.",
+          metric: "98% claims satisfaction rate",
+        },
+      ],
+    },
+    useCases: {
+      headline: "Built for every stakeholder",
+      sub: "See how insurers, brokers, and enterprises deploy self-funded outpatient with MixCare.",
+      items: [
+        {
+          audience: "Insurers",
+          scenario: "Add a self-funded outpatient layer to group insurance policies without the overhead of traditional claims teams. MixCare's AI engine handles end-to-end processing.",
+          outcome: "70% reduction in claims processing cost",
+        },
+        {
+          audience: "Brokers",
+          scenario: "Offer clients a self-funded scheme with stop-loss protection. The panel doctor network and cashless experience give your clients a competitive edge in talent retention.",
+          outcome: "Higher client retention and satisfaction scores",
+        },
+        {
+          audience: "Large Enterprises",
+          scenario: "Replace traditional group medical insurance with a self-funded scheme. Control costs through stop-loss thresholds while providing employees with richer, more flexible outpatient care.",
+          outcome: "Average 30% reduction in total benefit spend",
+        },
+      ],
+    },
+    stats: {
+      headline: "Measurable impact from day one",
+      items: [
+        { value: "<24h", label: "Average claims resolution" },
+        { value: "95%+", label: "Fraud detection accuracy" },
+        { value: "30%", label: "Average cost reduction" },
+        { value: "2,000+", label: "Panel doctors available" },
+      ],
+    },
+    testimonial: {
+      quote: "MixCare's AI claims engine transformed our outpatient scheme. Fraud incidents dropped by 60% and our average resolution time went from 5 days to less than 18 hours.",
+      name: "Jennifer Wong",
+      title: "VP, Group Benefits",
+      company: "AXA Hong Kong",
+    },
+    cta: {
+      headline: "See it in action — Get a Demo",
+      sub: "Discover how MixCare's self-funded outpatient platform can reduce your medical costs and delight your employees.",
+      label: "Get a Demo",
+    },
+  },
+
   contact: {
     headline: "Get in",
     headlineHighlight: "touch",
