@@ -10,6 +10,7 @@ export const en = {
     platformSolutions: "Platform Solutions",
     byAudience: "By Audience",
     soon: "Soon",
+    comingSoonLabel: "Coming Soon",
     platformLinks: [
       { label: "Self-Funded Outpatient", desc: "AI-powered claims & panel doctor network" },
       { label: "Flexible Spending Account", desc: "Create & manage FSA wallets for any need" },
@@ -729,6 +730,44 @@ export const en = {
       sub: "Talk to our team about deploying a white-label or standard wellness marketplace for your organisation or clients.",
       label: "Get a Demo",
       secondaryLabel: "Become a Provider",
+    },
+  },
+
+  wellnessEvent: {
+    meta: {
+      title: "Wellness Events | MixCare Health",
+      description: "Book curated corporate wellness events — yoga, mindfulness, health talks, and more — all managed through MixCare.",
+    },
+    hero: {
+      badge: "Wellness Events",
+      headline: "Engage Your Team with",
+      headlineHighlight: "Curated Wellness Events",
+      sub: "Book corporate wellness workshops, health talks, and team activities — all managed through MixCare's event platform. Drive engagement and build a healthier workplace culture.",
+      cta: "Get a Demo",
+    },
+    painPoints: {
+      headline: "The challenges of corporate wellness events",
+      sub: "Organising meaningful wellness events at scale is harder than it looks.",
+      items: [
+        { title: "Low Employee Participation", desc: "Generic wellness programmes fail to engage employees. Without variety and relevance, participation drops and wellness budgets go to waste." },
+        { title: "HR Logistics Overload", desc: "Coordinating vendors, schedules, RSVPs, and venues drains HR bandwidth — leaving less time for strategic people initiatives." },
+        { title: "One-Size-Fits-All Offerings", desc: "A single yoga class doesn't serve everyone. Teams need diverse options across fitness, mental health, nutrition, and preventive care." },
+        { title: "No Measurable Impact", desc: "Without data, it's impossible to justify wellness event spending or improve programme quality over time." },
+      ],
+    },
+    benefits: {
+      headline: "Four Capabilities. Healthier Teams.",
+      items: [
+        { title: "500+ Curated Events", desc: "Access a catalogue of 500+ vetted wellness events — yoga, mindfulness, nutrition workshops, mental health seminars, first aid, and more. New events added monthly to keep content fresh." },
+        { title: "Seamless Booking", desc: "HR teams browse, book, and manage events in a few clicks. Automated invitations, RSVPs, and reminders keep employees engaged without manual follow-up." },
+        { title: "Live & Virtual Options", desc: "On-site events at your office or virtual sessions for remote and hybrid teams. Every employee can participate regardless of location." },
+        { title: "Attendance & Impact Reporting", desc: "Track participation rates, employee satisfaction scores, and wellness ROI with post-event reports automatically generated after every event." },
+      ],
+    },
+    cta: {
+      headline: "Ready to Elevate Employee Wellness?",
+      sub: "Book a demo to see how MixCare Wellness Events drives engagement and measurable health outcomes.",
+      label: "Get a Demo",
     },
   },
 

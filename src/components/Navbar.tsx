@@ -32,7 +32,7 @@ const platformHrefs = [
   "/platform/self-funded-outpatient",
   "/platform/flexible-spending-account",
   "/platform/wellness-marketplace",
-  "/platform/wellness-marketplace",
+  "/platform/wellness-event",
   "/platform/flexible-benefits",
   "/platform/wellness-hub",
 ];
@@ -125,24 +125,21 @@ const platformRef = useRef<HTMLDivElement>(null);
                     <div className="space-y-0.5">
                       {t.nav.platformLinks.map((item, i) => {
                         const Icon = platformIcons[i];
-                        return (
-                          <Link
-                            key={platformHrefs[i] + item.label}
-                            href={localePath(locale, platformHrefs[i])}
-                            className="flex items-start gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 group transition-colors"
-                          >
+                        const soon = platformComingSoon[i];
+                        const inner = (
+                          <>
                             <div
                               className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 transition-colors"
-                              style={{ backgroundColor: P + "18" }}
+                              style={{ backgroundColor: soon ? "#94a3b820" : P + "18" }}
                             >
-                              <Icon size={16} style={{ color: P }} />
+                              <Icon size={16} style={{ color: soon ? "#94a3b8" : P }} />
                             </div>
                             <div className="flex-1">
                               <div className="flex items-center gap-2">
-                                <p className="text-sm font-semibold text-slate-800 group-hover:text-teal-700 transition-colors">
+                                <p className={`text-sm font-semibold transition-colors ${soon ? "text-slate-400" : "text-slate-800 group-hover:text-teal-700"}`}>
                                   {item.label}
                                 </p>
-                                {platformComingSoon[i] && (
+                                {soon && (
                                   <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-700">
                                     {t.nav.soon}
                                   </span>
@@ -150,6 +147,25 @@ const platformRef = useRef<HTMLDivElement>(null);
                               </div>
                               <p className="text-xs text-slate-500 mt-0.5">{item.desc}</p>
                             </div>
+                          </>
+                        );
+                        return soon ? (
+                          <div
+                            key={platformHrefs[i] + item.label}
+                            className="relative group/cs flex items-start gap-3 px-3 py-2.5 rounded-xl cursor-not-allowed"
+                          >
+                            {inner}
+                            <div className="absolute left-1/2 -translate-x-1/2 -top-8 px-2.5 py-1 bg-slate-800 text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover/cs:opacity-100 transition-opacity pointer-events-none z-10">
+                              {t.nav.comingSoonLabel}
+                            </div>
+                          </div>
+                        ) : (
+                          <Link
+                            key={platformHrefs[i] + item.label}
+                            href={localePath(locale, platformHrefs[i])}
+                            className="flex items-start gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 group transition-colors"
+                          >
+                            {inner}
                           </Link>
                         );
                       })}
@@ -313,7 +329,19 @@ const platformRef = useRef<HTMLDivElement>(null);
                 <div className="pl-4 space-y-1 pb-2">
                   {t.nav.platformLinks.map((item, i) => {
                     const Icon = platformIcons[i];
-                    return (
+                    const soon = platformComingSoon[i];
+                    return soon ? (
+                      <div
+                        key={platformHrefs[i] + item.label}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-slate-400 cursor-not-allowed"
+                      >
+                        <Icon size={16} className="text-slate-300" />
+                        {item.label}
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-700 ml-1">
+                          {t.nav.soon}
+                        </span>
+                      </div>
+                    ) : (
                       <Link
                         key={platformHrefs[i] + item.label}
                         href={localePath(locale, platformHrefs[i])}
@@ -321,11 +349,6 @@ const platformRef = useRef<HTMLDivElement>(null);
                       >
                         <Icon size={16} />
                         {item.label}
-                        {platformComingSoon[i] && (
-                          <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-700 ml-1">
-                            {t.nav.soon}
-                          </span>
-                        )}
                       </Link>
                     );
                   })}

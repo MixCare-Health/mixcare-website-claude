@@ -23,7 +23,7 @@ const featureMeta = [
   { id: "outpatient", icon: Stethoscope, color: P,        bg: P + "10",        href: "/platform/self-funded-outpatient",    comingSoon: false },
   { id: "fsa",        icon: Wallet,       color: S,        bg: S + "10",        href: "/platform/flexible-spending-account", comingSoon: false },
   { id: "marketplace",icon: ShoppingBag,  color: "#f97316",bg: "#f9731610",     href: "/platform/wellness-marketplace",      comingSoon: false },
-  { id: "events",     icon: CalendarDays, color: "#0891b2",bg: "#0891b210",     href: "/platform/wellness-marketplace",      comingSoon: false },
+  { id: "events",     icon: CalendarDays, color: "#0891b2",bg: "#0891b210",     href: "/platform/wellness-event",            comingSoon: false },
   { id: "flexible",   icon: Sliders,      color: "#7c3aed",bg: "#7c3aed10",     href: "/platform/flexible-benefits",         comingSoon: true  },
   { id: "hub",        icon: LayoutDashboard,color: P,      bg: P + "10",        href: "/platform/wellness-hub",              comingSoon: true  },
 ];
@@ -244,14 +244,16 @@ export default function PlatformFeaturesSectionV2() {
                 </li>
               ))}
             </ul>
-            <Link
-              href={localePath(locale, current.href)}
-              className="inline-flex items-center gap-2 font-bold text-sm"
-              style={{ color: current.color }}
-            >
-              {current.comingSoon ? pf.learnMore : `${pf.explore} ${t.nav.platformLinks[activeIdx].label}`}
-              <ArrowRight size={15} />
-            </Link>
+            {!current.comingSoon && (
+              <Link
+                href={localePath(locale, current.href)}
+                className="inline-flex items-center gap-2 font-bold text-sm"
+                style={{ color: current.color }}
+              >
+                {pf.explore} {t.nav.platformLinks[activeIdx].label}
+                <ArrowRight size={15} />
+              </Link>
+            )}
           </div>
         </div>
 

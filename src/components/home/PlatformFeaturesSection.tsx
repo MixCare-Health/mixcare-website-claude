@@ -22,7 +22,7 @@ const featureMeta = [
   { id: "outpatient", icon: Stethoscope, color: P, bg: P + "12", href: "/platform/self-funded-outpatient", comingSoon: false },
   { id: "fsa", icon: Wallet, color: S, bg: S + "12", href: "/platform/flexible-spending-account", comingSoon: false },
   { id: "marketplace", icon: ShoppingBag, color: "#f97316", bg: "#f9731612", href: "/platform/wellness-marketplace", comingSoon: false },
-  { id: "events", icon: CalendarDays, color: "#0891b2", bg: "#0891b212", href: "/platform/wellness-marketplace", comingSoon: false },
+  { id: "events", icon: CalendarDays, color: "#0891b2", bg: "#0891b212", href: "/platform/wellness-event", comingSoon: false },
   { id: "flexible", icon: Sliders, color: "#7c3aed", bg: "#7c3aed12", href: "/platform/flexible-benefits", comingSoon: true },
   { id: "hub", icon: LayoutDashboard, color: P, bg: P + "12", href: "/platform/wellness-hub", comingSoon: true },
 ];
@@ -117,14 +117,15 @@ export default function PlatformFeaturesSection() {
                   </li>
                 ))}
               </ul>
-              <Link
-                href={localePath(locale, current.href)}
-                className="inline-flex items-center gap-2 font-bold text-sm hover:gap-3 transition-all"
-                style={{ color: current.color }}
-              >
-                {current.comingSoon ? pf.learnMore : `${pf.explore} ${t.nav.platformLinks[activeIdx].label}`}{" "}
-                <ArrowRight size={16} />
-              </Link>
+              {!current.comingSoon && (
+                <Link
+                  href={localePath(locale, current.href)}
+                  className="inline-flex items-center gap-2 font-bold text-sm hover:gap-3 transition-all"
+                  style={{ color: current.color }}
+                >
+                  {pf.explore} {t.nav.platformLinks[activeIdx].label} <ArrowRight size={16} />
+                </Link>
+              )}
             </div>
 
             {/* Right: visual */}
