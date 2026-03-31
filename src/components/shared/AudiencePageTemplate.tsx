@@ -35,14 +35,22 @@ interface AudiencePageTemplateProps {
   ctaHref: string;
   secondaryCtaLabel?: string;
   secondaryCtaHref?: string;
-  challenges: Challenge[];
-  solutions: Solution[];
-  featuredSolutions: FeaturedSolution[];
-  metrics: Metric[];
+  challenges: ReadonlyArray<Challenge>;
+  solutions: ReadonlyArray<Solution>;
+  featuredSolutions: ReadonlyArray<FeaturedSolution>;
+  metrics: ReadonlyArray<Metric>;
   testimonialQuote: string;
   testimonialName: string;
   testimonialTitle: string;
   testimonialCompany: string;
+  // Template section headers
+  challengesHeadline: string;
+  challengesSub: string;
+  solutionsHeadline: string;
+  featuredHeadline: string;
+  featuredSub: string;
+  ctaHeadline: string;
+  ctaSub: string;
 }
 
 export default function AudiencePageTemplate({
@@ -65,6 +73,13 @@ export default function AudiencePageTemplate({
   testimonialName,
   testimonialTitle,
   testimonialCompany,
+  challengesHeadline,
+  challengesSub,
+  solutionsHeadline,
+  featuredHeadline,
+  featuredSub,
+  ctaHeadline,
+  ctaSub,
 }: AudiencePageTemplateProps) {
   return (
     <>
@@ -126,10 +141,10 @@ export default function AudiencePageTemplate({
       <section className="py-16" style={{ backgroundColor: "#f8fafc" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 text-center mb-3">
-            The challenges you face
+            {challengesHeadline}
           </h2>
           <p className="text-slate-600 text-center mb-10 max-w-xl mx-auto">
-            We built MixCare by listening to clients like you. Here are the pain points we solve.
+            {challengesSub}
           </p>
           <div className="grid md:grid-cols-3 gap-5">
             {challenges.map((c) => (
@@ -151,7 +166,7 @@ export default function AudiencePageTemplate({
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 text-center mb-10">
-            How MixCare solves it
+            {solutionsHeadline}
           </h2>
           <div className="space-y-4 max-w-3xl mx-auto">
             {solutions.map((s, i) => (
@@ -180,10 +195,10 @@ export default function AudiencePageTemplate({
       <section className="py-16" style={{ backgroundColor: "#f8fafc" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 text-center mb-3">
-            Recommended solutions for you
+            {featuredHeadline}
           </h2>
           <p className="text-slate-600 text-center mb-10 max-w-xl mx-auto">
-            These platform capabilities are most impactful for your use case.
+            {featuredSub}
           </p>
           <div className={`grid gap-5 ${featuredSolutions.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
             {featuredSolutions.map((sol) => (
@@ -258,10 +273,10 @@ export default function AudiencePageTemplate({
             style={{ background: "linear-gradient(135deg, #0d9488 0%, #1e3a5f 100%)" }}
           >
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4 relative z-10">
-              Ready to get started?
+              {ctaHeadline}
             </h2>
             <p className="text-teal-100 text-lg max-w-xl mx-auto mb-8 relative z-10">
-              Talk to our team about how MixCare can transform your health benefits program.
+              {ctaSub}
             </p>
             <div className="flex flex-wrap gap-4 justify-center relative z-10">
               <Link

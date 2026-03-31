@@ -10,13 +10,19 @@ interface BenefitsGridProps {
   headline?: string;
   benefits: Benefit[];
   accentColor?: string;
+  columns?: 3 | 4;
 }
 
 export default function BenefitsGrid({
   headline = "Key Benefits",
   benefits,
   accentColor = "#0d9488",
+  columns = 3,
 }: BenefitsGridProps) {
+  const gridClass = columns === 4
+    ? "grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+    : "grid md:grid-cols-3 gap-6";
+
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,7 +31,7 @@ export default function BenefitsGrid({
             {headline}
           </h2>
         )}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className={gridClass}>
           {benefits.map((b) => (
             <div
               key={b.title}

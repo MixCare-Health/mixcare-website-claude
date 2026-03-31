@@ -11,6 +11,8 @@ interface PageHeroProps {
   ctaHref?: string;
   secondaryCtaLabel?: string;
   secondaryCtaHref?: string;
+  secondaryCtaAnnotation?: string;
+  secondaryCtaAnnotationIndent?: string;
   icon?: LucideIcon;
   iconColor?: string;
   gradient?: string;
@@ -26,6 +28,8 @@ export default function PageHero({
   ctaHref = "/get-a-demo",
   secondaryCtaLabel,
   secondaryCtaHref,
+  secondaryCtaAnnotation,
+  secondaryCtaAnnotationIndent,
   icon: Icon,
   iconColor = "#0d9488",
   gradient = "linear-gradient(135deg, #0d9488 0%, #1e3a5f 100%)",
@@ -69,23 +73,23 @@ export default function PageHero({
 
           <p className="text-xl text-slate-600 leading-relaxed mb-10">{subheadline}</p>
 
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link
-              href={ctaHref}
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl text-white font-bold text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
-              style={{ backgroundColor: "#f97316" }}
-            >
-              {ctaLabel} <ArrowRight size={20} />
-            </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-start">
             {secondaryCtaLabel && secondaryCtaHref && (
               <Link
                 href={secondaryCtaHref}
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-lg border-2 transition-all hover:-translate-y-0.5"
-                style={{ borderColor: iconColor, color: iconColor }}
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-white font-bold text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
+                style={{ backgroundColor: iconColor }}
               >
                 {secondaryCtaLabel}
               </Link>
             )}
+            <Link
+              href={ctaHref}
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-white font-bold text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
+              style={{ backgroundColor: "#f97316" }}
+            >
+              {ctaLabel} <ArrowRight size={20} />
+            </Link>
           </div>
         </div>
       </div>

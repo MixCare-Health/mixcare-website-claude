@@ -111,7 +111,7 @@ export const en = {
       learnMore: "Learn More",
       pillars: [
         {
-          title: "Self-Funded Outpatient Services",
+          title: "Self-Funded Outpatient Plan",
           desc: "AI-powered claims processing with a 2,000+ panel doctor network for cashless consultations across HK, Macau, and Singapore.",
           stats: "2,000+ Panel Doctors",
         },
@@ -463,22 +463,24 @@ export const en = {
 
   selfFundedOutpatient: {
     meta: {
-      title: "Self-Funded Outpatient Services | MixCare Health",
+      title: "Self-Funded Outpatient Plan | MixCare Health",
       description: "AI-powered outpatient claims processing with a 2,000+ panel doctor network across Hong Kong, Macau, and Singapore.",
     },
     hero: {
-      badge: "Self-Funded Outpatient Services",
-      headline: "Take Control of Outpatient",
-      headlineHighlight: "Healthcare Costs",
+      badge: "Self-Funded Outpatient Plan",
+      headline: "Take Control of ",
+      headlineHighlight: "Outpatient Healthcare Costs",
       sub: "AI-powered claims processing, cashless panel doctor access, and customisable stop-loss plans — giving you full visibility and control over outpatient spending.",
       cta: "Get a Demo",
+      calculatorCta: "Outpatient Budget Calculator",
+      calculatorAnnotation: "Try it!",
     },
     benefits: {
-      headline: "Three capabilities. Infinite configurations.",
+      headline: "Six Capabilities. Infinite Configurations.",
       items: [
         {
           title: "Customisable Benefit Plans",
-          desc: "Help employers implement stop-loss mechanisms and better control medical spending with tailored plan configurations. Define coverage limits, co-pay structures, and eligible categories to match your exact needs.",
+          desc: "Help employers control medical outpatient spending with tailored plan configurations. Define coverage limits, co-pay structures, and eligible categories to match your exact needs.",
         },
         {
           title: "Panel Doctor Network",
@@ -488,6 +490,18 @@ export const en = {
           title: "AI-Powered Claims Processing",
           desc: "Streamline claims with advanced AI — ensuring accurate, speedy payouts while minimising fraud risk. Our engine processes 98% of claims within 24 hours with automated anomaly detection.",
         },
+        {
+          title: "International Reimbursement Payout",
+          desc: "Settle cross-border reimbursements in real time. Powered by Airwallex, MixCare enables multi-currency payouts to employees and providers across Hong Kong, Macau, Singapore, and beyond",
+        },
+        {
+          title: "Real-Time Usage Dashboard",
+          desc: "Gain instant visibility into outpatient spending, claims trends, and panel utilisation through a live dashboard — no waiting for month-end reports. Drill down by department, employee tier, or doctor to spot cost drivers and anomalies in seconds.",
+        },
+        {
+          title: "AI Wellness Trend & Recommendation",
+          desc: "MixCare's AI continuously analyses claims and usage patterns to surface population health trends and personalised wellness recommendations — helping employers proactively improve workforce health and reduce long-term medical costs.",
+        },
       ],
     },
     howItWorks: {
@@ -495,8 +509,8 @@ export const en = {
       sub: "From plan configuration to real-time analytics — MixCare handles the full outpatient benefits lifecycle.",
       items: [
         {
-          title: "Stop-Loss Configuration",
-          desc: "Set individual and aggregate stop-loss thresholds. Once a limit is reached, claims automatically route to your reinsurer or insurer layer — giving you predictable cost control.",
+          title: "Budget Configuration",
+          desc: "Once a limit is reached, claims automatically route to your reinsurer or insurer layer — giving you predictable cost control.",
           metric: "Reduce budget variance by up to 40%",
         },
         {
@@ -535,12 +549,16 @@ export const en = {
           scenario: "Replace traditional group medical insurance with a self-funded scheme. Control costs through stop-loss thresholds while providing employees with richer, more flexible outpatient care.",
           outcome: "Average 30% reduction in total benefit spend",
         },
+        {
+          audience: "SMEs",
+          scenario: "Launch a professional outpatient scheme without the complexity of traditional group insurance. MixCare's self-service setup lets SMEs define benefit budgets, add employees, and go live in days — not months.",
+          outcome: "Up and running in under 5 days",
+        },
       ],
     },
     stats: {
       headline: "Measurable impact from day one",
       items: [
-        { value: "<24h", label: "Average claims resolution" },
         { value: "95%+", label: "Fraud detection accuracy" },
         { value: "30%", label: "Average cost reduction" },
         { value: "2,000+", label: "Panel doctors available" },
@@ -556,6 +574,28 @@ export const en = {
       headline: "See it in action — Get a Demo",
       sub: "Discover how MixCare's self-funded outpatient platform can reduce your medical costs and delight your employees.",
       label: "Get a Demo",
+    },
+    painPoints: {
+      headline: "The Market Pain Points We Solve",
+      sub: "Traditional outpatient benefit faces mounting pressure from rising costs, rigid structures, and data blind spots. MixCare addresses each one head-on.",
+      items: [
+        {
+          title: "High Medical Cost Inflation Over 10% Per Year",
+          desc: "Healthcare costs are rising faster than most benefit budgets can absorb. Employers face uncapped cost escalation risks, making outpatient schemes increasingly unsustainable year on year.",
+        },
+        {
+          title: "Lack of Flexibility in Benefit Policy Customisation",
+          desc: "Traditional outpatient plans are rigid — fixed panel lists, reimbursement rules, and one-size-fits-all coverage that fails diverse workforces. Employers can't tailor benefits by employee tier, geography, or lifestyle need, making it difficult to improve employee satisfaction with their benefits.",
+        },
+        {
+          title: "Lack of Real-Time Data Usage and Insight",
+          desc: "Most traditional outpatient plans require reports to be requested from providers, which can take weeks or even months to generate. By the time cost anomalies or fraud patterns are visible, the damage is already done.",
+        },
+        {
+          title: "Cross-Border Workforce Healthcare Challenges",
+          desc: "Organisations operating internationally must navigate different healthcare systems, regulatory frameworks, and service providers — maintaining multiple separate schemes that create high administrative complexity and no consolidated view of total benefit spend.",
+        },
+      ],
     },
   },
 
@@ -807,6 +847,253 @@ export const en = {
     },
   },
 
+  whoWeServe: {
+    template: {
+      challengesHeadline: "The challenges you face",
+      challengesSub: "We built MixCare by listening to clients like you. Here are the pain points we solve.",
+      solutionsHeadline: "How MixCare solves it",
+      featuredHeadline: "Recommended solutions for you",
+      featuredSub: "These platform capabilities are most impactful for your use case.",
+      ctaHeadline: "Ready to get started?",
+      ctaSub: "Talk to our team about how MixCare can transform your health benefits program.",
+    },
+    insurers: {
+      badge: "For Insurers",
+      headline: "Supercharge Your Policies with",
+      headlineHighlight: "AI-Powered Wellness",
+      sub: "Add scalable health and wellness add-ons to group and individual policies. Reduce claims costs, minimise fraud, and deliver a digital-first experience that policyholders love.",
+      cta: "Get a Demo",
+      challenges: [
+        { title: "Rising claims costs", desc: "Traditional outpatient schemes lack the controls needed to manage escalating medical claims. Manual processing leaves fraud undetected and costs unpredictable." },
+        { title: "Low policyholder engagement", desc: "Policyholders rarely interact with their insurer outside of claims. Without meaningful wellness touchpoints, retention suffers and policy renewal rates decline." },
+        { title: "Digital transformation gaps", desc: "Modernising legacy claims infrastructure is expensive and slow. In the meantime, digital-first competitors are winning market share with better policyholder experiences." },
+      ],
+      solutions: [
+        { challenge: "Manual claims processing leads to fraud and slow payouts", solution: "MixCare's AI engine processes claims in <24h with >95% fraud detection accuracy — no manual review team required" },
+        { challenge: "Policyholders see no value between renewal cycles", solution: "The Wellness Hub and Marketplace drive year-round engagement — policyholders use their benefits monthly, not just when sick" },
+        { challenge: "Building digital capabilities in-house is cost-prohibitive", solution: "MixCare deploys as a white-label add-on to your existing policies — no infrastructure investment, live in weeks" },
+      ],
+      featuredSolutions: [
+        { label: "Self-Funded Outpatient", desc: "AI-powered claims processing, cashless panel doctor network, and stop-loss controls for outpatient schemes." },
+        { label: "Wellness Hub", desc: "A connected ecosystem that drives policyholder engagement year-round — integrated seamlessly with your policy." },
+        { label: "Wellness Marketplace", desc: "White-label wellness marketplace to add value to group and individual policies without building from scratch." },
+      ],
+      metrics: [
+        { value: "70%", label: "Claims processing cost reduction" },
+        { value: "95%+", label: "Fraud detection accuracy" },
+        { value: "<24h", label: "Average claims resolution" },
+        { value: "3x", label: "Policyholder engagement uplift" },
+      ],
+      testimonial: {
+        quote: "MixCare transformed how we deliver health benefits to our policyholders. The AI claims processing cut our resolution time by 70% and fraud incidents dropped significantly within the first quarter.",
+        name: "Jennifer Wong",
+        title: "VP, Group Benefits",
+        company: "AXA Hong Kong",
+      },
+    },
+    brokers: {
+      badge: "For Insurance Brokers",
+      headline: "Win More Clients with",
+      headlineHighlight: "Flexible Benefit Packages",
+      sub: "Differentiate your offering with the most flexible, competitive benefit packages in Asia-Pacific. Partner with MixCare to retain existing clients and attract new ones.",
+      cta: "Partner Sign-Up",
+      secondaryCta: "Get a Demo",
+      challenges: [
+        { title: "Commoditised product offering", desc: "Most brokers offer the same standard group medical plans. Without differentiation, clients choose on price alone — making retention difficult and margins thin." },
+        { title: "Client retention under pressure", desc: "Corporate clients increasingly demand more flexible, employee-centric benefits. Rigid traditional plans lose to digital-first competitors every renewal cycle." },
+        { title: "Complex administration", desc: "Managing multiple carriers, benefit types, and employee populations across clients requires significant operational overhead that eats into margins." },
+      ],
+      solutions: [
+        { challenge: "Same-as-everyone-else product catalogue", solution: "MixCare gives you FSA, wellness marketplace, and flexible benefits — differentiated products your competitors can't easily replicate" },
+        { challenge: "Clients leaving for more flexible competitors", solution: "Employee self-selection portals and utilisation analytics give your clients tangible proof of value every month — not just at renewal" },
+        { challenge: "High admin overhead managing benefits across clients", solution: "One broker portal to manage all clients, all benefit types, all claims — reducing admin time by up to 60%" },
+      ],
+      featuredSolutions: [
+        { label: "Flexible Benefits Solution", desc: "Personalised benefit packages that let employees self-select — the differentiator that wins RFPs and retains accounts." },
+        { label: "Flexible Spending Account", desc: "FSA wallets with 30+ spending categories — a compelling add-on that drives measurable employee satisfaction." },
+        { label: "Wellness Marketplace", desc: "White-label marketplace you can brand for each client — 500+ services, zero inventory or curation overhead." },
+      ],
+      metrics: [
+        { value: "95%", label: "Client retention rate" },
+        { value: "60%", label: "Admin time reduction" },
+        { value: "3x", label: "New business conversion uplift" },
+        { value: "88%", label: "Employee benefit utilisation" },
+      ],
+      testimonial: {
+        quote: "As a broker, MixCare gives me the most flexible, competitive packages to offer clients. I retained 3 large accounts this year purely because of the FSA and marketplace features — clients that were ready to go to tender.",
+        name: "Diana Leung",
+        title: "Senior Benefits Advisor",
+        company: "Pacific Benefits Group",
+      },
+    },
+    enterprises: {
+      badge: "For Large Enterprises",
+      headline: "Enterprise Benefits,",
+      headlineHighlight: "Individually Personalised",
+      sub: "Customisable employee benefit programs with analytics, compliance, and seamless HR integration. Designed for 500+ employee organisations across Asia-Pacific.",
+      cta: "Get a Demo",
+      challenges: [
+        { title: "One-size-fits-all doesn't work", desc: "With hundreds or thousands of employees across different generations, roles, and life stages, rigid benefit plans satisfy no one — and cost the company more than they deliver." },
+        { title: "Low benefit utilisation and satisfaction", desc: "Traditional benefits are opaque and inconvenient. Low utilisation means poor return on investment and little impact on employee engagement or retention." },
+        { title: "HR administration complexity", desc: "Managing benefits for large populations — enrolments, changes, claims, reporting — requires significant HR headcount and still produces errors and delays." },
+      ],
+      solutions: [
+        { challenge: "Rigid group plans that don't meet individual needs", solution: "MixCare's flexible benefits engine lets each employee personalise their own plan within your defined budget and rules" },
+        { challenge: "Low engagement and poor ROI on benefit spend", solution: "The Wellness Hub and Marketplace drive monthly touchpoints — average utilisation jumps from 42% to 88% within two quarters" },
+        { challenge: "HR team overwhelmed by benefits administration", solution: "Automated enrolment, AI claims processing, and real-time analytics reduce HR benefits admin time by 70%" },
+      ],
+      featuredSolutions: [
+        { label: "Flexible Benefits Solution", desc: "Employee self-selection portal with top-up/top-down budget structures — scales to any number of employees." },
+        { label: "Flexible Spending Account", desc: "Multi-wallet FSA management with 30+ spending categories and real-time utilisation tracking." },
+        { label: "Wellness Hub", desc: "Integrate with your existing HRIS, payroll, and insurance systems through pre-built connectors or open API." },
+      ],
+      metrics: [
+        { value: "88%", label: "Avg. benefit utilisation" },
+        { value: "70%", label: "HR admin time reduction" },
+        { value: "35%", label: "Improvement in retention" },
+        { value: "2x", label: "Employee satisfaction uplift" },
+      ],
+      testimonial: {
+        quote: "MixCare transformed our benefits from a cost centre into a retention tool. Employees across all 12 of our offices now have personalised benefit plans and our annual satisfaction scores hit an all-time high.",
+        name: "Marcus Chen",
+        title: "Head of HR",
+        company: "Jardine Matheson",
+      },
+    },
+    smallBusiness: {
+      badge: "For Small Businesses",
+      headline: "Enterprise-Grade Benefits,",
+      headlineHighlight: "SMB-Friendly Pricing",
+      sub: "Attract and retain top talent with benefits that rival large corporations — affordable, simple to set up, and running in less than a day. No HR team needed.",
+      cta: "Start Now — Free Setup",
+      secondaryCta: "Get a Demo",
+      challenges: [
+        { title: "Can't compete with large company benefits", desc: "Top candidates compare offers across companies of all sizes. Without compelling benefits, small businesses lose talent to larger competitors — even when the role and culture are a better fit." },
+        { title: "Traditional benefits are too expensive or complex", desc: "Group medical insurance requires minimum headcounts, long commitments, and HR expertise to manage. Most small businesses don't have the resources to set it up properly." },
+        { title: "No visibility on what employees actually value", desc: "Without data on benefit utilisation, small business owners are spending money on benefits employees don't use — while missing the things they actually want." },
+      ],
+      solutions: [
+        { challenge: "Can't afford or access enterprise-grade benefits", solution: "MixCare's SMB plan starts from HK$180/employee/month — full access to FSA, wellness marketplace, and panel doctors with no minimum headcount" },
+        { challenge: "Setup is too complex without an HR team", solution: "Self-service onboarding takes under 60 minutes — just add your employees, set a budget, and you're live with benefits your team will actually use" },
+        { challenge: "No idea which benefits employees actually use", solution: "Real-time utilisation dashboard shows exactly what employees spend on — adjust your benefit mix monthly based on actual data" },
+      ],
+      featuredSolutions: [
+        { label: "Flexible Spending Account", desc: "Simple wellness wallets for healthcare, fitness, and mental health — employees love the flexibility." },
+        { label: "Wellness Marketplace", desc: "Give employees access to 500+ wellness services — yoga, gym, nutrition, mental health and more." },
+        { label: "Flexible Benefits Solution", desc: "Let employees choose what matters to them — punch above your weight class in the talent market." },
+      ],
+      metrics: [
+        { value: "HK$180", label: "Starting price per employee/month" },
+        { value: "<60min", label: "Setup time" },
+        { value: "0", label: "Minimum headcount" },
+        { value: "88%", label: "Avg. employee utilisation" },
+      ],
+      testimonial: {
+        quote: "We're a 25-person startup. Setting up MixCare took one afternoon and now we offer benefits that rival large corporations. It's helped us attract senior talent we couldn't compete for before.",
+        name: "Ryan Lau",
+        title: "CEO & Co-Founder",
+        company: "TechBridge HK",
+      },
+    },
+    providers: {
+      badge: "For Medical & Wellness Providers",
+      headline: "Grow Your Practice with",
+      headlineHighlight: "Corporate Clients",
+      sub: "Connect with thousands of corporate employees and policyholders across Asia-Pacific. Digital booking, cashless payments, and outcome tracking — all in one platform.",
+      cta: "Become a Partner",
+      challenges: [
+        { title: "Inconsistent corporate client acquisition", desc: "Reaching corporate clients typically requires lengthy sales cycles, broker relationships, and individual contract negotiations — making growth slow and unpredictable." },
+        { title: "Manual booking and payment processes", desc: "Phone bookings, paper receipts, and manual billing create overhead and errors. Reimbursement claims take weeks and create friction for both provider and client." },
+        { title: "No visibility on outcomes and performance", desc: "Without data on client engagement, session outcomes, and repeat bookings, it's hard to demonstrate value, optimise services, or grow corporate accounts." },
+      ],
+      solutions: [
+        { challenge: "Slow, expensive B2B sales to reach corporate clients", solution: "Get listed on MixCare's marketplace and reach 200+ corporate clients and their employees instantly — no sales team required" },
+        { challenge: "Manual booking and cash payment management", solution: "Digital booking via the MixCare app, cashless FSA payments, and automated invoicing — receive payments within 3 business days" },
+        { challenge: "No data to demonstrate impact to corporate clients", solution: "Provider analytics dashboard shows booking trends, client retention, and outcomes — data you can use to grow accounts and renew contracts" },
+      ],
+      featuredSolutions: [
+        { label: "Wellness Marketplace", desc: "Get listed among 500+ verified wellness services accessible to thousands of corporate employees." },
+        { label: "Wellness Hub", desc: "Integrate your services into a connected ecosystem of health and wellness — insurers, employers, and employees in one network." },
+      ],
+      metrics: [
+        { value: "200+", label: "Corporate clients on platform" },
+        { value: "50,000+", label: "Employees with marketplace access" },
+        { value: "3 days", label: "Payment settlement time" },
+        { value: "40%", label: "Avg. revenue uplift for providers" },
+      ],
+      testimonial: {
+        quote: "The Wellness Hub connected us directly to 8 corporate clients within the first month. Digital booking, cashless payments, and outcome tracking — everything we needed to scale our corporate business without adding sales headcount.",
+        name: "Dr. Emily Fok",
+        title: "Clinical Director",
+        company: "Mindful Wellness Centre",
+      },
+    },
+  },
+
+  about: {
+    hero: {
+      badge: "Our Story",
+      headline: "Transforming health benefits",
+      headlineHighlight: "across Asia-Pacific",
+      sub: "MixCare Health was founded with a single conviction: the way health benefits are delivered in Asia is broken — and AI can fix it.",
+    },
+    story: {
+      headline: "Our founding story",
+      p1: "In 2019, our founders spent months watching the same story play out: employees across Hong Kong and Singapore had health benefit packages that looked impressive on paper but were a frustrating experience in practice. Complex reimbursement forms, three-week claim windows, and rigid plan structures that reflected actuarial models rather than how people actually live.",
+      p2: "Meanwhile, the technology to fix this existed. AI could process claims in minutes, not weeks. Marketplace platforms could connect employees to exactly the wellness services they needed. Flexible spending accounts could let individuals decide what mattered most to them — not a committee.",
+      p3: "MixCare Health was built to bridge that gap. We've served over 200 corporate clients across Hong Kong, Macau, and Singapore — from 5-person startups to multinationals with 10,000 employees — and we're just getting started.",
+    },
+    stats: [
+      { value: "2019", label: "Founded in Hong Kong" },
+      { value: "200+", label: "Corporate clients" },
+      { value: "3", label: "Markets: HK, SG, MO" },
+      { value: "50K+", label: "Employees benefiting" },
+    ],
+    values: {
+      headline: "What we believe",
+      items: [
+        { title: "Human-First", desc: "Every product decision starts with a simple question: does this make life better for the people using it?" },
+        { title: "Boldly Innovative", desc: "We use AI and modern technology to solve old, stubborn problems in healthcare — with urgency and imagination." },
+        { title: "Uncompromisingly Trusted", desc: "Healthcare and financial data demand the highest standards. We hold ourselves to them without exception." },
+        { title: "Asia-Pacific Focused", desc: "We're built for this region — its languages, regulations, healthcare systems, and cultural context." },
+        { title: "Partner Obsessed", desc: "Our success is measured by our partners' success. We win when our clients, brokers, and providers win." },
+        { title: "Outcome Driven", desc: "We measure everything — claims processed, costs saved, benefits used. Data shapes every decision." },
+      ],
+    },
+    team: {
+      headline: "Our leadership team",
+      sub: "Built by operators who have lived on both sides of the healthcare benefits equation — as providers, payers, and employers.",
+      members: [
+        { name: "Dr. Michael Yuen", title: "CEO & Co-Founder", bio: "Former Head of Digital Health at AXA Asia. 15 years in insurtech and healthcare innovation across HK and SG." },
+        { name: "Sarah Zhang", title: "CTO & Co-Founder", bio: "Ex-Google and Ant Financial. Built AI claims processing systems handling over HK$10B annually." },
+        { name: "James Lam", title: "Chief Revenue Officer", bio: "20 years building distribution across Asia-Pacific for Manulife, Prudential, and MetLife." },
+        { name: "Dr. Emily Fong", title: "Chief Medical Officer", bio: "Practising physician and health economist. PhD from Johns Hopkins. Advisor to Hong Kong's DHSC." },
+        { name: "Kevin Ho", title: "Chief Compliance Officer", bio: "Former regulator at the HKMA. Expert in PDPO, MAS TRM, and healthcare data privacy frameworks." },
+        { name: "Linda Chan", title: "Chief People Officer", bio: "Built people-first cultures at Cathay Pacific and HSBC. Passionate about flexible, inclusive workplaces." },
+      ],
+    },
+    careers: {
+      headline: "Join our team",
+      sub: "We're growing fast and looking for people who want to transform healthcare in Asia-Pacific. Remote-friendly, equity-based compensation, and a team that genuinely cares about the work.",
+      cta: "See Open Roles →",
+    },
+    press: {
+      headline: "In the press",
+      mediaEnquiry: "Media enquiries: press@mixcarehealth.com →",
+      items: [
+        { outlet: "South China Morning Post", date: "Jan 2025", headline: "MixCare Health raises Series B to expand AI-powered wellness platform across Asia" },
+        { outlet: "The Business Times (SG)", date: "Nov 2024", headline: "How AI is transforming employee health benefits in Southeast Asia" },
+        { outlet: "Forbes Asia", date: "Sep 2024", headline: "MixCare Health named among 2024 Asia-Pacific HealthTech companies to watch" },
+      ],
+    },
+    cta: {
+      headline: "Want to transform health benefits with us?",
+      sub: "Whether as a client, partner, or team member — we'd love to connect.",
+      ctaLabel: "Get a Demo",
+      secondaryLabel: "View Open Roles",
+    },
+  },
+
   contact: {
     headline: "Get in",
     headlineHighlight: "touch",
@@ -825,14 +1112,6 @@ export const en = {
     success: { title: "Message sent!", sub: "We'll get back to you within 1 business day." },
     hours: "Office hours",
   },
-} as const;
+};
 
-type DeepString<T> = T extends string
-  ? string
-  : T extends (...args: infer A) => infer R
-  ? (...args: A) => R
-  : T extends object
-  ? { [K in keyof T]: DeepString<T[K]> }
-  : T;
-
-export type Translations = DeepString<typeof en>;
+export type Translations = typeof en;

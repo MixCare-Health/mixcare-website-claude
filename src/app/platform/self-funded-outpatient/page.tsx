@@ -4,7 +4,8 @@ import PageHero from "@/components/shared/PageHero";
 import BenefitsGrid from "@/components/shared/BenefitsGrid";
 import PageTestimonial from "@/components/shared/PageTestimonial";
 import BottomCTA from "@/components/shared/BottomCTA";
-import { Stethoscope, ShieldCheck, Cpu, Building2 } from "lucide-react";
+import { Stethoscope, ShieldCheck, Cpu, Building2, TrendingUp, Sliders, BarChart2, Globe, Banknote, Activity, Brain } from "lucide-react";
+import PainPointsCarousel from "@/components/platform/PainPointsCarousel";
 import type { Metadata } from "next";
 import { getLocale } from "@/lib/locale.server";
 import { getTranslations } from "@/translations";
@@ -16,10 +17,10 @@ export const metadata: Metadata = {
     "AI-powered outpatient claims processing with a 2,000+ panel doctor network across Hong Kong, Macau, and Singapore.",
 };
 
-const benefitIcons = [ShieldCheck, Stethoscope, Cpu];
+const benefitIcons = [ShieldCheck, Stethoscope, Cpu, Banknote, Activity, Brain];
 
-const useCaseIcons = [ShieldCheck, Stethoscope, Building2];
-const useCaseColors = ["#0d9488", "#1e3a5f", "#f97316"];
+const useCaseIcons = [ShieldCheck, Stethoscope, Building2, Globe];
+const useCaseColors = ["#0d9488", "#1e3a5f", "#f97316", "#7c3aed"];
 
 export default async function SelfFundedOutpatientPage() {
   const locale = await getLocale();
@@ -43,47 +44,26 @@ export default async function SelfFundedOutpatientPage() {
         subheadline={p.hero.sub}
         ctaLabel={p.hero.cta}
         ctaHref={localePath(locale, "/get-a-demo")}
+        secondaryCtaLabel={p.hero.calculatorCta}
+        secondaryCtaHref="https://flexhealth.mixcarehealth.com/"
+        secondaryCtaAnnotation={p.hero.calculatorAnnotation}
+        secondaryCtaAnnotationIndent={locale !== "en" ? "20%" : undefined}
         iconColor="#0d9488"
         bgGradient="linear-gradient(135deg, #f0fdfa 0%, #ecfdf5 50%, #f0f4ff 100%)"
+      />
+
+      <PainPointsCarousel
+        headline={p.painPoints.headline}
+        sub={p.painPoints.sub}
+        items={p.painPoints.items}
       />
 
       <BenefitsGrid
         headline={p.benefits.headline}
         benefits={benefits}
         accentColor="#0d9488"
+        columns={3}
       />
-
-      {/* Feature deep-dive */}
-      <section className="py-16" style={{ backgroundColor: "#f8fafc" }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">
-              {p.howItWorks.headline}
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              {p.howItWorks.sub}
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {p.howItWorks.items.map((item) => (
-              <div
-                key={item.title}
-                className="bg-white rounded-2xl p-8 border border-slate-100 hover:shadow-md transition-all"
-              >
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed mb-4">{item.desc}</p>
-                <div
-                  className="inline-block px-3 py-1.5 rounded-lg text-sm font-bold"
-                  style={{ backgroundColor: "#ccfbf1", color: "#0f766e" }}
-                >
-                  {item.metric}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Use cases */}
       <section className="py-16 bg-white">
@@ -94,7 +74,7 @@ export default async function SelfFundedOutpatientPage() {
           <p className="text-lg text-slate-600 text-center mb-10 max-w-2xl mx-auto">
             {p.useCases.sub}
           </p>
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {p.useCases.items.map((uc, i) => {
               const Icon = useCaseIcons[i];
               const color = useCaseColors[i];
@@ -136,7 +116,7 @@ export default async function SelfFundedOutpatientPage() {
           <h2 className="text-3xl font-extrabold text-slate-900 text-center mb-10">
             {p.stats.headline}
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {p.stats.items.map((stat) => (
               <div
                 key={stat.label}
@@ -151,14 +131,6 @@ export default async function SelfFundedOutpatientPage() {
           </div>
         </div>
       </section>
-
-      <PageTestimonial
-        quote={p.testimonial.quote}
-        name={p.testimonial.name}
-        title={p.testimonial.title}
-        company={p.testimonial.company}
-        accentColor="#0d9488"
-      />
 
       <BottomCTA
         headline={p.cta.headline}
