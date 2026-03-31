@@ -9,11 +9,9 @@ const P = "#10AF97";
 const S = "#0A3D59";
 
 const badges = [
-  { label: "GDPR Compliant", desc: "EU data privacy" },
   { label: "PDPO (HK)", desc: "HK privacy ordinance" },
   { label: "ISO 27001", desc: "Information security" },
-  { label: "HKMA Aligned", desc: "Regulatory guidelines" },
-  { label: "MAS TRM", desc: "Singapore compliance" },
+  { label: "Annual Security Test", desc: "Independent penetration testing" },
 ];
 
 const pillarIcons = [ShieldCheck, Lock, Eye, Server];
@@ -55,13 +53,6 @@ export default function ComplianceSection() {
               })}
             </div>
 
-            <Link
-              href={localePath(locale, "/trust")}
-              className="inline-flex items-center gap-2 font-bold text-sm hover:gap-3 transition-all"
-              style={{ color: P }}
-            >
-              {comp.viewTrust}
-            </Link>
           </div>
 
           {/* Right: compliance badges */}

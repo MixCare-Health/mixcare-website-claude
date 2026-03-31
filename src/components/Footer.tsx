@@ -61,10 +61,6 @@ export default function Footer() {
                 className="h-7 w-auto brightness-0 invert"
               />
             </Link>
-            <p className="text-sm text-slate-400 leading-relaxed mb-5">
-              {t.footer.tagline}
-            </p>
-
             {/* Social links */}
             <div className="flex items-center gap-3">
               {socialLinks.map((item) => (
@@ -137,7 +133,7 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-white/10">
           <p className="text-xs text-slate-500 uppercase tracking-widest mb-3">{t.footer.certifiedCompliant}</p>
           <div className="flex flex-wrap gap-3 mb-8">
-            {["GDPR Compliant", "PDPO (HK)", "ISO 27001", "HKMA Aligned"].map(
+            {["PDPO (HK)", "ISO 27001", "Annual Security Test"].map(
               (badge) => (
                 <span
                   key={badge}
