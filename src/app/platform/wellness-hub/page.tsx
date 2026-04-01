@@ -9,11 +9,34 @@ import type { Metadata } from "next";
 import { getLocale } from "@/lib/locale.server";
 import { getTranslations } from "@/translations";
 import { localePath } from "@/lib/locale";
+import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
+import { JsonLd, webPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
+
+const { canonical, languages } = buildAlternates("/platform/wellness-hub");
 
 export const metadata: Metadata = {
-  title: "Wellness Hub | MixCare Health",
+  title: "Employee Wellness Hub — Unified Health & Benefits Platform",
   description:
-    "One hub connecting every wellness solution. Integrate with insurance policies, HR systems, and wellness programs without friction.",
+    "One hub connecting every wellness solution. Integrate with insurance policies, HR systems, and wellness programs without friction. Built for insurers and enterprises in Hong Kong and Singapore.",
+  keywords: [
+    "wellness hub", "employee wellness platform", "HR wellness integration",
+    "health benefits hub", "insurance wellness integration", "corporate health platform",
+    "wellness management Hong Kong", "employee health hub", "MixCare wellness hub",
+  ],
+  alternates: { canonical, languages },
+  openGraph: {
+    title: `Employee Wellness Hub | ${SITE_NAME}`,
+    description:
+      "One hub connecting every wellness solution. Integrate with insurance, HR systems, and wellness programs without friction.",
+    url: canonical,
+    images: ogImage("MixCare Employee Wellness Hub"),
+  },
+  twitter: {
+    title: `Wellness Hub | ${SITE_NAME}`,
+    description:
+      "One hub connecting every wellness solution — insurance, HR, and wellness all integrated.",
+    images: ["/opengraph-image.png"],
+  },
 };
 
 const benefitIcons = [LayoutDashboard, Plug, Sliders];
@@ -32,6 +55,10 @@ export default async function WellnessHubPage() {
 
   return (
     <main>
+      <JsonLd data={[
+        webPageSchema("Employee Wellness Hub — Unified Health & Benefits Platform", "One hub connecting every wellness solution. Integrate with insurance policies, HR systems, and wellness programs without friction.", "/platform/wellness-hub"),
+        breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Platform", path: "/platform/self-funded-outpatient" }, { name: "Wellness Hub", path: "/platform/wellness-hub" }]),
+      ]} />
       <AppNavbar />
 
       <PageHero

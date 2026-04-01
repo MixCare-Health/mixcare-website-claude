@@ -5,11 +5,33 @@ import {
   ShieldCheck, Lock, Eye, Server, Key, Bell, FileCheck, Globe
 } from "lucide-react";
 import type { Metadata } from "next";
+import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
+import { JsonLd, webPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
+
+const { canonical, languages } = buildAlternates("/trust");
 
 export const metadata: Metadata = {
-  title: "Trust & Compliance | MixCare Health",
+  title: "Security & Compliance — Trust Centre",
   description:
-    "Enterprise-grade security, PDPO and GDPR compliance, ISO 27001 certified. Learn how MixCare protects your data.",
+    "Enterprise-grade security with ISO 27001 certification, PDPO and GDPR compliance. Learn how MixCare protects your employee health data across Hong Kong and Singapore.",
+  keywords: [
+    "health data security", "PDPO compliance Hong Kong", "GDPR health platform",
+    "ISO 27001 health tech", "employee data privacy", "health benefits compliance",
+    "secure health platform", "MixCare trust centre", "data protection health",
+  ],
+  alternates: { canonical, languages },
+  openGraph: {
+    title: `Security & Compliance — Trust Centre | ${SITE_NAME}`,
+    description:
+      "ISO 27001 certified. PDPO and GDPR compliant. Enterprise-grade security for your employee health data.",
+    url: canonical,
+    images: ogImage("MixCare Trust Centre — Security & Compliance"),
+  },
+  twitter: {
+    title: `Trust Centre | ${SITE_NAME}`,
+    description: "ISO 27001 certified, PDPO & GDPR compliant. Enterprise-grade health data security.",
+    images: ["/opengraph-image.png"],
+  },
 };
 
 const certifications = [
@@ -36,6 +58,10 @@ const partnerLogos = ["AXA", "Manulife", "Cigna", "HSBC Life", "FWD", "Bupa", "S
 export default function TrustPage() {
   return (
     <main>
+      <JsonLd data={[
+        webPageSchema("Security & Compliance — Trust Centre", "Enterprise-grade security with ISO 27001 certification, PDPO and GDPR compliance. Learn how MixCare protects your employee health data.", "/trust"),
+        breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Trust Centre", path: "/trust" }]),
+      ]} />
       <AppNavbar />
 
       {/* Hero */}

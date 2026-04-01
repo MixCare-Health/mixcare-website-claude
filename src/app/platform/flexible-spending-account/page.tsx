@@ -12,11 +12,34 @@ import type { Metadata } from "next";
 import { getLocale } from "@/lib/locale.server";
 import { getTranslations } from "@/translations";
 import { localePath } from "@/lib/locale";
+import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
+import { JsonLd, webPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
+
+const { canonical, languages } = buildAlternates("/platform/flexible-spending-account");
 
 export const metadata: Metadata = {
-  title: "Flexible Spending Account (FSA) | MixCare Health",
+  title: "Flexible Spending Account (FSA) Platform",
   description:
-    "Create and manage FSA wallets for healthcare, wellness, and lifestyle expenses. Fully customisable for any company size.",
+    "Create and manage FSA wallets for healthcare, wellness, and lifestyle expenses. 91% employee utilisation rate. Fully customisable for any company size across Hong Kong and Singapore.",
+  keywords: [
+    "flexible spending account", "FSA wallet", "employee benefits Hong Kong",
+    "healthcare FSA", "wellness spending account", "benefits management platform",
+    "FSA Singapore", "corporate wellness wallet", "MixCare FSA",
+  ],
+  alternates: { canonical, languages },
+  openGraph: {
+    title: `Flexible Spending Account (FSA) Platform | ${SITE_NAME}`,
+    description:
+      "Create and manage FSA wallets for healthcare, wellness, and lifestyle. 91% utilisation rate. Fully customisable for any company size.",
+    url: canonical,
+    images: ogImage("MixCare FSA Platform — Flexible Spending Account"),
+  },
+  twitter: {
+    title: `FSA Platform | ${SITE_NAME}`,
+    description:
+      "Create FSA wallets for healthcare, wellness, and lifestyle. 91% employee utilisation. Customisable for any company.",
+    images: ["/opengraph-image.png"],
+  },
 };
 
 const P = "#1e3a5f";
@@ -38,6 +61,10 @@ export default async function FSAPage() {
 
   return (
     <main>
+      <JsonLd data={[
+        webPageSchema("Flexible Spending Account (FSA) Platform", "Create and manage FSA wallets for healthcare, wellness, and lifestyle expenses. 91% employee utilisation rate. Fully customisable for any company.", "/platform/flexible-spending-account"),
+        breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Platform", path: "/platform/self-funded-outpatient" }, { name: "Flexible Spending Account", path: "/platform/flexible-spending-account" }]),
+      ]} />
       <AppNavbar />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}

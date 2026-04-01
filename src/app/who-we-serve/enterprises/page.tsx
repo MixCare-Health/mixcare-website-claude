@@ -6,11 +6,34 @@ import type { Metadata } from "next";
 import { getLocale } from "@/lib/locale.server";
 import { getTranslations } from "@/translations";
 import { localePath } from "@/lib/locale";
+import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
+import { JsonLd, webPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
+
+const { canonical, languages } = buildAlternates("/who-we-serve/enterprises");
 
 export const metadata: Metadata = {
-  title: "For Large Enterprises | MixCare Health",
+  title: "Enterprise Employee Wellness & Benefits Platform",
   description:
-    "Customisable employee benefit programs with analytics, compliance, and seamless HR integration at enterprise scale.",
+    "Customisable enterprise employee benefit programs with analytics, PDPO and GDPR compliance, and seamless HR system integration. Built for large organisations in Hong Kong and Singapore.",
+  keywords: [
+    "enterprise employee benefits", "enterprise wellness platform", "HR benefits integration",
+    "enterprise health benefits Hong Kong", "employee wellbeing enterprise",
+    "benefits analytics enterprise", "corporate wellness enterprise", "HRIS integration benefits",
+    "MixCare enterprise",
+  ],
+  alternates: { canonical, languages },
+  openGraph: {
+    title: `Enterprise Employee Wellness & Benefits Platform | ${SITE_NAME}`,
+    description:
+      "Customisable benefits programs with analytics, compliance, and seamless HR integration at enterprise scale.",
+    url: canonical,
+    images: ogImage("MixCare for Enterprises"),
+  },
+  twitter: {
+    title: `For Enterprises | ${SITE_NAME}`,
+    description: "Enterprise-scale customisable benefits with analytics, compliance, and HR integration.",
+    images: ["/opengraph-image.png"],
+  },
 };
 
 const featuredHrefs = [
@@ -27,6 +50,10 @@ export default async function EnterprisesPage() {
 
   return (
     <main>
+      <JsonLd data={[
+        webPageSchema("Enterprise Employee Wellness & Benefits Platform", "Customisable enterprise employee benefit programs with analytics, compliance, and seamless HR integration.", "/who-we-serve/enterprises"),
+        breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Who We Serve", path: "/who-we-serve/insurers" }, { name: "Enterprises", path: "/who-we-serve/enterprises" }]),
+      ]} />
       <AppNavbar />
       <AudiencePageTemplate
         badge={p.badge}

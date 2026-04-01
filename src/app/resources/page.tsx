@@ -3,11 +3,33 @@ import Footer from "@/components/Footer";
 import BottomCTA from "@/components/shared/BottomCTA";
 import { BookOpen, FileText, Download, HelpCircle, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
+import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
+import { JsonLd, webPageSchema, breadcrumbSchema, faqSchema } from "@/components/seo/JsonLd";
+
+const { canonical, languages } = buildAlternates("/resources");
 
 export const metadata: Metadata = {
-  title: "Resources | MixCare Health",
+  title: "Resources — Blog, Case Studies & Whitepapers",
   description:
-    "Blog posts, case studies, whitepapers, and FAQs on AI-powered health benefits for insurers, enterprises, and SMBs.",
+    "Blog posts, case studies, whitepapers, and FAQs on AI-powered health benefits for insurers, enterprises, and SMBs in Hong Kong, Macau, and Singapore.",
+  keywords: [
+    "health benefits blog", "employee wellness case studies", "FSA whitepapers",
+    "health benefits resources", "corporate wellness insights", "digital health articles",
+    "MixCare blog", "employee health FAQ", "HR benefits guides",
+  ],
+  alternates: { canonical, languages },
+  openGraph: {
+    title: `Resources — Blog, Case Studies & Whitepapers | ${SITE_NAME}`,
+    description:
+      "Blog posts, case studies, and whitepapers on AI-powered health benefits for insurers, enterprises, and SMBs.",
+    url: canonical,
+    images: ogImage("MixCare Health Resources"),
+  },
+  twitter: {
+    title: `Resources | ${SITE_NAME}`,
+    description: "Blog, case studies, whitepapers and FAQs on AI-powered employee health benefits.",
+    images: ["/opengraph-image.png"],
+  },
 };
 
 const blogPosts = [
@@ -135,6 +157,11 @@ const faqs = [
 export default function ResourcesPage() {
   return (
     <main>
+      <JsonLd data={[
+        webPageSchema("Resources — Blog, Case Studies & Whitepapers", "Blog posts, case studies, whitepapers, and FAQs on AI-powered health benefits for insurers, enterprises, and SMBs.", "/resources"),
+        breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Resources", path: "/resources" }]),
+        faqSchema(faqs.map((f) => ({ question: f.q, answer: f.a }))),
+      ]} />
       <AppNavbar />
 
       {/* Hero */}

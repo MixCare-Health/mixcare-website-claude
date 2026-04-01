@@ -6,11 +6,34 @@ import type { Metadata } from "next";
 import { getLocale } from "@/lib/locale.server";
 import { getTranslations } from "@/translations";
 import { localePath } from "@/lib/locale";
+import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
+import { JsonLd, webPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
+
+const { canonical, languages } = buildAlternates("/who-we-serve/small-business");
 
 export const metadata: Metadata = {
-  title: "For Small Businesses | MixCare Health",
+  title: "SMB Health Benefits & Wellness — Setup in Minutes",
   description:
-    "Affordable, high-impact employee benefits for small businesses. Setup in minutes, no HR team required.",
+    "Affordable, high-impact employee benefits for small businesses. Setup in minutes, no HR team required. FSA wallets, wellness marketplace, and outpatient benefits for SMBs in Hong Kong and Singapore.",
+  keywords: [
+    "SMB employee benefits", "small business health benefits Hong Kong",
+    "affordable employee wellness", "SMB wellness platform", "small business FSA",
+    "employee benefits setup minutes", "startup health benefits", "MixCare SMB",
+    "small business benefits Singapore",
+  ],
+  alternates: { canonical, languages },
+  openGraph: {
+    title: `SMB Health Benefits & Wellness | ${SITE_NAME}`,
+    description:
+      "Affordable, high-impact employee benefits for small businesses. Setup in minutes, no HR team required.",
+    url: canonical,
+    images: ogImage("MixCare for Small Businesses"),
+  },
+  twitter: {
+    title: `For Small Businesses | ${SITE_NAME}`,
+    description: "Affordable employee benefits for SMBs. Setup in minutes, no HR team needed.",
+    images: ["/opengraph-image.png"],
+  },
 };
 
 const featuredHrefs = [
@@ -27,6 +50,10 @@ export default async function SmallBusinessPage() {
 
   return (
     <main>
+      <JsonLd data={[
+        webPageSchema("SMB Health Benefits & Wellness — Setup in Minutes", "Affordable, high-impact employee benefits for small businesses. Setup in minutes, no HR team required.", "/who-we-serve/small-business"),
+        breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Who We Serve", path: "/who-we-serve/insurers" }, { name: "Small Business", path: "/who-we-serve/small-business" }]),
+      ]} />
       <AppNavbar />
       <AudiencePageTemplate
         badge={p.badge}

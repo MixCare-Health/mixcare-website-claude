@@ -11,11 +11,34 @@ import type { Metadata } from "next";
 import { getLocale } from "@/lib/locale.server";
 import { getTranslations } from "@/translations";
 import { localePath } from "@/lib/locale";
+import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
+import { JsonLd, webPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
+
+const { canonical, languages } = buildAlternates("/platform/self-funded-outpatient");
 
 export const metadata: Metadata = {
-  title: "Self-Funded Outpatient Services | MixCare Health",
+  title: "Self-Funded Outpatient Benefits",
   description:
-    "AI-powered outpatient claims processing with a 2,000+ panel doctor network across Hong Kong, Macau, and Singapore.",
+    "AI-powered self-funded outpatient claims processing with a 2,000+ panel doctor network across Hong Kong, Macau, and Singapore. Reduce costs by 30% vs traditional group insurance.",
+  keywords: [
+    "self-funded outpatient", "outpatient benefits Hong Kong", "panel doctor network",
+    "outpatient claims processing", "corporate health insurance", "SMB health benefits",
+    "outpatient plan Singapore", "MixCare outpatient",
+  ],
+  alternates: { canonical, languages },
+  openGraph: {
+    title: `Self-Funded Outpatient Benefits | ${SITE_NAME}`,
+    description:
+      "AI-powered outpatient claims processing with a 2,000+ panel doctor network. Reduce costs by 30% vs traditional group insurance.",
+    url: canonical,
+    images: ogImage("MixCare Self-Funded Outpatient Platform"),
+  },
+  twitter: {
+    title: `Self-Funded Outpatient Benefits | ${SITE_NAME}`,
+    description:
+      "AI-powered outpatient claims with 2,000+ panel doctors. Cut costs vs traditional group insurance.",
+    images: ["/opengraph-image.png"],
+  },
 };
 
 const P = "#0d9488";
@@ -33,6 +56,10 @@ export default async function SelfFundedOutpatientPage() {
 
   return (
     <main>
+      <JsonLd data={[
+        webPageSchema("Self-Funded Outpatient Benefits", "AI-powered outpatient claims processing with a 2,000+ panel doctor network across Hong Kong, Macau, and Singapore.", "/platform/self-funded-outpatient"),
+        breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Platform", path: "/platform/self-funded-outpatient" }, { name: "Self-Funded Outpatient", path: "/platform/self-funded-outpatient" }]),
+      ]} />
       <AppNavbar />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}

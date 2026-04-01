@@ -2,15 +2,37 @@ import AppNavbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BottomCTA from "@/components/shared/BottomCTA";
 import { Heart, Globe, Lightbulb, ShieldCheck, Users, Target } from "lucide-react";
+import { JsonLd, webPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
 import type { Metadata } from "next";
 import { getLocale } from "@/lib/locale.server";
 import { getTranslations } from "@/translations";
 import { localePath } from "@/lib/locale";
+import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
+
+const { canonical, languages } = buildAlternates("/about");
 
 export const metadata: Metadata = {
-  title: "About Us | MixCare Health",
+  title: "About MixCare Health — Our Mission, Team & Story",
   description:
-    "MixCare Health was founded to transform how health benefits are delivered across Asia-Pacific — AI-powered, flexible, and human-first.",
+    "MixCare Health was founded to transform how health benefits are delivered across Asia-Pacific — AI-powered, flexible, and human-first. Meet our leadership team and learn our story.",
+  keywords: [
+    "about MixCare Health", "digital health company Hong Kong", "health tech startup",
+    "MixCare team", "health benefits mission", "AI health platform Asia",
+    "MixCare leadership", "health innovation Hong Kong",
+  ],
+  alternates: { canonical, languages },
+  openGraph: {
+    title: `About MixCare Health — Our Mission, Team & Story | ${SITE_NAME}`,
+    description:
+      "Founded to transform health benefits across Asia-Pacific — AI-powered, flexible, and human-first.",
+    url: canonical,
+    images: ogImage("About MixCare Health"),
+  },
+  twitter: {
+    title: `About Us | ${SITE_NAME}`,
+    description: "AI-powered, flexible, and human-first health benefits across Asia-Pacific.",
+    images: ["/opengraph-image.png"],
+  },
 };
 
 const valueIcons = [Heart, Lightbulb, ShieldCheck, Globe, Users, Target];
@@ -22,6 +44,10 @@ export default async function AboutPage() {
 
   return (
     <main>
+      <JsonLd data={[
+        webPageSchema("About MixCare Health — Our Mission, Team & Story", "MixCare Health was founded to transform how health benefits are delivered across Asia-Pacific — AI-powered, flexible, and human-first.", "/about"),
+        breadcrumbSchema([{ name: "Home", path: "/" }, { name: "About Us", path: "/about" }]),
+      ]} />
       <AppNavbar />
 
       {/* Hero */}

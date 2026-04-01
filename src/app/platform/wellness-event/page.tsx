@@ -9,11 +9,34 @@ import type { Metadata } from "next";
 import { getLocale } from "@/lib/locale.server";
 import { getTranslations } from "@/translations";
 import { localePath } from "@/lib/locale";
+import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
+import { JsonLd, webPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
+
+const { canonical, languages } = buildAlternates("/platform/wellness-event");
 
 export const metadata: Metadata = {
-  title: "Wellness Events | MixCare Health",
+  title: "Corporate Wellness Events — Yoga, Mindfulness & More",
   description:
-    "Book curated corporate wellness events — yoga, mindfulness, health talks, and more — all managed through MixCare.",
+    "Book curated corporate wellness events — yoga, mindfulness, nutrition workshops, mental health first aid, and health screenings. Managed end-to-end through MixCare for Hong Kong and Singapore companies.",
+  keywords: [
+    "corporate wellness events", "employee wellness activities", "corporate yoga Hong Kong",
+    "workplace mindfulness", "health screening corporate", "mental health workplace events",
+    "wellness event booking", "corporate wellness Singapore", "MixCare wellness events",
+  ],
+  alternates: { canonical, languages },
+  openGraph: {
+    title: `Corporate Wellness Events | ${SITE_NAME}`,
+    description:
+      "Curated corporate wellness events — yoga, mindfulness, nutrition, mental health, health screenings. End-to-end managed for HK & SG companies.",
+    url: canonical,
+    images: ogImage("MixCare Corporate Wellness Events"),
+  },
+  twitter: {
+    title: `Corporate Wellness Events | ${SITE_NAME}`,
+    description:
+      "Yoga, mindfulness, nutrition, mental health events for your team. Managed end-to-end by MixCare.",
+    images: ["/opengraph-image.png"],
+  },
 };
 
 const P = "#0891b2";
@@ -40,6 +63,10 @@ export default async function WellnessEventPage() {
 
   return (
     <main>
+      <JsonLd data={[
+        webPageSchema("Corporate Wellness Events — Yoga, Mindfulness & More", "Book curated corporate wellness events — yoga, mindfulness, nutrition workshops, mental health first aid, and health screenings. Managed end-to-end.", "/platform/wellness-event"),
+        breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Platform", path: "/platform/self-funded-outpatient" }, { name: "Wellness Events", path: "/platform/wellness-event" }]),
+      ]} />
       <AppNavbar />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}

@@ -12,11 +12,34 @@ import type { Metadata } from "next";
 import { getLocale } from "@/lib/locale.server";
 import { getTranslations } from "@/translations";
 import { localePath } from "@/lib/locale";
+import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
+import { JsonLd, webPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
+
+const { canonical, languages } = buildAlternates("/platform/wellness-marketplace");
 
 export const metadata: Metadata = {
-  title: "Wellness Marketplace | MixCare Health",
+  title: "Employee Wellness Marketplace — 3,000+ Services",
   description:
-    "A curated marketplace for employee wellness — 3,000+ services redeemable with FSA wallets. White-label options for insurers, brokers, and enterprises.",
+    "Curated employee wellness marketplace with 3,000+ services redeemable via FSA wallets. Yoga, nutrition, mental health, health screenings and more. White-label for insurers and enterprises.",
+  keywords: [
+    "employee wellness marketplace", "corporate wellness services", "FSA redeemable services",
+    "wellness benefits Hong Kong", "yoga corporate benefits", "mental health employee benefits",
+    "white-label wellness platform", "3000 wellness services", "MixCare marketplace",
+  ],
+  alternates: { canonical, languages },
+  openGraph: {
+    title: `Employee Wellness Marketplace — 3,000+ Services | ${SITE_NAME}`,
+    description:
+      "3,000+ wellness services redeemable via FSA wallets. Yoga, nutrition, mental health, health screenings. White-label for insurers and enterprises.",
+    url: canonical,
+    images: ogImage("MixCare Wellness Marketplace — 3,000+ Employee Wellness Services"),
+  },
+  twitter: {
+    title: `Wellness Marketplace | ${SITE_NAME}`,
+    description:
+      "3,000+ wellness services redeemable via FSA wallets. White-label options for insurers and enterprises.",
+    images: ["/opengraph-image.png"],
+  },
 };
 
 const P = "#f97316";
@@ -34,6 +57,10 @@ export default async function WellnessMarketplacePage() {
 
   return (
     <main>
+      <JsonLd data={[
+        webPageSchema("Employee Wellness Marketplace — 3,000+ Services", "Curated employee wellness marketplace with 3,000+ services redeemable via FSA wallets. Yoga, nutrition, mental health, health screenings and more.", "/platform/wellness-marketplace"),
+        breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Platform", path: "/platform/self-funded-outpatient" }, { name: "Wellness Marketplace", path: "/platform/wellness-marketplace" }]),
+      ]} />
       <AppNavbar />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
