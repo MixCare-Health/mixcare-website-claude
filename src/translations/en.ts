@@ -505,6 +505,43 @@ export const en = {
         },
       ],
     },
+    suitableFor: {
+      badge: "Who It's For",
+      headline: "Is a Self-Funded Outpatient Plan Right for You?",
+      sub: "The right companies share these characteristics — see if your organisation fits.",
+      items: [
+        {
+          title: "Companies Facing Annual Medical Cost Increases",
+          desc: "If year-on-year premium renewals are unpredictable and rising, self-funding with stop-loss protection gives you structural cost control instead of reactive budget firefighting.",
+          tag: "Break the inflation cycle",
+        },
+        {
+          title: "Mid-to-Large Enterprises (50+ Employees)",
+          desc: "Companies with significant headcounts benefit most — pooling risk across employees makes self-funding more predictable and cost-efficient than fixed-premium group insurance.",
+          tag: "Best ROI at scale",
+        },
+        {
+          title: "Companies with Predictable Claims Patterns",
+          desc: "If your workforce skews younger, healthier, or lower-risk, you're likely overpaying traditional insurers. Self-funding lets you retain the profit insurers normally keep.",
+          tag: "Pay only for actual use",
+        },
+        {
+          title: "Multi-Market Businesses (HK, MO & SG)",
+          desc: "Our 2,000+ panel doctor network spans all three regions — making MixCare the natural fit for employers who need consistent outpatient coverage across markets.",
+          tag: "Seamless cross-border coverage",
+        },
+        {
+          title: "Employers with Tiered Workforce Structures",
+          desc: "Companies with different employee grades — executives, management, frontline — can configure distinct benefit tiers for each group without juggling multiple insurance contracts.",
+          tag: "One platform, multiple tiers",
+        },
+        {
+          title: "Growing Startups & Scale-Ups",
+          desc: "Compete for talent with enterprise-grade outpatient benefits without the overhead. MixCare's self-service setup goes live in days and scales automatically as your headcount grows.",
+          tag: "Live in under 5 days",
+        },
+      ],
+    },
     howItWorks: {
       headline: "How the platform works",
       sub: "From plan configuration to real-time analytics — MixCare handles the full outpatient benefits lifecycle.",
@@ -651,11 +688,6 @@ export const en = {
         "Receive notifications for new top-ups",
       ],
     },
-    ecosystem: {
-      headline: "Connected to the full MixCare ecosystem",
-      sub: "FSA wallets integrate seamlessly with the Wellness Marketplace, Wellness Hub, and outpatient network — employees spend in one place, you manage in one portal.",
-      tags: ["Wellness Marketplace", "Wellness Hub", "Panel Doctor Network", "HR Systems"],
-    },
     testimonial: {
       quote: "The FSA platform is exactly what we needed — flexible enough for our complex benefit structure but simple enough that employees actually use it. Utilisation jumped from 45% to 91%.",
       name: "Marcus Chen",
@@ -668,44 +700,132 @@ export const en = {
       label: "Get a Demo",
       secondaryLabel: "Start Now — Free Setup",
     },
+    whyFSA: {
+      badge: "Why FSA?",
+      headline: "The numbers behind smarter benefits",
+      sub: "MixCare's FSA platform delivers measurable outcomes for employers and employees alike.",
+      stats: [
+        { value: "91%", label: "Employee utilisation rate", desc: "vs. industry average of 45%" },
+        { value: "30%+", label: "Cost reduction", desc: "vs. traditional group insurance premiums" },
+        { value: "50+", label: "Spending categories", desc: "from medical to lifestyle & wellness" },
+        { value: "<2 min", label: "Claim submission", desc: "via mobile app with photo receipts" },
+      ],
+    },
+    useCases: {
+      badge: "Common Use Cases",
+      headline: "How organisations use FSA",
+      sub: "From frontline workers to executives — FSA adapts to every workforce profile.",
+      items: [
+        {
+          title: "Medical & Outpatient Care",
+          desc: "Employees use FSA wallets for GP visits, specialist consultations, and prescriptions — cashless and paperless at 2,000+ partner clinics.",
+          tag: "Most Popular",
+        },
+        {
+          title: "Fitness & Gym Memberships",
+          desc: "Fund gym memberships, yoga classes, and fitness apps to reduce sedentary lifestyle risk and improve team energy and productivity.",
+          tag: "Growing Fast",
+        },
+        {
+          title: "Mental Health & Counselling",
+          desc: "Cover therapy sessions, mental wellness apps, and stress management programs — consistently rated the benefit employees value most.",
+          tag: "Employee Favourite",
+        },
+        {
+          title: "Preventive Screenings",
+          desc: "Encourage annual health checkups, cancer screenings, dental checkups, and eye exams through dedicated preventive care wallets.",
+          tag: "Cost Saver",
+        },
+      ],
+    },
+    howToImplement: {
+      badge: "Implementation",
+      headline: "Live in under 5 days",
+      sub: "Add FSA to your existing benefit plan with zero disruption. No legacy system replacement required.",
+      steps: [
+        {
+          step: "01",
+          title: "Configure Your FSA Structure",
+          desc: "Define wallet types, funding amounts, eligible spending categories, rollover rules, and approval workflows with your MixCare onboarding manager.",
+          time: "Day 1",
+        },
+        {
+          step: "02",
+          title: "Import Your Employees",
+          desc: "Bulk upload via CSV or connect your existing HRIS. Every employee gets instant access to their digital benefit wallet.",
+          time: "Day 2",
+        },
+        {
+          step: "03",
+          title: "Fund the Wallets",
+          desc: "Allocate budgets by department, employee grade, or individually. One-time or recurring funding with full finance reconciliation built in.",
+          time: "Day 3",
+        },
+        {
+          step: "04",
+          title: "Go Live & Track",
+          desc: "Employees start spending immediately. Monitor utilisation in real time from your admin dashboard — no waiting for end-of-month reports.",
+          time: "Day 5",
+        },
+      ],
+    },
+    ecosystem: {
+      headline: "Connected to the full MixCare ecosystem",
+      sub: "FSA wallets integrate seamlessly with the Wellness Marketplace, Wellness Hub, and outpatient network — employees spend in one place, you manage in one portal.",
+      tags: ["Wellness Marketplace", "Wellness Hub", "Panel Doctor Network", "HR Systems"],
+      connectionDescs: [
+        "Employees browse & redeem services directly with their FSA wallet",
+        "Engagement and wellness programme data syncs automatically",
+        "Cashless GP and specialist visits billed directly via FSA",
+        "Employee roster, grades & budgets imported automatically",
+      ],
+    },
   },
 
   wellnessMarketplace: {
     meta: {
       title: "Wellness Marketplace | MixCare Health",
-      description: "A curated marketplace for employee wellness — 500+ services redeemable with FSA wallets. White-label options for insurers, brokers, and enterprises.",
+      description: "A curated marketplace for employee wellness — 3,000+ services redeemable with FSA wallets. White-label options for insurers, brokers, and enterprises.",
     },
     hero: {
       badge: "Wellness Marketplace",
       headline: "A Curated Marketplace for",
       headlineHighlight: "Employee Wellness",
-      sub: "500+ wellness services, seamlessly redeemable with FSA wallets or pre-funded accounts. White-label options available for insurers, brokers, and enterprises.",
+      sub: "3,000+ wellness services, seamlessly redeemable with FSA wallets or pre-funded accounts. White-label options available for insurers, brokers, and enterprises.",
       cta: "Get a Demo",
     },
     benefits: {
       headline: "Why the MixCare Marketplace is different",
       items: [
-        { title: "Service Redemption", desc: "Employees or policyholders redeem and purchase wellness services using FSA wallets or pre-funded accounts seamlessly. No receipts, no reimbursements — just instant access." },
-        { title: "Wide Service Array", desc: "Yoga classes, nutrition counseling, gym memberships, wellness retreats, mental health support, and beyond. 500+ services from verified providers across Asia-Pacific." },
-        { title: "Custom-Branded Marketplace", desc: "Deliver a white-label marketplace aligned with your insurer, broker, or enterprise branding and objectives. Your logo, your colours, your domain — powered by MixCare." },
+        { title: "Instant Service Redemption", desc: "Employees redeem 3,000+ wellness services with FSA wallets or pre-funded accounts — no receipts, no reimbursements, no waiting. One tap, instant access." },
+        { title: "3,000+ Verified Services", desc: "Yoga classes, nutrition counselling, gym memberships, wellness retreats, mental health support, and beyond. 3,000+ services from verified providers across Asia-Pacific." },
+        { title: "Custom-Branded Marketplace", desc: "Deliver a white-label marketplace aligned with your insurer, broker, or enterprise branding. Your logo, your colours, your domain — powered by MixCare." },
+        { title: "Exclusive Corporate Pricing", desc: "Employees unlock corporate-negotiated rates unavailable to the general public — delivering real savings on every wellness purchase, not just access." },
+        { title: "Fully Customisable Categories", desc: "Tailor the service catalogue to match your company's benefit philosophy. Enable or restrict categories by employee tier, department, or geography — total flexibility." },
+        { title: "Real-Time Analytics & Insights", desc: "Track service redemption trends, category popularity, and utilisation rates across your workforce. Optimise your wellness programme with live data, not month-end spreadsheets." },
       ],
     },
+    marketplaceMockup: {
+      badge: "Platform Preview",
+      headline: "See the marketplace in action",
+      sub: "A seamless, intuitive experience for employees — and powerful management tools for admins.",
+    },
     categories: {
-      headline: "500+ services across 6 categories",
+      headline: "3,000+ services across 6 categories",
       sub: "From daily fitness to intensive wellness retreats — there's something for every employee, every lifestyle.",
       items: [
-        { label: "Fitness & Gym", count: "80+ services" },
-        { label: "Mental Health", count: "60+ services" },
-        { label: "Nutrition", count: "45+ services" },
-        { label: "Wellness Retreats", count: "30+ services" },
-        { label: "Medical Screenings", count: "50+ services" },
-        { label: "Group Classes", count: "70+ services" },
+        { label: "Fitness & Gym", count: "" },
+        { label: "Mental Health", count: "" },
+        { label: "Nutrition", count: "" },
+        { label: "Wellness Retreats", count: "" },
+        { label: "Medical Screenings", count: "" },
+        { label: "Group Classes", count: "" },
       ],
     },
     whiteLabelSection: {
       badge: "White-Label Option",
       headline: "Your brand. Our marketplace.",
-      sub: "Deploy a fully branded wellness marketplace under your own identity. Your clients see your logo, your domain, your design — backed by MixCare's 500+ curated services and seamless payment infrastructure.",
+      sub: "Deploy a fully branded wellness marketplace under your own identity. Your clients see your logo, your domain, your design — backed by MixCare's 3,000+ curated services and seamless payment infrastructure.",
       items: [
         "Custom domain (wellness.yourcompany.com)",
         "Brand colours, logo, and typography",
@@ -718,12 +838,6 @@ export const en = {
       headline: "Are you a wellness provider?",
       sub: "Partner with MixCare to reach thousands of corporate employees across Asia-Pacific. Get listed in the marketplace, access digital booking, and receive cashless payments.",
       label: "Become a Partner →",
-    },
-    testimonial: {
-      quote: "Our employees now actually use their wellness benefits. After launching MixCare's marketplace, benefit utilisation jumped from 38% to 87% in two quarters.",
-      name: "Sarah Lam",
-      title: "Compensation & Benefits Manager",
-      company: "CK Hutchison Holdings",
     },
     cta: {
       headline: "Build your wellness marketplace today",
@@ -743,7 +857,7 @@ export const en = {
       headline: "Engage Your Team with",
       headlineHighlight: "Curated Wellness Events",
       sub: "Book corporate wellness workshops, health talks, and team activities — all managed through MixCare's event platform. Drive engagement and build a healthier workplace culture.",
-      cta: "Get a Demo",
+      cta: "Get a Quote",
     },
     painPoints: {
       headline: "The challenges of corporate wellness events",
@@ -758,16 +872,58 @@ export const en = {
     benefits: {
       headline: "Four Capabilities. Healthier Teams.",
       items: [
-        { title: "500+ Curated Events", desc: "Access a catalogue of 500+ vetted wellness events — yoga, mindfulness, nutrition workshops, mental health seminars, first aid, and more. New events added monthly to keep content fresh." },
+        { title: "50+ Curated Event Types", desc: "Access a catalogue of vetted wellness events — yoga, mindfulness, nutrition workshops, mental health seminars, first aid, and more. New events added monthly to keep content fresh." },
         { title: "Seamless Booking", desc: "HR teams browse, book, and manage events in a few clicks. Automated invitations, RSVPs, and reminders keep employees engaged without manual follow-up." },
         { title: "Live & Virtual Options", desc: "On-site events at your office or virtual sessions for remote and hybrid teams. Every employee can participate regardless of location." },
         { title: "Attendance & Impact Reporting", desc: "Track participation rates, employee satisfaction scores, and wellness ROI with post-event reports automatically generated after every event." },
       ],
     },
+    featuredEvents: {
+      badge: "Our Top Events",
+      headline: "Wellness experiences employees love",
+      sub: "Handpicked from our most-booked corporate events — proven to drive participation, improve wellbeing, and create lasting impact.",
+      items: [
+        {
+          title: "Mindfulness & Meditation",
+          desc: "Guided sessions that reduce workplace stress, improve focus, and build emotional resilience. Offered in 30, 60, or 90-minute formats for any team size.",
+          tag: "Most Booked",
+          emoji: "🧘",
+          stat: "94% satisfaction",
+        },
+        {
+          title: "Nutrition & Healthy Eating Workshop",
+          desc: "Interactive workshops led by certified nutritionists covering meal planning, energy management, and building sustainable healthy habits at work.",
+          tag: "Crowd Favourite",
+          emoji: "🥗",
+          stat: "200+ sessions delivered",
+        },
+        {
+          title: "Corporate Yoga & Stretching",
+          desc: "Office-friendly yoga and desk-stretch sessions designed to relieve physical tension, improve posture, and re-energise teams mid-day.",
+          tag: "High Energy",
+          emoji: "🏃",
+          stat: "Available on-site & virtual",
+        },
+        {
+          title: "Mental Health First Aid",
+          desc: "Certified training that equips managers and employees to recognise, support, and respond to mental health challenges in the workplace.",
+          tag: "Manager Favourite",
+          emoji: "💚",
+          stat: "Certifiable training",
+        },
+        {
+          title: "Health Screening & Check-Up Day",
+          desc: "On-site health screening events covering BMI, blood pressure, cholesterol, and vision checks — delivered by medical professionals at your office.",
+          tag: "HR Essential",
+          emoji: "🩺",
+          stat: "Full medical team provided",
+        },
+      ],
+    },
     cta: {
       headline: "Ready to Elevate Employee Wellness?",
-      sub: "Book a demo to see how MixCare Wellness Events drives engagement and measurable health outcomes.",
-      label: "Get a Demo",
+      sub: "Get a quote to see how MixCare Wellness Events drives engagement and measurable health outcomes.",
+      label: "Get a Quote",
     },
   },
 

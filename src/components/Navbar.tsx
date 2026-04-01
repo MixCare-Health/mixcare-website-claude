@@ -409,18 +409,6 @@ const platformRef = useRef<HTMLDivElement>(null);
         )}
       </nav>
 
-      {/* Mobile sticky CTA */}
-      <div className="lg:hidden fixed bottom-4 right-4 z-40">
-        <Button
-          as={Link}
-          href={localePath(locale, "/get-a-demo")}
-          size="lg"
-          className="text-white font-bold shadow-xl rounded-full px-6"
-          style={{ backgroundColor: "#f97316" }}
-        >
-          {t.nav.getDemo}
-        </Button>
-      </div>
     </>
   );
 }
