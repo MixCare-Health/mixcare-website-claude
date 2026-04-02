@@ -79,15 +79,15 @@ export default function WellnessEventCarousel({ badge, headline, sub, items }: P
           <p className="text-slate-400 max-w-2xl mx-auto text-lg">{sub}</p>
         </div>
 
-        {/* Main card */}
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl" style={{ aspectRatio: "16/7" }}>
+        {/* Main card — portrait on mobile, widescreen on desktop */}
+        <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl aspect-[3/4] sm:aspect-[16/9] lg:aspect-[16/7]">
           {/* Photo */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             key={active}
             src={PHOTOS[active]}
             alt={item.title}
-            className="absolute inset-0 w-full h-full object-cover transition-all duration-500"
+            className="absolute inset-0 w-full h-full object-cover"
             style={{
               opacity: animating ? 0 : 1,
               transform: animating
@@ -97,82 +97,82 @@ export default function WellnessEventCarousel({ badge, headline, sub, items }: P
             }}
           />
 
-          {/* Gradient overlays */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent" />
+          {/* Gradient overlays — stronger bottom gradient to ensure text readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent" />
 
           {/* Tag pill — top left */}
-          <div className="absolute top-6 left-6">
+          <div className="absolute top-4 left-4 sm:top-6 sm:left-6">
             <span
-              className="text-xs font-bold px-3 py-1.5 rounded-full text-white"
+              className="text-[11px] sm:text-xs font-bold px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-white"
               style={{ backgroundColor: color }}
             >
               {item.tag}
             </span>
           </div>
 
+          {/* Slide counter — top right */}
+          <div className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/50 text-xs font-bold tabular-nums">
+            {String(active + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}
+          </div>
+
           {/* Navigation arrows */}
           <button
             onClick={prev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/25 backdrop-blur-sm flex items-center justify-center transition-all duration-200 border border-white/20 hover:scale-110"
+            className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/25 backdrop-blur-sm flex items-center justify-center transition-all duration-200 border border-white/20"
             aria-label="Previous event"
           >
-            <ChevronLeft size={20} className="text-white" />
+            <ChevronLeft size={18} className="text-white" />
           </button>
           <button
             onClick={next}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/25 backdrop-blur-sm flex items-center justify-center transition-all duration-200 border border-white/20 hover:scale-110"
+            className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/25 backdrop-blur-sm flex items-center justify-center transition-all duration-200 border border-white/20"
             aria-label="Next event"
           >
-            <ChevronRight size={20} className="text-white" />
+            <ChevronRight size={18} className="text-white" />
           </button>
 
           {/* Bottom content overlay */}
-          <div className="absolute bottom-0 left-0 right-0 p-7 sm:p-8">
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-              <div>
-                <h3
-                  className="text-2xl sm:text-3xl font-extrabold text-white mb-2 leading-tight transition-all duration-300"
-                  style={{ opacity: animating ? 0 : 1, transform: animating ? "translateY(6px)" : "translateY(0)" }}
-                >
-                  {item.title}
-                </h3>
-                <p
-                  className="text-white/75 text-sm sm:text-base max-w-xl leading-relaxed transition-all duration-300"
-                  style={{
-                    opacity: animating ? 0 : 1,
-                    transform: animating ? "translateY(6px)" : "translateY(0)",
-                    transitionDelay: "40ms",
-                  }}
-                >
-                  {item.desc}
-                </p>
-              </div>
-              {/* Stat badge */}
-              <div
-                className="flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold backdrop-blur-sm transition-all duration-300"
-                style={{
-                  backgroundColor: color + "30",
-                  borderColor: color + "60",
-                  border: `1px solid ${color}60`,
-                  color: "#fff",
-                  opacity: animating ? 0 : 1,
-                }}
-              >
-                <CheckCircle2 size={14} className="flex-shrink-0" />
-                {item.stat}
-              </div>
+          <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7 lg:p-8">
+            <h3
+              className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-white mb-1.5 sm:mb-2 leading-tight"
+              style={{
+                opacity: animating ? 0 : 1,
+                transform: animating ? "translateY(6px)" : "translateY(0)",
+                transition: "opacity 0.3s ease, transform 0.3s ease",
+              }}
+            >
+              {item.title}
+            </h3>
+            <p
+              className="text-white/80 text-sm sm:text-base leading-relaxed mb-3 sm:mb-4 max-w-xl line-clamp-2 sm:line-clamp-none"
+              style={{
+                opacity: animating ? 0 : 1,
+                transform: animating ? "translateY(6px)" : "translateY(0)",
+                transition: "opacity 0.3s ease 40ms, transform 0.3s ease 40ms",
+              }}
+            >
+              {item.desc}
+            </p>
+            {/* Stat badge */}
+            <div
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold backdrop-blur-sm"
+              style={{
+                backgroundColor: color + "35",
+                border: `1px solid ${color}70`,
+                color: "#fff",
+                opacity: animating ? 0 : 1,
+                transition: "opacity 0.3s ease 80ms",
+              }}
+            >
+              <CheckCircle2 size={13} className="flex-shrink-0" />
+              {item.stat}
             </div>
-          </div>
-
-          {/* Slide counter */}
-          <div className="absolute top-6 right-6 text-white/50 text-xs font-bold tabular-nums">
-            {String(active + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}
           </div>
         </div>
 
-        {/* Thumbnail strip */}
-        <div className="mt-5 flex gap-3 justify-center">
+        {/* Thumbnail strip — hidden on mobile, visible sm+ */}
+        <div className="hidden sm:flex mt-5 gap-3 justify-center">
           {items.map((evt, i) => (
             <button
               key={i}
@@ -193,7 +193,6 @@ export default function WellnessEventCarousel({ badge, headline, sub, items }: P
                 alt={evt.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
               />
-              {/* Active overlay color bar */}
               {i === active && (
                 <div
                   className="absolute bottom-0 left-0 right-0 h-1"
@@ -205,7 +204,7 @@ export default function WellnessEventCarousel({ badge, headline, sub, items }: P
         </div>
 
         {/* Dot indicators */}
-        <div className="mt-4 flex justify-center gap-2">
+        <div className="mt-4 sm:mt-3 flex justify-center gap-2">
           {items.map((_, i) => (
             <button
               key={i}
