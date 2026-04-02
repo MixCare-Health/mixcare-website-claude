@@ -863,7 +863,6 @@ export const en = {
       headline: "The challenges of corporate wellness events",
       sub: "Organising meaningful wellness events at scale is harder than it looks.",
       items: [
-        { title: "Low Employee Participation", desc: "Generic wellness programmes fail to engage employees. Without variety and relevance, participation drops and wellness budgets go to waste." },
         { title: "HR Logistics Overload", desc: "Coordinating vendors, schedules, RSVPs, and venues drains HR bandwidth — leaving less time for strategic people initiatives." },
         { title: "One-Size-Fits-All Offerings", desc: "A single yoga class doesn't serve everyone. Teams need diverse options across fitness, mental health, nutrition, and preventive care." },
         { title: "No Measurable Impact", desc: "Without data, it's impossible to justify wellness event spending or improve programme quality over time." },
