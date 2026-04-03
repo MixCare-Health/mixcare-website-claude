@@ -1,12 +1,16 @@
-"use client";
-
 import AppNavbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { useState } from "react";
-import { Input, Textarea, Button } from "@heroui/react";
-import { Mail, Phone, MapPin, Clock, CheckCircle2 } from "lucide-react";
+import ContactForm from "@/components/forms/ContactForm";
+import type { ContactContent } from "@/components/forms/ContactForm";
+import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
+import { contactPageQuery } from "@/lib/sanity.queries";
+import type { SanityContactPage } from "@/lib/sanity.queries";
+import { getLocale } from "@/lib/locale.server";
+import { getTranslations } from "@/translations";
 
-const offices = [
+export const revalidate = 60;
+
+const FALLBACK_OFFICES = [
   {
     city: "Hong Kong",
     address: "23/F, Two International Finance Centre, 8 Finance Street, Central, Hong Kong",
@@ -23,197 +27,44 @@ const offices = [
   },
 ];
 
-export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", company: "", message: "" });
+export default async function ContactPage() {
+  const locale = await getLocale();
+  const t = getTranslations(locale);
+  const sanityLocale = toSanityLocale(locale);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    await new Promise((r) => setTimeout(r, 800));
-    setSubmitted(true);
-    setLoading(false);
+  const sp: SanityContactPage | null = isSanityConfigured
+    ? await sanityClient.fetch(contactPageQuery, { locale: sanityLocale })
+    : null;
+
+  const content: ContactContent = {
+    hero: {
+      headline: sp?.hero?.headline ?? t.contact.headline,
+      headlineHighlight: sp?.hero?.headlineHighlight ?? t.contact.headlineHighlight,
+      sub: sp?.hero?.sub ?? t.contact.sub,
+    },
+    officesTitle: sp?.officesTitle ?? t.contact.officesTitle,
+    formTitle: sp?.formTitle ?? t.contact.formTitle,
+    formSub: sp?.formSub ?? t.contact.formSub,
+    hours: sp?.hours ?? t.contact.hours,
+    fields: {
+      name: sp?.fields?.name ?? t.contact.fields.name,
+      email: sp?.fields?.email ?? t.contact.fields.email,
+      company: sp?.fields?.company ?? t.contact.fields.company,
+      message: sp?.fields?.message ?? t.contact.fields.message,
+      messagePlaceholder: sp?.fields?.messagePlaceholder ?? t.contact.fields.messagePlaceholder,
+      submit: sp?.fields?.submit ?? t.contact.fields.submit,
+    },
+    success: {
+      title: sp?.success?.title ?? t.contact.success.title,
+      sub: sp?.success?.sub ?? t.contact.success.sub,
+    },
+    offices: sp?.offices?.length ? sp.offices : FALLBACK_OFFICES,
   };
 
   return (
     <main>
       <AppNavbar />
-
-      {/* Hero */}
-      <section
-        className="pt-28 pb-16 relative overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fff7ed 100%)" }}
-      >
-        <div className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-20 -z-10 blur-3xl" style={{ background: "radial-gradient(circle, #0d9488, transparent)" }} />
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 mb-5">
-            Get in{" "}
-            <span
-              style={{
-                background: "linear-gradient(135deg, #0d9488 0%, #1e3a5f 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              touch
-            </span>
-          </h1>
-          <p className="text-xl text-slate-600">
-            Have a question, feedback, or need support? We&apos;re here to help — reach out
-            through any channel below.
-          </p>
-        </div>
-      </section>
-
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* Contact info */}
-            <div>
-              <h2 className="text-2xl font-extrabold text-slate-900 mb-8">Our offices</h2>
-              <div className="space-y-8">
-                {offices.map((office) => (
-                  <div
-                    key={office.city}
-                    className="rounded-2xl p-6 border border-slate-100"
-                    style={{ backgroundColor: "#f8fafc" }}
-                  >
-                    <h3
-                      className="text-lg font-bold mb-4"
-                      style={{ color: "#0d9488" }}
-                    >
-                      {office.city}
-                    </h3>
-                    <div className="space-y-3">
-                      <div className="flex items-start gap-3">
-                        <MapPin size={16} className="text-slate-400 mt-0.5 flex-shrink-0" />
-                        <p className="text-sm text-slate-700">{office.address}</p>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <Phone size={16} className="text-slate-400 flex-shrink-0" />
-                        <a
-                          href={`tel:${office.phone.replace(/\s/g, "")}`}
-                          className="text-sm text-slate-700 hover:text-teal-600"
-                        >
-                          {office.phone}
-                        </a>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <Mail size={16} className="text-slate-400 flex-shrink-0" />
-                        <a
-                          href={`mailto:${office.email}`}
-                          className="text-sm text-slate-700 hover:text-teal-600"
-                        >
-                          {office.email}
-                        </a>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <Clock size={16} className="text-slate-400 flex-shrink-0" />
-                        <p className="text-sm text-slate-700">{office.hours}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Quick links */}
-              <div className="mt-8 grid grid-cols-2 gap-3">
-                {[
-                  { label: "Book a Demo", href: "/get-a-demo", color: "#f97316" },
-                  { label: "Partner With Us", href: "/partners", color: "#0d9488" },
-                  { label: "Start Now", href: "/start-now", color: "#1e3a5f" },
-                  { label: "Trust & Security", href: "/trust", color: "#7c3aed" },
-                ].map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    className="rounded-xl px-4 py-3 text-sm font-semibold text-white text-center"
-                    style={{ backgroundColor: link.color }}
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Form */}
-            <div className="bg-white rounded-3xl shadow-sm border border-slate-100 p-8">
-              {submitted ? (
-                <div className="text-center py-10">
-                  <div
-                    className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
-                    style={{ backgroundColor: "#ccfbf1" }}
-                  >
-                    <CheckCircle2 size={32} style={{ color: "#0d9488" }} />
-                  </div>
-                  <h2 className="text-2xl font-extrabold text-slate-900 mb-3">
-                    Message sent!
-                  </h2>
-                  <p className="text-slate-600">
-                    We&apos;ll get back to you within 1 business day.
-                  </p>
-                </div>
-              ) : (
-                <>
-                  <h2 className="text-2xl font-extrabold text-slate-900 mb-2">
-                    Send us a message
-                  </h2>
-                  <p className="text-sm text-slate-500 mb-6">
-                    We respond to all enquiries within 1 business day.
-                  </p>
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      <Input
-                        label="Your Name"
-                        value={form.name}
-                        onChange={(e) => setForm({ ...form, name: e.target.value })}
-                        isRequired
-                        variant="bordered"
-                      />
-                      <Input
-                        label="Email"
-                        type="email"
-                        value={form.email}
-                        onChange={(e) => setForm({ ...form, email: e.target.value })}
-                        isRequired
-                        variant="bordered"
-                      />
-                    </div>
-                    <Input
-                      label="Company (optional)"
-                      value={form.company}
-                      onChange={(e) => setForm({ ...form, company: e.target.value })}
-                      variant="bordered"
-                    />
-                    <Textarea
-                      label="Message"
-                      placeholder="How can we help you?"
-                      value={form.message}
-                      onChange={(e) => setForm({ ...form, message: e.target.value })}
-                      isRequired
-                      variant="bordered"
-                      minRows={4}
-                    />
-                    <Button
-                      type="submit"
-                      fullWidth
-                      size="lg"
-                      isLoading={loading}
-                      className="text-white font-bold rounded-xl"
-                      style={{ backgroundColor: "#f97316" }}
-                    >
-                      {loading ? "Sending..." : "Send Message →"}
-                    </Button>
-                  </form>
-                </>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <ContactForm content={content} />
       <Footer />
     </main>
   );

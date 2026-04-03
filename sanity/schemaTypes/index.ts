@@ -7,6 +7,11 @@ import { teamMemberType } from "./teamMember";
 import { faqItemType } from "./faqItem";
 import { siteSettingsType } from "./siteSettings";
 import { aboutPageType } from "./aboutPage";
+import { trustPageType } from "./trustPage";
+import { contactPageType } from "./contactPage";
+import { getDemoPageType } from "./getDemoPage";
+import { startNowPageType } from "./startNowPage";
+import { partnersPageType } from "./partnersPage";
 
 export const schemaTypes = [
   articleType,
@@ -18,4 +23,9 @@ export const schemaTypes = [
   faqItemType,
   siteSettingsType,
   aboutPageType,
+  trustPageType,
+  contactPageType,
+  getDemoPageType,
+  startNowPageType,
+  partnersPageType,
 ];
