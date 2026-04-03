@@ -360,3 +360,95 @@ export type SanityFaqItem = {
   category?: string;
   order: number;
 };
+
+// ── About Page ───────────────────────────────────────────────────────────────
+
+export const aboutPageQuery = `
+  *[_id == "aboutPage"][0] {
+    "hero": {
+      "badge":             coalesce(hero.badge[$locale],             hero.badge.en),
+      "headline":          coalesce(hero.headline[$locale],          hero.headline.en),
+      "headlineHighlight": coalesce(hero.headlineHighlight[$locale], hero.headlineHighlight.en),
+      "sub":               coalesce(hero.sub[$locale],               hero.sub.en),
+    },
+    "story": {
+      "headline": coalesce(story.headline[$locale], story.headline.en),
+      "p1":       coalesce(story.p1[$locale],       story.p1.en),
+      "p2":       coalesce(story.p2[$locale],       story.p2.en),
+      "p3":       coalesce(story.p3[$locale],       story.p3.en),
+    },
+    "stats": stats[] {
+      "value": value,
+      "label": coalesce(label[$locale], label.en),
+    },
+    "values": {
+      "headline": coalesce(values.headline[$locale], values.headline.en),
+      "items": values.items[] {
+        "title": coalesce(title[$locale], title.en),
+        "desc":  coalesce(desc[$locale],  desc.en),
+      },
+    },
+    "team": {
+      "headline": coalesce(team.headline[$locale], team.headline.en),
+      "sub":      coalesce(team.sub[$locale],      team.sub.en),
+    },
+    "careers": {
+      "headline": coalesce(careers.headline[$locale], careers.headline.en),
+      "sub":      coalesce(careers.sub[$locale],      careers.sub.en),
+      "cta":      coalesce(careers.cta[$locale],      careers.cta.en),
+    },
+    "press": {
+      "headline":     coalesce(press.headline[$locale],     press.headline.en),
+      "mediaEnquiry": coalesce(press.mediaEnquiry[$locale], press.mediaEnquiry.en),
+      "items": press.items[] {
+        "outlet":   coalesce(outlet[$locale],   outlet.en),
+        "date":     coalesce(date[$locale],     date.en),
+        "headline": coalesce(headline[$locale], headline.en),
+        "url": url,
+      },
+    },
+    "cta": {
+      "headline":       coalesce(cta.headline[$locale],       cta.headline.en),
+      "sub":            coalesce(cta.sub[$locale],            cta.sub.en),
+      "ctaLabel":       coalesce(cta.ctaLabel[$locale],       cta.ctaLabel.en),
+      "secondaryLabel": coalesce(cta.secondaryLabel[$locale], cta.secondaryLabel.en),
+    },
+  }
+`;
+
+export type SanityAboutPage = {
+  hero: { badge: string; headline: string; headlineHighlight: string; sub: string };
+  story: { headline: string; p1: string; p2: string; p3: string };
+  stats: Array<{ value: string; label: string }>;
+  values: { headline: string; items: Array<{ title: string; desc: string }> };
+  team: { headline: string; sub: string };
+  careers: { headline: string; sub: string; cta: string };
+  press: {
+    headline: string;
+    mediaEnquiry: string;
+    items: Array<{ outlet: string; date: string; headline: string; url?: string }>;
+  };
+  cta: { headline: string; sub: string; ctaLabel: string; secondaryLabel: string };
+};
+
+// ── Team Members ─────────────────────────────────────────────────────────────
+
+export const allTeamMembersQuery = `
+  *[_type == "teamMember"] | order(order asc) {
+    _id,
+    "name":  name,
+    "role":  coalesce(role[$locale], role.en),
+    "bio":   coalesce(bio[$locale],  bio.en),
+    "photo": photo,
+    "order": order,
+  }
+`;
+
+export type SanityTeamMember = {
+  _id: string;
+  name: string;
+  role: string;
+  bio: string;
+  photo?: { asset: { _ref: string } };
+  order: number;
+};

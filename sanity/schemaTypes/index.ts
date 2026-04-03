@@ -6,6 +6,7 @@ import { whitepaperType } from "./whitepaper";
 import { teamMemberType } from "./teamMember";
 import { faqItemType } from "./faqItem";
 import { siteSettingsType } from "./siteSettings";
+import { aboutPageType } from "./aboutPage";
 
 export const schemaTypes = [
   articleType,
@@ -16,4 +17,5 @@ export const schemaTypes = [
   teamMemberType,
   faqItemType,
   siteSettingsType,
+  aboutPageType,
 ];
