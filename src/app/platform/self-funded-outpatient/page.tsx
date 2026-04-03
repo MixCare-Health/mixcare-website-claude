@@ -13,6 +13,10 @@ import { getTranslations } from "@/translations";
 import { localePath } from "@/lib/locale";
 import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
 import { JsonLd, webPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
+import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
+import { platformPageByIdQuery, type SanityPlatformPage } from "@/lib/sanity.queries";
+
+export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/platform/self-funded-outpatient");
 
@@ -56,6 +60,11 @@ export default async function SelfFundedOutpatientPage() {
   const t = getTranslations(locale);
   const p = t.selfFundedOutpatient;
 
+  const sanityLocale = toSanityLocale(locale);
+  const sp: SanityPlatformPage | null = isSanityConfigured
+    ? await sanityClient.fetch(platformPageByIdQuery, { pageId: "self-funded-outpatient", locale: sanityLocale })
+    : null;
+
   return (
     <main>
       <JsonLd data={[
@@ -66,11 +75,11 @@ export default async function SelfFundedOutpatientPage() {
 
       {/* ── HERO ──────────────────────────────────────────────────── */}
       <PageHero
-        badge={p.hero.badge}
-        headline={p.hero.headline}
-        headlineHighlight={p.hero.headlineHighlight}
-        subheadline={p.hero.sub}
-        ctaLabel={p.hero.cta}
+        badge={sp?.hero?.badge ?? p.hero.badge}
+        headline={sp?.hero?.headline ?? p.hero.headline}
+        headlineHighlight={sp?.hero?.headlineHighlight ?? p.hero.headlineHighlight}
+        subheadline={sp?.hero?.sub ?? p.hero.sub}
+        ctaLabel={sp?.hero?.ctaLabel ?? p.hero.cta}
         ctaHref={localePath(locale, "/get-a-demo")}
         secondaryCtaLabel={p.hero.calculatorCta}
         secondaryCtaHref="https://flexhealth.mixcarehealth.com/"
@@ -343,9 +352,9 @@ export default async function SelfFundedOutpatientPage() {
 
       {/* ── CTA ─────────────────────────────────────────────────── */}
       <BottomCTA
-        headline={p.cta.headline}
-        sub={p.cta.sub}
-        ctaLabel={p.cta.label}
+        headline={sp?.cta?.heading ?? p.cta.headline}
+        sub={sp?.cta?.sub ?? p.cta.sub}
+        ctaLabel={sp?.cta?.ctaLabel ?? p.cta.label}
         ctaHref={localePath(locale, "/get-a-demo")}
       />
 

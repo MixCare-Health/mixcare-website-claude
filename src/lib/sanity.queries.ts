@@ -250,6 +250,97 @@ export type SanityWhitepaper = SanityWhitepaperListItem & {
   sections: Array<{ heading: string; body: string; bullets?: string[] }>;
 };
 
+// ── Platform Pages ───────────────────────────────────────────────────────────
+
+export const platformPageByIdQuery = `
+  *[_type == "platformPage" && pageId == $pageId][0] {
+    "pageId": pageId,
+    "metaTitle": coalesce(metaTitle[$locale], metaTitle.en),
+    "metaDescription": coalesce(metaDescription[$locale], metaDescription.en),
+    "hero": {
+      "badge": coalesce(hero.badge[$locale], hero.badge.en),
+      "headline": coalesce(hero.headline[$locale], hero.headline.en),
+      "headlineHighlight": coalesce(hero.headlineHighlight[$locale], hero.headlineHighlight.en),
+      "sub": coalesce(hero.sub[$locale], hero.sub.en),
+      "ctaLabel": coalesce(hero.ctaLabel[$locale], hero.ctaLabel.en),
+      "iconColor": hero.iconColor,
+      "bgGradient": hero.bgGradient,
+    },
+    "benefits": {
+      "heading": coalesce(benefits.heading[$locale], benefits.heading.en),
+      "sub": coalesce(benefits.sub[$locale], benefits.sub.en),
+      "items": benefits.items[] {
+        "icon": icon,
+        "title": coalesce(title[$locale], title.en),
+        "desc": coalesce(desc[$locale], desc.en),
+      },
+    },
+    "howItWorks": {
+      "heading": coalesce(howItWorks.heading[$locale], howItWorks.heading.en),
+      "sub": coalesce(howItWorks.sub[$locale], howItWorks.sub.en),
+      "steps": howItWorks.steps[] {
+        "step": step,
+        "title": coalesce(title[$locale], title.en),
+        "desc": coalesce(desc[$locale], desc.en),
+        "bullets": coalesce(bullets[$locale], bullets.en),
+      },
+    },
+    "stats": stats[] {
+      "value": value,
+      "label": coalesce(label[$locale], label.en),
+      "sub": coalesce(sub[$locale], sub.en),
+    },
+    "testimonial": {
+      "quote": coalesce(testimonial.quote[$locale], testimonial.quote.en),
+      "name": testimonial.name,
+      "title": testimonial.title,
+      "company": testimonial.company,
+    },
+    "cta": {
+      "heading": coalesce(cta.heading[$locale], cta.heading.en),
+      "sub": coalesce(cta.sub[$locale], cta.sub.en),
+      "ctaLabel": coalesce(cta.ctaLabel[$locale], cta.ctaLabel.en),
+      "secondaryLabel": coalesce(cta.secondaryLabel[$locale], cta.secondaryLabel.en),
+    },
+    "painPoints": painPoints[] {
+      "title": coalesce(title[$locale], title.en),
+      "desc": coalesce(desc[$locale], desc.en),
+      "icon": icon,
+    },
+  }
+`;
+
+export type SanityPlatformHero = {
+  badge: string;
+  headline: string;
+  headlineHighlight: string;
+  sub: string;
+  ctaLabel: string;
+  iconColor: string;
+  bgGradient: string;
+};
+
+export type SanityPlatformPage = {
+  pageId: string;
+  metaTitle: string;
+  metaDescription: string;
+  hero: SanityPlatformHero;
+  benefits: {
+    heading: string;
+    sub: string;
+    items: Array<{ icon: string; title: string; desc: string }>;
+  };
+  howItWorks: {
+    heading: string;
+    sub: string;
+    steps: Array<{ step: string; title: string; desc: string; bullets?: string[] }>;
+  };
+  stats: Array<{ value: string; label: string; sub: string }>;
+  testimonial: { quote: string; name: string; title: string; company: string };
+  cta: { heading: string; sub: string; ctaLabel: string; secondaryLabel: string };
+  painPoints: Array<{ title: string; desc: string; icon: string }>;
+};
+
 // ── FAQ Items ────────────────────────────────────────────────────────────────
 
 export const allFaqItemsQuery = `

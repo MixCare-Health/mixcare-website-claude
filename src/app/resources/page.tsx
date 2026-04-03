@@ -9,7 +9,7 @@ import { getTranslations } from "@/translations";
 import { localePath } from "@/lib/locale";
 import Link from "next/link";
 import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
-import { allArticlesQuery, type SanityArticleListItem } from "@/lib/sanity.queries";
+import { allArticlesQuery, type SanityArticleListItem, allFaqItemsQuery, type SanityFaqItem } from "@/lib/sanity.queries";
 
 export const revalidate = 60;
 
@@ -76,9 +76,19 @@ export default async function ResourcesPage() {
   const t = getTranslations(locale);
   const r = t.resources;
 
+  const sanityLocale = toSanityLocale(locale);
+
   const articles: SanityArticleListItem[] = isSanityConfigured
-    ? await sanityClient.fetch(allArticlesQuery, { locale: toSanityLocale(locale) })
+    ? await sanityClient.fetch(allArticlesQuery, { locale: sanityLocale })
     : [];
+
+  const faqItems: SanityFaqItem[] = isSanityConfigured
+    ? await sanityClient.fetch(allFaqItemsQuery, { locale: sanityLocale })
+    : [];
+
+  const faqData = faqItems.length > 0
+    ? faqItems.map((item) => ({ q: item.question, a: item.answer }))
+    : t.resources.faq.items;
 
   return (
     <main>
@@ -92,7 +102,7 @@ export default async function ResourcesPage() {
           { name: "Home", path: "/" },
           { name: "Resources", path: "/resources" },
         ]),
-        faqSchema(r.faq.items.map((f) => ({ question: f.q, answer: f.a }))),
+        faqSchema(faqData.map((f) => ({ question: f.q, answer: f.a }))),
       ]} />
       <AppNavbar />
 
@@ -333,7 +343,7 @@ export default async function ResourcesPage() {
             <h2 id="faq-heading" className="text-2xl font-extrabold text-slate-900">{r.faq.heading}</h2>
           </div>
           <div className="space-y-3">
-            {r.faq.items.map((faq) => (
+            {faqData.map((faq) => (
               <details key={faq.q} className="bg-white rounded-2xl border border-slate-100 overflow-hidden group">
                 <summary className="flex items-center justify-between px-6 py-5 cursor-pointer font-semibold text-slate-900 hover:text-teal-700 transition-colors list-none gap-4">
                   <span>{faq.q}</span>

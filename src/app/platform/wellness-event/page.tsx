@@ -13,6 +13,10 @@ import { getTranslations } from "@/translations";
 import { localePath } from "@/lib/locale";
 import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
 import { JsonLd, webPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
+import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
+import { platformPageByIdQuery, type SanityPlatformPage } from "@/lib/sanity.queries";
+
+export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/platform/wellness-event");
 
@@ -49,7 +53,13 @@ export default async function WellnessEventPage() {
   const t = getTranslations(locale);
   const p = t.wellnessEvent;
 
-  const benefits = p.benefits.items.map((item, i) => ({
+  const sanityLocale = toSanityLocale(locale);
+  const sp: SanityPlatformPage | null = isSanityConfigured
+    ? await sanityClient.fetch(platformPageByIdQuery, { pageId: "wellness-event", locale: sanityLocale })
+    : null;
+
+  const benefitItems = sp?.benefits?.items ?? p.benefits.items;
+  const benefits = benefitItems.map((item, i) => ({
     icon: benefitIcons[i],
     title: item.title,
     desc: item.desc,
@@ -65,11 +75,11 @@ export default async function WellnessEventPage() {
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <PageHero
-        badge={p.hero.badge}
-        headline={p.hero.headline}
-        headlineHighlight={p.hero.headlineHighlight}
-        subheadline={p.hero.sub}
-        ctaLabel={p.hero.cta}
+        badge={sp?.hero?.badge ?? p.hero.badge}
+        headline={sp?.hero?.headline ?? p.hero.headline}
+        headlineHighlight={sp?.hero?.headlineHighlight ?? p.hero.headlineHighlight}
+        subheadline={sp?.hero?.sub ?? p.hero.sub}
+        ctaLabel={sp?.hero?.ctaLabel ?? p.hero.cta}
         ctaHref={localePath(locale, "/get-a-demo")}
         iconColor={P}
         bgGradient="linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fff7ed 100%)"
@@ -105,9 +115,9 @@ export default async function WellnessEventPage() {
 
       {/* ── CTA ────────────────────────────────────────────────────────── */}
       <BottomCTA
-        headline={p.cta.headline}
-        sub={p.cta.sub}
-        ctaLabel={p.cta.label}
+        headline={sp?.cta?.heading ?? p.cta.headline}
+        sub={sp?.cta?.sub ?? p.cta.sub}
+        ctaLabel={sp?.cta?.ctaLabel ?? p.cta.label}
         ctaHref={localePath(locale, "/get-a-demo")}
       />
 

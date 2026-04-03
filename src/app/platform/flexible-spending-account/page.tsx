@@ -14,6 +14,10 @@ import { getTranslations } from "@/translations";
 import { localePath } from "@/lib/locale";
 import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
 import { JsonLd, webPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
+import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
+import { platformPageByIdQuery, type SanityPlatformPage } from "@/lib/sanity.queries";
+
+export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/platform/flexible-spending-account");
 
@@ -59,6 +63,11 @@ export default async function FSAPage() {
   const t = getTranslations(locale);
   const p = t.flexibleSpendingAccount;
 
+  const sanityLocale = toSanityLocale(locale);
+  const sp: SanityPlatformPage | null = isSanityConfigured
+    ? await sanityClient.fetch(platformPageByIdQuery, { pageId: "flexible-spending-account", locale: sanityLocale })
+    : null;
+
   return (
     <main>
       <JsonLd data={[
@@ -69,11 +78,11 @@ export default async function FSAPage() {
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <PageHero
-        badge={p.hero.badge}
-        headline={p.hero.headline}
-        headlineHighlight={p.hero.headlineHighlight}
-        subheadline={p.hero.sub}
-        ctaLabel={p.hero.cta}
+        badge={sp?.hero?.badge ?? p.hero.badge}
+        headline={sp?.hero?.headline ?? p.hero.headline}
+        headlineHighlight={sp?.hero?.headlineHighlight ?? p.hero.headlineHighlight}
+        subheadline={sp?.hero?.sub ?? p.hero.sub}
+        ctaLabel={sp?.hero?.ctaLabel ?? p.hero.cta}
         ctaHref={localePath(locale, "/get-a-demo")}
         iconColor={P}
         bgGradient="linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fff7ed 100%)"
@@ -129,7 +138,7 @@ export default async function FSAPage() {
             </h2>
           </div>
           <div className="grid sm:grid-cols-3 gap-6">
-            {p.benefits.items.map((item, i) => {
+            {(sp?.benefits?.items ?? p.benefits.items).map((item, i) => {
               const icons = [Wallet, Heart, Settings];
               const colors = [P, T, "#f97316"];
               const Icon = icons[i];
@@ -362,9 +371,9 @@ export default async function FSAPage() {
 
       {/* ── CTA ────────────────────────────────────────────────────────── */}
       <BottomCTA
-        headline={p.cta.headline}
-        sub={p.cta.sub}
-        ctaLabel={p.cta.label}
+        headline={sp?.cta?.heading ?? p.cta.headline}
+        sub={sp?.cta?.sub ?? p.cta.sub}
+        ctaLabel={sp?.cta?.ctaLabel ?? p.cta.label}
         ctaHref={localePath(locale, "/get-a-demo")}
         secondaryLabel={p.cta.secondaryLabel}
         secondaryHref={localePath(locale, "/start-now")}

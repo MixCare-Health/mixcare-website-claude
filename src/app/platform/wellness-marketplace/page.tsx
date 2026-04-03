@@ -15,6 +15,10 @@ import { getTranslations } from "@/translations";
 import { localePath } from "@/lib/locale";
 import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
 import { JsonLd, webPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
+import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
+import { platformPageByIdQuery, type SanityPlatformPage } from "@/lib/sanity.queries";
+
+export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/platform/wellness-marketplace");
 
@@ -57,6 +61,11 @@ export default async function WellnessMarketplacePage() {
   const t = getTranslations(locale);
   const p = t.wellnessMarketplace;
 
+  const sanityLocale = toSanityLocale(locale);
+  const sp: SanityPlatformPage | null = isSanityConfigured
+    ? await sanityClient.fetch(platformPageByIdQuery, { pageId: "wellness-marketplace", locale: sanityLocale })
+    : null;
+
   return (
     <main>
       <JsonLd data={[
@@ -67,11 +76,11 @@ export default async function WellnessMarketplacePage() {
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <PageHero
-        badge={p.hero.badge}
-        headline={p.hero.headline}
-        headlineHighlight={p.hero.headlineHighlight}
-        subheadline={p.hero.sub}
-        ctaLabel={p.hero.cta}
+        badge={sp?.hero?.badge ?? p.hero.badge}
+        headline={sp?.hero?.headline ?? p.hero.headline}
+        headlineHighlight={sp?.hero?.headlineHighlight ?? p.hero.headlineHighlight}
+        subheadline={sp?.hero?.sub ?? p.hero.sub}
+        ctaLabel={sp?.hero?.ctaLabel ?? p.hero.cta}
         ctaHref={localePath(locale, "/get-a-demo")}
         iconColor={P}
         bgGradient="linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fff7ed 100%)"
@@ -89,7 +98,7 @@ export default async function WellnessMarketplacePage() {
             </h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {p.benefits.items.map((item, i) => {
+            {(sp?.benefits?.items ?? p.benefits.items).map((item, i) => {
               const Icon  = benefitIcons[i];
               const color = benefitColors[i];
               return (
@@ -302,9 +311,9 @@ export default async function WellnessMarketplacePage() {
 
       {/* ── CTA ────────────────────────────────────────────────────────── */}
       <BottomCTA
-        headline={p.cta.headline}
-        sub={p.cta.sub}
-        ctaLabel={p.cta.label}
+        headline={sp?.cta?.heading ?? p.cta.headline}
+        sub={sp?.cta?.sub ?? p.cta.sub}
+        ctaLabel={sp?.cta?.ctaLabel ?? p.cta.label}
         ctaHref={localePath(locale, "/get-a-demo")}
         secondaryLabel={p.cta.secondaryLabel}
         secondaryHref={localePath(locale, "/partners")}
