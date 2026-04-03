@@ -68,7 +68,7 @@ export default async function EnterprisesPage() {
   const ctaLabel = page?.ctaLabel ?? p.cta;
   const challenges = page?.challenges ?? p.challenges.map((c) => ({ icon: "", title: c.title, desc: c.desc }));
   const solutions = page
-    ? page.solutions.map((s) => ({ challenge: s.desc, solution: s.title }))
+    ? (page.solutions ?? []).map((s) => ({ challenge: s.desc, solution: s.title }))
     : p.solutions;
   const featuredSolutions = page?.featuredSolutions ?? p.featuredSolutions.map((s, i) => ({ label: s.label, desc: s.desc, href: featuredHrefs[i] }));
   const metrics = page?.metrics ?? p.metrics.map((m) => ({ value: m.value, label: m.label }));

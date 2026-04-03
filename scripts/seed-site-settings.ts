@@ -25,25 +25,17 @@ const siteSettings = {
   _id: "siteSettings",
   _type: "siteSettings",
 
-  // ── Site-level metadata ───────────────────────────────────────────────────
-  siteName: "MixCare Health",
-  tagline: ls(
-    "AI-Powered Digital Health & Wellness Platform serving insurers, enterprises, and small businesses across Hong Kong, Macau, and Singapore.",
-    "人工智能驅動的健康及醫療平台，服務香港、澳門及新加坡的保險公司、企業及小型企業。",
-    "人工智能驱动的健康及医疗平台，服务香港、澳门及新加坡的保险公司、企业及小型企业。"
-  ),
-
   // ── Navigation ────────────────────────────────────────────────────────────
   nav: {
-    labels: {
-      platform: ls("Platform", "解決方案", "解决方案"),
-      whoWeServe: ls("Who We Serve", "服務對象", "服务对象"),
-      resources: ls("Resources", "資源庫", "资源库"),
-      about: ls("About", "關於我們", "关于我们"),
-      trust: ls("Trust", "信任保障", "信任保障"),
-      startNow: ls("Start Now", "立即開始", "立即开始"),
-      getDemo: ls("Get a Demo", "預約示範", "预约演示"),
-    },
+    platform:         ls("Platform",     "解決方案", "解决方案"),
+    whoWeServe:       ls("Who We Serve", "服務對象", "服务对象"),
+    resources:        ls("Resources",    "資源庫",   "资源库"),
+    about:            ls("About",        "關於我們", "关于我们"),
+    trust:            ls("Trust",        "信任保障", "信任保障"),
+    startNow:         ls("Start Now",    "立即開始", "立即开始"),
+    getDemo:          ls("Get a Demo",   "預約示範", "预约演示"),
+    platformSolutions:ls("Platform Solutions", "平台解決方案", "平台解决方案"),
+    byAudience:       ls("By Audience",  "按服務對象", "按服务对象"),
     platformLinks: [
       {
         _key: "nav-platform-1",
@@ -163,6 +155,11 @@ const siteSettings = {
 
   // ── Footer ────────────────────────────────────────────────────────────────
   footer: {
+    tagline: ls(
+      "AI-powered digital health & wellness platform for insurers, enterprises, and SMBs across Hong Kong, Macau, and Singapore.",
+      "為香港、澳門及新加坡的保險公司、企業及中小企業提供人工智能數碼健康及健康管理平台。",
+      "为香港、澳门及新加坡的保险公司、企业及中小企业提供人工智能数字健康及健康管理平台。"
+    ),
     platformLinks: [
       { _key: "footer-platform-1", label: ls("Self-Funded Outpatient", "自付門診計劃", "自付门诊计划"), href: "/platform/self-funded-outpatient" },
       { _key: "footer-platform-2", label: ls("Flexible Spending Account", "彈性醫療帳戶", "弹性医疗账户"), href: "/platform/flexible-spending-account" },

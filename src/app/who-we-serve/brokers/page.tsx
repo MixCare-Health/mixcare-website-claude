@@ -68,7 +68,7 @@ export default async function BrokersPage() {
   const ctaLabel = page?.ctaLabel ?? p.cta;
   const challenges = page?.challenges ?? p.challenges.map((c) => ({ icon: "", title: c.title, desc: c.desc }));
   const solutions = page
-    ? page.solutions.map((s) => ({ challenge: s.desc, solution: s.title }))
+    ? (page.solutions ?? []).map((s) => ({ challenge: s.desc, solution: s.title }))
     : p.solutions;
   const featuredSolutions: Array<{ label: string; desc: string; href: string; tag?: string }> =
     page?.featuredSolutions ?? p.featuredSolutions.map((s, i) => ({ label: s.label, desc: s.desc, href: featuredHrefs[i], tag: s.tag }));
