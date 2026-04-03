@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import StartNowForm from "@/components/forms/StartNowForm";
 import { CheckCircle2, Zap, Users, BarChart3, Star } from "lucide-react";
 import Link from "next/link";
-import { Button } from "@heroui/react";
+
 import { getLocale } from "@/lib/locale.server";
 import { getTranslations } from "@/translations";
 import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
@@ -209,17 +209,16 @@ export default async function StartNowPage() {
                       {plan.cta}
                     </Link>
                   ) : (
-                    <Button
-                      fullWidth
-                      className="font-bold"
+                    <button
+                      className="w-full py-3 rounded-xl font-bold text-sm text-white"
                       style={
                         plan.popular
-                          ? { backgroundColor: "#f97316", color: "#fff" }
-                          : { backgroundColor: color, color: "#fff" }
+                          ? { backgroundColor: "#f97316" }
+                          : { backgroundColor: color }
                       }
                     >
                       {plan.cta}
-                    </Button>
+                    </button>
                   )}
                 </div>
               );
