@@ -16,61 +16,63 @@ interface Props {
 
 export default function HowWeSolveSection({ badge, headline, sub, items }: Props) {
   return (
-    <section className="py-20 bg-white">
+    <section
+      className="py-20 overflow-hidden"
+      style={{ background: "linear-gradient(135deg, #0c1322 0%, #0a2a3d 50%, #0c1322 100%)" }}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-14">
-          <p
-            className="text-xs font-bold uppercase tracking-widest mb-3"
-            style={{ color: P }}
-          >
+        <div className="text-center mb-16">
+          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: P }}>
             {badge}
           </p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">
-            {headline}
-          </h2>
-          <p className="text-lg text-slate-500 max-w-2xl mx-auto">{sub}</p>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">{headline}</h2>
+          <p className="text-lg text-slate-400 max-w-2xl mx-auto">{sub}</p>
         </div>
 
-        {/* Steps */}
-        <div className="relative">
-          {/* Connecting line — desktop only */}
-          <div
-            className="hidden lg:block absolute top-10 left-0 right-0 h-px"
-            style={{ backgroundColor: P + "25", marginLeft: "16.66%", marginRight: "16.66%" }}
-          />
+        {/* Steps — horizontal on desktop, stacked on mobile */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
+          {items.map((item, idx) => (
+            <div
+              key={item.step}
+              className="relative rounded-2xl p-7 border border-white/10 hover:border-white/25 transition-all duration-300"
+              style={{ backgroundColor: "rgba(255,255,255,0.04)" }}
+            >
+              {/* Large faded step number in background */}
+              <span
+                className="absolute top-4 right-5 text-7xl font-black select-none pointer-events-none"
+                style={{ color: P + "18", lineHeight: 1 }}
+              >
+                {item.step}
+              </span>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-10">
-            {items.map((item) => (
-              <div key={item.step} className="relative flex flex-col items-center text-center">
-                {/* Step number circle */}
-                <div
-                  className="relative z-10 w-20 h-20 rounded-full flex items-center justify-center mb-6 shadow-lg"
-                  style={{ backgroundColor: P }}
-                >
-                  <span className="text-white text-xl font-extrabold tabular-nums">
-                    {item.step}
-                  </span>
-                </div>
-
-                {/* Card */}
-                <div
-                  className="w-full rounded-2xl p-6 border flex flex-col items-center text-center"
-                  style={{ borderColor: P + "20", backgroundColor: P + "06" }}
-                >
-                  <h3 className="text-lg font-extrabold text-slate-900 mb-3">{item.title}</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed mb-5">{item.desc}</p>
-                  {/* Highlight pill */}
-                  <span
-                    className="inline-block text-xs font-bold px-3 py-1.5 rounded-full"
-                    style={{ backgroundColor: P + "15", color: P }}
-                  >
-                    {item.highlight}
-                  </span>
-                </div>
+              {/* Step badge */}
+              <div
+                className="inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-full mb-5"
+                style={{ backgroundColor: P + "20", color: P }}
+              >
+                Step {item.step}
               </div>
-            ))}
-          </div>
+
+              {/* Divider line */}
+              <div className="w-8 h-0.5 mb-4 rounded-full" style={{ backgroundColor: P }} />
+
+              <h3 className="text-white font-extrabold text-lg leading-snug mb-3">{item.title}</h3>
+              <p className="text-slate-400 text-sm leading-relaxed mb-5">{item.desc}</p>
+
+              {/* Highlight pill */}
+              <div
+                className="inline-flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-full"
+                style={{ backgroundColor: P + "18", color: P }}
+              >
+                <span
+                  className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: P }}
+                />
+                {item.highlight}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -660,6 +660,37 @@ export const en = {
         },
       ],
     },
+    howToAdopt: {
+      badge: "Getting Started",
+      headline: "How to Adopt Self-Funded Outpatient?",
+      sub: "From first conversation to fully live — MixCare gets your outpatient scheme up and running in as little as 5 days.",
+      items: [
+        {
+          step: "01",
+          title: "Discovery & Needs Assessment",
+          desc: "Our team reviews your current outpatient spend, headcount, workforce distribution, and benefit philosophy to design a self-funded scheme that fits your organisation.",
+          duration: "1–2 days",
+        },
+        {
+          step: "02",
+          title: "Plan Configuration",
+          desc: "We configure your benefit tiers, coverage limits, stop-loss thresholds, co-pay rules, and eligible categories — tailored to each employee group with full flexibility.",
+          duration: "1–2 days",
+        },
+        {
+          step: "03",
+          title: "Employee Onboarding",
+          desc: "Employees receive digital benefit cards and app access automatically. No paperwork, no manual enrolment — your team is panel-doctor-ready from day one.",
+          duration: "Same day",
+        },
+        {
+          step: "04",
+          title: "Go Live & Ongoing Optimisation",
+          desc: "Your scheme launches with real-time monitoring. MixCare's AI flags anomalies instantly, and our team reviews quarterly reports with you to continuously optimise spend and coverage.",
+          duration: "Continuous",
+        },
+      ],
+    },
   },
 
   flexibleSpendingAccount: {

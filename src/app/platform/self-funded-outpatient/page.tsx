@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import PageHero from "@/components/shared/PageHero";
 import BottomCTA from "@/components/shared/BottomCTA";
 import HowWeSolveSection from "@/components/platform/HowWeSolveSection";
+import HowToAdoptSection from "@/components/platform/HowToAdoptSection";
 import {
   Stethoscope, ShieldCheck, Building2, Globe,
   Users, TrendingUp, TrendingDown, MapPin, Layers, Rocket,
@@ -179,6 +180,13 @@ export default async function SelfFundedOutpatientPage() {
           </div>
         </div>
       </section>
+
+      <HowToAdoptSection
+        badge={p.howToAdopt.badge}
+        headline={p.howToAdopt.headline}
+        sub={p.howToAdopt.sub}
+        items={p.howToAdopt.items}
+      />
 
       {/* ── USE CASES: Colored side-panel rows ───────────────────────── */}
       <section className="py-24 bg-white">
