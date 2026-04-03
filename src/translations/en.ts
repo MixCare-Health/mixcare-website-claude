@@ -667,26 +667,26 @@ export const en = {
       items: [
         {
           step: "01",
-          title: "Discovery & Needs Assessment",
+          title: "Current Benefit Plan Assessment",
           desc: "You can talk to your <b>insurance broker</b>, <b>employee benefit consultant</b>, or <b>MixCare</b> to review your current outpatient spend, headcount, workforce distribution, and benefit philosophy to design a self-funded scheme that fits your organisation.",
           duration: "1–2 days",
         },
         {
           step: "02",
-          title: "Plan Configuration",
-          desc: "We configure your benefit tiers, coverage limits, stop-loss thresholds, co-pay rules, and eligible categories — tailored to each employee group with full flexibility.",
+          title: "Benefit Plan Setup",
+          desc: "We configure your benefit plan, coverage limits, stop-loss thresholds, co-pay rules, and eligible categories — tailored to each employee group with full flexibility.",
           duration: "1–2 days",
         },
         {
           step: "03",
-          title: "Employee Onboarding",
-          desc: "Employees receive digital benefit cards and app access automatically. No paperwork, no manual enrolment — your team is panel-doctor-ready from day one.",
-          duration: "Same day",
+          title: "Employee Enrolment",
+          desc: "The employer provides an employee list. Once uploaded to the system or connected via HR system API, employees automatically receive a digital medical card and a link to register and download the mobile app. Employees can start using their benefits after setting their password.",
+          duration: "1–2 days",
         },
         {
           step: "04",
           title: "Go Live & Ongoing Optimisation",
-          desc: "Your scheme launches with real-time monitoring. MixCare's AI flags anomalies instantly, and our team reviews quarterly reports with you to continuously optimise spend and coverage.",
+          desc: "Your scheme can be monitored in real time from launch. MixCare's AI flags anomalies instantly, and our team reviews quarterly reports with you to continuously optimise spend and coverage.",
           duration: "Continuous",
         },
       ],
