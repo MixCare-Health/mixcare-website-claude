@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { localePath } from "@/lib/locale";
+import type { SanityHomeAudience } from "@/lib/sanity.queries";
 
 const P = "#10AF97";
 const S = "#0A3D59";
@@ -25,9 +26,21 @@ const audienceMeta = [
   { id: "provider", icon: Stethoscope, color: "#0891b2", bg: "#0891b210", href: "/who-we-serve/providers" },
 ];
 
-export default function AudienceSection() {
+interface AudienceSectionProps {
+  data?: SanityHomeAudience;
+}
+
+export default function AudienceSection({ data }: AudienceSectionProps = {}) {
   const { t, locale } = useLanguage();
-  const aud = t.home.audience;
+  const p = t.home.audience;
+  const aud = {
+    badge:     data?.badge     ?? p.badge,
+    headline:  data?.headline  ?? p.headline,
+    sub:       data?.sub       ?? p.sub,
+    howWeHelp: data?.howWeHelp ?? p.howWeHelp,
+    learnMore: data?.learnMore ?? p.learnMore,
+    audiences: data?.audiences ?? p.audiences,
+  };
   const [activeIdx, setActiveIdx] = useState(0);
 
   const current = audienceMeta[activeIdx];

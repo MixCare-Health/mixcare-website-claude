@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Stethoscope, Wallet, ShoppingBag, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { localePath } from "@/lib/locale";
+import type { SanityHomeCorePlatform } from "@/lib/sanity.queries";
 
 const P = "#10AF97";
 const S = "#0A3D59";
@@ -14,9 +15,22 @@ const pillarMeta = [
   { icon: ShoppingBag, color: "#f97316", bg: "#fff7ed", href: "/platform/wellness-marketplace" },
 ];
 
-export default function CorePlatformSection() {
+interface CorePlatformSectionProps {
+  data?: SanityHomeCorePlatform;
+}
+
+export default function CorePlatformSection({ data }: CorePlatformSectionProps = {}) {
   const { t, locale } = useLanguage();
-  const cp = t.home.corePlatform;
+  const p = t.home.corePlatform;
+  const cp = {
+    badge:             data?.badge             ?? p.badge,
+    headline:          data?.headline          ?? p.headline,
+    headlineHighlight: data?.headlineHighlight ?? p.headlineHighlight,
+    sub:               data?.sub               ?? p.sub,
+    learnMore:         data?.learnMore         ?? p.learnMore,
+    pillars:           data?.pillars           ?? p.pillars,
+    counters:          data?.counters          ?? p.counters,
+  };
 
   return (
     <section className="py-20 bg-white">

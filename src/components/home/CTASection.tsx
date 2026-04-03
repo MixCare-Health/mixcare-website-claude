@@ -4,13 +4,25 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { localePath } from "@/lib/locale";
+import type { SanityHomeCta } from "@/lib/sanity.queries";
 
 const P = "#10AF97";
 const S = "#0A3D59";
 
-export default function CTASection() {
+interface CTASectionProps {
+  data?: SanityHomeCta;
+}
+
+export default function CTASection({ data }: CTASectionProps = {}) {
   const { t, locale } = useLanguage();
-  const cta = t.home.cta;
+  const p = t.home.cta;
+  const cta = {
+    badge:         data?.badge         ?? p.badge,
+    headline:      data?.headline      ?? p.headline,
+    sub:           data?.sub           ?? p.sub,
+    ctaPrimary:    data?.ctaPrimary    ?? p.ctaPrimary,
+    ctaSecondary:  data?.ctaSecondary  ?? p.ctaSecondary,
+  };
 
   return (
     <section className="py-20">

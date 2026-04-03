@@ -3,6 +3,7 @@
 import { Settings2, Smartphone, Cpu, BarChart3 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { localePath } from "@/lib/locale";
+import type { SanityHomeHowItWorks } from "@/lib/sanity.queries";
 
 const P = "#10AF97";
 
@@ -13,9 +14,22 @@ const stepMeta = [
   { icon: BarChart3, color: "#7c3aed" },
 ];
 
-export default function HowItWorksSection() {
+interface HowItWorksSectionProps {
+  data?: SanityHomeHowItWorks;
+}
+
+export default function HowItWorksSection({ data }: HowItWorksSectionProps = {}) {
   const { t, locale } = useLanguage();
-  const hiw = t.home.howItWorks;
+  const p = t.home.howItWorks;
+  const hiw = {
+    badge:     data?.badge     ?? p.badge,
+    headline:  data?.headline  ?? p.headline,
+    sub:       data?.sub       ?? p.sub,
+    stepLabel: data?.stepLabel ?? p.stepLabel,
+    cta:       data?.cta       ?? p.cta,
+    footnote:  data?.footnote  ?? p.footnote,
+    steps:     data?.steps     ?? p.steps,
+  };
 
   return (
     <section className="py-20" style={{ backgroundColor: "#f8fafc" }}>

@@ -22,8 +22,14 @@ import {
   Globe,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useSiteSettings } from "@/contexts/SiteSettingsContext";
 import { LOCALES, LOCALE_LABELS, LOCALE_URL, localePath, parseLocalePath } from "@/lib/locale";
 import type { Locale } from "@/lib/locale";
+import type { SanitySiteSettings } from "@/lib/sanity.queries";
+
+interface NavbarProps {
+  navData?: SanitySiteSettings["nav"] | null;
+}
 
 const P = "#10AF97";
 const S = "#0A3D59";
@@ -48,8 +54,24 @@ const audienceHrefs = [
 ];
 const audienceIcons = [Shield, Briefcase, Building2, Store, Users];
 
-export default function AppNavbar() {
+export default function AppNavbar({ navData: navDataProp }: NavbarProps = {}) {
   const { t, locale } = useLanguage();
+  const siteSettings = useSiteSettings();
+  // Prop takes precedence, then context, then fall back to translation strings.
+  const navData = navDataProp ?? siteSettings?.nav ?? null;
+
+  // Resolved nav labels — use Sanity data when available, else translation fallback.
+  const n = t.nav;
+  const navPlatform         = navData?.platform         ?? n.platform;
+  const navWhoWeServe       = navData?.whoWeServe       ?? n.whoWeServe;
+  const navResources        = navData?.resources        ?? n.resources;
+  const navAbout            = navData?.about            ?? n.about;
+  const navGetDemo          = navData?.getDemo          ?? n.getDemo;
+  const navPlatformSolutions= navData?.platformSolutions?? n.platformSolutions;
+  const navByAudience       = navData?.byAudience       ?? n.byAudience;
+  const navPlatformLinks    = navData?.platformLinks    ?? n.platformLinks;
+  const navAudienceLinks    = navData?.audienceLinks    ?? n.audienceLinks;
+
   const [mobileOpen, setMobileOpen] = useState(false);
   const [platformOpen, setPlatformOpen] = useState(false);
   const [audienceOpen, setAudienceOpen] = useState(false);
@@ -114,16 +136,16 @@ const platformRef = useRef<HTMLDivElement>(null);
                   }`}
                   style={platformOpen ? { color: P } : {}}
                 >
-                  {t.nav.platform}
+                  {navPlatform}
                   <ChevronDown size={14} className={`transition-transform duration-200 ${platformOpen ? "rotate-180" : ""}`} />
                 </button>
                 {platformOpen && (
                   <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[520px] bg-white rounded-2xl shadow-xl border border-slate-100 p-4">
                     <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider px-3 pb-2">
-                      {t.nav.platformSolutions}
+                      {navPlatformSolutions}
                     </p>
                     <div className="space-y-0.5">
-                      {t.nav.platformLinks.map((item, i) => {
+                      {navPlatformLinks.map((item, i) => {
                         const Icon = platformIcons[i];
                         const soon = platformComingSoon[i];
                         const inner = (
@@ -141,7 +163,7 @@ const platformRef = useRef<HTMLDivElement>(null);
                                 </p>
                                 {soon && (
                                   <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-700">
-                                    {t.nav.soon}
+                                    {n.soon}
                                   </span>
                                 )}
                               </div>
@@ -156,7 +178,7 @@ const platformRef = useRef<HTMLDivElement>(null);
                           >
                             {inner}
                             <div className="absolute left-1/2 -translate-x-1/2 -top-8 px-2.5 py-1 bg-slate-800 text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover/cs:opacity-100 transition-opacity pointer-events-none z-10">
-                              {t.nav.comingSoonLabel}
+                              {n.comingSoonLabel}
                             </div>
                           </div>
                         ) : (
@@ -183,16 +205,16 @@ const platformRef = useRef<HTMLDivElement>(null);
                   }`}
                   style={audienceOpen ? { color: P } : {}}
                 >
-                  {t.nav.whoWeServe}
+                  {navWhoWeServe}
                   <ChevronDown size={14} className={`transition-transform duration-200 ${audienceOpen ? "rotate-180" : ""}`} />
                 </button>
                 {audienceOpen && (
                   <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[460px] bg-white rounded-2xl shadow-xl border border-slate-100 p-4">
                     <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider px-3 pb-2">
-                      {t.nav.byAudience}
+                      {navByAudience}
                     </p>
                     <div className="space-y-0.5">
-                      {t.nav.audienceLinks.map((item, i) => {
+                      {navAudienceLinks.map((item, i) => {
                         const Icon = audienceIcons[i];
                         return (
                           <Link
@@ -221,8 +243,8 @@ const platformRef = useRef<HTMLDivElement>(null);
               </div>
 
               {[
-                { label: t.nav.resources, href: "/resources" },
-                { label: t.nav.about, href: "/about" },
+                { label: navResources, href: "/resources" },
+                { label: navAbout, href: "/about" },
               ].map((item) => (
                 <Link
                   key={item.href}
@@ -271,7 +293,7 @@ const platformRef = useRef<HTMLDivElement>(null);
                 className="text-white font-semibold px-5"
                 style={{ backgroundColor: "#f97316" }}
               >
-                {t.nav.getDemo}
+                {navGetDemo}
               </Button>
             </div>
 
@@ -322,12 +344,12 @@ const platformRef = useRef<HTMLDivElement>(null);
                 onClick={() => setMobilePlatformOpen(!mobilePlatformOpen)}
                 className="w-full flex items-center justify-between px-3 py-3 rounded-xl text-sm font-semibold text-slate-800 hover:bg-slate-50"
               >
-                {t.nav.platform}
+                {navPlatform}
                 <ChevronDown size={16} className={`transition-transform ${mobilePlatformOpen ? "rotate-180" : ""}`} />
               </button>
               {mobilePlatformOpen && (
                 <div className="pl-4 space-y-1 pb-2">
-                  {t.nav.platformLinks.map((item, i) => {
+                  {navPlatformLinks.map((item, i) => {
                     const Icon = platformIcons[i];
                     const soon = platformComingSoon[i];
                     return soon ? (
@@ -338,7 +360,7 @@ const platformRef = useRef<HTMLDivElement>(null);
                         <Icon size={16} className="text-slate-300" />
                         {item.label}
                         <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-700 ml-1">
-                          {t.nav.soon}
+                          {n.soon}
                         </span>
                       </div>
                     ) : (
@@ -359,12 +381,12 @@ const platformRef = useRef<HTMLDivElement>(null);
                 onClick={() => setMobileAudienceOpen(!mobileAudienceOpen)}
                 className="w-full flex items-center justify-between px-3 py-3 rounded-xl text-sm font-semibold text-slate-800 hover:bg-slate-50"
               >
-                {t.nav.whoWeServe}
+                {navWhoWeServe}
                 <ChevronDown size={16} className={`transition-transform ${mobileAudienceOpen ? "rotate-180" : ""}`} />
               </button>
               {mobileAudienceOpen && (
                 <div className="pl-4 space-y-1 pb-2">
-                  {t.nav.audienceLinks.map((item, i) => {
+                  {navAudienceLinks.map((item, i) => {
                     const Icon = audienceIcons[i];
                     return (
                       <Link
@@ -381,8 +403,8 @@ const platformRef = useRef<HTMLDivElement>(null);
               )}
 
               {[
-                { label: t.nav.resources, href: "/resources" },
-                { label: t.nav.about, href: "/about" },
+                { label: navResources, href: "/resources" },
+                { label: navAbout, href: "/about" },
               ].map((item) => (
                 <Link
                   key={item.href}
@@ -401,7 +423,7 @@ const platformRef = useRef<HTMLDivElement>(null);
                   className="text-white font-semibold"
                   style={{ backgroundColor: "#f97316" }}
                 >
-                  {t.nav.getDemo}
+                  {navGetDemo}
                 </Button>
               </div>
             </div>

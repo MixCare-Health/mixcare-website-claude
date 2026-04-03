@@ -9,6 +9,12 @@ import ComplianceSection from "@/components/home/ComplianceSection";
 import CTASection from "@/components/home/CTASection";
 import { JsonLd, organizationSchema, webSiteSchema, webPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
 import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
+import { getLocale } from "@/lib/locale.server";
+import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
+import { homePageQuery } from "@/lib/sanity.queries";
+import type { SanityHomePage } from "@/lib/sanity.queries";
+
+export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/");
 
@@ -40,7 +46,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home() {
+  const locale = await getLocale();
+  const sanityLocale = toSanityLocale(locale);
+  const sp: SanityHomePage | null = isSanityConfigured
+    ? await sanityClient.fetch(homePageQuery, { locale: sanityLocale })
+    : null;
+
   return (
     <main className="min-h-screen">
       <JsonLd data={[organizationSchema, webSiteSchema, webPageSchema(
@@ -49,12 +61,12 @@ export default function Home() {
         "/"
       ), breadcrumbSchema([{ name: "Home", path: "/" }])]} />
       <AppNavbar />
-      <HeroSection />
-      <LogoBar />
-      <PlatformFeaturesSection />
-      <AudienceSection />
-      <ComplianceSection />
-      <CTASection />
+      <HeroSection data={sp?.hero} />
+      <LogoBar data={sp?.logoBar} />
+      <PlatformFeaturesSection data={sp?.platformFeatures} />
+      <AudienceSection data={sp?.audience} />
+      <ComplianceSection data={sp?.compliance} />
+      <CTASection data={sp?.cta} />
       <Footer />
     </main>
   );

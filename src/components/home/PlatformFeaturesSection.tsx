@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { localePath } from "@/lib/locale";
+import type { SanityHomePlatformFeatures } from "@/lib/sanity.queries";
 
 const P = "#10AF97";
 const S = "#0A3D59";
@@ -174,9 +175,24 @@ function DashboardMockup({ item }: { item: MockupItem }) {
   );
 }
 
-export default function PlatformFeaturesSection() {
+interface PlatformFeaturesSectionProps {
+  data?: SanityHomePlatformFeatures;
+}
+
+export default function PlatformFeaturesSection({ data }: PlatformFeaturesSectionProps = {}) {
   const { t, locale } = useLanguage();
-  const pf = t.home.platformFeatures;
+  const p = t.home.platformFeatures;
+  const pf = {
+    badge:      data?.badge      ?? p.badge,
+    headline:   data?.headline   ?? p.headline,
+    sub:        data?.sub        ?? p.sub,
+    soon:       data?.soon       ?? p.soon,
+    comingSoon: data?.comingSoon ?? p.comingSoon,
+    available:  data?.available  ?? p.available,
+    learnMore:  data?.learnMore  ?? p.learnMore,
+    explore:    data?.explore    ?? p.explore,
+    features:   data?.features   ?? p.features,
+  };
   const [open, setOpen] = useState<number | null>(0);
 
   const activeIdx = open ?? 0;

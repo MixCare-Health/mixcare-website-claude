@@ -2,6 +2,7 @@
 
 import { Star } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import type { SanityHomeTestimonials } from "@/lib/sanity.queries";
 
 const P = "#10AF97";
 
@@ -62,9 +63,27 @@ const testimonials = [
   },
 ];
 
-export default function TestimonialsSection() {
+interface TestimonialsSectionProps {
+  data?: SanityHomeTestimonials;
+}
+
+export default function TestimonialsSection({ data }: TestimonialsSectionProps = {}) {
   const { t } = useLanguage();
-  const ts = t.home.testimonials;
+  const p = t.home.testimonials;
+  const ts = {
+    badge:    data?.badge    ?? p.badge,
+    headline: data?.headline ?? p.headline,
+    sub:      data?.sub      ?? p.sub,
+    stats:    data?.stats    ?? p.stats,
+    // Build audienceLabels: map from capitalized translation keys to resolved strings
+    audienceLabels: {
+      Insurer:       data?.audienceLabels?.insurer       ?? p.audienceLabels.Insurer,
+      Enterprise:    data?.audienceLabels?.enterprise    ?? p.audienceLabels.Enterprise,
+      Broker:        data?.audienceLabels?.broker        ?? p.audienceLabels.Broker,
+      "Small Business": data?.audienceLabels?.smallBusiness ?? p.audienceLabels["Small Business"],
+      Provider:      data?.audienceLabels?.provider      ?? p.audienceLabels.Provider,
+    } as Record<string, string>,
+  };
 
   return (
     <section className="py-20 bg-white">

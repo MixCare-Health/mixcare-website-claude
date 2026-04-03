@@ -5,13 +5,41 @@ import { Button } from "@heroui/react";
 import { ArrowRight, TrendingUp, ShieldCheck, Users } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { localePath } from "@/lib/locale";
+import type { SanityHomeHero } from "@/lib/sanity.queries";
 
 const P = "#10AF97";
 const S = "#0A3D59";
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  data?: SanityHomeHero;
+}
+
+export default function HeroSection({ data }: HeroSectionProps = {}) {
   const { t, locale } = useLanguage();
-  const h = t.home.hero;
+  const p = t.home.hero;
+  const h = {
+    badge:            data?.badge            ?? p.badge,
+    headline1:        data?.headline1        ?? p.headline1,
+    headline2:        data?.headline2        ?? p.headline2,
+    headline3:        data?.headline3        ?? p.headline3,
+    sub:              data?.sub              ?? p.sub,
+    ctaPrimary:       data?.ctaPrimary       ?? p.ctaPrimary,
+    ctaSecondary:     data?.ctaSecondary     ?? p.ctaSecondary,
+    dashboardTitle:   data?.dashboardTitle   ?? p.dashboardTitle,
+    dashboardCompany: data?.dashboardCompany ?? p.dashboardCompany,
+    dashboardLive:    data?.dashboardLive    ?? p.dashboardLive,
+    statLabels:       data?.statLabels       ?? p.statLabels,
+    statValues:       data?.statValues       ?? p.statValues,
+    claimLabels:      data?.claimLabels      ?? p.claimLabels,
+    recentClaims:     data?.recentClaims     ?? p.recentClaims,
+    approved:         data?.approved         ?? p.approved,
+    processing:       data?.processing       ?? p.processing,
+    costSaved:        data?.costSaved        ?? p.costSaved,
+    costSavedSub:     data?.costSavedSub     ?? p.costSavedSub,
+    compliance:       data?.compliance       ?? p.compliance,
+    services:         data?.services         ?? p.services,
+    servicesSub:      data?.servicesSub      ?? p.servicesSub,
+  };
 
   const stats = [
     { value: h.statValues[0], label: h.statLabels[0] },

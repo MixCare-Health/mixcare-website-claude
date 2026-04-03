@@ -737,6 +737,76 @@ export type SanityStartNowPage = {
   testimonialsTitle: string;
 };
 
+// ── Site Settings ────────────────────────────────────────────────────────────
+
+export const siteSettingsQuery = `
+  *[_id == "siteSettings"][0] {
+    "nav": {
+      "platform":         coalesce(nav.platform[$locale],         nav.platform.en),
+      "whoWeServe":       coalesce(nav.whoWeServe[$locale],       nav.whoWeServe.en),
+      "resources":        coalesce(nav.resources[$locale],        nav.resources.en),
+      "about":            coalesce(nav.about[$locale],            nav.about.en),
+      "trust":            coalesce(nav.trust[$locale],            nav.trust.en),
+      "startNow":         coalesce(nav.startNow[$locale],         nav.startNow.en),
+      "getDemo":          coalesce(nav.getDemo[$locale],          nav.getDemo.en),
+      "platformSolutions":coalesce(nav.platformSolutions[$locale],nav.platformSolutions.en),
+      "byAudience":       coalesce(nav.byAudience[$locale],       nav.byAudience.en),
+      "platformLinks": nav.platformLinks[] {
+        "label": coalesce(label[$locale], label.en),
+        "desc":  coalesce(desc[$locale],  desc.en),
+        "href":  href,
+      },
+      "audienceLinks": nav.audienceLinks[] {
+        "label": coalesce(label[$locale], label.en),
+        "desc":  coalesce(desc[$locale],  desc.en),
+        "href":  href,
+      },
+    },
+    "footer": {
+      "tagline": coalesce(footer.tagline[$locale], footer.tagline.en),
+      "platformLinks": footer.platformLinks[] {
+        "label": coalesce(label[$locale], label.en),
+        "href":  href,
+      },
+      "whoWeServeLinks": footer.whoWeServeLinks[] {
+        "label": coalesce(label[$locale], label.en),
+        "href":  href,
+      },
+      "resourceLinks": footer.resourceLinks[] {
+        "label": coalesce(label[$locale], label.en),
+        "href":  href,
+      },
+      "companyLinks": footer.companyLinks[] {
+        "label": coalesce(label[$locale], label.en),
+        "href":  href,
+      },
+    },
+  }
+`;
+
+export type SanitySiteSettings = {
+  nav: {
+    platform: string;
+    whoWeServe: string;
+    resources: string;
+    about: string;
+    trust: string;
+    startNow: string;
+    getDemo: string;
+    platformSolutions: string;
+    byAudience: string;
+    platformLinks: Array<{ label: string; desc: string; href: string }>;
+    audienceLinks: Array<{ label: string; desc: string; href: string }>;
+  };
+  footer: {
+    tagline: string;
+    platformLinks: Array<{ label: string; href: string }>;
+    whoWeServeLinks: Array<{ label: string; href: string }>;
+    resourceLinks: Array<{ label: string; href: string }>;
+    companyLinks: Array<{ label: string; href: string }>;
+  };
+};
+
 // ── Partners Page ─────────────────────────────────────────────────────────────
 
 export const partnersPageQuery = `
@@ -814,4 +884,252 @@ export type SanityPartnersPage = {
   };
   typeOptions: string[];
   success: { title: string; sub: string };
+};
+
+// ── Home Page ─────────────────────────────────────────────────────────────────
+
+export const homePageQuery = `
+  *[_id == "homePage"][0] {
+    "hero": {
+      "badge":            coalesce(hero.badge[$locale],            hero.badge.en),
+      "headline1":        coalesce(hero.headline1[$locale],        hero.headline1.en),
+      "headline2":        coalesce(hero.headline2[$locale],        hero.headline2.en),
+      "headline3":        coalesce(hero.headline3[$locale],        hero.headline3.en),
+      "sub":              coalesce(hero.sub[$locale],              hero.sub.en),
+      "ctaPrimary":       coalesce(hero.ctaPrimary[$locale],       hero.ctaPrimary.en),
+      "ctaSecondary":     coalesce(hero.ctaSecondary[$locale],     hero.ctaSecondary.en),
+      "dashboardTitle":   coalesce(hero.dashboardTitle[$locale],   hero.dashboardTitle.en),
+      "dashboardCompany": coalesce(hero.dashboardCompany[$locale], hero.dashboardCompany.en),
+      "dashboardLive":    coalesce(hero.dashboardLive[$locale],    hero.dashboardLive.en),
+      "statLabels":       coalesce(hero.statLabels[$locale],       hero.statLabels.en),
+      "statValues":       coalesce(hero.statValues[$locale],       hero.statValues.en),
+      "claimLabels":      coalesce(hero.claimLabels[$locale],      hero.claimLabels.en),
+      "recentClaims":     coalesce(hero.recentClaims[$locale],     hero.recentClaims.en),
+      "approved":         coalesce(hero.approved[$locale],         hero.approved.en),
+      "processing":       coalesce(hero.processing[$locale],       hero.processing.en),
+      "costSaved":        coalesce(hero.costSaved[$locale],        hero.costSaved.en),
+      "costSavedSub":     coalesce(hero.costSavedSub[$locale],     hero.costSavedSub.en),
+      "compliance":       coalesce(hero.compliance[$locale],       hero.compliance.en),
+      "services":         coalesce(hero.services[$locale],         hero.services.en),
+      "servicesSub":      coalesce(hero.servicesSub[$locale],      hero.servicesSub.en),
+    },
+    "logoBar": {
+      "label": coalesce(logoBar.label[$locale], logoBar.label.en),
+    },
+    "corePlatform": {
+      "badge":             coalesce(corePlatform.badge[$locale],             corePlatform.badge.en),
+      "headline":          coalesce(corePlatform.headline[$locale],          corePlatform.headline.en),
+      "headlineHighlight": coalesce(corePlatform.headlineHighlight[$locale], corePlatform.headlineHighlight.en),
+      "sub":               coalesce(corePlatform.sub[$locale],               corePlatform.sub.en),
+      "learnMore":         coalesce(corePlatform.learnMore[$locale],         corePlatform.learnMore.en),
+      "pillars": corePlatform.pillars[] {
+        "title": coalesce(title[$locale], title.en),
+        "desc":  coalesce(desc[$locale],  desc.en),
+        "stats": coalesce(stats[$locale], stats.en),
+      },
+      "counters": corePlatform.counters[] {
+        "value": value,
+        "label": coalesce(label[$locale], label.en),
+      },
+    },
+    "platformFeatures": {
+      "badge":      coalesce(platformFeatures.badge[$locale],      platformFeatures.badge.en),
+      "headline":   coalesce(platformFeatures.headline[$locale],   platformFeatures.headline.en),
+      "sub":        coalesce(platformFeatures.sub[$locale],        platformFeatures.sub.en),
+      "soon":       coalesce(platformFeatures.soon[$locale],       platformFeatures.soon.en),
+      "comingSoon": coalesce(platformFeatures.comingSoon[$locale], platformFeatures.comingSoon.en),
+      "available":  coalesce(platformFeatures.available[$locale],  platformFeatures.available.en),
+      "learnMore":  coalesce(platformFeatures.learnMore[$locale],  platformFeatures.learnMore.en),
+      "explore":    coalesce(platformFeatures.explore[$locale],    platformFeatures.explore.en),
+      "features": platformFeatures.features[] {
+        "headline": coalesce(headline[$locale], headline.en),
+        "desc":     coalesce(desc[$locale],     desc.en),
+        "bullets":  coalesce(bullets[$locale],  bullets.en),
+      },
+    },
+    "audience": {
+      "badge":      coalesce(audience.badge[$locale],      audience.badge.en),
+      "headline":   coalesce(audience.headline[$locale],   audience.headline.en),
+      "sub":        coalesce(audience.sub[$locale],        audience.sub.en),
+      "howWeHelp":  coalesce(audience.howWeHelp[$locale],  audience.howWeHelp.en),
+      "learnMore":  coalesce(audience.learnMore[$locale],  audience.learnMore.en),
+      "audiences": audience.audiences[] {
+        "label":   coalesce(label[$locale],   label.en),
+        "tagline": coalesce(tagline[$locale], tagline.en),
+        "cta":     coalesce(cta[$locale],     cta.en),
+        "ctaHref": ctaHref,
+        "bullets": coalesce(bullets[$locale], bullets.en),
+      },
+    },
+    "howItWorks": {
+      "badge":      coalesce(howItWorks.badge[$locale],      howItWorks.badge.en),
+      "headline":   coalesce(howItWorks.headline[$locale],   howItWorks.headline.en),
+      "sub":        coalesce(howItWorks.sub[$locale],        howItWorks.sub.en),
+      "stepLabel":  coalesce(howItWorks.stepLabel[$locale],  howItWorks.stepLabel.en),
+      "cta":        coalesce(howItWorks.cta[$locale],        howItWorks.cta.en),
+      "footnote":   coalesce(howItWorks.footnote[$locale],   howItWorks.footnote.en),
+      "steps": howItWorks.steps[] {
+        "title": coalesce(title[$locale], title.en),
+        "desc":  coalesce(desc[$locale],  desc.en),
+      },
+    },
+    "testimonials": {
+      "badge":    coalesce(testimonials.badge[$locale],    testimonials.badge.en),
+      "headline": coalesce(testimonials.headline[$locale], testimonials.headline.en),
+      "sub":      coalesce(testimonials.sub[$locale],      testimonials.sub.en),
+      "audienceLabels": {
+        "insurer":       coalesce(testimonials.audienceLabels.insurer[$locale],       testimonials.audienceLabels.insurer.en),
+        "enterprise":    coalesce(testimonials.audienceLabels.enterprise[$locale],    testimonials.audienceLabels.enterprise.en),
+        "broker":        coalesce(testimonials.audienceLabels.broker[$locale],        testimonials.audienceLabels.broker.en),
+        "smallBusiness": coalesce(testimonials.audienceLabels.smallBusiness[$locale], testimonials.audienceLabels.smallBusiness.en),
+        "provider":      coalesce(testimonials.audienceLabels.provider[$locale],      testimonials.audienceLabels.provider.en),
+      },
+      "stats": testimonials.stats[] {
+        "value": value,
+        "label": coalesce(label[$locale], label.en),
+      },
+    },
+    "compliance": {
+      "badge":        coalesce(compliance.badge[$locale],        compliance.badge.en),
+      "headline":     coalesce(compliance.headline[$locale],     compliance.headline.en),
+      "sub":          coalesce(compliance.sub[$locale],          compliance.sub.en),
+      "certFootnote": coalesce(compliance.certFootnote[$locale], compliance.certFootnote.en),
+      "pillars": compliance.pillars[] {
+        "title": coalesce(title[$locale], title.en),
+        "desc":  coalesce(desc[$locale],  desc.en),
+      },
+    },
+    "cta": {
+      "badge":         coalesce(cta.badge[$locale],         cta.badge.en),
+      "headline":      coalesce(cta.headline[$locale],      cta.headline.en),
+      "sub":           coalesce(cta.sub[$locale],           cta.sub.en),
+      "ctaPrimary":    coalesce(cta.ctaPrimary[$locale],    cta.ctaPrimary.en),
+      "ctaSecondary":  coalesce(cta.ctaSecondary[$locale],  cta.ctaSecondary.en),
+    },
+  }
+`;
+
+export type SanityHomeHero = {
+  badge: string;
+  headline1: string;
+  headline2: string;
+  headline3: string;
+  sub: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
+  dashboardTitle: string;
+  dashboardCompany: string;
+  dashboardLive: string;
+  statLabels: string[];
+  statValues: string[];
+  claimLabels: string[];
+  recentClaims: string;
+  approved: string;
+  processing: string;
+  costSaved: string;
+  costSavedSub: string;
+  compliance: string;
+  services: string;
+  servicesSub: string;
+};
+
+export type SanityHomeLogoBar = {
+  label: string;
+};
+
+export type SanityHomeCorePlatform = {
+  badge: string;
+  headline: string;
+  headlineHighlight: string;
+  sub: string;
+  learnMore: string;
+  pillars: Array<{ title: string; desc: string; stats: string }>;
+  counters: Array<{ value: string; label: string }>;
+};
+
+export type SanityHomePlatformFeature = {
+  headline: string;
+  desc: string;
+  bullets: string[];
+};
+
+export type SanityHomePlatformFeatures = {
+  badge: string;
+  headline: string;
+  sub: string;
+  soon: string;
+  comingSoon: string;
+  available: string;
+  learnMore: string;
+  explore: string;
+  features: SanityHomePlatformFeature[];
+};
+
+export type SanityHomeAudienceSegment = {
+  label: string;
+  tagline: string;
+  cta: string;
+  ctaHref: string;
+  bullets: string[];
+};
+
+export type SanityHomeAudience = {
+  badge: string;
+  headline: string;
+  sub: string;
+  howWeHelp: string;
+  learnMore: string;
+  audiences: SanityHomeAudienceSegment[];
+};
+
+export type SanityHomeHowItWorks = {
+  badge: string;
+  headline: string;
+  sub: string;
+  stepLabel: string;
+  cta: string;
+  footnote: string;
+  steps: Array<{ title: string; desc: string }>;
+};
+
+export type SanityHomeTestimonials = {
+  badge: string;
+  headline: string;
+  sub: string;
+  audienceLabels: {
+    insurer: string;
+    enterprise: string;
+    broker: string;
+    smallBusiness: string;
+    provider: string;
+  };
+  stats: Array<{ value: string; label: string }>;
+};
+
+export type SanityHomeCompliance = {
+  badge: string;
+  headline: string;
+  sub: string;
+  certFootnote: string;
+  pillars: Array<{ title: string; desc: string }>;
+};
+
+export type SanityHomeCta = {
+  badge: string;
+  headline: string;
+  sub: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
+};
+
+export type SanityHomePage = {
+  hero: SanityHomeHero;
+  logoBar: SanityHomeLogoBar;
+  corePlatform: SanityHomeCorePlatform;
+  platformFeatures: SanityHomePlatformFeatures;
+  audience: SanityHomeAudience;
+  howItWorks: SanityHomeHowItWorks;
+  testimonials: SanityHomeTestimonials;
+  compliance: SanityHomeCompliance;
+  cta: SanityHomeCta;
 };

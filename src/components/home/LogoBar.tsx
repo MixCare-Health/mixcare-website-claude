@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/contexts/LanguageContext";
+import type { SanityHomeLogoBar } from "@/lib/sanity.queries";
 
 const logos = [
   { name: "AXA",       src: "/logos/mixcare-health-client-axa.png" },
@@ -15,14 +16,19 @@ const logos = [
   { name: "Cyberport", src: "/logos/mixcare-health-client-cyberport.png" },
 ];
 
-export default function LogoBar() {
+interface LogoBarProps {
+  data?: SanityHomeLogoBar;
+}
+
+export default function LogoBar({ data }: LogoBarProps = {}) {
   const { t } = useLanguage();
+  const label = data?.label ?? t.home.logoBar.label;
 
   return (
     <section className="py-12 bg-white border-y border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p className="text-center text-xs font-semibold text-slate-400 uppercase tracking-widest mb-8">
-          {t.home.logoBar.label}
+          {label}
         </p>
         <div className="overflow-hidden">
           <div className="flex gap-6 animate-scroll-logos" style={{ width: "max-content" }}>

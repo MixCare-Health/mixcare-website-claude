@@ -3,10 +3,16 @@
 import Link from "next/link";
 import { Twitter, Linkedin, Facebook, Instagram, Globe, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useSiteSettings } from "@/contexts/SiteSettingsContext";
 import { LOCALES, LOCALE_LABELS, LOCALE_URL, localePath, parseLocalePath } from "@/lib/locale";
 import type { Locale } from "@/lib/locale";
+import type { SanitySiteSettings } from "@/lib/sanity.queries";
 import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
+
+interface FooterProps {
+  footerData?: SanitySiteSettings["footer"] | null;
+}
 
 const P = "#10AF97";
 
@@ -17,9 +23,34 @@ const socialLinks = [
   { icon: Instagram, href: "#", label: "Instagram" },
 ];
 
-export default function Footer() {
+export default function Footer({ footerData: footerDataProp }: FooterProps = {}) {
   const { t, locale } = useLanguage();
-const pathname = usePathname();
+  const siteSettings = useSiteSettings();
+  // Prop takes precedence, then context, then fall back to translation strings.
+  const footerData = footerDataProp ?? siteSettings?.footer ?? null;
+
+  // Resolved footer link columns — use Sanity data when available, else translation fallback.
+  const f = t.footer;
+  const footerColumns = [
+    {
+      key: "Platform" as const,
+      links: footerData?.platformLinks ?? f.platform,
+    },
+    {
+      key: "Who We Serve" as const,
+      links: footerData?.whoWeServeLinks ?? f.whoWeServe,
+    },
+    {
+      key: "Resources" as const,
+      links: footerData?.resourceLinks ?? f.resources,
+    },
+    {
+      key: "Company" as const,
+      links: footerData?.companyLinks ?? f.company,
+    },
+  ];
+
+  const pathname = usePathname();
   const [langOpen, setLangOpen] = useState(false);
   const langRef = useRef<HTMLDivElement>(null);
 
@@ -38,13 +69,6 @@ const pathname = usePathname();
     // bypassing the Next.js Router Cache.
     window.location.href = `/${LOCALE_URL[l]}${basePath === "/" ? "" : basePath}`;
   };
-
-  const footerColumns = [
-    { key: "Platform", links: t.footer.platform },
-    { key: "Who We Serve", links: t.footer.whoWeServe },
-    { key: "Resources", links: t.footer.resources },
-    { key: "Company", links: t.footer.company },
-  ] as const;
 
   return (
     <footer style={{ backgroundColor: "#0f1e38" }} className="text-slate-300">

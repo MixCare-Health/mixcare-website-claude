@@ -12,6 +12,7 @@ import { contactPageType } from "./contactPage";
 import { getDemoPageType } from "./getDemoPage";
 import { startNowPageType } from "./startNowPage";
 import { partnersPageType } from "./partnersPage";
+import { homePageType } from "./homePage";
 
 export const schemaTypes = [
   articleType,
@@ -28,4 +29,5 @@ export const schemaTypes = [
   getDemoPageType,
   startNowPageType,
   partnersPageType,
+  homePageType,
 ];

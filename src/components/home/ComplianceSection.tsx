@@ -2,6 +2,7 @@
 
 import { ShieldCheck, Lock, Eye, Server, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import type { SanityHomeCompliance } from "@/lib/sanity.queries";
 
 const P = "#10AF97";
 const S = "#0A3D59";
@@ -15,9 +16,24 @@ const certs = [
 const pillarIcons = [ShieldCheck, Lock, Eye, Server];
 const pillarColors = [P, "#4f46e5", "#f97316", "#7c3aed"];
 
-export default function ComplianceSection() {
+interface ComplianceSectionProps {
+  data?: SanityHomeCompliance;
+}
+
+export default function ComplianceSection({ data }: ComplianceSectionProps = {}) {
   const { t } = useLanguage();
-  const comp = t.home.compliance;
+  const p = t.home.compliance;
+  const comp = {
+    badge:        data?.badge        ?? p.badge,
+    headline:     data?.headline     ?? p.headline,
+    sub:          data?.sub          ?? p.sub,
+    certFootnote: data?.certFootnote ?? p.certFootnote,
+    pillars:      data?.pillars      ?? p.pillars,
+    // These fields are not in Sanity schema, use translation fallbacks
+    viewTrust:  p.viewTrust,
+    certTitle:  p.certTitle,
+    certSub:    p.certSub,
+  };
 
   return (
     <section className="py-20 bg-white">

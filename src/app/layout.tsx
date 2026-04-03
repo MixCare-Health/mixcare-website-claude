@@ -4,6 +4,8 @@ import "./globals.css";
 import { Providers } from "./providers";
 import { getLocale } from "@/lib/locale.server";
 import { SITE_URL, SITE_NAME, TWITTER_HANDLE } from "@/lib/seo";
+import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
+import { siteSettingsQuery, type SanitySiteSettings } from "@/lib/sanity.queries";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -76,11 +78,17 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const locale = await getLocale();
+  const sanityLocale = toSanityLocale(locale);
+  const siteSettings: SanitySiteSettings | null = isSanityConfigured
+    ? await sanityClient.fetch<SanitySiteSettings | null>(siteSettingsQuery, { locale: sanityLocale })
+    : null;
 
   return (
     <html lang={locale} className="light">
       <body className={inter.className}>
-        <Providers initialLocale={locale}>{children}</Providers>
+        <Providers initialLocale={locale} siteSettings={siteSettings}>
+          {children}
+        </Providers>
       </body>
     </html>
   );
