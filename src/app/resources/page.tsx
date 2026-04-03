@@ -1,312 +1,345 @@
 import AppNavbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import BottomCTA from "@/components/shared/BottomCTA";
-import { BookOpen, FileText, Download, HelpCircle, ArrowRight } from "lucide-react";
+import { BookOpen, FileText, Download, HelpCircle, ArrowRight, Clock, Calendar } from "lucide-react";
 import type { Metadata } from "next";
 import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
 import { JsonLd, webPageSchema, breadcrumbSchema, faqSchema } from "@/components/seo/JsonLd";
+import { getLocale } from "@/lib/locale.server";
+import { getTranslations } from "@/translations";
+import { localePath } from "@/lib/locale";
+import Link from "next/link";
+import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
+import { allArticlesQuery, type SanityArticleListItem } from "@/lib/sanity.queries";
+
+export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/resources");
 
 export const metadata: Metadata = {
-  title: "Resources — Blog, Case Studies & Whitepapers",
+  title: "Resources — Blog, Case Studies & Whitepapers | MixCare Health",
   description:
-    "Blog posts, case studies, whitepapers, and FAQs on AI-powered health benefits for insurers, enterprises, and SMBs in Hong Kong, Macau, and Singapore.",
+    "Expert blog posts, client case studies, downloadable whitepapers, and FAQs on AI-powered health benefits for insurers, enterprises, and SMBs across Hong Kong, Macau, and Singapore.",
   keywords: [
     "health benefits blog", "employee wellness case studies", "FSA whitepapers",
     "health benefits resources", "corporate wellness insights", "digital health articles",
     "MixCare blog", "employee health FAQ", "HR benefits guides",
+    "group insurance Asia", "flexible benefits Hong Kong",
   ],
   alternates: { canonical, languages },
   openGraph: {
     title: `Resources — Blog, Case Studies & Whitepapers | ${SITE_NAME}`,
     description:
-      "Blog posts, case studies, and whitepapers on AI-powered health benefits for insurers, enterprises, and SMBs.",
+      "Expert blog posts, case studies, and whitepapers on AI-powered health benefits for insurers, enterprises, and SMBs.",
     url: canonical,
+    type: "website",
     images: ogImage("MixCare Health Resources"),
   },
   twitter: {
+    card: "summary_large_image",
     title: `Resources | ${SITE_NAME}`,
     description: "Blog, case studies, whitepapers and FAQs on AI-powered employee health benefits.",
     images: ["/opengraph-image.png"],
   },
 };
 
-const blogPosts = [
-  {
-    category: "AI & Claims",
-    title: "How AI is Cutting Claims Processing Time by 70% in Group Insurance",
-    desc: "Explore the machine learning models behind MixCare's claims engine and what it means for insurers and self-funded schemes.",
-    date: "Mar 2025",
-    readTime: "8 min read",
-  },
-  {
-    category: "Employee Benefits",
-    title: "Why Flexible Benefits Outperform Traditional Group Plans — Every Time",
-    desc: "Data from 200+ corporate clients shows employees with flexible benefit choice use 2x more of their benefit budget.",
-    date: "Feb 2025",
-    readTime: "6 min read",
-  },
-  {
-    category: "SMB Guide",
-    title: "The Small Business Guide to Employee Benefits in Hong Kong",
-    desc: "A practical walkthrough of benefit options, pricing, regulatory requirements, and how to get started — for teams of 2 to 500.",
-    date: "Feb 2025",
-    readTime: "12 min read",
-  },
-  {
-    category: "Wellness",
-    title: "Mental Health Benefits: What Employees in Asia Actually Want in 2025",
-    desc: "Survey data from 5,000 employees across HK, SG, and MO reveals the wellness benefits that drive satisfaction and retention.",
-    date: "Jan 2025",
-    readTime: "10 min read",
-  },
-  {
-    category: "Compliance",
-    title: "PDPO 2024 Updates: What HR and Benefit Managers Need to Know",
-    desc: "A plain-language summary of the 2024 amendments to Hong Kong's Personal Data Privacy Ordinance and their benefit implications.",
-    date: "Dec 2024",
-    readTime: "7 min read",
-  },
-  {
-    category: "Insurers",
-    title: "Building a Digital-First Outpatient Product in Asia: Lessons from the Field",
-    desc: "Three insurer case studies on deploying AI-powered self-funded outpatient schemes — what worked and what didn't.",
-    date: "Nov 2024",
-    readTime: "15 min read",
-  },
-];
+const categoryColors: Record<string, { bg: string; text: string }> = {
+  "AI & Claims":       { bg: "#ccfbf1", text: "#0f766e" },
+  "AI與理賠":          { bg: "#ccfbf1", text: "#0f766e" },
+  "AI与理赔":          { bg: "#ccfbf1", text: "#0f766e" },
+  "Employee Benefits": { bg: "#dbeafe", text: "#1d4ed8" },
+  "員工福利":          { bg: "#dbeafe", text: "#1d4ed8" },
+  "员工福利":          { bg: "#dbeafe", text: "#1d4ed8" },
+  "SMB Guide":         { bg: "#fff7ed", text: "#c2410c" },
+  "中小企指南":        { bg: "#fff7ed", text: "#c2410c" },
+  "Wellness":          { bg: "#dcfce7", text: "#15803d" },
+  "健康":              { bg: "#dcfce7", text: "#15803d" },
+  "Compliance":        { bg: "#f3e8ff", text: "#7e22ce" },
+  "合規":              { bg: "#f3e8ff", text: "#7e22ce" },
+  "合规":              { bg: "#f3e8ff", text: "#7e22ce" },
+  "Insurers":          { bg: "#e0f2fe", text: "#0369a1" },
+  "保險公司":          { bg: "#e0f2fe", text: "#0369a1" },
+  "保险公司":          { bg: "#e0f2fe", text: "#0369a1" },
+};
 
-const caseStudies = [
-  {
-    company: "AXA Hong Kong",
-    segment: "Insurer",
-    headline: "70% reduction in claims processing cost with AI-powered self-funded outpatient",
-    result: "Claims resolved in <18 hours, fraud down 60%",
-    color: "#0d9488",
-  },
-  {
-    company: "Jardine Matheson",
-    segment: "Enterprise",
-    headline: "Benefit utilisation jumped from 40% to 92% after switching to flexible benefits",
-    result: "Employee satisfaction +45%, admin time down 70%",
-    color: "#1e3a5f",
-  },
-  {
-    company: "TechBridge HK",
-    segment: "SMB (25 employees)",
-    headline: "How a 25-person startup attracted senior talent with enterprise-grade benefits",
-    result: "2 senior hires retained vs. larger competitors, setup in 1 day",
-    color: "#f97316",
-  },
-];
+function getCategoryColor(cat: string) {
+  return categoryColors[cat] ?? { bg: "#f1f5f9", text: "#475569" };
+}
 
-const whitepapers = [
-  {
-    title: "The State of Employee Benefits in Asia-Pacific 2025",
-    desc: "Annual survey of 500 HR leaders and 5,000 employees across HK, SG, and MO.",
-    pages: "42 pages",
-  },
-  {
-    title: "AI in Health Insurance Claims: A Technical Overview",
-    desc: "Deep dive into the machine learning models powering modern claims processing.",
-    pages: "28 pages",
-  },
-  {
-    title: "Building a Flexible Benefits Programme: A Step-by-Step Guide",
-    desc: "Practical guide for HR teams moving from traditional group plans to flexible benefits.",
-    pages: "18 pages",
-  },
-];
+// Format "YYYY-MM-DD" → "Mar 2025"
+function formatDate(iso: string): string {
+  const d = new Date(iso);
+  return d.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+}
 
-const faqs = [
-  {
-    q: "What markets does MixCare operate in?",
-    a: "MixCare Health operates across Hong Kong, Macau, and Singapore. Our panel doctor network covers all three markets and our platform is fully compliant with local regulatory requirements in each jurisdiction.",
-  },
-  {
-    q: "How long does implementation take?",
-    a: "For small businesses, setup can be completed in under 60 minutes via our self-service portal. Enterprise deployments typically take 2–5 business days including HRIS integration and custom configuration.",
-  },
-  {
-    q: "What is the minimum company size?",
-    a: "There is no minimum headcount requirement. Our Starter plan serves companies with as few as 2 employees. Pricing scales by the number of enrolled employees.",
-  },
-  {
-    q: "Can MixCare integrate with our existing HR system?",
-    a: "Yes. We have pre-built integrations with Workday, SAP SuccessFactors, Oracle HCM, BambooHR, and others. Custom integrations are available via our REST API.",
-  },
-  {
-    q: "How does the panel doctor network work?",
-    a: "Employees use the MixCare app to locate and book a panel doctor. Consultations are cashless — employees present their digital card and the doctor bills directly to MixCare. No out-of-pocket payment, no reimbursement forms.",
-  },
-  {
-    q: "Is MixCare compliant with PDPO and GDPR?",
-    a: "Yes. MixCare is fully compliant with Hong Kong's PDPO (Cap. 486), Singapore's PDPA, and the EU's GDPR. We are also ISO 27001 certified. Full documentation is available on request.",
-  },
-  {
-    q: "Can we white-label the marketplace?",
-    a: "Yes. Insurers and brokers can deploy a fully branded wellness marketplace under their own domain and brand identity. Setup takes 2–3 business days.",
-  },
-  {
-    q: "What happens to unused FSA balances at year end?",
-    a: "This is fully configurable. You can choose to allow rollover, forfeit unused balances back to the company, or return them to the employee. The platform enforces whichever rule you set automatically.",
-  },
-];
+export default async function ResourcesPage() {
+  const locale = await getLocale();
+  const t = getTranslations(locale);
+  const r = t.resources;
 
-export default function ResourcesPage() {
+  const articles: SanityArticleListItem[] = isSanityConfigured
+    ? await sanityClient.fetch(allArticlesQuery, { locale: toSanityLocale(locale) })
+    : [];
+
   return (
     <main>
       <JsonLd data={[
-        webPageSchema("Resources — Blog, Case Studies & Whitepapers", "Blog posts, case studies, whitepapers, and FAQs on AI-powered health benefits for insurers, enterprises, and SMBs.", "/resources"),
-        breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Resources", path: "/resources" }]),
-        faqSchema(faqs.map((f) => ({ question: f.q, answer: f.a }))),
+        webPageSchema(
+          "Resources — Blog, Case Studies & Whitepapers",
+          "Expert blog posts, client case studies, downloadable whitepapers, and FAQs on AI-powered health benefits.",
+          "/resources"
+        ),
+        breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Resources", path: "/resources" },
+        ]),
+        faqSchema(r.faq.items.map((f) => ({ question: f.q, answer: f.a }))),
       ]} />
       <AppNavbar />
 
-      {/* Hero */}
-      <section
-        className="pt-28 pb-16 text-center relative overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fff7ed 100%)" }}
-      >
-        <div className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-20 -z-10 blur-3xl" style={{ background: "radial-gradient(circle, #0d9488, transparent)" }} />
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 mb-5">
-            Resources & Insights
-          </h1>
-          <p className="text-xl text-slate-600">
-            Research, guides, and case studies to help you build better health benefits programmes.
-          </p>
+      {/* Page header — no visual hero, just anchor nav */}
+      <div className="pt-24 pb-4 bg-white border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav aria-label="Resource sections" className="flex flex-wrap gap-2 justify-center">
+            {[
+              { label: r.blog.heading,        href: "#blog",        icon: BookOpen  },
+              { label: r.caseStudies.heading, href: "#case-studies", icon: FileText  },
+              { label: r.whitepapers.heading, href: "#whitepapers",  icon: Download  },
+              { label: r.faq.heading,         href: "#faq",          icon: HelpCircle },
+            ].map(({ label, href, icon: Icon }) => (
+              <a
+                key={href}
+                href={href}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 border border-slate-200 text-sm font-semibold text-slate-700 hover:border-teal-400 hover:text-teal-700 hover:bg-teal-50 transition-colors"
+              >
+                <Icon size={14} aria-hidden="true" />
+                {label}
+              </a>
+            ))}
+          </nav>
+        </div>
+      </div>
+
+      {/* ── Latest Articles ── */}
+      <section id="blog" className="py-16 bg-white" aria-labelledby="blog-heading">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-10">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ backgroundColor: "#ccfbf1" }}>
+                <BookOpen size={18} style={{ color: "#0d9488" }} aria-hidden="true" />
+              </div>
+              <h2 id="blog-heading" className="text-2xl font-extrabold text-slate-900">{r.blog.heading}</h2>
+            </div>
+            <Link
+              href={localePath(locale, "/resources/articles")}
+              className="text-sm font-semibold text-teal-600 hover:text-teal-800 flex items-center gap-1 transition-colors"
+            >
+              {r.blog.readMore} <ArrowRight size={14} aria-hidden="true" />
+            </Link>
+          </div>
+
+          {/* Featured + sidebar layout */}
+          <div className="grid lg:grid-cols-3 gap-6">
+            {/* Featured — first article */}
+            {articles[0] && (() => {
+              const post = articles[0];
+              const col = getCategoryColor(post.category);
+              return (
+                <article className="lg:col-span-2 group flex flex-col rounded-3xl border border-slate-100 overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1">
+                  <Link href={localePath(locale, `/resources/articles/${post.slug}`)} className="flex flex-col flex-1">
+                    <div
+                      className="h-48 relative flex items-end p-6"
+                      style={{ background: "linear-gradient(135deg, #0d9488 0%, #1e3a5f 100%)" }}
+                    >
+                      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 70% 30%, white 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
+                      <span className="relative px-3 py-1 rounded-full text-xs font-bold" style={{ backgroundColor: col.bg, color: col.text }}>
+                        {post.category}
+                      </span>
+                    </div>
+                    <div className="p-7 flex flex-col flex-1 bg-white">
+                      <h3 className="text-xl font-extrabold text-slate-900 mb-3 leading-snug group-hover:text-teal-700 transition-colors">
+                        {post.title}
+                      </h3>
+                      <p className="text-slate-600 leading-relaxed mb-5 flex-1">{post.description}</p>
+                      <div className="flex items-center justify-between text-xs text-slate-400">
+                        <span className="flex items-center gap-1.5"><Calendar size={12} aria-hidden="true" /><time>{formatDate(post.publishedAt)}</time></span>
+                        <span className="flex items-center gap-1.5"><Clock size={12} aria-hidden="true" />{post.readTime}</span>
+                      </div>
+                    </div>
+                  </Link>
+                </article>
+              );
+            })()}
+
+            {/* Compact sidebar — articles 1–3 */}
+            <div className="flex flex-col gap-4">
+              {articles.slice(1, 4).map((post) => {
+                const col = getCategoryColor(post.category);
+                return (
+                  <article key={post.slug} className="group">
+                    <Link href={localePath(locale, `/resources/articles/${post.slug}`)} className="flex gap-4 rounded-2xl border border-slate-100 p-4 hover:shadow-md transition-all hover:-translate-y-0.5 bg-white">
+                      <div className="w-1 rounded-full flex-shrink-0 self-stretch" style={{ backgroundColor: col.text }} aria-hidden="true" />
+                      <div className="min-w-0">
+                        <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold mb-1.5" style={{ backgroundColor: col.bg, color: col.text }}>
+                          {post.category}
+                        </span>
+                        <h3 className="font-bold text-slate-900 text-sm leading-snug mb-1 group-hover:text-teal-700 transition-colors line-clamp-2">
+                          {post.title}
+                        </h3>
+                        <div className="flex items-center gap-3 text-[11px] text-slate-400 mt-1.5">
+                          <span className="flex items-center gap-1"><Calendar size={10} aria-hidden="true" /><time>{formatDate(post.publishedAt)}</time></span>
+                          <span className="flex items-center gap-1"><Clock size={10} aria-hidden="true" />{post.readTime}</span>
+                        </div>
+                      </div>
+                    </Link>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Last 2 articles */}
+          <div className="grid md:grid-cols-2 gap-5 mt-5">
+            {articles.slice(4, 6).map((post) => {
+              const col = getCategoryColor(post.category);
+              return (
+                <article key={post.slug} className="group">
+                  <Link href={localePath(locale, `/resources/articles/${post.slug}`)} className="flex gap-5 rounded-2xl border border-slate-100 p-6 hover:shadow-lg transition-all hover:-translate-y-1 bg-white">
+                    <div className="w-1 rounded-full flex-shrink-0 self-stretch" style={{ backgroundColor: col.text }} aria-hidden="true" />
+                    <div>
+                      <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold mb-2" style={{ backgroundColor: col.bg, color: col.text }}>
+                        {post.category}
+                      </span>
+                      <h3 className="font-bold text-slate-900 mb-1.5 leading-snug group-hover:text-teal-700 transition-colors">
+                        {post.title}
+                      </h3>
+                      <p className="text-sm text-slate-500 leading-relaxed mb-3 line-clamp-2">{post.description}</p>
+                      <div className="flex items-center gap-3 text-xs text-slate-400">
+                        <span className="flex items-center gap-1"><Calendar size={11} aria-hidden="true" /><time>{formatDate(post.publishedAt)}</time></span>
+                        <span className="flex items-center gap-1"><Clock size={11} aria-hidden="true" />{post.readTime}</span>
+                      </div>
+                    </div>
+                  </Link>
+                </article>
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      {/* Blog */}
-      <section id="blog" className="py-16 bg-white">
+      {/* ── Case Studies ── */}
+      <section id="case-studies" className="py-16" style={{ backgroundColor: "#f8fafc" }} aria-labelledby="case-studies-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-8">
-            <BookOpen size={22} style={{ color: "#0d9488" }} />
-            <h2 className="text-2xl font-extrabold text-slate-900">Latest Articles</h2>
+          <div className="flex items-center justify-between mb-10">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ backgroundColor: "#dbeafe" }}>
+                <FileText size={18} style={{ color: "#1d4ed8" }} aria-hidden="true" />
+              </div>
+              <h2 id="case-studies-heading" className="text-2xl font-extrabold text-slate-900">{r.caseStudies.heading}</h2>
+            </div>
+            <Link
+              href={localePath(locale, "/resources/case-studies")}
+              className="text-sm font-semibold text-teal-600 hover:text-teal-800 flex items-center gap-1 transition-colors"
+            >
+              {r.caseStudies.readMore} <ArrowRight size={14} aria-hidden="true" />
+            </Link>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {blogPosts.map((post) => (
-              <a
-                key={post.title}
-                href="#"
-                className="rounded-2xl p-6 border border-slate-100 hover:shadow-lg transition-all hover:-translate-y-1 group block"
-              >
-                <span
-                  className="inline-block px-3 py-1 rounded-full text-xs font-bold mb-3"
-                  style={{ backgroundColor: "#ccfbf1", color: "#0f766e" }}
+          <div className="grid md:grid-cols-3 gap-6">
+            {r.caseStudies.items.map((cs) => (
+              <article key={cs.company} className="group">
+                <Link
+                  href={localePath(locale, "/resources/case-studies")}
+                  className="bg-white rounded-3xl overflow-hidden border border-slate-100 hover:shadow-xl transition-all hover:-translate-y-1 flex flex-col h-full"
                 >
-                  {post.category}
-                </span>
-                <h3 className="font-bold text-slate-900 mb-2 group-hover:text-teal-700 transition-colors leading-snug">
-                  {post.title}
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-4">{post.desc}</p>
-                <div className="flex items-center justify-between text-xs text-slate-400">
-                  <span>{post.date}</span>
-                  <span>{post.readTime}</span>
-                </div>
-              </a>
+                  <div className="h-2 w-full" style={{ background: `linear-gradient(90deg, ${cs.color}, ${cs.color}88)` }} aria-hidden="true" />
+                  <div className="p-7 flex flex-col flex-1">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="inline-block px-2.5 py-1 rounded-full text-xs font-bold" style={{ backgroundColor: cs.color + "18", color: cs.color }}>
+                        {cs.segment}
+                      </span>
+                      <p className="text-xs text-slate-400 font-semibold">{cs.company}</p>
+                    </div>
+                    <h3 className="font-bold text-slate-900 mb-4 leading-snug group-hover:text-teal-700 transition-colors flex-1">
+                      {cs.headline}
+                    </h3>
+                    <div className="rounded-xl px-4 py-3 mb-4" style={{ backgroundColor: cs.color + "10", borderLeft: `3px solid ${cs.color}` }}>
+                      <p className="text-xs font-bold" style={{ color: cs.color }}>{cs.result}</p>
+                    </div>
+                    <p className="flex items-center gap-1.5 text-xs font-semibold" style={{ color: "#0d9488" }}>
+                      {r.caseStudies.readMore} <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                    </p>
+                  </div>
+                </Link>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Case studies */}
-      <section id="case-studies" className="py-16" style={{ backgroundColor: "#f8fafc" }}>
+      {/* ── Whitepapers & Guides ── */}
+      <section id="whitepapers" className="py-16 bg-white" aria-labelledby="whitepapers-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-8">
-            <FileText size={22} style={{ color: "#0d9488" }} />
-            <h2 className="text-2xl font-extrabold text-slate-900">Case Studies</h2>
+          <div className="flex items-center justify-between mb-10">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ backgroundColor: "#f3e8ff" }}>
+                <Download size={18} style={{ color: "#7e22ce" }} aria-hidden="true" />
+              </div>
+              <h2 id="whitepapers-heading" className="text-2xl font-extrabold text-slate-900">{r.whitepapers.heading}</h2>
+            </div>
+            <Link
+              href={localePath(locale, "/resources/whitepapers")}
+              className="text-sm font-semibold text-teal-600 hover:text-teal-800 flex items-center gap-1 transition-colors"
+            >
+              {r.whitepapers.downloadBtn} <ArrowRight size={14} aria-hidden="true" />
+            </Link>
           </div>
-          <div className="grid md:grid-cols-3 gap-5">
-            {caseStudies.map((cs) => (
-              <a
-                key={cs.company}
-                href="#"
-                className="bg-white rounded-2xl p-7 border border-slate-100 hover:shadow-lg transition-all hover:-translate-y-1 group block"
-              >
-                <span
-                  className="inline-block px-2.5 py-1 rounded-full text-xs font-bold mb-3"
-                  style={{ backgroundColor: cs.color + "15", color: cs.color }}
-                >
-                  {cs.segment}
-                </span>
-                <p className="text-xs text-slate-500 font-semibold mb-2">{cs.company}</p>
-                <h3 className="font-bold text-slate-900 mb-3 leading-snug group-hover:text-teal-700 transition-colors">
-                  {cs.headline}
-                </h3>
-                <p
-                  className="text-xs font-bold px-3 py-1.5 rounded-lg inline-block"
-                  style={{ backgroundColor: cs.color + "15", color: cs.color }}
-                >
-                  {cs.result}
-                </p>
-                <p className="flex items-center gap-1 text-xs font-semibold mt-4" style={{ color: "#0d9488" }}>
-                  Read case study <ArrowRight size={12} />
-                </p>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Whitepapers */}
-      <section id="whitepapers" className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-8">
-            <Download size={22} style={{ color: "#0d9488" }} />
-            <h2 className="text-2xl font-extrabold text-slate-900">Whitepapers & Guides</h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-5">
-            {whitepapers.map((wp) => (
-              <div
-                key={wp.title}
-                className="rounded-2xl p-7 border border-slate-100 hover:shadow-lg transition-all"
-                style={{ backgroundColor: "#f8fafc" }}
-              >
+          <div className="space-y-4">
+            {r.whitepapers.items.map((wp) => (
+              <div key={wp.title} className="group flex flex-col sm:flex-row items-start sm:items-center gap-5 rounded-2xl border border-slate-100 p-6 hover:shadow-md transition-all bg-white hover:border-teal-200">
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                  style={{ backgroundColor: "#0d9488" }}
+                  className="flex-shrink-0 w-16 h-20 rounded-xl flex flex-col items-center justify-center text-white font-bold shadow-md"
+                  style={{ background: "linear-gradient(135deg, #0d9488, #1e3a5f)" }}
+                  aria-hidden="true"
                 >
-                  <FileText size={22} className="text-white" />
+                  <span className="text-lg leading-tight">{wp.pages.split(" ")[0]}</span>
+                  <span className="text-[9px] opacity-80 uppercase tracking-wide">{wp.pages.split(" ")[1] ?? "pp"}</span>
                 </div>
-                <h3 className="font-bold text-slate-900 mb-2 leading-snug">{wp.title}</h3>
-                <p className="text-sm text-slate-600 mb-4">{wp.desc}</p>
-                <p className="text-xs text-slate-400 mb-4">{wp.pages}</p>
-                <button
-                  className="w-full py-2.5 rounded-xl text-sm font-bold text-white"
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-bold text-slate-900 mb-1 leading-snug group-hover:text-teal-700 transition-colors">
+                    {wp.title}
+                  </h3>
+                  <p className="text-sm text-slate-500">{wp.desc}</p>
+                </div>
+                <Link
+                  href={localePath(locale, "/resources/whitepapers")}
+                  className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white shadow hover:shadow-md transition-all hover:-translate-y-0.5"
                   style={{ backgroundColor: "#0d9488" }}
                 >
-                  Download Free →
-                </button>
+                  <Download size={14} aria-hidden="true" />
+                  {r.whitepapers.downloadBtn}
+                </Link>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section id="faq" className="py-16" style={{ backgroundColor: "#f8fafc" }}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ── FAQ ── */}
+      <section id="faq" className="py-16" style={{ backgroundColor: "#f8fafc" }} aria-labelledby="faq-heading">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-10 justify-center">
-            <HelpCircle size={22} style={{ color: "#0d9488" }} />
-            <h2 className="text-2xl font-extrabold text-slate-900">Frequently Asked Questions</h2>
+            <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ backgroundColor: "#fff7ed" }}>
+              <HelpCircle size={18} style={{ color: "#f97316" }} aria-hidden="true" />
+            </div>
+            <h2 id="faq-heading" className="text-2xl font-extrabold text-slate-900">{r.faq.heading}</h2>
           </div>
-          <div className="space-y-4">
-            {faqs.map((faq) => (
-              <details
-                key={faq.q}
-                className="bg-white rounded-2xl border border-slate-100 overflow-hidden group"
-              >
-                <summary className="flex items-center justify-between px-6 py-5 cursor-pointer font-semibold text-slate-900 hover:text-teal-700 transition-colors list-none">
-                  {faq.q}
-                  <ArrowRight
-                    size={16}
-                    className="flex-shrink-0 text-slate-400 group-open:rotate-90 transition-transform"
-                  />
+          <div className="space-y-3">
+            {r.faq.items.map((faq) => (
+              <details key={faq.q} className="bg-white rounded-2xl border border-slate-100 overflow-hidden group">
+                <summary className="flex items-center justify-between px-6 py-5 cursor-pointer font-semibold text-slate-900 hover:text-teal-700 transition-colors list-none gap-4">
+                  <span>{faq.q}</span>
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full border border-slate-200 flex items-center justify-center group-open:bg-teal-50 group-open:border-teal-300 transition-colors" aria-hidden="true">
+                    <ArrowRight size={12} className="text-slate-400 group-open:rotate-90 group-open:text-teal-600 transition-all" />
+                  </span>
                 </summary>
                 <div className="px-6 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
                   {faq.a}
@@ -317,14 +350,34 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      <BottomCTA
-        headline="Ready to transform your health benefits?"
-        sub="Talk to a MixCare specialist and get a personalised demo for your organisation."
-        ctaLabel="Get a Demo"
-        ctaHref="/get-a-demo"
-        secondaryLabel="Start Now — Free"
-        secondaryHref="/start-now"
-      />
+      {/* CTA */}
+      <section className="py-16 bg-white" aria-label="Call to action">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            className="rounded-3xl px-10 py-14 text-center relative overflow-hidden"
+            style={{ background: "linear-gradient(135deg, #0d9488 0%, #1e3a5f 100%)" }}
+          >
+            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 20% 80%, white 1px, transparent 1px)", backgroundSize: "32px 32px" }} aria-hidden="true" />
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4 relative z-10">{r.cta.headline}</h2>
+            <p className="text-teal-100 text-lg max-w-xl mx-auto mb-8 relative z-10">{r.cta.sub}</p>
+            <div className="flex flex-wrap gap-4 justify-center relative z-10">
+              <Link
+                href={localePath(locale, "/get-a-demo")}
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
+                style={{ backgroundColor: "#f97316", color: "#fff" }}
+              >
+                {r.cta.ctaLabel} <ArrowRight size={20} aria-hidden="true" />
+              </Link>
+              <Link
+                href={localePath(locale, "/start-now")}
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-lg border-2 border-white/30 text-white hover:bg-white/10 transition-all"
+              >
+                {r.cta.secondaryLabel}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </main>

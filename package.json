@@ -12,14 +12,20 @@
     "@heroui/react": "^2.8.10",
     "@heroui/styles": "^3.0.1",
     "@heroui/theme": "^2.4.26",
+    "@sanity/image-url": "^2.1.1",
+    "@sanity/vision": "^5.19.0",
     "framer-motion": "^11.0.0",
     "lucide-react": "^0.469.0",
     "next": "^16.2.1",
+    "next-sanity": "^12.2.1",
     "nextjs-toploader": "^3.9.17",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "sanity": "^5.19.0",
+    "styled-components": "^6.3.12"
   },
   "devDependencies": {
+    "@sanity/cli": "^6.3.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

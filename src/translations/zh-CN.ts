@@ -1376,6 +1376,54 @@ export const zhCN: Translations = {
     },
   },
 
+  resources: {
+    hero: {
+      title: "资源与洞察",
+      sub: "研究、指南与案例研究，助您建立更优质的健康福利计划。",
+    },
+    blog: {
+      heading: "最新文章",
+      readMore: "阅读文章",
+    },
+    caseStudies: {
+      heading: "案例研究",
+      readMore: "阅读案例研究",
+      items: [
+        { company: "香港安盛", segment: "保险公司", headline: "AI驱动自付门诊计划使理赔处理成本降低70%", result: "理赔在18小时内解决，欺诈降低60%", color: "#0d9488" },
+        { company: "怡和集团", segment: "大型企业", headline: "转换至弹性福利后，福利使用率从40%跃升至92%", result: "员工满意度+45%，行政时间减少70%", color: "#1e3a5f" },
+        { company: "TechBridge HK", segment: "中小企（25名员工）", headline: "一家25人初创企业如何以企业级福利吸引资深人才", result: "保留2名资深员工，胜过大型竞争对手，1天完成设置", color: "#f97316" },
+      ],
+    },
+    whitepapers: {
+      heading: "白皮书与指南",
+      downloadBtn: "免费下载",
+      items: [
+        { title: "2025年亚太地区员工福利现况报告", desc: "对港、星、澳500名HR领导者及5,000名员工的年度调查。", pages: "42页" },
+        { title: "AI在健康保险理赔中的应用：技术概览", desc: "深入探讨驱动现代理赔处理的机器学习模型。", pages: "28页" },
+        { title: "建立弹性福利计划：逐步指南", desc: "为HR团队从传统团体计划过渡至弹性福利的实用指南。", pages: "18页" },
+      ],
+    },
+    faq: {
+      heading: "常见问题",
+      items: [
+        { q: "MixCare在哪些市场运营？", a: "MixCare Health在香港、澳门和新加坡运营。我们的网络医生覆盖三个市场，平台完全符合各司法管辖区的本地监管要求。" },
+        { q: "实施需要多长时间？", a: "中小企业可在60分钟内通过我们的自助服务门户完成设置。企业部署通常需要2至5个工作日，包括HRIS整合和自定义配置。" },
+        { q: "最低公司规模要求是什么？", a: "没有最低员工人数要求。我们的初级计划适合最少2名员工的公司。定价按已登记员工人数计算。" },
+        { q: "MixCare能否与我们现有的HR系统整合？", a: "可以。我们已与Workday、SAP SuccessFactors、Oracle HCM、BambooHR等预先建立整合。也可通过我们的REST API进行自定义整合。" },
+        { q: "网络医生系统如何运作？", a: "员工使用MixCare应用程序查找并预约网络医生。就诊采用无现金方式——员工出示电子卡，医生直接向MixCare收费。无需自付费用，无需填写报销表格。" },
+        { q: "MixCare是否符合PDPO和GDPR规定？", a: "是的。MixCare完全符合香港PDPO（第486章）、新加坡PDPA及欧盟GDPR的规定。我们也已获得ISO 27001认证。完整文件可按要求提供。" },
+        { q: "我们可以对市场进行白标吗？", a: "可以。保险公司和经纪可在自己的域名和品牌标识下部署完全品牌化的健康市场。设置需要2至3个工作日。" },
+        { q: "年末未使用的FSA余额如何处理？", a: "这完全可配置。您可以选择允许结转、将未使用余额退回公司，或退还给员工。平台会自动执行您设置的规则。" },
+      ],
+    },
+    cta: {
+      headline: "准备好转型您的健康福利了吗？",
+      sub: "与MixCare专家交流，为您的组织获取个性化演示。",
+      ctaLabel: "预约演示",
+      secondaryLabel: "立即开始——免费",
+    },
+  },
+
   contact: {
     headline: "联系",
     headlineHighlight: "我们",

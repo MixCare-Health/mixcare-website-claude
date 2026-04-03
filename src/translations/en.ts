@@ -1378,6 +1378,54 @@ export const en = {
     },
   },
 
+  resources: {
+    hero: {
+      title: "Resources & Insights",
+      sub: "Research, guides, and case studies to help you build better health benefits programmes.",
+    },
+    blog: {
+      heading: "Latest Articles",
+      readMore: "Read article",
+    },
+    caseStudies: {
+      heading: "Case Studies",
+      readMore: "Read case study",
+      items: [
+        { company: "AXA Hong Kong", segment: "Insurer", headline: "70% reduction in claims processing cost with AI-powered self-funded outpatient", result: "Claims resolved in <18 hours, fraud down 60%", color: "#0d9488" },
+        { company: "Jardine Matheson", segment: "Enterprise", headline: "Benefit utilisation jumped from 40% to 92% after switching to flexible benefits", result: "Employee satisfaction +45%, admin time down 70%", color: "#1e3a5f" },
+        { company: "TechBridge HK", segment: "SMB (25 employees)", headline: "How a 25-person startup attracted senior talent with enterprise-grade benefits", result: "2 senior hires retained vs. larger competitors, setup in 1 day", color: "#f97316" },
+      ],
+    },
+    whitepapers: {
+      heading: "Whitepapers & Guides",
+      downloadBtn: "Download Free",
+      items: [
+        { title: "The State of Employee Benefits in Asia-Pacific 2025", desc: "Annual survey of 500 HR leaders and 5,000 employees across HK, SG, and MO.", pages: "42 pages" },
+        { title: "AI in Health Insurance Claims: A Technical Overview", desc: "Deep dive into the machine learning models powering modern claims processing.", pages: "28 pages" },
+        { title: "Building a Flexible Benefits Programme: A Step-by-Step Guide", desc: "Practical guide for HR teams moving from traditional group plans to flexible benefits.", pages: "18 pages" },
+      ],
+    },
+    faq: {
+      heading: "Frequently Asked Questions",
+      items: [
+        { q: "What markets does MixCare operate in?", a: "MixCare Health operates across Hong Kong, Macau, and Singapore. Our panel doctor network covers all three markets and our platform is fully compliant with local regulatory requirements in each jurisdiction." },
+        { q: "How long does implementation take?", a: "For small businesses, setup can be completed in under 60 minutes via our self-service portal. Enterprise deployments typically take 2–5 business days including HRIS integration and custom configuration." },
+        { q: "What is the minimum company size?", a: "There is no minimum headcount requirement. Our Starter plan serves companies with as few as 2 employees. Pricing scales by the number of enrolled employees." },
+        { q: "Can MixCare integrate with our existing HR system?", a: "Yes. We have pre-built integrations with Workday, SAP SuccessFactors, Oracle HCM, BambooHR, and others. Custom integrations are available via our REST API." },
+        { q: "How does the panel doctor network work?", a: "Employees use the MixCare app to locate and book a panel doctor. Consultations are cashless — employees present their digital card and the doctor bills directly to MixCare. No out-of-pocket payment, no reimbursement forms." },
+        { q: "Is MixCare compliant with PDPO and GDPR?", a: "Yes. MixCare is fully compliant with Hong Kong's PDPO (Cap. 486), Singapore's PDPA, and the EU's GDPR. We are also ISO 27001 certified. Full documentation is available on request." },
+        { q: "Can we white-label the marketplace?", a: "Yes. Insurers and brokers can deploy a fully branded wellness marketplace under their own domain and brand identity. Setup takes 2–3 business days." },
+        { q: "What happens to unused FSA balances at year end?", a: "This is fully configurable. You can choose to allow rollover, forfeit unused balances back to the company, or return them to the employee. The platform enforces whichever rule you set automatically." },
+      ],
+    },
+    cta: {
+      headline: "Ready to transform your health benefits?",
+      sub: "Talk to a MixCare specialist and get a personalised demo for your organisation.",
+      ctaLabel: "Get a Demo",
+      secondaryLabel: "Start Now — Free",
+    },
+  },
+
   contact: {
     headline: "Get in",
     headlineHighlight: "touch",
