@@ -70,7 +70,7 @@ export default function HowToAdoptSection({ badge, headline, sub, items }: Props
                       ⏱ {item.duration}
                     </span>
                   </div>
-                  <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+                  <p className="text-slate-500 text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: item.desc }} />
                 </div>
               </div>
             ))}

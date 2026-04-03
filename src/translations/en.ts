@@ -668,7 +668,7 @@ export const en = {
         {
           step: "01",
           title: "Discovery & Needs Assessment",
-          desc: "Our team reviews your current outpatient spend, headcount, workforce distribution, and benefit philosophy to design a self-funded scheme that fits your organisation.",
+          desc: "You can talk to your <b>insurance broker</b>, <b>employee benefit consultant</b>, or <b>MixCare</b> to review your current outpatient spend, headcount, workforce distribution, and benefit philosophy to design a self-funded scheme that fits your organisation.",
           duration: "1–2 days",
         },
         {
