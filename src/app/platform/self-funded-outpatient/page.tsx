@@ -2,12 +2,10 @@ import AppNavbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/shared/PageHero";
 import BottomCTA from "@/components/shared/BottomCTA";
-import HowWeSolveSection from "@/components/platform/HowWeSolveSection";
-import HowToAdoptSection from "@/components/platform/HowToAdoptSection";
+import Link from "next/link";
 import {
-  Stethoscope, ShieldCheck, Building2, Globe,
   Users, TrendingUp, TrendingDown, MapPin, Layers, Rocket,
-  CheckCircle2, ArrowRight,
+  CheckCircle2, AlertTriangle, BarChart3, Shield, Zap, ArrowRight,
 } from "lucide-react";
 import type { Metadata } from "next";
 import { getLocale } from "@/lib/locale.server";
@@ -43,13 +41,15 @@ export const metadata: Metadata = {
   },
 };
 
-const P = "#0d9488";
+const P = "#0d9488";   // brand teal
+const N = "#1e3a5f";   // brand navy
+const DT = "#0891b2";  // dark teal
 
-const useCaseIcons  = [ShieldCheck, Stethoscope, Building2, Globe];
-const useCaseColors = [P, "#1e3a5f", "#f97316", "#7c3aed"];
-
+/* ── Unified brand color palettes ─────────────────────────────────── */
 const suitableIcons  = [TrendingUp, Users, TrendingDown, MapPin, Layers, Rocket];
-const suitableColors = ["#f97316", P, "#0891b2", "#7c3aed", "#10b981", "#1e3a5f"];
+const suitableColors = [P, N, DT, P, N, DT];
+
+const painPointIcons = [AlertTriangle, BarChart3, Shield, Zap];
 
 export default async function SelfFundedOutpatientPage() {
   const locale = await getLocale();
@@ -64,7 +64,7 @@ export default async function SelfFundedOutpatientPage() {
       ]} />
       <AppNavbar />
 
-      {/* ── HERO ──────────────────────────────────────────────────────── */}
+      {/* ── HERO ──────────────────────────────────────────────────── */}
       <PageHero
         badge={p.hero.badge}
         headline={p.hero.headline}
@@ -77,63 +77,155 @@ export default async function SelfFundedOutpatientPage() {
         secondaryCtaAnnotation={p.hero.calculatorAnnotation}
         secondaryCtaAnnotationIndent={locale !== "en" ? "20%" : undefined}
         iconColor={P}
-        bgGradient="linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fff7ed 100%)"
+        bgGradient="linear-gradient(135deg, #f0fdfa 0%, #ecfeff 50%, #f0f9ff 100%)"
       />
 
-      {/* ── PAIN POINTS: Dark numbered rows ───────────────────────────── */}
-      <section className="py-24 bg-[#08111f]">
+      {/* ── STATS — Floating trust band ───────────────────────────── */}
+      <section className="relative -mt-8 z-10 pb-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            className="rounded-2xl border border-white/20 shadow-xl backdrop-blur-md overflow-hidden"
+            style={{ background: "linear-gradient(135deg, #0f172a 0%, #0a3d59 55%, #0f172a 100%)" }}
+          >
+            <div className="px-6 py-4 text-center border-b border-white/10">
+              <h2 className="text-white text-sm font-bold uppercase tracking-widest opacity-80">
+                {p.stats.headline}
+              </h2>
+            </div>
+            <div className="grid grid-cols-3 divide-x divide-white/10">
+              {p.stats.items.map((stat, i) => (
+                <div key={i} className="text-center py-6 sm:py-8 px-3 sm:px-8">
+                  <p className="text-3xl sm:text-5xl font-black mb-2" style={{ color: P }}>
+                    {stat.value}
+                  </p>
+                  <p className="text-slate-400 text-[10px] sm:text-xs font-medium uppercase tracking-wider leading-tight">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── PAIN POINTS — Dark section with icon cards ─────────────── */}
+      <section className="py-20 sm:py-24" style={{ background: "linear-gradient(180deg, #08111f 0%, #0c1a2e 100%)" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-14">
             <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: P }}>
               Why MixCare
             </p>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-5">
               {p.painPoints.headline}
             </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-slate-400 max-w-2xl mx-auto leading-relaxed text-base sm:text-lg">
               {p.painPoints.sub}
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-5">
-            {p.painPoints.items.map((item, i) => (
-              <div
-                key={i}
-                className="rounded-2xl border border-white/[0.08] p-7 hover:border-white/20 hover:bg-white/[0.03] transition-all duration-200"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div
-                    className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
-                    style={{ backgroundColor: P + "20" }}
-                  >
-                    <span className="text-xs font-black" style={{ color: P }}>
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+            {p.painPoints.items.map((item, i) => {
+              const Icon = painPointIcons[i];
+              return (
+                <div
+                  key={i}
+                  className="group rounded-2xl p-6 sm:p-7 border border-white/[0.06] hover:border-teal-400/20 transition-all duration-300"
+                  style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(13,148,136,0.04) 100%)" }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5"
+                      style={{ backgroundColor: P + "15" }}
+                    >
+                      <Icon size={18} style={{ color: P }} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-white font-bold text-base leading-snug mb-2.5">
+                        {item.title}
+                      </h3>
+                      <p className="text-slate-400 leading-relaxed text-sm">
+                        {item.desc}
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="text-white font-bold text-base leading-snug">
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── HOW WE SOLVE — Light section, modern cards ──────────── */}
+      <section className="py-20 sm:py-24 bg-gradient-to-b from-slate-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14 sm:mb-16">
+            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: P }}>
+              {p.howWeSolve.badge}
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">
+              {p.howWeSolve.headline}
+            </h2>
+            <p className="text-base sm:text-lg text-slate-500 max-w-2xl mx-auto">
+              {p.howWeSolve.sub}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+            {p.howWeSolve.items.map((item) => (
+              <div
+                key={item.step}
+                className="relative group rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+              >
+                {/* Top accent bar */}
+                <div className="h-1" style={{ background: `linear-gradient(90deg, ${P}, ${DT})` }} />
+
+                <div className="p-6 sm:p-7">
+                  {/* Ghost number */}
+                  <span
+                    className="absolute top-4 right-5 text-7xl font-black select-none pointer-events-none"
+                    style={{ color: P + "08", lineHeight: 1 }}
+                  >
+                    {item.step}
+                  </span>
+
+                  <h3 className="text-slate-900 font-extrabold text-lg leading-snug mb-3 pr-8">
                     {item.title}
                   </h3>
+                  <p className="text-slate-500 text-sm leading-relaxed mb-5">
+                    {item.desc}
+                  </p>
+
+                  {/* Highlight pill */}
+                  <div
+                    className="inline-flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-full"
+                    style={{ backgroundColor: P + "10", color: P }}
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: P }} />
+                    {item.highlight}
+                  </div>
+
+                  {/* Know More button — only on the medical network card */}
+                  {item.step === "04" && (
+                    <Link
+                      href={localePath(locale, "/get-a-demo")}
+                      className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold transition-colors"
+                      style={{ color: P }}
+                    >
+                      {locale === "en" ? "Know More" : locale === "zh-TW" ? "了解更多" : "了解更多"}
+                      <ArrowRight size={14} />
+                    </Link>
+                  )}
                 </div>
-                <p className="text-slate-400 leading-relaxed text-sm">
-                  {item.desc}
-                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <HowWeSolveSection
-        badge={p.howWeSolve.badge}
-        headline={p.howWeSolve.headline}
-        sub={p.howWeSolve.sub}
-        items={p.howWeSolve.items}
-      />
-
-      {/* ── SUITABLE FOR: Light gradient checklist ────────────────────── */}
+      {/* ── SUITABLE FOR — Soft gradient grid ─────────────────────── */}
       <section
-        className="py-24"
-        style={{ background: "linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fdf4ff 100%)" }}
+        className="py-20 sm:py-24"
+        style={{ background: "linear-gradient(135deg, #f0fdfa 0%, #f0f9ff 50%, #f5f3ff08 100%)" }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
@@ -143,37 +235,37 @@ export default async function SelfFundedOutpatientPage() {
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">
               {p.suitableFor.headline}
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto">
               {p.suitableFor.sub}
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {p.suitableFor.items.map((item, i) => {
               const Icon = suitableIcons[i];
               const color = suitableColors[i];
               return (
                 <div
                   key={i}
-                  className="flex items-start gap-4 bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+                  className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 border border-white shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
                 >
-                  <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm"
-                    style={{ backgroundColor: color }}
-                  >
-                    <Icon size={19} className="text-white" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-bold text-slate-900 mb-1.5 leading-snug">{item.title}</h3>
-                    <p className="text-sm text-slate-500 leading-relaxed mb-3">{item.desc}</p>
-                    <span
-                      className="inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-full"
-                      style={{ backgroundColor: color + "18", color }}
+                  <div className="flex items-start gap-3.5 mb-4">
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm"
+                      style={{ backgroundColor: color }}
                     >
-                      <CheckCircle2 size={10} />
-                      {item.tag}
-                    </span>
+                      <Icon size={18} className="text-white" />
+                    </div>
+                    <h3 className="font-bold text-slate-900 leading-snug pt-2">{item.title}</h3>
                   </div>
+                  <p className="text-sm text-slate-500 leading-relaxed mb-4">{item.desc}</p>
+                  <span
+                    className="inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-full"
+                    style={{ backgroundColor: color + "12", color }}
+                  >
+                    <CheckCircle2 size={10} />
+                    {item.tag}
+                  </span>
                 </div>
               );
             })}
@@ -181,105 +273,75 @@ export default async function SelfFundedOutpatientPage() {
         </div>
       </section>
 
-      <HowToAdoptSection
-        badge={p.howToAdopt.badge}
-        headline={p.howToAdopt.headline}
-        sub={p.howToAdopt.sub}
-        items={p.howToAdopt.items}
-      />
-
-      {/* ── USE CASES: Colored side-panel rows ───────────────────────── */}
-      <section className="py-24 bg-white">
+      {/* ── HOW TO ADOPT — Refined timeline ───────────────────────── */}
+      <section className="py-20 sm:py-24 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: P }}>
-              Who It Serves
+              {p.howToAdopt.badge}
             </p>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">
-              {p.useCases.headline}
+              {p.howToAdopt.headline}
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              {p.useCases.sub}
+            <p className="text-base sm:text-lg text-slate-500 max-w-2xl mx-auto">
+              {p.howToAdopt.sub}
             </p>
           </div>
 
-          <div className="space-y-4">
-            {p.useCases.items.map((uc, i) => {
-              const Icon = useCaseIcons[i];
-              const color = useCaseColors[i];
-              return (
-                <div
-                  key={i}
-                  className="flex flex-col sm:flex-row rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition-all duration-200"
-                >
-                  {/* Colored audience block */}
-                  <div
-                    className="sm:w-48 flex-shrink-0 flex sm:flex-col items-center justify-start sm:justify-center gap-3 py-5 sm:py-8 px-6"
-                    style={{ backgroundColor: color }}
-                  >
-                    <div className="w-11 h-11 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0">
-                      <Icon size={20} className="text-white" />
+          <div className="relative">
+            {/* Vertical connector line */}
+            <div
+              className="hidden sm:block absolute left-7 sm:left-[2.375rem] top-10 bottom-10 w-px"
+              style={{ backgroundColor: P + "20" }}
+            />
+
+            <div className="space-y-5 sm:space-y-6">
+              {p.howToAdopt.items.map((item) => (
+                <div key={item.step} className="flex gap-4 sm:gap-6 items-start">
+                  {/* Step circle — smaller on mobile */}
+                  <div className="relative z-10 flex-shrink-0">
+                    <div
+                      className="w-14 h-14 sm:w-[4.75rem] sm:h-[4.75rem] rounded-full flex flex-col items-center justify-center shadow-lg border-2"
+                      style={{ backgroundColor: P, borderColor: P + "40" }}
+                    >
+                      <span className="text-white/60 text-[8px] sm:text-[9px] font-bold uppercase tracking-widest leading-none">
+                        Step
+                      </span>
+                      <span className="text-white text-lg sm:text-xl font-black leading-none mt-0.5">
+                        {item.step}
+                      </span>
                     </div>
-                    <p className="text-white font-extrabold text-sm sm:text-base sm:text-center leading-tight">
-                      {uc.audience}
-                    </p>
                   </div>
 
-                  {/* Scenario + outcome */}
+                  {/* Content card */}
                   <div
-                    className="flex-1 flex flex-col sm:flex-row sm:items-center gap-4 p-6"
-                    style={{ backgroundColor: color + "07" }}
+                    className="flex-1 rounded-2xl p-5 sm:p-6 border hover:shadow-md transition-all duration-200 mt-1"
+                    style={{ borderColor: P + "15", backgroundColor: P + "03" }}
                   >
-                    <p className="flex-1 text-slate-700 text-sm leading-relaxed">{uc.scenario}</p>
-                    <div className="sm:w-56 flex-shrink-0">
-                      <div
-                        className="inline-flex items-start gap-2 text-sm font-bold px-4 py-3 rounded-xl leading-snug"
-                        style={{ backgroundColor: color + "18", color }}
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-3 mb-3">
+                      <h3 className="text-slate-900 font-extrabold text-base leading-snug">
+                        {item.title}
+                      </h3>
+                      <span
+                        className="flex-shrink-0 text-xs font-bold px-3 py-1 rounded-full self-start whitespace-nowrap"
+                        style={{ backgroundColor: P + "12", color: P }}
                       >
-                        <ArrowRight size={14} className="flex-shrink-0 mt-0.5" />
-                        {uc.outcome}
-                      </div>
+                        {item.duration}
+                      </span>
                     </div>
+                    <p
+                      className="text-slate-500 text-sm leading-relaxed"
+                      dangerouslySetInnerHTML={{ __html: item.desc }}
+                    />
                   </div>
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── STATS: Dark gradient band ──────────────────────────────────── */}
-      <section
-        className="py-24"
-        style={{ background: "linear-gradient(135deg, #0f172a 0%, #0a3d59 55%, #0f172a 100%)" }}
-      >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-white text-3xl font-extrabold mb-16 opacity-90">
-            {p.stats.headline}
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3">
-            {p.stats.items.map((stat, i) => (
-              <div
-                key={i}
-                className={`text-center py-10 px-8 ${
-                  i < p.stats.items.length - 1
-                    ? "border-b sm:border-b-0 sm:border-r border-white/10"
-                    : ""
-                }`}
-              >
-                <p className="text-5xl sm:text-6xl font-black mb-4" style={{ color: P }}>
-                  {stat.value}
-                </p>
-                <p className="text-slate-300 text-sm font-medium uppercase tracking-widest">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── CTA ────────────────────────────────────────────────────────── */}
+      {/* ── CTA ─────────────────────────────────────────────────── */}
       <BottomCTA
         headline={p.cta.headline}
         sub={p.cta.sub}

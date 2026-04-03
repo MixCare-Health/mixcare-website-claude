@@ -597,9 +597,9 @@ export const en = {
     stats: {
       headline: "Measurable impact from day one",
       items: [
-        { value: "95%+", label: "Fraud detection accuracy" },
+        { value: "40%+", label: "HR Admin Time Saved" },
         { value: "30%", label: "Average cost reduction" },
-        { value: "2,000+", label: "Panel doctors available" },
+        { value: "93%+", label: "Employee satisfaction rate" },
       ],
     },
     testimonial: {
@@ -657,6 +657,12 @@ export const en = {
           title: "Real-Time Dashboard & Cross-Border Coverage",
           desc: "Get live visibility into spending, utilisation, and trends — across all markets. Our 2,000+ panel doctor network spans HK, MO, and SG, with multi-currency payouts handled automatically.",
           highlight: "2,000+ doctors across HK, MO & SG",
+        },
+        {
+          step: "04",
+          title: "MixCare Medical Network",
+          desc: "Access MixCare's 2,000+ panel doctor network across Hong Kong, Macau, and Singapore with exclusive rates — giving your employees cashless, hassle-free outpatient visits.",
+          highlight: "Exclusive panel rates",
         },
       ],
     },
@@ -867,15 +873,16 @@ export const en = {
       sub: "A seamless, intuitive experience for employees — and powerful management tools for admins.",
     },
     categories: {
-      headline: "3,000+ services across 6 categories",
-      sub: "From daily fitness to intensive wellness retreats — there's something for every employee, every lifestyle.",
+      headline: "3,000+ services across 7 categories",
+      sub: "From daily fitness to specialist medical care — there's something for every employee, every lifestyle.",
       items: [
-        { label: "Fitness & Gym", count: "" },
+        { label: "Medical", count: "" },
+        { label: "Fitness", count: "" },
         { label: "Mental Health", count: "" },
-        { label: "Nutrition", count: "" },
-        { label: "Wellness Retreats", count: "" },
-        { label: "Medical Screenings", count: "" },
-        { label: "Group Classes", count: "" },
+        { label: "Beauty", count: "" },
+        { label: "Dental", count: "" },
+        { label: "Diet", count: "" },
+        { label: "Women's Health", count: "" },
       ],
     },
     whiteLabelSection: {
@@ -1142,6 +1149,7 @@ export const en = {
         { title: "Rising claims costs", desc: "Traditional outpatient schemes lack the controls needed to manage escalating medical claims. Manual processing leaves fraud undetected and costs unpredictable." },
         { title: "Low policyholder engagement", desc: "Policyholders rarely interact with their insurer outside of claims. Without meaningful wellness touchpoints, retention suffers and policy renewal rates decline." },
         { title: "Digital transformation gaps", desc: "Modernising legacy claims infrastructure is expensive and slow. In the meantime, digital-first competitors are winning market share with better policyholder experiences." },
+        { title: "Lack of broker sales tools", desc: "Insurance brokers lack digital tools to effectively present, compare, and sell health benefit plans — slowing distribution and reducing competitiveness in a market that demands speed and transparency." },
       ],
       solutions: [
         { challenge: "Manual claims processing leads to fraud and slow payouts", solution: "MixCare's AI engine processes claims in <24h with >95% fraud detection accuracy — no manual review team required" },
@@ -1149,9 +1157,9 @@ export const en = {
         { challenge: "Building digital capabilities in-house is cost-prohibitive", solution: "MixCare deploys as a white-label add-on to your existing policies — no infrastructure investment, live in weeks" },
       ],
       featuredSolutions: [
-        { label: "Self-Funded Outpatient", desc: "AI-powered claims processing, cashless panel doctor network, and stop-loss controls for outpatient schemes." },
-        { label: "Wellness Hub", desc: "A connected ecosystem that drives policyholder engagement year-round — integrated seamlessly with your policy." },
-        { label: "Wellness Marketplace", desc: "White-label wellness marketplace to add value to group and individual policies without building from scratch." },
+        { label: "Health Wellnss Membership", desc: "Give policyholders access to exclusive privileges and curated perks through the MixCare platform — from premium wellness deals to partner rewards that enhance everyday wellbeing." },
+        { label: "Wellness Marketplace", desc: "Members can redeem rewards or purchase wellness services and products at member-only prices — covering fitness, mental health, nutrition, and 3,000+ curated categories." },
+        { label: "MixCare Medical Pass", desc: "Members enjoy discounted outpatient consultation fees at MixCare's 2,000+ panel clinics across Hong Kong, Macau, and Singapore — with savings of up to 70% off standard rates.*" },
       ],
       metrics: [
         { value: "70%", label: "Claims processing cost reduction" },
@@ -1174,9 +1182,9 @@ export const en = {
       cta: "Partner Sign-Up",
       secondaryCta: "Get a Demo",
       challenges: [
-        { title: "Commoditised product offering", desc: "Most brokers offer the same standard group medical plans. Without differentiation, clients choose on price alone — making retention difficult and margins thin." },
-        { title: "Client retention under pressure", desc: "Corporate clients increasingly demand more flexible, employee-centric benefits. Rigid traditional plans lose to digital-first competitors every renewal cycle." },
-        { title: "Complex administration", desc: "Managing multiple carriers, benefit types, and employee populations across clients requires significant operational overhead that eats into margins." },
+        { title: "Clients face rising outpatient costs with no control", desc: "Traditional group outpatient plans offer no visibility into claims, no fraud controls, and no cost flexibility. Self-funded models give your clients transparency and predictable budgets — and MixCare makes it easy to offer." },
+        { title: "Employees under-use their benefit budget", desc: "Rigid, paper-based benefits don't fit modern employee lifestyles. FSA wallets and a curated wellness marketplace dramatically increase utilisation — giving your clients visible ROI on every dollar spent." },
+        { title: "No digital edge to win or retain accounts", desc: "Presenting the same PDF brochure every renewal cycle isn't enough. Clients want a modern platform — flexible benefits, self-selection portals, and real-time analytics that demonstrate ongoing value." },
       ],
       solutions: [
         { challenge: "Same-as-everyone-else product catalogue", solution: "MixCare gives you FSA, wellness marketplace, and flexible benefits — differentiated products your competitors can't easily replicate" },
@@ -1184,9 +1192,10 @@ export const en = {
         { challenge: "High admin overhead managing benefits across clients", solution: "One broker portal to manage all clients, all benefit types, all claims — reducing admin time by up to 60%" },
       ],
       featuredSolutions: [
-        { label: "Flexible Benefits Solution", desc: "Personalised benefit packages that let employees self-select — the differentiator that wins RFPs and retains accounts." },
-        { label: "Flexible Spending Account", desc: "FSA wallets with 30+ spending categories — a compelling add-on that drives measurable employee satisfaction." },
-        { label: "Wellness Marketplace", desc: "White-label marketplace you can brand for each client — 500+ services, zero inventory or curation overhead." },
+        { label: "Self-Funded Outpatient Plan", desc: "Give clients AI-powered outpatient claims processing, a 2,000+ panel doctor network, and stop-loss controls — at a fraction of traditional group insurance costs." },
+        { label: "Flexible Spending Account", desc: "FSA wallets with 30+ spending categories — a compelling add-on that drives measurable employee satisfaction and benefit utilisation." },
+        { label: "Wellness Marketplace", desc: "White-label marketplace you can brand for each client — 3,000+ services, zero inventory or curation overhead." },
+        { label: "Flexible Benefits Solution", desc: "Personalised benefit packages that let employees self-select from a curated catalogue — the differentiator that wins RFPs and retains accounts.", tag: "Coming Soon" },
       ],
       metrics: [
         { value: "95%", label: "Client retention rate" },

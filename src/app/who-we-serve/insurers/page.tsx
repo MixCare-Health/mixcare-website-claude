@@ -36,9 +36,9 @@ export const metadata: Metadata = {
 };
 
 const featuredHrefs = [
-  "/platform/self-funded-outpatient",
   "/platform/wellness-hub",
   "/platform/wellness-marketplace",
+  "/platform/self-funded-outpatient",
 ];
 
 export default async function InsurersPage() {
@@ -83,6 +83,9 @@ export default async function InsurersPage() {
         featuredSub={tmpl.featuredSub}
         ctaHeadline={tmpl.ctaHeadline}
         ctaSub={tmpl.ctaSub}
+        hideSolutions
+        hideTestimonial
+        hideMetrics
       />
       <Footer />
     </main>

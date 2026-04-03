@@ -16,7 +16,7 @@ export const zhCN: Translations = {
     platformLinks: [
       { label: "自付门诊计划", desc: "人工智能理赔及指定医生网络" },
       { label: "弹性医疗账户", desc: "创建和管理任何需求的FSA钱包" },
-      { label: "健康市集", desc: "逾3,000项员工真正喜爱的精选服务" },
+      { label: "Wellness Marketplace", desc: "逾3,000项员工真正喜爱的精选服务" },
       { label: "健康活动", desc: "精选企业健康及医疗活动" },
       { label: "弹性福利方案", desc: "为每位员工提供个性化套餐" },
       { label: "健康中心", desc: "所有健康服务的一个互联生态系统" },
@@ -43,7 +43,7 @@ export const zhCN: Translations = {
     platform: [
       { label: "自付门诊计划", href: "/platform/self-funded-outpatient" },
       { label: "弹性医疗账户", href: "/platform/flexible-spending-account" },
-      { label: "健康市集", href: "/platform/wellness-marketplace" },
+      { label: "Wellness Marketplace", href: "/platform/wellness-marketplace" },
       { label: "弹性福利方案", href: "/platform/flexible-benefits" },
       { label: "Wellness Hub", href: "/platform/wellness-hub" },
     ],
@@ -98,7 +98,7 @@ export const zhCN: Translations = {
       costSavedSub: "对比传统方案",
       compliance: "符合PDPO规定",
       services: "逾3,000项服务",
-      servicesSub: "健康市集",
+      servicesSub: "Wellness Marketplace",
     },
 
     logoBar: {
@@ -123,7 +123,7 @@ export const zhCN: Translations = {
           stats: "逾30个消费类别",
         },
         {
-          title: "健康市集",
+          title: "Wellness Marketplace",
           desc: "员工可通过白标市集兑换健康服务——瑜伽、心理健康、营养、健身会员等应有尽有。",
           stats: "逾500项健康服务",
         },
@@ -294,7 +294,7 @@ export const zhCN: Translations = {
       steps: [
         {
           title: "设置您的福利方案",
-          desc: "在我们直观的管理门户设置门诊保障、FSA钱包及健康市集。完全可按公司需求定制。",
+          desc: "在我们直观的管理门户设置门诊保障、FSA钱包及Wellness Marketplace。完全可按公司需求定制。",
         },
         {
           title: "员工通过应用程序或门户访问",
@@ -574,9 +574,9 @@ export const zhCN: Translations = {
     stats: {
       headline: "从第一天起带来可量化的影响",
       items: [
-        { value: "95%+", label: "欺诈检测准确率" },
-        { value: "30%", label: "平均成本节省" },
-        { value: "2,000+", label: "可用特约医生" },
+        { value: "-40%", label: "行政时间节省" },
+        { value: "30%+", label: "平均节省医疗成本" },
+        { value: "93%+", label: "员工满意度" },
       ],
     },
     testimonial: {
@@ -615,25 +615,31 @@ export const zhCN: Translations = {
     howWeSolve: {
       badge: "我们的方案",
       headline: "我们如何解决？",
-      sub: "MixCare以全程管理的AI驱动门诊平台，取代不断上升的成本、僵化架构及数据盲点。",
+      sub: "MixCare的AI驱动自付门诊计划，取代不断上升的成本、缺乏弹性的架构及数据盲点。",
       items: [
         {
           step: "01",
-          title: "止损成本控制",
-          desc: "以自付费模式及可配置的止损上限，取代不可预测的保费通胀。您只需为实际理赔支付费用——当费用急升时，止损层自动启动。",
+          title: "预算设定与止损机制",
+          desc: "以自付费模式及可配置的预算设定与止损上限，取代不可预测的保费通胀。您只需为实际医疗支出支付费用。",
           highlight: "平均节省30%成本",
         },
         {
           step: "02",
-          title: "AI驱动理赔与防欺诈",
-          desc: "每份理赔均由我们的AI引擎处理——验证保障范围、侦测欺诈模式，并在24小时内处理98%的理赔。无需人工审核排队，无延误，无意外。",
+          title: "AI理赔与防欺诈",
+          desc: "每份理赔均由我们的AI引擎处理——验证保障范围、侦测欺诈模式，并在48小时内处理98%的理赔。无需人工审核，减少延误。",
           highlight: "欺诈侦测率>95%",
         },
         {
           step: "03",
-          title: "实时数据仪表板及跨境保障",
-          desc: "跨所有市场实时追踪支出、使用情况及趋势。我们超过2,000名指定诊所医生网络覆盖港澳新三地，多币种付款自动处理。",
+          title: "实时数据仪表板",
+          desc: "实时追踪支出、使用情况及趋势。",
           highlight: "港澳新逾2,000名指定医生",
+        },
+        {
+          step: "04",
+          title: "MixCare医疗网络",
+          desc: "使用MixCare遍布香港、澳门及新加坡逾2,000名指定医生网络，享有独家优惠诊金——让员工免现金、零烦恼地就诊。",
+          highlight: "独家指定医生费率",
         },
       ],
     },
@@ -801,8 +807,8 @@ export const zhCN: Translations = {
     },
     ecosystem: {
       headline: "连接完整MixCare生态系统",
-      sub: "FSA钱包与健康市集、健康中心及门诊网络无缝整合——员工在一处消费，您在一个入口管理。",
-      tags: ["健康市集", "健康中心", "特约医生网络", "人力资源系统"],
+      sub: "FSA钱包与Wellness Marketplace、健康中心及门诊网络无缝整合——员工在一处消费，您在一个入口管理。",
+      tags: ["Wellness Marketplace", "健康中心", "特约医生网络", "人力资源系统"],
       connectionDescs: [
         "员工可直接使用FSA钱包浏览及兑换服务",
         "健康参与及计划数据自动同步",
@@ -814,18 +820,18 @@ export const zhCN: Translations = {
 
   wellnessMarketplace: {
     meta: {
-      title: "健康市集 | MixCare Health",
-      description: "精选员工健康市集——3,000多项服务可使用FSA钱包兑换。提供保险公司、经纪及企业白标方案。",
+      title: "Wellness Marketplace | MixCare Health",
+      description: "精选员工Wellness Marketplace——3,000多项服务可使用FSA钱包兑换。提供保险公司、经纪及企业白标方案。",
     },
     hero: {
-      badge: "健康市集",
+      badge: "Wellness Marketplace",
       headline: "精选员工",
-      headlineHighlight: "健康市集",
+      headlineHighlight: "Wellness Marketplace",
       sub: "3,000多项健康服务，可无缝使用FSA钱包或预付账户兑换。提供保险公司、经纪及企业白标方案。",
       cta: "预约演示",
     },
     benefits: {
-      headline: "MixCare市集的与众不同之处",
+      headline: "与众不同之处",
       items: [
         { title: "即时服务兑换", desc: "员工可使用FSA钱包或预付账户兑换3,000多项健康服务——无需收据、无需报销、无需等待。一键即时享用。" },
         { title: "3,000多项认证服务", desc: "瑜伽课程、营养咨询、健身会籍、健康度假、心理健康支援等。亚太区3,000多项来自认证供应商的服务。" },
@@ -837,25 +843,26 @@ export const zhCN: Translations = {
     },
     marketplaceMockup: {
       badge: "平台预览",
-      headline: "亲身体验健康市集",
+      headline: "亲身体验Wellness Marketplace",
       sub: "为员工提供流畅直观的体验，同时为管理员提供强大的管理工具。",
     },
     categories: {
-      headline: "6大类别逾3,000项服务",
-      sub: "从日常健身到深度健康度假——每位员工、每种生活方式都有合适的选择。",
+      headline: "7大类别逾3,000项服务",
+      sub: "从日常健身到专科医疗护理——每位员工、每种生活方式都有合适的选择。",
       items: [
-        { label: "健身及健身房", count: "" },
+        { label: "医疗护理", count: "" },
+        { label: "健身运动", count: "" },
         { label: "心理健康", count: "" },
-        { label: "营养", count: "" },
-        { label: "健康度假", count: "" },
-        { label: "健康筛查", count: "" },
-        { label: "团体课程", count: "" },
+        { label: "美容护肤", count: "" },
+        { label: "牙齿护理", count: "" },
+        { label: "饮食营养", count: "" },
+        { label: "女性健康", count: "" },
       ],
     },
     whiteLabelSection: {
       badge: "白标方案",
       headline: "您的品牌。我们的市集。",
-      sub: "以您自己的身份部署完全品牌化的健康市集。您的客户看到您的标志、您的域名、您的设计——背后是MixCare的3,000多项精选服务及无缝支付基础设施。",
+      sub: "以您自己的身份部署完全品牌化的Wellness Marketplace。您的客户看到您的标志、您的域名、您的设计——背后是MixCare的3,000多项精选服务及无缝支付基础设施。",
       items: [
         "定制域名（wellness.yourcompany.com）",
         "品牌颜色、标志及字体",
@@ -870,8 +877,8 @@ export const zhCN: Translations = {
       label: "成为合作伙伴 →",
     },
     cta: {
-      headline: "立即建立您的健康市集",
-      sub: "与我们的团队讨论为您的机构或客户部署白标或标准健康市集。",
+      headline: "立即建立您的Wellness Marketplace",
+      sub: "与我们的团队讨论为您的机构或客户部署白标或标准Wellness Marketplace。",
       label: "预约演示",
       secondaryLabel: "成为供应商",
     },
@@ -1140,6 +1147,7 @@ export const zhCN: Translations = {
         { title: "理赔成本攀升", desc: "传统门诊方案缺乏管控不断上升的医疗理赔所需的工具。人工处理让欺诈行为难以被发现，成本难以预测。" },
         { title: "保单持有人参与度低", desc: "保单持有人很少在理赔以外与保险公司互动。缺乏有意义的健康接触点，客户留存率下降，保单续期率随之降低。" },
         { title: "数字化转型差距", desc: "改造传统理赔基础设施既昂贵又缓慢。与此同时，数字优先的竞争对手正凭借更优质的保单持有人体验抢占市场份额。" },
+        { title: "缺乏保险经纪销售工具", desc: "保险经纪缺乏数字工具来有效展示、比较及销售健康福利计划——拖慢分销速度，在讲求效率与透明度的市场中降低竞争力。" },
       ],
       solutions: [
         { challenge: "人工理赔处理导致欺诈及赔付延迟", solution: "MixCare 的 AI 引擎在 24 小时内以逾 95% 准确率处理理赔并识别欺诈——无需人工审核团队" },
@@ -1147,9 +1155,9 @@ export const zhCN: Translations = {
         { challenge: "内部自建数字能力成本过高", solution: "MixCare 以白标附加服务形式部署至您的现有保单——无需基础设施投资，数周内即可上线" },
       ],
       featuredSolutions: [
-        { label: "自付门诊计划", desc: "AI 驱动的理赔处理、免现金特约医生网络及门诊方案的止损管控。" },
-        { label: "健康中心", desc: "推动保单持有人全年参与的互联生态系统——与您的保单无缝整合。" },
-        { label: "健康市场", desc: "白标健康市场，为团体及个人保单增值，无需从头自建。" },
+        { label: "健康服务会籍", desc: "通过 MixCare 平台，让保单持有人享有专属优惠及精选礼遇——涵盖顶级健康折扣及合作伙伴回馈，全面提升日常健康生活。" },
+        { label: "Wellness Marketplace", desc: "会员可兑换奖励或以会员优惠价购买健康服务及产品——涵盖健身、心理健康、营养等逾3,000项精选类别。" },
+        { label: "MixCare 医疗会籍", desc: "会员可在MixCare遍布香港、澳门及新加坡的逾2,000间指定诊所享有优惠门诊诊金，低至3折*。" },
       ],
       metrics: [
         { value: "70%", label: "理赔处理成本降低" },
@@ -1172,9 +1180,9 @@ export const zhCN: Translations = {
       cta: "成为合作伙伴",
       secondaryCta: "预约演示",
       challenges: [
-        { title: "产品同质化严重", desc: "大多数经纪提供相同的标准团体医疗方案。缺乏差异化，客户只能以价格作为唯一选择依据——使留存困难、利润稀薄。" },
-        { title: "客户留存压力", desc: "企业客户日益要求更灵活、以员工为中心的福利。每个续保周期，僵化的传统方案都在向数字优先的竞争对手失去客户。" },
-        { title: "管理复杂度高", desc: "跨客户管理多家承保商、多种福利类型及多个员工群体，需要耗费大量运营资源，侵蚀利润。" },
+        { title: "客户面临门诊费用攀升，却无从管控", desc: "传统团体门诊计划对理赔情况毫无透明度——无法预测成本、更遑论优化。客户往往在年度审计时才发现超支。" },
+        { title: "员工未能充分使用福利预算", desc: "死板、纸本化的福利不符合现代员工的生活方式。员工忽视福利，企业的投入形同浪费——这正是每个客户在续保时都在问的问题。" },
+        { title: "缺乏数字优势，难以赢取或留住客户", desc: "每个续保周期都拿着同一份 PDF 宣传册，已无法打动客户。缺乏数字工具，客户会流失到提供更现代化平台的竞争对手。" },
       ],
       solutions: [
         { challenge: "产品目录与竞争对手无异", solution: "MixCare 为您提供 FSA、健康市场及灵活福利——竞争对手难以轻易复制的差异化产品" },
@@ -1182,9 +1190,10 @@ export const zhCN: Translations = {
         { challenge: "跨客户管理福利的高额行政开销", solution: "一个经纪门户管理所有客户、所有福利类型、所有理赔——行政时间最多减少 60%" },
       ],
       featuredSolutions: [
-        { label: "灵活福利方案", desc: "允许员工自选的个性化福利方案——赢得招标并留住客户的差异化优势。" },
-        { label: "灵活支出账户", desc: "涵盖 30 多个消费类别的 FSA 钱包——驱动可量化员工满意度的有力附加服务。" },
-        { label: "健康市场", desc: "可为每位客户定制品牌的白标市场——500 多种服务，零库存及策划开销。" },
+        { label: "自付门诊计划", desc: "为客户提供 AI 驱动的门诊理赔处理、逾 2,000 家网络诊所，以及止损控制——成本仅为传统团体保险的一小部分。" },
+        { label: "灵活支出账户", desc: "涵盖 30 多个消费类别的 FSA 钱包——可量化员工满意度与福利使用率的有力增值服务。" },
+        { label: "健康市场", desc: "可为每位客户定制品牌的白标市场——逾 3,000 项服务，零库存及策划开销。" },
+        { label: "灵活福利方案", desc: "允许员工从精选目录自选福利的个性化方案——赢得招标、留住客户的致胜差异化优势。", tag: "即将推出" },
       ],
       metrics: [
         { value: "95%", label: "客户留存率" },

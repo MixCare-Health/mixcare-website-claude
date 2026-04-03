@@ -5,8 +5,9 @@ import BottomCTA from "@/components/shared/BottomCTA";
 import Link from "next/link";
 import {
   ShoppingBag, Layers, Tag, Sliders, BarChart3,
-  Dumbbell, Brain, Apple, Leaf, Stethoscope, Users,
-  CheckCircle2, Star,
+  Dumbbell, Brain, Apple, Stethoscope,
+  Sparkles, Smile, Heart,
+  CheckCircle2,
 } from "lucide-react";
 import type { Metadata } from "next";
 import { getLocale } from "@/lib/locale.server";
@@ -47,8 +48,9 @@ const P = "#f97316";
 const benefitIcons  = [ShoppingBag, Layers, Tag, Sliders, BarChart3, BarChart3];
 const benefitColors = [P, "#0d9488", "#7c3aed", "#0891b2", "#1e3a5f", "#16a34a"];
 
-const categoryIcons  = [Dumbbell, Brain, Apple, Leaf, Stethoscope, Users];
-const categoryColors = [P, "#7c3aed", "#16a34a", "#0d9488", "#0891b2", "#d97706"];
+// Medical, Fitness, Mental, Beauty, Dental, Diet, Women's Health
+const categoryIcons  = [Stethoscope, Dumbbell, Brain, Sparkles, Smile, Apple, Heart];
+const categoryColors = ["#0891b2", P, "#7c3aed", "#db2777", "#0d9488", "#16a34a", "#e11d48"];
 
 export default async function WellnessMarketplacePage() {
   const locale = await getLocale();
@@ -217,19 +219,19 @@ export default async function WellnessMarketplacePage() {
               {p.categories.sub}
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-4 sm:grid-cols-7 gap-3">
             {p.categories.items.map((cat, i) => {
               const Icon  = categoryIcons[i];
               const color = categoryColors[i];
               return (
                 <div
                   key={cat.label}
-                  className="bg-white rounded-2xl p-7 border border-slate-100 hover:shadow-lg transition-all hover:-translate-y-1"
+                  className="bg-white rounded-2xl p-4 border border-slate-100 hover:shadow-md transition-all hover:-translate-y-0.5 flex flex-col items-center text-center"
                 >
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: color }}>
-                    <Icon size={24} className="text-white" />
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{ backgroundColor: color }}>
+                    <Icon size={18} className="text-white" />
                   </div>
-                  <h3 className="font-bold text-slate-900">{cat.label}</h3>
+                  <h3 className="font-bold text-slate-900 text-xs leading-snug">{cat.label}</h3>
                 </div>
               );
             })}

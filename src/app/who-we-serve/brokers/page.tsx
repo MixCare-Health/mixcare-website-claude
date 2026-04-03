@@ -36,9 +36,10 @@ export const metadata: Metadata = {
 };
 
 const featuredHrefs = [
-  "/platform/flexible-benefits",
+  "/platform/self-funded-outpatient",
   "/platform/flexible-spending-account",
   "/platform/wellness-marketplace",
+  "/platform/flexible-benefits",
 ];
 
 export default async function BrokersPage() {
@@ -72,6 +73,7 @@ export default async function BrokersPage() {
           label: s.label,
           desc: s.desc,
           href: localePath(locale, featuredHrefs[i]),
+          tag: s.tag,
         }))}
         metrics={p.metrics}
         testimonialQuote={p.testimonial.quote}
@@ -85,6 +87,17 @@ export default async function BrokersPage() {
         featuredSub={tmpl.featuredSub}
         ctaHeadline={tmpl.ctaHeadline}
         ctaSub={tmpl.ctaSub}
+        hideSolutions
+        hideTestimonial
+        hideMetrics
+        featuredLayout="mockup"
+        featuredHeadlineOverride="How We Solve?"
+        featuredSubOverride="All-in-One Employee Benefit Solution for Brokers"
+        partnerLogos={[
+          { name: "Mercer", src: "/logos/mixcare-health-client-mercer.png" },
+          { name: "Pacific Prime", src: "/logos/mixcare-health-client-pp.png" },
+          { name: "Nova", src: "/logos/mixcare-health-client-nova.png" },
+        ]}
       />
       <Footer />
     </main>

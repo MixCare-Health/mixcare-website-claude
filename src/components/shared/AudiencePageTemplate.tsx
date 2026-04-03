@@ -16,6 +16,7 @@ interface FeaturedSolution {
   label: string;
   href: string;
   desc: string;
+  tag?: string;
 }
 
 interface Metric {
@@ -51,6 +52,13 @@ interface AudiencePageTemplateProps {
   featuredSub: string;
   ctaHeadline: string;
   ctaSub: string;
+  hideSolutions?: boolean;
+  hideTestimonial?: boolean;
+  hideMetrics?: boolean;
+  partnerLogos?: ReadonlyArray<{ name: string; src: string }>;
+  featuredLayout?: "default" | "mockup";
+  featuredHeadlineOverride?: string;
+  featuredSubOverride?: string;
 }
 
 export default function AudiencePageTemplate({
@@ -80,6 +88,13 @@ export default function AudiencePageTemplate({
   featuredSub,
   ctaHeadline,
   ctaSub,
+  hideSolutions = false,
+  hideTestimonial = false,
+  hideMetrics = false,
+  partnerLogos,
+  featuredLayout = "default",
+  featuredHeadlineOverride,
+  featuredSubOverride,
 }: AudiencePageTemplateProps) {
   return (
     <>
@@ -132,6 +147,25 @@ export default function AudiencePageTemplate({
                 </Link>
               )}
             </div>
+            {partnerLogos && partnerLogos.length > 0 && (
+              <div className="mt-10 pt-8 border-t border-slate-200/60">
+                <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-6">
+                  Trusted by leading brokers
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-8">
+                  {partnerLogos.map((logo) => (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      key={logo.name}
+                      src={logo.src}
+                      alt={logo.name}
+                      className="opacity-60 hover:opacity-100 transition-opacity duration-300"
+                      style={{ height: "80px", width: "auto", objectFit: "contain" }}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -145,7 +179,7 @@ export default function AudiencePageTemplate({
           <p className="text-slate-600 text-center mb-10 max-w-xl mx-auto">
             {challengesSub}
           </p>
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className={`grid gap-5 ${challenges.length === 4 ? "sm:grid-cols-2 lg:grid-cols-4" : "md:grid-cols-3"}`}>
             {challenges.map((c) => (
               <div key={c.title} className="bg-white rounded-2xl p-7 border border-slate-100 hover:shadow-md transition-all">
                 <div className="flex items-start gap-3">
@@ -162,6 +196,7 @@ export default function AudiencePageTemplate({
       </section>
 
       {/* How MixCare solves it */}
+      {!hideSolutions && (
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 text-center mb-10">
@@ -189,38 +224,214 @@ export default function AudiencePageTemplate({
           </div>
         </div>
       </section>
+      )}
 
       {/* Featured solutions */}
       <section className="py-16" style={{ backgroundColor: "#f8fafc" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 text-center mb-3">
-            {featuredHeadline}
+            {featuredHeadlineOverride ?? featuredHeadline}
           </h2>
-          <p className="text-slate-600 text-center mb-10 max-w-xl mx-auto">
-            {featuredSub}
+          <p className="text-slate-600 text-center mb-10 max-w-2xl mx-auto">
+            {featuredSubOverride ?? featuredSub}
           </p>
-          <div className={`grid gap-5 ${featuredSolutions.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
-            {featuredSolutions.map((sol) => (
-              <Link
-                key={sol.href}
-                href={sol.href}
-                className="bg-white rounded-2xl p-7 border border-slate-100 hover:shadow-lg transition-all hover:-translate-y-1 group"
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
-                    {sol.label}
-                  </h3>
-                  <ArrowRight size={18} className="text-slate-300 group-hover:text-teal-600 transition-colors group-hover:translate-x-1" />
-                </div>
-                <p className="text-sm text-slate-600 leading-relaxed">{sol.desc}</p>
-              </Link>
-            ))}
-          </div>
+
+          {featuredLayout === "mockup" ? (
+            /* Mockup card layout */
+            <div className="grid md:grid-cols-2 gap-6">
+              {featuredSolutions.map((sol, i) => {
+                const designs = [
+                  {
+                    gradient: "from-teal-50 to-cyan-100",
+                    headerBg: "#0d9488",
+                    ui: (
+                      <div className="p-3 space-y-1.5">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-[9px] font-bold text-teal-800">Claims Dashboard</span>
+                          <span className="text-[7px] font-bold px-1.5 py-0.5 rounded-full bg-teal-600 text-white">AI-Powered</span>
+                        </div>
+                        {[
+                          { name: "John L.", amt: "HK$450", status: "Approved", dot: "bg-green-400" },
+                          { name: "Sarah K.", amt: "HK$280", status: "Processing", dot: "bg-amber-400" },
+                          { name: "Mike T.", amt: "HK$1,200", status: "Approved", dot: "bg-green-400" },
+                          { name: "Anna W.", amt: "HK$680", status: "Approved", dot: "bg-green-400" },
+                        ].map((c) => (
+                          <div key={c.name} className="flex items-center gap-2 bg-white/80 rounded-lg px-2 py-1.5 shadow-sm">
+                            <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${c.dot}`} />
+                            <span className="text-[8px] font-medium text-slate-700 flex-1">{c.name}</span>
+                            <span className="text-[8px] font-bold text-slate-900">{c.amt}</span>
+                            <span className="text-[7px] text-slate-500">{c.status}</span>
+                          </div>
+                        ))}
+                        <div className="mt-1.5 flex items-center gap-2 px-1">
+                          <div className="flex-1 h-1 rounded-full bg-teal-200">
+                            <div className="w-[78%] h-full rounded-full bg-teal-500" />
+                          </div>
+                          <span className="text-[7px] text-teal-700 font-bold">2,000+ Panel Doctors</span>
+                        </div>
+                      </div>
+                    ),
+                  },
+                  {
+                    gradient: "from-violet-50 to-indigo-100",
+                    headerBg: "#7c3aed",
+                    ui: (
+                      <div className="p-3">
+                        <div className="bg-white/80 rounded-xl p-2.5 mb-2 text-center shadow-sm">
+                          <div className="text-[8px] text-slate-500 mb-0.5">Available Balance</div>
+                          <div className="text-[18px] font-extrabold text-violet-700">HK$8,400</div>
+                          <div className="text-[7px] text-slate-400">30+ spending categories</div>
+                        </div>
+                        <div className="grid grid-cols-4 gap-1 mb-2">
+                          {["Medical", "Fitness", "Beauty", "Dental", "Diet", "Mental", "Vision", "+24"].map((cat) => (
+                            <div key={cat} className="bg-white/70 rounded-lg p-1 text-center">
+                              <span className="text-[7px] font-medium text-slate-600 leading-tight">{cat}</span>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="px-1">
+                          <div className="flex justify-between text-[7px] text-slate-500 mb-0.5">
+                            <span>Used</span><span>62%</span>
+                          </div>
+                          <div className="h-1.5 rounded-full bg-violet-100">
+                            <div className="w-[62%] h-full rounded-full bg-violet-500" />
+                          </div>
+                        </div>
+                      </div>
+                    ),
+                  },
+                  {
+                    gradient: "from-orange-50 to-amber-100",
+                    headerBg: "#f97316",
+                    ui: (
+                      <div className="p-3">
+                        <div className="flex items-center gap-1.5 bg-white/70 rounded-lg px-2 py-1 mb-2.5 shadow-sm">
+                          <div className="w-2 h-2 rounded-full bg-orange-300" />
+                          <span className="text-[8px] text-slate-400 flex-1">Search 3,000+ services…</span>
+                        </div>
+                        <div className="grid grid-cols-3 gap-1.5">
+                          {[
+                            { label: "Yoga", color: "bg-orange-100" },
+                            { label: "GP Visit", color: "bg-teal-100" },
+                            { label: "Massage", color: "bg-pink-100" },
+                            { label: "Pilates", color: "bg-violet-100" },
+                            { label: "Dental", color: "bg-blue-100" },
+                            { label: "Nutrition", color: "bg-green-100" },
+                          ].map((s) => (
+                            <div key={s.label} className={`${s.color} rounded-lg p-2 text-center`}>
+                              <div className="w-4 h-4 rounded-full bg-white/60 mx-auto mb-1" />
+                              <span className="text-[7px] font-medium text-slate-700">{s.label}</span>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="mt-2 text-center text-[7px] font-bold text-orange-600">3,000+ Services · White-Label Ready</div>
+                      </div>
+                    ),
+                  },
+                  {
+                    gradient: "from-slate-100 to-blue-100",
+                    headerBg: "#1e3a5f",
+                    ui: (
+                      <div className="p-3">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-[9px] font-bold text-slate-800">My Benefits 2025</span>
+                          <span className="text-[7px] font-bold px-1.5 py-0.5 rounded-full bg-navy-100 text-slate-600 border border-slate-300">Budget: HK$12,000</span>
+                        </div>
+                        <div className="h-1.5 rounded-full bg-slate-200 mb-3">
+                          <div className="w-[58%] h-full rounded-full bg-slate-500" />
+                        </div>
+                        {[
+                          { label: "Medical Coverage", val: "HK$5,000", checked: true },
+                          { label: "Gym Membership", val: "HK$2,000", checked: true },
+                          { label: "Dental Plan", val: "HK$1,500", checked: false },
+                          { label: "Mental Wellness", val: "HK$800", checked: false },
+                        ].map((b) => (
+                          <div key={b.label} className="flex items-center gap-2 py-1 border-b border-slate-100 last:border-0">
+                            <div className={`w-3 h-3 rounded flex items-center justify-center flex-shrink-0 ${b.checked ? "bg-slate-700" : "border border-slate-300 bg-white"}`}>
+                              {b.checked && <span className="text-white text-[7px]">✓</span>}
+                            </div>
+                            <span className="text-[8px] text-slate-700 flex-1">{b.label}</span>
+                            <span className="text-[8px] font-bold text-slate-500">{b.val}</span>
+                          </div>
+                        ))}
+                      </div>
+                    ),
+                  },
+                ];
+                const design = designs[i] ?? designs[0];
+                return (
+                  <Link
+                    key={sol.href}
+                    href={sol.href}
+                    className="bg-white rounded-2xl border border-slate-100 hover:shadow-xl transition-all hover:-translate-y-1 group overflow-hidden"
+                  >
+                    {/* Mockup preview */}
+                    <div className={`bg-gradient-to-br ${design.gradient} relative`}>
+                      {/* Browser chrome */}
+                      <div className="flex items-center gap-1.5 px-3 py-2 bg-white/60 backdrop-blur-sm border-b border-white/40">
+                        <span className="w-2 h-2 rounded-full bg-red-400" />
+                        <span className="w-2 h-2 rounded-full bg-yellow-400" />
+                        <span className="w-2 h-2 rounded-full bg-green-400" />
+                        <div className="ml-2 h-3 rounded-full bg-white/60 flex-1 max-w-[100px]" />
+                        <div
+                          className="ml-auto h-3 w-16 rounded-full"
+                          style={{ backgroundColor: design.headerBg + "30" }}
+                        />
+                      </div>
+                      {/* UI content */}
+                      <div className="min-h-[160px]">{design.ui}</div>
+                    </div>
+                    {/* Card footer */}
+                    <div className="p-5">
+                      <div className="flex items-center justify-between mb-2">
+                        <h3 className="font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
+                          {sol.label}
+                        </h3>
+                        {sol.tag ? (
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 whitespace-nowrap">
+                            {sol.tag}
+                          </span>
+                        ) : (
+                          <ArrowRight size={18} className="text-slate-300 group-hover:text-teal-600 transition-colors group-hover:translate-x-1" />
+                        )}
+                      </div>
+                      <p className="text-sm text-slate-600 leading-relaxed">{sol.desc}</p>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          ) : (
+            /* Default card layout */
+            <div className={`grid gap-5 ${featuredSolutions.length === 2 ? "md:grid-cols-2" : featuredSolutions.length === 4 ? "grid-cols-2 md:grid-cols-4" : "md:grid-cols-3"}`}>
+              {featuredSolutions.map((sol) => (
+                <Link
+                  key={sol.href}
+                  href={sol.href}
+                  className="bg-white rounded-2xl p-7 border border-slate-100 hover:shadow-lg transition-all hover:-translate-y-1 group"
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
+                      {sol.label}
+                    </h3>
+                    {sol.tag ? (
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 whitespace-nowrap">
+                        {sol.tag}
+                      </span>
+                    ) : (
+                      <ArrowRight size={18} className="text-slate-300 group-hover:text-teal-600 transition-colors group-hover:translate-x-1" />
+                    )}
+                  </div>
+                  <p className="text-sm text-slate-600 leading-relaxed">{sol.desc}</p>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
       {/* ROI metrics */}
-      <section className="py-12 bg-white">
+      {!hideMetrics && <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             className="rounded-2xl p-8 grid grid-cols-2 md:grid-cols-4 gap-6"
@@ -234,10 +445,10 @@ export default function AudiencePageTemplate({
             ))}
           </div>
         </div>
-      </section>
+      </section>}
 
       {/* Testimonial */}
-      <section className="py-16" style={{ backgroundColor: "#f8fafc" }}>
+      {!hideTestimonial && <section className="py-16" style={{ backgroundColor: "#f8fafc" }}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             className="rounded-3xl p-10 border border-slate-100 text-center"
@@ -262,7 +473,7 @@ export default function AudiencePageTemplate({
             </div>
           </div>
         </div>
-      </section>
+      </section>}
 
       {/* CTA */}
       <section className="py-16">

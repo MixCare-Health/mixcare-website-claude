@@ -16,7 +16,7 @@ export const zhTW: Translations = {
     platformLinks: [
       { label: "自付門診計劃", desc: "人工智能索償及指定醫生網絡" },
       { label: "彈性醫療帳戶", desc: "建立及管理任何需求的FSA錢包" },
-      { label: "健康市集", desc: "逾3,000項員工真正喜愛的精選服務" },
+      { label: "Wellness Marketplace", desc: "逾3,000項員工真正喜愛的精選服務" },
       { label: "健康活動", desc: "精選企業健康及醫療活動" },
       { label: "彈性福利方案", desc: "為每位員工提供個人化套餐" },
       { label: "Wellness Hub", desc: "所有健康服務的一個互聯生態系統" },
@@ -43,7 +43,7 @@ export const zhTW: Translations = {
     platform: [
       { label: "自付門診計劃", href: "/platform/self-funded-outpatient" },
       { label: "彈性醫療帳戶", href: "/platform/flexible-spending-account" },
-      { label: "健康市集", href: "/platform/wellness-marketplace" },
+      { label: "Wellness Marketplace", href: "/platform/wellness-marketplace" },
       { label: "彈性福利方案", href: "/platform/flexible-benefits" },
       { label: "健康中心", href: "/platform/wellness-hub" },
     ],
@@ -98,7 +98,7 @@ export const zhTW: Translations = {
       costSavedSub: "對比傳統計劃",
       compliance: "符合PDPO規定",
       services: "逾3,000項服務",
-      servicesSub: "健康市集",
+      servicesSub: "Wellness Marketplace",
     },
 
     logoBar: {
@@ -123,7 +123,7 @@ export const zhTW: Translations = {
           stats: "逾30個消費類別",
         },
         {
-          title: "健康市集",
+          title: "Wellness Marketplace",
           desc: "員工可透過白標市集兌換健康服務——瑜伽、心理健康、營養、健身會籍等應有盡有。",
           stats: "逾500項健康服務",
         },
@@ -294,7 +294,7 @@ export const zhTW: Translations = {
       steps: [
         {
           title: "設置您的福利計劃",
-          desc: "在我們直觀的管理入口設置門診保障、FSA錢包及健康市集。完全可按公司需求定制。",
+          desc: "在我們直觀的管理入口設置門診保障、FSA錢包及Wellness Marketplace。完全可按公司需求定制。",
         },
         {
           title: "員工透過應用程式或入口存取",
@@ -574,9 +574,9 @@ export const zhTW: Translations = {
     stats: {
       headline: "從第一天起帶來可量化的影響",
       items: [
-        { value: "95%+", label: "詐騙偵測準確率" },
-        { value: "30%", label: "平均成本節省" },
-        { value: "2,000+", label: "可用特約醫生" },
+        { value: "-40%", label: "行政時間節省" },
+        { value: "30%+", label: "平均節省醫療成本" },
+        { value: "93%+", label: "員工滿意度" },
       ],
     },
     testimonial: {
@@ -615,25 +615,31 @@ export const zhTW: Translations = {
     howWeSolve: {
       badge: "我們的方案",
       headline: "我們如何解決？",
-      sub: "MixCare以全程管理的AI驅動門診平台，取代不斷上升的成本、僵化架構及數據盲點。",
+      sub: "MixCare的AI驅動自付門診計劃，取代不斷上升的成本、缺乏彈性的架構及數據盲點。",
       items: [
         {
           step: "01",
-          title: "止損成本控制",
-          desc: "以自付費模式及可配置的止損上限，取代不可預測的保費通脹。您只需為實際理賠支付費用——當費用急升時，止損層自動啟動。",
+          title: "預算設定與止損機制",
+          desc: "以自付費模式及可配置的預算設定與止損上限，取代不可預測的保費通脹。您只需為實際醫療支出支付費用。",
           highlight: "平均節省30%成本",
         },
         {
           step: "02",
-          title: "AI驅動理賠與防欺詐",
-          desc: "每份理賠均由我們的AI引擎處理——驗證保障範圍、偵測欺詐模式，並在24小時內處理98%的理賠。無需人工審核排隊，無延誤，無意外。",
+          title: "AI理賠與防欺詐",
+          desc: "每份理賠均由我們的AI引擎處理——驗證保障範圍、偵測欺詐模式，並在48小時內處理98%的理賠。無需人工審核，減少延誤。",
           highlight: "欺詐偵測率>95%",
         },
         {
           step: "03",
-          title: "實時數據儀表板及跨境保障",
-          desc: "跨所有市場實時追蹤支出、使用情況及趨勢。我們超過2,000名指定診所醫生網絡覆蓋港澳新三地，多幣種付款自動處理。",
+          title: "實時數據儀表板",
+          desc: "實時追蹤支出、使用情況及趨勢。",
           highlight: "港澳新逾2,000名指定醫生",
+        },
+        {
+          step: "04",
+          title: "MixCare醫療網絡",
+          desc: "使用MixCare遍佈香港、澳門及新加坡逾2,000名指定醫生網絡，享有獨家優惠診金——讓員工免現金、零煩惱地就診。",
+          highlight: "獨家優惠診金",
         },
       ],
     },
@@ -801,8 +807,8 @@ export const zhTW: Translations = {
     },
     ecosystem: {
       headline: "連接完整MixCare生態系統",
-      sub: "FSA錢包與健康市集、健康中心及門診網絡無縫整合——員工在一處消費，您在一個入口管理。",
-      tags: ["健康市集", "健康中心", "特約醫生網絡", "人力資源系統"],
+      sub: "FSA錢包與Wellness Marketplace、健康中心及門診網絡無縫整合——員工在一處消費，您在一個入口管理。",
+      tags: ["Wellness Marketplace", "健康中心", "特約醫生網絡", "人力資源系統"],
       connectionDescs: [
         "員工可直接使用FSA錢包瀏覽及兌換服務",
         "健康參與及計劃數據自動同步",
@@ -814,18 +820,18 @@ export const zhTW: Translations = {
 
   wellnessMarketplace: {
     meta: {
-      title: "健康市集 | MixCare Health",
-      description: "精選員工健康市集——3,000多項服務可使用FSA錢包兌換。提供保險公司、經紀及企業白標方案。",
+      title: "Wellness Marketplace | MixCare Health",
+      description: "精選員工Wellness Marketplace——3,000多項服務可使用FSA錢包兌換。提供保險公司、經紀及企業白標方案。",
     },
     hero: {
-      badge: "健康市集",
+      badge: "Wellness Marketplace",
       headline: "精選員工",
-      headlineHighlight: "健康市集",
+      headlineHighlight: "Wellness Marketplace",
       sub: "3,000多項健康服務，可無縫使用FSA錢包或預付帳戶兌換。提供保險公司、經紀及企業白標方案。",
       cta: "預約示範",
     },
     benefits: {
-      headline: "MixCare市集的與眾不同之處",
+      headline: "與眾不同之處",
       items: [
         { title: "即時服務兌換", desc: "員工可使用FSA錢包或預付帳戶兌換3,000多項健康服務——無需收據、無需報銷、無需等待。一鍵即時享用。" },
         { title: "3,000多項認證服務", desc: "瑜伽課程、營養諮詢、健身會籍、健康度假、心理健康支援等。亞太區3,000多項來自認證供應商的服務。" },
@@ -837,25 +843,26 @@ export const zhTW: Translations = {
     },
     marketplaceMockup: {
       badge: "平台預覽",
-      headline: "親身體驗健康市集",
+      headline: "親身體驗",
       sub: "為員工提供流暢直觀的體驗，同時為管理員提供強大的管理工具。",
     },
     categories: {
-      headline: "6大類別逾3,000項服務",
-      sub: "從日常健身到深度健康度假——每位員工、每種生活方式都有合適的選擇。",
+      headline: "7大類別逾3,000項服務",
+      sub: "從日常健身到專科醫療護理——每位員工、每種生活方式都有合適的選擇。",
       items: [
-        { label: "健身及健身房", count: "" },
+        { label: "醫療護理", count: "" },
+        { label: "健身運動", count: "" },
         { label: "心理健康", count: "" },
-        { label: "營養", count: "" },
-        { label: "健康度假", count: "" },
-        { label: "健康篩查", count: "" },
-        { label: "團體課程", count: "" },
+        { label: "美容護膚", count: "" },
+        { label: "牙齒護理", count: "" },
+        { label: "飲食營養", count: "" },
+        { label: "女性健康", count: "" },
       ],
     },
     whiteLabelSection: {
       badge: "白標方案",
       headline: "您的品牌。我們的市集。",
-      sub: "以您自己的身份部署完全品牌化的健康市集。您的客戶看到您的標誌、您的域名、您的設計——背後是MixCare的3,000多項精選服務及無縫支付基礎設施。",
+      sub: "以您自己的身份部署完全品牌化的Wellness Marketplace。您的客戶看到您的標誌、您的域名、您的設計——背後是MixCare的3,000多項精選服務及無縫支付基礎設施。",
       items: [
         "定制域名（wellness.yourcompany.com）",
         "品牌顏色、標誌及字體",
@@ -870,8 +877,8 @@ export const zhTW: Translations = {
       label: "成為合作夥伴 →",
     },
     cta: {
-      headline: "立即建立您的健康市集",
-      sub: "與我們的團隊討論為您的機構或客戶部署白標或標準健康市集。",
+      headline: "立即建立您的Wellness Marketplace",
+      sub: "與我們的團隊討論為您的機構或客戶部署白標或標準Wellness Marketplace。",
       label: "預約示範",
       secondaryLabel: "成為供應商",
     },
@@ -1123,9 +1130,9 @@ export const zhTW: Translations = {
   whoWeServe: {
     template: {
       challengesHeadline: "保險公司面臨的挑戰",
-      challengesSub: "我們通過聆聽像您這樣的客戶來構建 MixCare。以下是我們解決的痛點。",
+      challengesSub: "以下是我們解決的痛點",
       solutionsHeadline: "MixCare 如何解決",
-      featuredHeadline: "為您推薦的解決方案",
+      featuredHeadline: "MixCare的解決方案",
       featuredSub: "這些平台功能對您的應用場景最具影響力。",
       ctaHeadline: "準備好開始了嗎？",
       ctaSub: "與我們的團隊交流，了解 MixCare 如何轉型您的健康福利計劃。",
@@ -1137,9 +1144,10 @@ export const zhTW: Translations = {
       sub: "為團體及個人保單添加可擴展的醫療與健康附加服務。降低理賠風險、增加保單持有人互動率及滿意度，並在數字化轉型中保持競爭力",
       cta: "預約示範",
       challenges: [
-        { title: "理賠及醫療費用攀升", desc: "傳統門診方案缺乏管控不斷上升的醫療理賠所需的工具。人工處理讓欺詐行為難以被發現，成本難以預測。" },
-        { title: "保單持有人參與度低", desc: "保單持有人很少在理賠以外與保險公司互動。缺乏有意義的健康接觸點，客戶留存率下降，保單續期率隨之降低。" },
-        { title: "數字化轉型差距", desc: "改造傳統理賠基礎設施既昂貴又緩慢。與此同時，數字優先的競爭對手正憑藉更優質的保單持有人體驗搶佔市場份額。" },
+        { title: "理賠及醫療費用大幅上升", desc: "傳統門診方案缺乏管控不斷上升的醫療費用，成本難以預測" },
+        { title: "保單持有人參與度低", desc: "保單持有人很少在理賠以外與保險公司互動。缺乏有意義的健康接觸點" },
+        { title: "數字化轉型", desc: "在保單上增加一些增值服務成本昂貴又緩慢但亦十分重要" },
+        { title: "缺乏保險經紀銷售工具", desc: "保險經紀缺乏數碼工具來有效展示、比較及銷售健康福利計劃——拖慢分銷速度，在講求效率與透明度的市場中降低競爭力。" },
       ],
       solutions: [
         { challenge: "人工理賠處理導致欺詐及賠付延遲", solution: "MixCare 的 AI 引擎在 24 小時內以逾 95% 準確率處理理賠並識別欺詐——無需人工審核團隊" },
@@ -1147,9 +1155,9 @@ export const zhTW: Translations = {
         { challenge: "內部自建數字能力成本過高", solution: "MixCare 以白標附加服務形式部署至您的現有保單——無需基礎設施投資，數週內即可上線" },
       ],
       featuredSolutions: [
-        { label: "自付門診計劃", desc: "AI 驅動的理賠處理、免現金特約醫生網絡及門診方案的止損管控。" },
-        { label: "健康中心", desc: "推動保單持有人全年參與的互聯生態系統——與您的保單無縫整合。" },
-        { label: "健康市場", desc: "白標健康市場，為團體及個人保單增值，無需從頭自建。" },
+        { label: "健康服務會藉", desc: "透過 MixCare 平台，讓保單持有人享有專屬優惠及精選禮遇——涵蓋頂級健康折扣及合作夥伴回饋，全面提升日常健康生活。" },
+        { label: "Wellness Marketplace", desc: "會員可換領獎賞或以會員優惠價購買健康服務及產品——涵蓋健身、心理健康、營養等逾3,000項精選類別。" },
+        { label: "MixCare 醫療卡", desc: "會員可在MixCare遍佈香港、澳門及新加坡的逾2,000間特約診所享有優惠門診診金，低至3折*。" },
       ],
       metrics: [
         { value: "70%", label: "理賠處理成本降低" },
@@ -1168,13 +1176,13 @@ export const zhTW: Translations = {
       badge: "保險經紀專屬",
       headline: "以靈活的福利方案",
       headlineHighlight: "贏得更多客戶",
-      sub: "以亞太地區最靈活、最具競爭力的福利方案脫穎而出。與 MixCare 合作，留住現有客戶並吸引新客戶。",
+      sub: "靈活彈性的福利方案脫穎而出。與 MixCare 合作，留住現有客戶並吸引新客戶。",
       cta: "成為合作夥伴",
       secondaryCta: "預約示範",
       challenges: [
-        { title: "產品同質化嚴重", desc: "大多數經紀提供相同的標準團體醫療方案。缺乏差異化，客戶只能以價格作為唯一選擇依據——使留存困難、利潤稀薄。" },
-        { title: "客戶留存壓力", desc: "企業客戶日益要求更靈活、以員工為中心的福利。每個續保周期，僵化的傳統方案都在向數字優先的競爭對手失去客戶。" },
-        { title: "管理複雜度高", desc: "跨客戶管理多家承保商、多種福利類型及多個員工群體，需要耗費大量運營資源，侵蝕利潤。" },
+        { title: "客戶面臨門診費用攀升，卻無從管控", desc: "傳統團體門診計劃對理賠情況毫無透明度——無法預測成本、更遑論優化。客戶往往在年度審計時才發現超支" },
+        { title: "員工未能充分使用福利預算", desc: "死板、紙本化的福利不符合現代員工的生活方式。員工忽視福利，企業的投入形同浪費——這正是每個客戶在續保時都在問的問題" },
+        { title: "缺乏數碼優勢，難以贏取或留住客戶", desc: "每個續保周期都拿著同一份 PDF 小冊子，已無法打動客戶。缺乏數碼工具，客戶會流失到提供更現代化平台的競爭對手" },
       ],
       solutions: [
         { challenge: "產品目錄與競爭對手無異", solution: "MixCare 為您提供 FSA、健康市場及靈活福利——競爭對手難以輕易複製的差異化產品" },
@@ -1182,9 +1190,10 @@ export const zhTW: Translations = {
         { challenge: "跨客戶管理福利的高額行政開銷", solution: "一個經紀門戶管理所有客戶、所有福利類型、所有理賠——行政時間最多減少 60%" },
       ],
       featuredSolutions: [
-        { label: "靈活福利方案", desc: "允許員工自選的個性化福利方案——贏得招標並留住客戶的差異化優勢。" },
-        { label: "靈活支出帳戶", desc: "涵蓋 30 多個消費類別的 FSA 錢包——驅動可量化員工滿意度的有力附加服務。" },
-        { label: "健康市場", desc: "可為每位客戶定製品牌的白標市場——500 多種服務，零庫存及策劃開銷。" },
+        { label: "自付門診計劃", desc: "為客戶提供 AI 驅動的門診理賠處理、逾 2,000 家網絡診所，以及止損控制——成本僅為傳統團體保險的一小部分。" },
+        { label: "靈活支出帳戶", desc: "涵蓋 30 多個消費類別的 FSA 錢包——可量化員工滿意度與福利使用率的有力增值服務。" },
+        { label: "健康市場", desc: "可為每位客戶定製品牌的白標市場——逾 3,000 項服務，零庫存及策劃開銷。" },
+        { label: "靈活福利方案", desc: "允許員工從精選目錄自選福利的個性化方案——贏得招標、留住客戶的致勝差異化優勢。", tag: "即將推出" },
       ],
       metrics: [
         { value: "95%", label: "客戶留存率" },
