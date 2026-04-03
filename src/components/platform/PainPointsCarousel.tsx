@@ -45,7 +45,7 @@ export default function PainPointsCarousel({ headline, sub, items }: Props) {
           {/* Cards */}
           <div
             ref={scrollRef}
-            className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory lg:grid lg:grid-cols-4 lg:overflow-visible lg:pb-0"
+            className={`flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory lg:grid lg:overflow-visible lg:pb-0 ${items.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4"}`}
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
           >
             {items.map(({ title, desc }, i) => {
