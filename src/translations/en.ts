@@ -635,6 +635,31 @@ export const en = {
         },
       ],
     },
+    howWeSolve: {
+      badge: "Our Approach",
+      headline: "How We Solve It",
+      sub: "MixCare replaces rising costs, rigid structures, and data blind spots with a fully managed, AI-powered outpatient platform.",
+      items: [
+        {
+          step: "01",
+          title: "Stop-Loss Cost Control",
+          desc: "Replace unpredictable premium inflation with a self-funded model and configurable stop-loss thresholds. You only pay for actual claims — and when costs spike, your stop-loss layer kicks in automatically.",
+          highlight: "Average 30% cost reduction",
+        },
+        {
+          step: "02",
+          title: "AI-Powered Claims & Fraud Prevention",
+          desc: "Every claim is processed by our AI engine — validating coverage, detecting fraud patterns, and settling 98% of claims within 24 hours. No manual review queues, no delays, no surprises.",
+          highlight: ">95% fraud detection rate",
+        },
+        {
+          step: "03",
+          title: "Real-Time Dashboard & Cross-Border Coverage",
+          desc: "Get live visibility into spending, utilisation, and trends — across all markets. Our 2,000+ panel doctor network spans HK, MO, and SG, with multi-currency payouts handled automatically.",
+          highlight: "2,000+ doctors across HK, MO & SG",
+        },
+      ],
+    },
   },
 
   flexibleSpendingAccount: {

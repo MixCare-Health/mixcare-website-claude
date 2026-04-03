@@ -2,6 +2,7 @@ import AppNavbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/shared/PageHero";
 import BottomCTA from "@/components/shared/BottomCTA";
+import HowWeSolveSection from "@/components/platform/HowWeSolveSection";
 import {
   Stethoscope, ShieldCheck, Building2, Globe,
   Users, TrendingUp, TrendingDown, MapPin, Layers, Rocket,
@@ -120,6 +121,13 @@ export default async function SelfFundedOutpatientPage() {
           </div>
         </div>
       </section>
+
+      <HowWeSolveSection
+        badge={p.howWeSolve.badge}
+        headline={p.howWeSolve.headline}
+        sub={p.howWeSolve.sub}
+        items={p.howWeSolve.items}
+      />
 
       {/* ── SUITABLE FOR: Light gradient checklist ────────────────────── */}
       <section
