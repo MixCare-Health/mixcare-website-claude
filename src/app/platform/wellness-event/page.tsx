@@ -5,6 +5,7 @@ import BenefitsGrid from "@/components/shared/BenefitsGrid";
 import BottomCTA from "@/components/shared/BottomCTA";
 import { CalendarDays, BookOpen, Monitor, BarChart2 } from "lucide-react";
 import PainPointsCarousel from "@/components/platform/PainPointsCarousel";
+import HowWeSolveSection from "@/components/platform/HowWeSolveSection";
 import WellnessEventCarousel from "@/components/platform/WellnessEventCarousel";
 import type { Metadata } from "next";
 import { getLocale } from "@/lib/locale.server";
@@ -78,6 +79,13 @@ export default async function WellnessEventPage() {
         headline={p.painPoints.headline}
         sub={p.painPoints.sub}
         items={p.painPoints.items}
+      />
+
+      <HowWeSolveSection
+        badge={p.howWeSolve.badge}
+        headline={p.howWeSolve.headline}
+        sub={p.howWeSolve.sub}
+        items={p.howWeSolve.items}
       />
 
       <BenefitsGrid

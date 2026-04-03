@@ -868,6 +868,31 @@ export const en = {
         { title: "No Measurable Impact", desc: "Without data, it's impossible to justify wellness event spending or improve programme quality over time." },
       ],
     },
+    howWeSolve: {
+      badge: "Our Approach",
+      headline: "How We Solve It",
+      sub: "MixCare handles the complexity so your HR team can focus on people, not logistics.",
+      items: [
+        {
+          step: "01",
+          title: "Curated Event Catalogue",
+          desc: "Access 50+ vetted wellness events across fitness, mental health, nutrition, and preventive care — updated monthly. No sourcing, no vetting — just pick what fits your team.",
+          highlight: "50+ event types",
+        },
+        {
+          step: "02",
+          title: "End-to-End Event Management",
+          desc: "MixCare coordinates vendors, schedules, invitations, RSVPs, and post-event reporting on your behalf. HR teams spend minutes, not days, organising a wellness event.",
+          highlight: "Zero admin overhead",
+        },
+        {
+          step: "03",
+          title: "Data-Driven Impact Reports",
+          desc: "Every event generates an automated report with attendance rates, satisfaction scores, and wellness ROI — giving you the data to justify spend and continuously improve.",
+          highlight: "Measurable outcomes",
+        },
+      ],
+    },
     benefits: {
       headline: "Four Capabilities. Healthier Teams.",
       items: [
