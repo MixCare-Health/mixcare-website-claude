@@ -52,7 +52,7 @@ export async function generateStaticParams(): Promise<Params[]> {
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params;
   if (!isSanityConfigured) return {};
-  const article: SanityArticle | null = await sanityClient.fetch(articleBySlugQuery, { slug });
+  const article: SanityArticle | null = await sanityClient.fetch(articleBySlugQuery, { slug, locale: "en" });
   if (!article) return {};
   return {
     title: `${article.title} | ${SITE_NAME}`,
