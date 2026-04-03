@@ -22,7 +22,7 @@ const scripts = [
 
 for (const script of scripts) {
   console.log(`\n▶ Running ${script}...`);
-  execSync(`npx tsx ${script}`, { stdio: "inherit" });
+  execSync(`~/.nvm/versions/node/v20.19.5/bin/node --import tsx/esm ${script}`, { stdio: "inherit" });
 }
 
 console.log("\n✅ All seeds complete.");
