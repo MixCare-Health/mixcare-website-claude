@@ -2,20 +2,20 @@ import Link from "next/link";
 import { BookOpen, FileText, Download, HelpCircle } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { localePath } from "@/lib/locale";
+import { getTranslations } from "@/translations";
 
 export type ResourceTabKey = "articles" | "case-studies" | "whitepapers" | "faq";
 
 interface Tab {
   key: ResourceTabKey;
-  label: string;
   icon: LucideIcon;
 }
 
-const TABS: Tab[] = [
-  { key: "articles",     label: "Articles",     icon: BookOpen   },
-  { key: "case-studies", label: "Case Studies", icon: FileText   },
-  { key: "whitepapers",  label: "Whitepapers",  icon: Download   },
-  { key: "faq",          label: "FAQ",          icon: HelpCircle },
+const TAB_DEFS: Tab[] = [
+  { key: "articles",     icon: BookOpen   },
+  { key: "case-studies", icon: FileText   },
+  { key: "whitepapers",  icon: Download   },
+  { key: "faq",          icon: HelpCircle },
 ];
 
 const HREFS: Record<ResourceTabKey, string> = {
@@ -31,6 +31,16 @@ interface Props {
 }
 
 export default function ResourcesTabs({ active, locale }: Props) {
+  const t = getTranslations(locale as "en" | "zh-TW" | "zh-CN");
+  const tabs = t.resources.tabs;
+
+  const LABELS: Record<ResourceTabKey, string> = {
+    "articles":     tabs.articles,
+    "case-studies": tabs.caseStudies,
+    "whitepapers":  tabs.whitepapers,
+    "faq":          tabs.faq,
+  };
+
   return (
     /* mt-16 clears the fixed navbar (h-16 = 64px).
        sticky top-16 z-30 keeps it pinned just below the navbar when scrolling. */
@@ -40,7 +50,8 @@ export default function ResourcesTabs({ active, locale }: Props) {
           aria-label="Resource sections"
           className="h-12 flex items-center gap-1 overflow-x-auto scrollbar-hide"
         >
-          {TABS.map(({ key, label, icon: Icon }) => {
+          {TAB_DEFS.map(({ key, icon: Icon }) => {
+            const label = LABELS[key];
             const isActive = key === active;
             return (
               <Link

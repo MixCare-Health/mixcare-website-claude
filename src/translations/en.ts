@@ -1383,12 +1383,21 @@ export const en = {
       title: "Resources & Insights",
       sub: "Research, guides, and case studies to help you build better health benefits programmes.",
     },
+    browseHeadline: "Browse Resources",
+    browseSub: "Expert insights on AI-powered health benefits, employee wellness, and digital health across Asia-Pacific.",
+    tabs: {
+      articles:    "Articles",
+      caseStudies: "Case Studies",
+      whitepapers: "Whitepapers",
+      faq:         "FAQ",
+    },
     blog: {
       heading: "Latest Articles",
       readMore: "Read article",
     },
     caseStudies: {
       heading: "Case Studies",
+      sub: "Real results from AI-powered health benefits across Hong Kong, Macau, and Singapore.",
       readMore: "Read case study",
       items: [
         { company: "AXA Hong Kong", segment: "Insurer", headline: "70% reduction in claims processing cost with AI-powered self-funded outpatient", result: "Claims resolved in <18 hours, fraud down 60%", color: "#0d9488" },
@@ -1398,6 +1407,7 @@ export const en = {
     },
     whitepapers: {
       heading: "Whitepapers & Guides",
+      sub: "Free whitepapers on AI in insurance claims, Asia-Pacific employee benefits trends, and flexible benefits programmes.",
       downloadBtn: "Download Free",
       items: [
         { title: "The State of Employee Benefits in Asia-Pacific 2025", desc: "Annual survey of 500 HR leaders and 5,000 employees across HK, SG, and MO.", pages: "42 pages" },
@@ -1407,6 +1417,7 @@ export const en = {
     },
     faq: {
       heading: "Frequently Asked Questions",
+      sub: "Answers to your most common questions about AI-powered health benefits and employee wellness.",
       items: [
         { q: "What markets does MixCare operate in?", a: "MixCare Health operates across Hong Kong, Macau, and Singapore. Our panel doctor network covers all three markets and our platform is fully compliant with local regulatory requirements in each jurisdiction." },
         { q: "How long does implementation take?", a: "For small businesses, setup can be completed in under 60 minutes via our self-service portal. Enterprise deployments typically take 2–5 business days including HRIS integration and custom configuration." },

@@ -73,8 +73,8 @@ export default async function ArticlesPage() {
         articles={articles}
         locale={locale}
         badge={t.resources.blog.heading}
-        headline="Browse Resources"
-        sub="Expert insights on AI-powered health benefits, employee wellness, and digital health across Asia-Pacific. For real."
+        headline={t.resources.browseHeadline}
+        sub={t.resources.browseSub}
       />
       <Footer />
     </main>

@@ -1381,12 +1381,21 @@ export const zhCN: Translations = {
       title: "资源与洞察",
       sub: "研究、指南与案例研究，助您建立更优质的健康福利计划。",
     },
+    browseHeadline: "浏览资源库",
+    browseSub: "亚太地区AI健康福利、员工健康及数字健康的专业洞察。",
+    tabs: {
+      articles:    "文章",
+      caseStudies: "案例研究",
+      whitepapers: "白皮书",
+      faq:         "常见问题",
+    },
     blog: {
       heading: "最新文章",
       readMore: "阅读文章",
     },
     caseStudies: {
       heading: "案例研究",
+      sub: "来自香港、澳门及新加坡的AI驱动健康福利真实成果。",
       readMore: "阅读案例研究",
       items: [
         { company: "香港安盛", segment: "保险公司", headline: "AI驱动自付门诊计划使理赔处理成本降低70%", result: "理赔在18小时内解决，欺诈降低60%", color: "#0d9488" },
@@ -1396,6 +1405,7 @@ export const zhCN: Translations = {
     },
     whitepapers: {
       heading: "白皮书与指南",
+      sub: "有关AI保险理赔、亚太员工福利趋势及弹性福利计划的免费白皮书。",
       downloadBtn: "免费下载",
       items: [
         { title: "2025年亚太地区员工福利现况报告", desc: "对港、星、澳500名HR领导者及5,000名员工的年度调查。", pages: "42页" },
@@ -1405,6 +1415,7 @@ export const zhCN: Translations = {
     },
     faq: {
       heading: "常见问题",
+      sub: "关于AI驱动健康福利和员工健康的常见问题解答。",
       items: [
         { q: "MixCare在哪些市场运营？", a: "MixCare Health在香港、澳门和新加坡运营。我们的网络医生覆盖三个市场，平台完全符合各司法管辖区的本地监管要求。" },
         { q: "实施需要多长时间？", a: "中小企业可在60分钟内通过我们的自助服务门户完成设置。企业部署通常需要2至5个工作日，包括HRIS整合和自定义配置。" },

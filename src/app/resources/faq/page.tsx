@@ -93,10 +93,7 @@ export default async function FaqPage() {
               {r.faq.heading}
             </h1>
           </div>
-          <p className="text-slate-500 max-w-2xl">
-            Answers to your most common questions about AI-powered health benefits, flexible spending
-            accounts, and employee wellness across Asia-Pacific.
-          </p>
+          <p className="text-slate-500 max-w-2xl">{r.faq.sub}</p>
         </div>
       </div>
 
