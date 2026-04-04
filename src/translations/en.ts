@@ -219,7 +219,7 @@ export const en = {
           label: "Insurance Company",
           tagline: "Sourcing and Managing Health Service Providers for Insurance Companies",
           cta: "Appointment Demo",
-          ctaHref: "/get-a-demo",
+          ctaHref: "https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-",
           bullets: [
             "Launch a health service platform under its own brand to enhance brand image and customer loyalty",
             "Use health services as an expandable add-on to insurance policies to increase policy value and differentiation",
@@ -245,7 +245,7 @@ export const en = {
           label: "Enterprise",
           tagline: "Benefits that attract, engage, and retain talent.",
           cta: "Get a Demo",
-          ctaHref: "/get-a-demo",
+          ctaHref: "https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-",
           bullets: [
             "Design flexible, scalable employee benefits programmes that attract and retain top talent",
             "Offer staff a personalised benefits wallet with freedom to spend on what matters to them",
@@ -1404,7 +1404,7 @@ export const en = {
       caseStudies:   "Case Studies",
       whitepapers:   "Whitepapers",
       faq:           "FAQ",
-      mediaCoverage: "媒體報道",
+      mediaCoverage: "Press Release",
     },
     ui: {
       all:             "All",

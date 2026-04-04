@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { LucideIcon } from "lucide-react";
+import { DEMO_URL } from "@/lib/demo-url";
 
 interface PageHeroProps {
   badge?: string;
@@ -25,7 +26,7 @@ export default function PageHero({
   headlineHighlight,
   subheadline,
   ctaLabel = "Get a Demo",
-  ctaHref = "/get-a-demo",
+  ctaHref = DEMO_URL,
   secondaryCtaLabel,
   secondaryCtaHref,
   secondaryCtaAnnotation,
@@ -82,13 +83,15 @@ export default function PageHero({
                 {secondaryCtaLabel}
               </Link>
             )}
-            <Link
+            <a
               href={ctaHref}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-white font-bold text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
               style={{ backgroundColor: "#f97316" }}
             >
               {ctaLabel} <ArrowRight size={20} />
-            </Link>
+            </a>
           </div>
         </div>
       </div>

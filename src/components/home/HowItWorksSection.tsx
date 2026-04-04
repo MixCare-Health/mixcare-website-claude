@@ -82,7 +82,7 @@ export default function HowItWorksSection({ data }: HowItWorksSectionProps = {})
         {/* CTA row */}
         <div className="text-center mt-14">
           <a
-            href={localePath(locale, "/get-a-demo")}
+            href={"https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-"}
             className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl text-white font-bold text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
             style={{ backgroundColor: "#f97316" }}
           >

@@ -283,7 +283,7 @@ export default async function AboutPage() {
         headline={cta.headline}
         sub={cta.sub}
         ctaLabel={cta.ctaLabel}
-        ctaHref={localePath(locale, "/get-a-demo")}
+        ctaHref={"https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-"}
         secondaryLabel={cta.secondaryLabel}
         secondaryHref="mailto:careers@mixcarehealth.com"
       />

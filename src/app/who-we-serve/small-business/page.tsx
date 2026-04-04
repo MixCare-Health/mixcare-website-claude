@@ -91,7 +91,7 @@ export default async function SmallBusinessPage() {
         ctaLabel={ctaLabel}
         ctaHref={localePath(locale, "/start-now")}
         secondaryCtaLabel={p.secondaryCta}
-        secondaryCtaHref={localePath(locale, "/get-a-demo")}
+        secondaryCtaHref={"https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-"}
         challenges={challenges}
         solutions={solutions}
         featuredSolutions={featuredSolutions.map((s, i) => ({

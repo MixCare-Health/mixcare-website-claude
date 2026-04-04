@@ -220,7 +220,7 @@ export const zhCN: Translations = {
           label: "保险公司",
           tagline: "为保险公司搜罗及管理医疗或健康服务供应商",
           cta: "预约示范",
-          ctaHref: "/get-a-demo",
+          ctaHref: "https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-",
           bullets: [
           "以自有品牌推出医疗或健康服务平台，增强品牌形象及客户忠诚度",
           "将医疗或健康服务作为保单的可扩展附加服务，提升保单价值及差异化",
@@ -246,7 +246,7 @@ export const zhCN: Translations = {
           label: "大型企业",
           tagline: "吸引、留住及激励人才的福利。",
           cta: "预约演示",
-          ctaHref: "/get-a-demo",
+          ctaHref: "https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-",
           bullets: [
             "设计灵活、可扩展的员工福利方案，吸引及留住顶尖人才",
             "为员工提供个性化福利钱包，可自由消费所需项目",
@@ -1395,7 +1395,7 @@ export const zhCN: Translations = {
       title: "资源与洞察",
       sub: "研究、指南与案例研究，助您建立更优质的健康福利计划。",
     },
-    browseHeadline: "浏览资源库",
+    browseHeadline: "资源库",
     browseSub: "亚太地区AI健康福利、员工健康及数字健康的专业洞察。",
     tabs: {
       articles:      "文章",

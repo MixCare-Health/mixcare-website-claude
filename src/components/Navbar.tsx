@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@heroui/react";
+import { DEMO_URL } from "@/lib/demo-url";
 import {
   ChevronDown,
   Menu,
@@ -287,8 +288,10 @@ const platformRef = useRef<HTMLDivElement>(null);
               </div>
 
               <Button
-                as={Link}
-                href={localePath(locale, "/get-a-demo")}
+                as="a"
+                href={DEMO_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 size="sm"
                 className="text-white font-semibold px-5"
                 style={{ backgroundColor: "#f97316" }}
@@ -417,8 +420,10 @@ const platformRef = useRef<HTMLDivElement>(null);
 
               <div className="pt-3 border-t border-slate-100">
                 <Button
-                  as={Link}
-                  href={localePath(locale, "/get-a-demo")}
+                  as="a"
+                  href={DEMO_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   fullWidth
                   className="text-white font-semibold"
                   style={{ backgroundColor: "#f97316" }}

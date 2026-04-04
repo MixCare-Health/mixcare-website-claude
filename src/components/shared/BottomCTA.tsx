@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { DEMO_URL } from "@/lib/demo-url";
 
 interface BottomCTAProps {
   headline?: string;
@@ -14,7 +15,7 @@ export default function BottomCTA({
   headline = "See it in action — Get a Demo",
   sub = "Speak with a MixCare specialist and discover how we can transform your health benefits.",
   ctaLabel = "Get a Demo",
-  ctaHref = "/get-a-demo",
+  ctaHref = DEMO_URL,
   secondaryLabel,
   secondaryHref,
 }: BottomCTAProps) {
@@ -34,13 +35,15 @@ export default function BottomCTA({
           </h2>
           <p className="text-teal-100 text-lg max-w-xl mx-auto mb-8 relative z-10">{sub}</p>
           <div className="flex flex-wrap gap-4 justify-center relative z-10">
-            <Link
+            <a
               href={ctaHref}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
               style={{ backgroundColor: "#f97316", color: "#fff" }}
             >
               {ctaLabel} <ArrowRight size={20} />
-            </Link>
+            </a>
             {secondaryLabel && secondaryHref && (
               <Link
                 href={secondaryHref}

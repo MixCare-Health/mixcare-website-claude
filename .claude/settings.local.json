@@ -89,7 +89,9 @@
       "Bash(node node_modules/.bin/tsc --noEmit)",
       "mcp__Sanity__query_documents",
       "mcp__Sanity__get_schema",
-      "Bash(npx sanity@latest schema deploy)"
+      "Bash(npx sanity@latest schema deploy)",
+      "Bash(export PATH=\"/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin:$PATH\")",
+      "Bash(head -20 grep -rn \"get-a-demo\\\\|Get a Demo\" \"/Users/kelvinchu/MixCare Health Website/src/components/shared/BottomCTA.tsx\")"
     ]
   },
   "disableAllHooks": true

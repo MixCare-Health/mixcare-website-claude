@@ -77,7 +77,7 @@ export default async function WellnessHubPage() {
         headlineHighlight={sp?.hero?.headlineHighlight ?? p.hero.headlineHighlight}
         subheadline={sp?.hero?.sub ?? p.hero.sub}
         ctaLabel={sp?.hero?.ctaLabel ?? p.hero.cta}
-        ctaHref={localePath(locale, "/get-a-demo")}
+        ctaHref={"https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-"}
         iconColor="#0891b2"
         bgGradient="linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fff7ed 100%)"
       />
@@ -166,7 +166,7 @@ export default async function WellnessHubPage() {
               {p.integrations.apiSub}
             </p>
             <a
-              href={localePath(locale, "/get-a-demo")}
+              href={"https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-"}
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm text-white"
               style={{ backgroundColor: "#0891b2" }}
             >
@@ -188,7 +188,7 @@ export default async function WellnessHubPage() {
         headline={sp?.cta?.heading ?? p.cta.headline}
         sub={sp?.cta?.sub ?? p.cta.sub}
         ctaLabel={sp?.cta?.ctaLabel ?? p.cta.label}
-        ctaHref={localePath(locale, "/get-a-demo")}
+        ctaHref={"https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-"}
       />
 
       <Footer />

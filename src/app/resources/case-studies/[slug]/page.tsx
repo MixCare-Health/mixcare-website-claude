@@ -208,7 +208,7 @@ export default async function CaseStudyPostPage({ params }: { params: Promise<Pa
                 <p className="font-extrabold text-lg mb-2">Get a similar result</p>
                 <p className="text-sm text-white/80 mb-5">Talk to a MixCare specialist and get a personalised demo for your organisation.</p>
                 <Link
-                  href={localePath(locale, "/get-a-demo")}
+                  href={"https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-"}
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold transition-all hover:-translate-y-0.5"
                   style={{ backgroundColor: "#f97316", color: "#fff" }}
                 >

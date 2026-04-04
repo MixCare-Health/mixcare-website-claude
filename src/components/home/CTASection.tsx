@@ -53,7 +53,7 @@ export default function CTASection({ data }: CTASectionProps = {}) {
 
           <div className="flex flex-wrap gap-4 justify-center relative z-10">
             <Link
-              href={localePath(locale, "/get-a-demo")}
+              href={"https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-"}
               className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all hover:-translate-y-0.5"
               style={{ backgroundColor: "#f97316", color: "#fff" }}
             >

@@ -202,7 +202,7 @@ export default async function StartNowPage() {
                   </div>
                   {isEnterprise ? (
                     <Link
-                      href="/get-a-demo"
+                      href="https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-"
                       className="block w-full text-center py-3 rounded-xl font-bold text-sm"
                       style={{ backgroundColor: "#f97316", color: "#fff" }}
                     >

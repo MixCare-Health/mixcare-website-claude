@@ -136,7 +136,7 @@ export default function ContactForm({ content }: Props) {
               {/* Quick links */}
               <div className="mt-8 grid grid-cols-2 gap-3">
                 {[
-                  { label: "Book a Demo", href: "/get-a-demo", color: "#f97316" },
+                  { label: "Book a Demo", href: "https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-", color: "#f97316" },
                   { label: "Partner With Us", href: "/partners", color: "#0d9488" },
                   { label: "Start Now", href: "/start-now", color: "#1e3a5f" },
                   { label: "Trust & Security", href: "/trust", color: "#7c3aed" },

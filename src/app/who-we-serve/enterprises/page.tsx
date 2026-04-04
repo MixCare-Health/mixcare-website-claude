@@ -89,7 +89,7 @@ export default async function EnterprisesPage() {
         accentColor={page?.accentColor ?? "#7c3aed"}
         bgGradient={page?.bgGradient ?? "linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fff7ed 100%)"}
         ctaLabel={ctaLabel}
-        ctaHref={localePath(locale, "/get-a-demo")}
+        ctaHref={"https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-"}
         challenges={challenges}
         solutions={solutions}
         featuredSolutions={featuredSolutions.map((s, i) => ({

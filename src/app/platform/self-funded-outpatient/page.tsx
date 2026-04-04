@@ -80,7 +80,7 @@ export default async function SelfFundedOutpatientPage() {
         headlineHighlight={sp?.hero?.headlineHighlight ?? p.hero.headlineHighlight}
         subheadline={sp?.hero?.sub ?? p.hero.sub}
         ctaLabel={sp?.hero?.ctaLabel ?? p.hero.cta}
-        ctaHref={localePath(locale, "/get-a-demo")}
+        ctaHref={"https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-"}
         secondaryCtaLabel={p.hero.calculatorCta}
         secondaryCtaHref="https://flexhealth.mixcarehealth.com/"
         secondaryCtaAnnotation={p.hero.calculatorAnnotation}
@@ -90,7 +90,7 @@ export default async function SelfFundedOutpatientPage() {
       />
 
       {/* ── STATS — Floating trust band ───────────────────────────── */}
-      <section className="relative -mt-8 z-10 pb-16">
+      <section className="relative -mt-20 z-10 pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             className="rounded-2xl border border-white/20 shadow-xl backdrop-blur-md overflow-hidden"
@@ -216,7 +216,7 @@ export default async function SelfFundedOutpatientPage() {
                   {/* Know More button — only on the medical network card */}
                   {item.step === "04" && (
                     <Link
-                      href={localePath(locale, "/get-a-demo")}
+                      href={"https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-"}
                       className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold transition-colors"
                       style={{ color: P }}
                     >
@@ -355,7 +355,7 @@ export default async function SelfFundedOutpatientPage() {
         headline={sp?.cta?.heading ?? p.cta.headline}
         sub={sp?.cta?.sub ?? p.cta.sub}
         ctaLabel={sp?.cta?.ctaLabel ?? p.cta.label}
-        ctaHref={localePath(locale, "/get-a-demo")}
+        ctaHref={"https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-"}
       />
 
       <Footer />

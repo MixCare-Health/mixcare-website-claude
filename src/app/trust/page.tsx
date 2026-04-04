@@ -261,7 +261,7 @@ export default async function TrustPage() {
         ctaLabel={cta.ctaLabel}
         ctaHref="mailto:security@mixcarehealth.com"
         secondaryLabel={cta.secondaryLabel}
-        secondaryHref={localePath(locale, "/get-a-demo")}
+        secondaryHref={"https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-"}
       />
 
       <Footer />

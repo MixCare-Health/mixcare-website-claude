@@ -97,7 +97,7 @@ export default function HeroSection({ data }: HeroSectionProps = {}) {
             <div className="flex flex-wrap gap-3 mb-10">
               <Button
                 as={Link}
-                href={localePath(locale, "/get-a-demo")}
+                href={"https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-"}
                 size="lg"
                 className="text-white font-bold px-8 rounded-xl shadow-lg"
                 style={{ backgroundColor: "#f97316" }}
