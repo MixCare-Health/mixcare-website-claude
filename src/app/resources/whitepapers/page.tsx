@@ -75,7 +75,6 @@ export default async function WhitepapersPage() {
         headline={r.whitepapers.heading}
         sub={r.whitepapers.sub}
         downloadBtn={r.whitepapers.downloadBtn}
-        readPreview="Read preview"
       />
       <Footer />
     </main>

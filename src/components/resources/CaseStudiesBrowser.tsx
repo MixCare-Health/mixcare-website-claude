@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight, TrendingUp } from "lucide-react";
 import type { SanityCaseStudyListItem } from "@/lib/sanity.queries";
 import { urlFor } from "@/sanity/lib/image";
 import { localePath } from "@/lib/locale";
+import { getTranslations } from "@/translations";
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 const ALL = "All";
@@ -45,11 +46,13 @@ function FeaturedCard({
   index,
   locale,
   readMore,
+  featuredLabel,
 }: {
   item: SanityCaseStudyListItem;
   index: number;
   locale: string;
   readMore: string;
+  featuredLabel: string;
 }) {
   const gradients = [
     "linear-gradient(135deg, #0d9488 0%, #1e3a5f 100%)",
@@ -80,7 +83,7 @@ function FeaturedCard({
         )}
         {index === 1 && (
           <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold bg-teal-100 text-teal-700 shadow-sm">
-            ✦ Featured
+            ✦ {featuredLabel}
           </div>
         )}
         <div
@@ -190,6 +193,8 @@ interface Props {
 }
 
 export default function CaseStudiesBrowser({ caseStudies, locale, badge, headline, sub, readMore }: Props) {
+  const ui = getTranslations(locale as "en" | "zh-TW" | "zh-CN").resources.ui;
+
   const [activeSegment, setActiveSegment] = useState(ALL);
   const [page, setPage] = useState(1);
 
@@ -246,7 +251,7 @@ export default function CaseStudiesBrowser({ caseStudies, locale, badge, headlin
                   }`}
                 >
                   <span className="text-base leading-none">{segIcon(seg)}</span>
-                  {seg}
+                  {seg === ALL ? ui.all : seg}
                 </button>
               );
             })}
@@ -262,7 +267,7 @@ export default function CaseStudiesBrowser({ caseStudies, locale, badge, headlin
           {featured.length > 0 && (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
               {featured.map((item, i) => (
-                <FeaturedCard key={item.slug} item={item} index={i} locale={locale} readMore={readMore} />
+                <FeaturedCard key={item.slug} item={item} index={i} locale={locale} readMore={readMore} featuredLabel={ui.featured} />
               ))}
             </div>
           )}
@@ -285,7 +290,7 @@ export default function CaseStudiesBrowser({ caseStudies, locale, badge, headlin
                     </div>
                   ))}
                 </div>
-                <h2 className="text-xl font-extrabold text-slate-900">More Stories</h2>
+                <h2 className="text-xl font-extrabold text-slate-900">{ui.moreStories}</h2>
               </div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -336,12 +341,12 @@ export default function CaseStudiesBrowser({ caseStudies, locale, badge, headlin
           {filtered.length === 0 && (
             <div className="text-center py-24">
               <p className="text-4xl mb-4">🔍</p>
-              <p className="text-lg font-semibold text-slate-600">No case studies in this segment yet.</p>
+              <p className="text-lg font-semibold text-slate-600">{ui.noCaseStudies}</p>
               <button
                 onClick={() => switchSegment(ALL)}
                 className="mt-4 text-sm font-semibold text-teal-600 hover:text-teal-800 underline underline-offset-2"
               >
-                View all case studies
+                {ui.viewAll}
               </button>
             </div>
           )}

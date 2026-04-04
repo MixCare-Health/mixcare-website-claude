@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight, Download, FileText } from "lucide-react";
 import type { SanityWhitepaperListItem } from "@/lib/sanity.queries";
 import { urlFor } from "@/sanity/lib/image";
 import { localePath } from "@/lib/locale";
+import { getTranslations } from "@/translations";
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 const ALL = "All";
@@ -42,12 +43,14 @@ function FeaturedCard({
   locale,
   downloadBtn,
   readPreview,
+  featuredLabel,
 }: {
   item: SanityWhitepaperListItem;
   index: number;
   locale: string;
   downloadBtn: string;
   readPreview: string;
+  featuredLabel: string;
 }) {
   const accentColor = item.accentColor || "#0d9488";
   const gradient = item.gradient || FALLBACK_GRADIENT;
@@ -70,7 +73,7 @@ function FeaturedCard({
           </div>
           {index === 1 && (
             <div className="px-3 py-1 rounded-full text-xs font-bold bg-white/20 text-white shadow-sm">
-              ✦ Featured
+              ✦ {featuredLabel}
             </div>
           )}
         </div>
@@ -188,10 +191,10 @@ interface Props {
   headline: string;
   sub: string;
   downloadBtn: string;
-  readPreview: string;
 }
 
-export default function WhitepapersBrowser({ whitepapers, locale, badge, headline, sub, downloadBtn, readPreview }: Props) {
+export default function WhitepapersBrowser({ whitepapers, locale, badge, headline, sub, downloadBtn }: Props) {
+  const ui = getTranslations(locale as "en" | "zh-TW" | "zh-CN").resources.ui;
   const [activeFormat, setActiveFormat] = useState(ALL);
   const [page, setPage] = useState(1);
 
@@ -248,7 +251,7 @@ export default function WhitepapersBrowser({ whitepapers, locale, badge, headlin
                   }`}
                 >
                   <span className="text-base leading-none">{fmtIcon(fmt)}</span>
-                  {fmt}
+                  {fmt === ALL ? ui.all : fmt}
                 </button>
               );
             })}
@@ -264,7 +267,7 @@ export default function WhitepapersBrowser({ whitepapers, locale, badge, headlin
           {featured.length > 0 && (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
               {featured.map((item, i) => (
-                <FeaturedCard key={item.slug} item={item} index={i} locale={locale} downloadBtn={downloadBtn} readPreview={readPreview} />
+                <FeaturedCard key={item.slug} item={item} index={i} locale={locale} downloadBtn={downloadBtn} readPreview={ui.readPreview} featuredLabel={ui.featured} />
               ))}
             </div>
           )}
@@ -287,12 +290,12 @@ export default function WhitepapersBrowser({ whitepapers, locale, badge, headlin
                     </div>
                   ))}
                 </div>
-                <h2 className="text-xl font-extrabold text-slate-900">More Guides</h2>
+                <h2 className="text-xl font-extrabold text-slate-900">{ui.moreGuides}</h2>
               </div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {recent.map((item) => (
-                  <SmallCard key={item.slug} item={item} locale={locale} downloadBtn={downloadBtn} readPreview={readPreview} />
+                  <SmallCard key={item.slug} item={item} locale={locale} downloadBtn={downloadBtn} readPreview={ui.readPreview} />
                 ))}
               </div>
 
@@ -338,12 +341,12 @@ export default function WhitepapersBrowser({ whitepapers, locale, badge, headlin
           {filtered.length === 0 && (
             <div className="text-center py-24">
               <p className="text-4xl mb-4">🔍</p>
-              <p className="text-lg font-semibold text-slate-600">No whitepapers in this format yet.</p>
+              <p className="text-lg font-semibold text-slate-600">{ui.noWhitepapers}</p>
               <button
                 onClick={() => switchFormat(ALL)}
                 className="mt-4 text-sm font-semibold text-teal-600 hover:text-teal-800 underline underline-offset-2"
               >
-                View all whitepapers
+                {ui.viewAll}
               </button>
             </div>
           )}

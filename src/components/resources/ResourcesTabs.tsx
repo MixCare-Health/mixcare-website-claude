@@ -48,7 +48,7 @@ export default function ResourcesTabs({ active, locale }: Props) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav
           aria-label="Resource sections"
-          className="h-12 flex items-center gap-1 overflow-x-auto scrollbar-hide"
+          className="h-12 flex items-center gap-1 overflow-x-auto scrollbar-hide lg:justify-center"
         >
           {TAB_DEFS.map(({ key, icon: Icon }) => {
             const label = LABELS[key];

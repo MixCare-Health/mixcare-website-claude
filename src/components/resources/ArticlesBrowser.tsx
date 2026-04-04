@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { SanityArticleListItem } from "@/lib/sanity.queries";
 import { urlFor } from "@/sanity/lib/image";
 import { localePath } from "@/lib/locale";
+import { getTranslations } from "@/translations";
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 const ALL = "All";
@@ -69,10 +70,14 @@ function FeaturedCard({
   post,
   index,
   locale,
+  featuredLabel,
+  categoryLabel,
 }: {
   post: SanityArticleListItem;
   index: number;
   locale: string;
+  featuredLabel: string;
+  categoryLabel: string;
 }) {
   const col = catColor(post.category);
   const av = avatarColor(post.author);
@@ -109,7 +114,7 @@ function FeaturedCard({
         {/* Featured badge */}
         {index === 1 && (
           <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold bg-teal-100 text-teal-700 shadow-sm">
-            ✦ Featured
+            ✦ {featuredLabel}
           </div>
         )}
         {/* Category badge */}
@@ -117,7 +122,7 @@ function FeaturedCard({
           className="absolute top-4 right-4 px-2.5 py-1 rounded-full text-[11px] font-bold shadow-sm"
           style={{ backgroundColor: col.bg, color: col.text }}
         >
-          {post.category}
+          {categoryLabel}
         </div>
       </div>
 
@@ -155,7 +160,7 @@ function FeaturedCard({
 }
 
 // ── Small card ────────────────────────────────────────────────────────────────
-function SmallCard({ post, locale }: { post: SanityArticleListItem; locale: string }) {
+function SmallCard({ post, locale, categoryLabel }: { post: SanityArticleListItem; locale: string; categoryLabel: string }) {
   const col = catColor(post.category);
   const av = avatarColor(post.author);
 
@@ -191,7 +196,7 @@ function SmallCard({ post, locale }: { post: SanityArticleListItem; locale: stri
           className="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[10px] font-bold shadow-sm"
           style={{ backgroundColor: col.bg, color: col.text }}
         >
-          {post.category}
+          {categoryLabel}
         </div>
       </div>
 
@@ -238,6 +243,10 @@ interface Props {
 }
 
 export default function ArticlesBrowser({ articles, locale, badge, headline, sub }: Props) {
+  const r = getTranslations(locale as "en" | "zh-TW" | "zh-CN").resources;
+  const ui = r.ui;
+  const catLabels = r.categoryLabels;
+
   const [activeCategory, setActiveCategory] = useState(ALL);
   const [page, setPage] = useState(1);
 
@@ -312,7 +321,7 @@ export default function ArticlesBrowser({ articles, locale, badge, headline, sub
                   }`}
                 >
                   <span className="text-base leading-none">{CATEGORY_ICONS[cat] ?? "•"}</span>
-                  {cat}
+                  {cat === ALL ? ui.all : (catLabels[cat as keyof typeof catLabels] ?? cat)}
                 </button>
               );
             })}
@@ -328,7 +337,10 @@ export default function ArticlesBrowser({ articles, locale, badge, headline, sub
           {featured.length > 0 && (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
               {featured.map((post, i) => (
-                <FeaturedCard key={post.slug} post={post} index={i} locale={locale} />
+                <FeaturedCard key={post.slug} post={post} index={i} locale={locale}
+                  featuredLabel={ui.featured}
+                  categoryLabel={catLabels[post.category as keyof typeof catLabels] ?? post.category}
+                />
               ))}
             </div>
           )}
@@ -352,13 +364,15 @@ export default function ArticlesBrowser({ articles, locale, badge, headline, sub
                     </div>
                   ))}
                 </div>
-                <h2 className="text-xl font-extrabold text-slate-900">Recently Added</h2>
+                <h2 className="text-xl font-extrabold text-slate-900">{ui.recentlyAdded}</h2>
               </div>
 
               {/* 3-col grid */}
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {recent.map((post) => (
-                  <SmallCard key={post.slug} post={post} locale={locale} />
+                  <SmallCard key={post.slug} post={post} locale={locale}
+                    categoryLabel={catLabels[post.category as keyof typeof catLabels] ?? post.category}
+                  />
                 ))}
               </div>
 
@@ -407,12 +421,12 @@ export default function ArticlesBrowser({ articles, locale, badge, headline, sub
           {filtered.length === 0 && (
             <div className="text-center py-24">
               <p className="text-4xl mb-4">🔍</p>
-              <p className="text-lg font-semibold text-slate-600">No articles in this category yet.</p>
+              <p className="text-lg font-semibold text-slate-600">{ui.noArticles}</p>
               <button
                 onClick={() => switchCategory(ALL)}
                 className="mt-4 text-sm font-semibold text-teal-600 hover:text-teal-800 underline underline-offset-2"
               >
-                View all articles
+                {ui.viewAll}
               </button>
             </div>
           )}
