@@ -254,8 +254,8 @@ export default function ArticlesBrowser({ articles, locale, badge, headline, sub
   }, [articles, activeCategory]);
 
   // Split featured (top 2) and recently added (rest, paginated)
-  const featured = filtered.slice(0, 2);
-  const recentAll = filtered.slice(2);
+  const featured = filtered.slice(0, 3);
+  const recentAll = filtered.slice(3);
   const totalPages = Math.max(1, Math.ceil(recentAll.length / RECENTLY_PER_PAGE));
   const recent = recentAll.slice((page - 1) * RECENTLY_PER_PAGE, page * RECENTLY_PER_PAGE);
 
@@ -326,7 +326,7 @@ export default function ArticlesBrowser({ articles, locale, badge, headline, sub
 
           {/* Featured 2-col */}
           {featured.length > 0 && (
-            <div className="grid md:grid-cols-2 gap-6 mb-14">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
               {featured.map((post, i) => (
                 <FeaturedCard key={post.slug} post={post} index={i} locale={locale} />
               ))}
