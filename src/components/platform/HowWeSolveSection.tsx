@@ -34,26 +34,10 @@ export default function HowWeSolveSection({ badge, headline, sub, items }: Props
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
           {items.map((item, idx) => (
             <div
-              key={item.step}
+              key={idx}
               className="relative rounded-2xl p-7 border border-white/10 hover:border-white/25 transition-all duration-300"
               style={{ backgroundColor: "rgba(255,255,255,0.04)" }}
             >
-              {/* Large faded step number in background */}
-              <span
-                className="absolute top-4 right-5 text-7xl font-black select-none pointer-events-none"
-                style={{ color: P + "18", lineHeight: 1 }}
-              >
-                {item.step}
-              </span>
-
-              {/* Step badge */}
-              <div
-                className="inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-full mb-5"
-                style={{ backgroundColor: P + "20", color: P }}
-              >
-                Step {item.step}
-              </div>
-
               {/* Divider line */}
               <div className="w-8 h-0.5 mb-4 rounded-full" style={{ backgroundColor: P }} />
 
