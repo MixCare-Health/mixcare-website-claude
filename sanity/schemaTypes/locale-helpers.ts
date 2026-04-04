@@ -39,6 +39,20 @@ export const localeBulletsField = defineField({
   options: { columns: 1 },
 });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const localeArrayField = (name: string, title: string, of: any[]) =>
+  defineField({
+    name,
+    title,
+    type: "object",
+    fields: [
+      defineField({ name: "en",   title: "English",  type: "array", of }),
+      defineField({ name: "zhTW", title: "繁體中文",  type: "array", of }),
+      defineField({ name: "zhCN", title: "简体中文",  type: "array", of }),
+    ],
+    options: { columns: 1 },
+  });
+
 export const localeStringsField = (name: string, title: string) =>
   defineField({
     name,
