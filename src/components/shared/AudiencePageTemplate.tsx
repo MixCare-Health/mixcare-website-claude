@@ -147,28 +147,32 @@ export default function AudiencePageTemplate({
                 </Link>
               )}
             </div>
-            {partnerLogos && partnerLogos.length > 0 && (
-              <div className="mt-10 pt-8 border-t border-slate-200/60">
-                <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-6">
-                  Trusted by leading brokers
-                </p>
-                <div className="flex flex-wrap items-center justify-center gap-8">
-                  {partnerLogos.map((logo) => (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      key={logo.name}
-                      src={logo.src}
-                      alt={logo.name}
-                      className="opacity-60 hover:opacity-100 transition-opacity duration-300"
-                      style={{ height: "80px", width: "auto", objectFit: "contain" }}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </section>
+
+      {/* Partner logos */}
+      {partnerLogos && partnerLogos.length > 0 && (
+        <section className="py-10 bg-white border-b border-slate-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-6">
+              Trusted by leading brokers
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-8">
+              {partnerLogos.map((logo) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  key={logo.name}
+                  src={logo.src}
+                  alt={logo.name}
+                  className="opacity-60 hover:opacity-100 transition-opacity duration-300"
+                  style={{ height: "80px", width: "auto", objectFit: "contain" }}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Pain points */}
       <section className="py-16" style={{ backgroundColor: "#f8fafc" }}>
