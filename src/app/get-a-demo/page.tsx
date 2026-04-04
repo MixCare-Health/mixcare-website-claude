@@ -37,9 +37,13 @@ export default async function GetADemoPage() {
       company: sp?.fields?.company ?? t.getDemo.fields.company,
       size: sp?.fields?.size ?? t.getDemo.fields.size,
       role: sp?.fields?.role ?? t.getDemo.fields.role,
+      country: t.getDemo.fields.country,
+      solutions: t.getDemo.fields.solutions,
+      renewalDate: t.getDemo.fields.renewalDate,
+      hasBroker: t.getDemo.fields.hasBroker,
       message: sp?.fields?.message ?? t.getDemo.fields.message,
       messagePlaceholder: sp?.fields?.messagePlaceholder ?? t.getDemo.fields.messagePlaceholder,
-      submit: sp?.fields?.submit ?? t.getDemo.fields.submit,
+      submit: t.getDemo.fields.submit,
       submitting: sp?.fields?.submitting ?? t.getDemo.fields.submitting,
       privacy: sp?.fields?.privacy ?? t.getDemo.fields.privacy,
       privacyLink: sp?.fields?.privacyLink ?? t.getDemo.fields.privacyLink,
@@ -55,12 +59,15 @@ export default async function GetADemoPage() {
     },
     sizes: sp?.sizes ?? t.getDemo.sizes,
     roles: sp?.roles ?? t.getDemo.roles,
+    countries: t.getDemo.countries,
+    brokerOptions: t.getDemo.brokerOptions,
+    platformSolutions: t.getDemo.platformSolutions,
   };
 
   return (
     <main>
       <AppNavbar />
-      <GetADemoForm content={content} />
+      <GetADemoForm content={content} locale={locale} />
       <Footer />
     </main>
   );
