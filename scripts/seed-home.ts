@@ -169,7 +169,7 @@ async function main() {
         zhCN: "了解更多",
       },
       pillars: [
-        {
+        { _key: "cp-pillar-1",
           title: {
             en: "Self-Funded Outpatient Plan",
             zhTW: "自付門診計劃",
@@ -186,7 +186,7 @@ async function main() {
             zhCN: "逾2,000名指定医生",
           },
         },
-        {
+        { _key: "cp-pillar-2",
           title: {
             en: "Flexible Spending Account",
             zhTW: "彈性醫療帳戶",
@@ -203,7 +203,7 @@ async function main() {
             zhCN: "逾30个消费类别",
           },
         },
-        {
+        { _key: "cp-pillar-3",
           title: {
             en: "Wellness Marketplace",
             zhTW: "Wellness Marketplace",
@@ -222,22 +222,10 @@ async function main() {
         },
       ],
       counters: [
-        {
-          value: "2,000+",
-          label: { en: "Panel Doctors", zhTW: "指定醫生", zhCN: "指定医生" },
-        },
-        {
-          value: "500+",
-          label: { en: "Wellness Services", zhTW: "健康服務", zhCN: "健康服务" },
-        },
-        {
-          value: "200+",
-          label: { en: "Corporate Clients", zhTW: "企業客戶", zhCN: "企业客户" },
-        },
-        {
-          value: "98%",
-          label: { en: "Claims Satisfaction", zhTW: "索償滿意率", zhCN: "理赔满意率" },
-        },
+        { _key: "counter-1", value: "2,000+", label: { en: "Panel Doctors", zhTW: "指定醫生", zhCN: "指定医生" } },
+        { _key: "counter-2", value: "500+",   label: { en: "Wellness Services", zhTW: "健康服務", zhCN: "健康服务" } },
+        { _key: "counter-3", value: "200+",   label: { en: "Corporate Clients", zhTW: "企業客戶", zhCN: "企业客户" } },
+        { _key: "counter-4", value: "98%",    label: { en: "Claims Satisfaction", zhTW: "索償滿意率", zhCN: "理赔满意率" } },
       ],
     },
 
@@ -284,7 +272,7 @@ async function main() {
         zhCN: "探索",
       },
       features: [
-        {
+        { _key: "feat-1",
           headline: {
             en: "AI-Powered Claims. Cashless Doctor Visits.",
             zhTW: "人工智能索償。免找數門診診症",
@@ -316,7 +304,7 @@ async function main() {
             ],
           },
         },
-        {
+        { _key: "feat-2",
           headline: {
             en: "One Wallet. Every Health Need.",
             zhTW: "一個 FSA 錢包。滿足一切醫療或健康服務需求",
@@ -348,7 +336,7 @@ async function main() {
             ],
           },
         },
-        {
+        { _key: "feat-3",
           headline: {
             en: "3,000+ Services. Up to 30% Off.",
             zhTW: "逾3,000項服務。最高享3折優惠",
@@ -380,7 +368,7 @@ async function main() {
             ],
           },
         },
-        {
+        { _key: "feat-4",
           headline: {
             en: "Curated Wellness Events. Measurable Engagement",
             zhTW: "提升員工身心健康與參與感的全方位活動解決方案",
@@ -412,7 +400,7 @@ async function main() {
             ],
           },
         },
-        {
+        { _key: "feat-5",
           headline: {
             en: "Flexible Benefits: Empowering Tomorrow's Workforce",
             zhTW: "彈性福利：未來的福利方案",
@@ -444,7 +432,7 @@ async function main() {
             ],
           },
         },
-        {
+        { _key: "feat-6",
           headline: {
             en: "One Hub. Every Wellness Journey.",
             zhTW: "MixCare 健康生態圈。完整的健康旅程",
@@ -507,7 +495,7 @@ async function main() {
         zhCN: "了解更多",
       },
       audiences: [
-        {
+        { _key: "aud-1",
           label: { en: "Insurance Company", zhTW: "保險公司", zhCN: "保险公司" },
           tagline: {
             en: "Sourcing and Managing Health Service Providers for Insurance Companies",
@@ -540,7 +528,7 @@ async function main() {
             ],
           },
         },
-        {
+        { _key: "aud-2",
           label: { en: "Insurance Broker", zhTW: "保險經紀", zhCN: "保险经纪" },
           tagline: {
             en: "Win more clients. Retain them for longer.",
@@ -573,7 +561,7 @@ async function main() {
             ],
           },
         },
-        {
+        { _key: "aud-3",
           label: { en: "Enterprise", zhTW: "大型企業", zhCN: "大型企业" },
           tagline: {
             en: "Benefits that attract, engage, and retain talent.",
@@ -606,7 +594,7 @@ async function main() {
             ],
           },
         },
-        {
+        { _key: "aud-4",
           label: { en: "SME", zhTW: "中小企業", zhCN: "中小企业" },
           tagline: {
             en: "Enterprise-grade benefits. SME-friendly pricing.",
@@ -639,7 +627,7 @@ async function main() {
             ],
           },
         },
-        {
+        { _key: "aud-5",
           label: {
             en: "Medical & Wellness Service Provider",
             zhTW: "醫療或健康服務供應商",
@@ -712,7 +700,7 @@ async function main() {
         zhCN: "设置需时少于5个工作天",
       },
       steps: [
-        {
+        { _key: "step-1",
           title: {
             en: "Configure Your Benefits Plan",
             zhTW: "設置您的福利計劃",
@@ -724,7 +712,7 @@ async function main() {
             zhCN: "在我们直观的管理门户设置门诊保障、FSA钱包及Wellness Marketplace。完全可按公司需求定制。",
           },
         },
-        {
+        { _key: "step-2",
           title: {
             en: "Employees Access via App or Portal",
             zhTW: "員工透過應用程式或入口存取",
@@ -736,7 +724,7 @@ async function main() {
             zhCN: "您的团队可通过我们的手机应用程序或网页门户即时使用其福利——预约医生、兑换健康服务及管理FSA。",
           },
         },
-        {
+        { _key: "step-3",
           title: {
             en: "AI Processes Claims & Transactions",
             zhTW: "人工智能處理索償及交易",
@@ -748,7 +736,7 @@ async function main() {
             zhCN: "我们的人工智能引擎实时处理理赔、欺诈检测及FSA交易——准确率达98%，24小时内完成。",
           },
         },
-        {
+        { _key: "step-4",
           title: {
             en: "Real-Time Analytics & Insights",
             zhTW: "實時分析及洞察",
@@ -788,26 +776,10 @@ async function main() {
         provider: { en: "Provider", zhTW: "服務供應商", zhCN: "服务供应商" },
       },
       stats: [
-        {
-          value: "98%",
-          label: { en: "Claims satisfaction rate", zhTW: "索償滿意率", zhCN: "理赔满意率" },
-        },
-        {
-          value: "<24h",
-          label: {
-            en: "Average claims resolution",
-            zhTW: "平均索償解決時間",
-            zhCN: "平均理赔解决时间",
-          },
-        },
-        {
-          value: "70%",
-          label: { en: "Admin time saved", zhTW: "節省行政時間", zhCN: "节省行政时间" },
-        },
-        {
-          value: "4.9★",
-          label: { en: "Average client rating", zhTW: "平均客戶評分", zhCN: "平均客户评分" },
-        },
+        { _key: "tstat-1", value: "98%",  label: { en: "Claims satisfaction rate",    zhTW: "索償滿意率",     zhCN: "理赔满意率" } },
+        { _key: "tstat-2", value: "<24h", label: { en: "Average claims resolution",   zhTW: "平均索償解決時間", zhCN: "平均理赔解决时间" } },
+        { _key: "tstat-3", value: "70%",  label: { en: "Admin time saved",            zhTW: "節省行政時間",    zhCN: "节省行政时间" } },
+        { _key: "tstat-4", value: "4.9★", label: { en: "Average client rating",       zhTW: "平均客戶評分",    zhCN: "平均客户评分" } },
       ],
     },
 
@@ -834,7 +806,7 @@ async function main() {
         zhCN: "所有认证每年独立审计。最新审计：2024年第四季度。",
       },
       pillars: [
-        {
+        { _key: "comp-pillar-1",
           title: {
             en: "Enterprise-Grade Security",
             zhTW: "企業級安全",
@@ -846,7 +818,7 @@ async function main() {
             zhCN: "端对端加密、零信任架构及99.9%正常运作时间SLA。",
           },
         },
-        {
+        { _key: "comp-pillar-2",
           title: {
             en: "Data Privacy by Design",
             zhTW: "數據私隱設計",
@@ -858,7 +830,7 @@ async function main() {
             zhCN: "您的数据永不离开指定地区。全面符合PDPO及GDPR规定。",
           },
         },
-        {
+        { _key: "comp-pillar-3",
           title: {
             en: "Transparent Audit Trails",
             zhTW: "透明審計跟蹤",
@@ -870,7 +842,7 @@ async function main() {
             zhCN: "每项理赔、交易及访问事件均实时记录及可审计。",
           },
         },
-        {
+        { _key: "comp-pillar-4",
           title: {
             en: "Regional Data Residency",
             zhTW: "區域數據駐留",
