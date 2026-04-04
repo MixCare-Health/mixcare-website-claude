@@ -8,6 +8,7 @@ import { getLocale } from "@/lib/locale.server";
 import { localePath } from "@/lib/locale";
 import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
 import { allCaseStudiesQuery, type SanityCaseStudyListItem } from "@/lib/sanity.queries";
+import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
 
 export const revalidate = 60;
@@ -92,8 +93,17 @@ export default async function CaseStudiesPage() {
               itemScope
               itemType="https://schema.org/Article"
             >
-              {/* Accent top bar */}
-              <div className="h-1.5 w-full" style={{ background: `linear-gradient(90deg, ${post.color}, ${post.color}55)` }} aria-hidden="true" />
+              {/* Accent top bar or featured image */}
+              {post.featuredImage ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={urlFor(post.featuredImage).width(1200).height(320).fit("crop").url()}
+                  alt={post.company}
+                  className="w-full h-40 object-cover"
+                />
+              ) : (
+                <div className="h-1.5 w-full" style={{ background: `linear-gradient(90deg, ${post.color}, ${post.color}55)` }} aria-hidden="true" />
+              )}
 
               <div className="p-8 lg:p-10">
                 <div className="flex flex-wrap items-center gap-3 mb-6">

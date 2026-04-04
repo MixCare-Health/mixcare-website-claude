@@ -14,7 +14,9 @@ import {
   allTeamMembersQuery,
   type SanityAboutPage,
   type SanityTeamMember,
+  type SanityImageRef,
 } from "@/lib/sanity.queries";
+import { urlFor } from "@/sanity/lib/image";
 
 export const revalidate = 60;
 
@@ -78,9 +80,10 @@ export default async function AboutPage() {
   const valueItems  = sp?.values?.items    ?? a.values.items;
   const teamHead    = sp?.team?.headline   ?? a.team.headline;
   const teamSub     = sp?.team?.sub        ?? a.team.sub;
-  const members     = teamMembers.length > 0
-    ? teamMembers.map((m) => ({ name: m.name, title: m.role, bio: m.bio }))
-    : a.team.members;
+  const members: Array<{ name: string; title: string; bio: string; photo?: SanityImageRef }> =
+    teamMembers.length > 0
+      ? teamMembers.map((m) => ({ name: m.name, title: m.role, bio: m.bio, photo: m.photo }))
+      : a.team.members.map((m: { name: string; title: string; bio: string }) => ({ ...m }));
   const careers     = {
     headline: sp?.careers?.headline ?? a.careers.headline,
     sub:      sp?.careers?.sub      ?? a.careers.sub,
@@ -201,12 +204,21 @@ export default async function AboutPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {members.map((member) => (
               <div key={member.name} className="rounded-2xl p-6 border border-slate-100 hover:shadow-md transition-all">
-                <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center text-white font-extrabold text-xl mb-4"
-                  style={{ background: "linear-gradient(135deg, #0d9488 0%, #1e3a5f 100%)" }}
-                >
-                  {member.name[0]}
-                </div>
+                {member.photo ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={urlFor(member.photo).width(112).height(112).fit("crop").url()}
+                    alt={member.name}
+                    className="w-14 h-14 rounded-2xl object-cover mb-4"
+                  />
+                ) : (
+                  <div
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center text-white font-extrabold text-xl mb-4"
+                    style={{ background: "linear-gradient(135deg, #0d9488 0%, #1e3a5f 100%)" }}
+                  >
+                    {member.name[0]}
+                  </div>
+                )}
                 <h3 className="font-bold text-slate-900">{member.name}</h3>
                 <p className="text-sm font-semibold mb-2" style={{ color: "#0d9488" }}>
                   {member.title}

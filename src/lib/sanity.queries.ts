@@ -12,6 +12,7 @@ export const allArticlesQuery = `
     "publishedAt": publishedAt,
     "readTime":    readTime,
     "description": coalesce(description[$locale], description.en),
+    "coverImage":  coverImage,
   }
 `;
 
@@ -25,6 +26,7 @@ export const articleBySlugQuery = `
     "publishedAt": publishedAt,
     "readTime":    readTime,
     "description": coalesce(description[$locale], description.en),
+    "coverImage":  coverImage,
     "sections": sections[] {
       "heading": coalesce(heading[$locale], heading.en),
       "body":    coalesce(body[$locale],    body.en),
@@ -42,6 +44,14 @@ export const allArticleSlugsQuery = `
 // The GROQ projection resolves locale fields server-side,
 // so these types stay as plain strings regardless of locale.
 
+// Reusable Sanity image reference type (works with urlFor())
+export type SanityImageRef = {
+  _type: "image";
+  asset: { _ref: string; _type: "reference" };
+  hotspot?: { x: number; y: number; height: number; width: number };
+  crop?: { top: number; bottom: number; left: number; right: number };
+};
+
 export type SanityArticleListItem = {
   title: string;
   slug: string;
@@ -50,6 +60,7 @@ export type SanityArticleListItem = {
   publishedAt: string; // "YYYY-MM-DD"
   readTime: string;
   description: string;
+  coverImage?: SanityImageRef;
 };
 
 export type SanityArticleSection = {
@@ -146,6 +157,7 @@ export const allCaseStudiesQuery = `
     "color": color,
     "gradient": gradient,
     "publishedAt": publishedAt,
+    "featuredImage": featuredImage,
   }
 `;
 
@@ -171,6 +183,7 @@ export const caseStudyBySlugQuery = `
       "bullets": coalesce(bullets[$locale], bullets.en),
     },
     "publishedAt": publishedAt,
+    "featuredImage": featuredImage,
   }
 `;
 
@@ -184,6 +197,7 @@ export type SanityCaseStudyListItem = {
   color: string;
   gradient: string;
   publishedAt: string;
+  featuredImage?: SanityImageRef;
 };
 
 export type SanityCaseStudy = SanityCaseStudyListItem & {
@@ -210,6 +224,7 @@ export const allWhitepapersQuery = `
     "gradient": gradient,
     "accentColor": accentColor,
     "publishedAt": publishedAt,
+    "coverImage": coverImage,
   }
 `;
 
@@ -230,6 +245,7 @@ export const whitepaperBySlugQuery = `
       "bullets": coalesce(bullets[$locale], bullets.en),
     },
     "publishedAt": publishedAt,
+    "coverImage": coverImage,
   }
 `;
 
@@ -243,6 +259,7 @@ export type SanityWhitepaperListItem = {
   gradient: string;
   accentColor: string;
   publishedAt: string;
+  coverImage?: SanityImageRef;
 };
 
 export type SanityWhitepaper = SanityWhitepaperListItem & {
@@ -449,7 +466,7 @@ export type SanityTeamMember = {
   name: string;
   role: string;
   bio: string;
-  photo?: { asset: { _ref: string } };
+  photo?: SanityImageRef;
   order: number;
 };
 
@@ -915,6 +932,12 @@ export const homePageQuery = `
     },
     "logoBar": {
       "label": coalesce(logoBar.label[$locale], logoBar.label.en),
+      "logos": logoBar.logos[] {
+        "_key": _key,
+        "name": name,
+        "image": image,
+        "href": href,
+      },
     },
     "corePlatform": {
       "badge":             coalesce(corePlatform.badge[$locale],             corePlatform.badge.en),
@@ -1035,6 +1058,7 @@ export type SanityHomeHero = {
 
 export type SanityHomeLogoBar = {
   label: string;
+  logos?: Array<{ _key: string; name: string; image: SanityImageRef; href?: string }>;
 };
 
 export type SanityHomeCorePlatform = {

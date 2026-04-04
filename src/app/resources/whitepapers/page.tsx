@@ -8,6 +8,7 @@ import { getLocale } from "@/lib/locale.server";
 import { localePath } from "@/lib/locale";
 import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
 import { allWhitepapersQuery, type SanityWhitepaperListItem } from "@/lib/sanity.queries";
+import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
 
 export const revalidate = 60;
@@ -93,9 +94,17 @@ export default async function WhitepapersPage() {
               itemType="https://schema.org/Book"
             >
               <div className="grid lg:grid-cols-3">
-                {/* Visual cover */}
-                <div className={`bg-gradient-to-br ${wp.gradient} p-10 flex flex-col justify-between`}>
-                  <div>
+                {/* Visual cover — Sanity image when available, gradient fallback */}
+                <div className={`relative bg-gradient-to-br ${wp.gradient} p-10 flex flex-col justify-between overflow-hidden`}>
+                  {wp.coverImage && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={urlFor(wp.coverImage).width(600).height(800).fit("crop").url()}
+                      alt={wp.title}
+                      className="absolute inset-0 w-full h-full object-cover opacity-30"
+                    />
+                  )}
+                  <div className="relative">
                     <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center mb-6">
                       <FileText size={24} className="text-white" aria-hidden="true" />
                     </div>
@@ -104,7 +113,7 @@ export default async function WhitepapersPage() {
                     </h2>
                     <p className="text-white/70 text-sm">{wp.description}</p>
                   </div>
-                  <div className="mt-8 flex flex-wrap gap-2">
+                  <div className="relative mt-8 flex flex-wrap gap-2">
                     <span className="px-3 py-1 rounded-full bg-white/20 text-white text-xs font-bold">{wp.pages}</span>
                     <span className="px-3 py-1 rounded-full bg-white/20 text-white text-xs font-bold">{wp.format}</span>
                   </div>

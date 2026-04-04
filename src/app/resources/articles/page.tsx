@@ -10,6 +10,7 @@ import { localePath } from "@/lib/locale";
 import Link from "next/link";
 import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
 import { allArticlesQuery, type SanityArticleListItem } from "@/lib/sanity.queries";
+import { urlFor } from "@/sanity/lib/image";
 
 export const revalidate = 60; // re-fetch from Sanity every 60 seconds
 
@@ -123,6 +124,14 @@ export default async function ArticlesPage() {
               <article className="group mb-10" itemScope itemType="https://schema.org/Article">
                 <Link href={localePath(locale, `/resources/articles/${featured.slug}`)} className="flex flex-col lg:flex-row rounded-3xl border border-slate-100 overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1">
                   <div className={`lg:w-2/5 min-h-[220px] relative flex items-end p-8 bg-gradient-to-br ${gradients[0]}`}>
+                    {featured.coverImage && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={urlFor(featured.coverImage).width(600).height(400).fit("crop").url()}
+                        alt={featured.title}
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                    )}
                     <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 70% 30%, white 1px, transparent 1px)", backgroundSize: "24px 24px" }} aria-hidden="true" />
                     <div className="relative">
                       <span className="px-3 py-1 rounded-full text-xs font-bold mb-3 inline-block" style={{ backgroundColor: col.bg, color: col.text }}>
@@ -160,8 +169,16 @@ export default async function ArticlesPage() {
               return (
                 <article key={post.slug} className="group" itemScope itemType="https://schema.org/Article">
                   <Link href={localePath(locale, `/resources/articles/${post.slug}`)} className="flex flex-col rounded-2xl border border-slate-100 overflow-hidden hover:shadow-lg transition-all hover:-translate-y-1 h-full bg-white">
-                    {/* Gradient visual bar */}
+                    {/* Cover image or gradient visual bar */}
                     <div className={`h-28 relative flex items-end p-4 bg-gradient-to-br ${gradients[(i + 1) % gradients.length]}`}>
+                      {post.coverImage && (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={urlFor(post.coverImage).width(400).height(224).fit("crop").url()}
+                          alt={post.title}
+                          className="absolute inset-0 w-full h-full object-cover"
+                        />
+                      )}
                       <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 80% 20%, white 1px, transparent 1px)", backgroundSize: "18px 18px" }} aria-hidden="true" />
                       <span className="relative px-2.5 py-1 rounded-full text-[10px] font-bold" style={{ backgroundColor: col.bg, color: col.text }}>
                         {post.category}

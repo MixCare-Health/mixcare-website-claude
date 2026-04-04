@@ -3,9 +3,10 @@
   "configurations": [
     {
       "name": "mixcare-dev",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
-      "port": 3000
+      "runtimeExecutable": "/bin/zsh",
+      "runtimeArgs": ["-c", "source ~/.nvm/nvm.sh 2>/dev/null; export PATH=/opt/homebrew/bin:$PATH; cd '/Users/kelvinchu/MixCare Health Website' && npm run dev -- -p 3002"],
+      "port": 3002,
+      "autoPort": false
     }
   ]
 }

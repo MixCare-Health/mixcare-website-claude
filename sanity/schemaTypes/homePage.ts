@@ -47,6 +47,26 @@ export const homePageType = defineType({
       type: "object",
       fields: [
         localeStringField("label", "Label"),
+        defineField({
+          name: "logos",
+          title: "Client / Partner Logos",
+          description: "Upload logos here. Leave empty to use the built-in defaults.",
+          type: "array",
+          of: [{
+            type: "object",
+            fields: [
+              defineField({ name: "name", title: "Company Name", type: "string" }),
+              defineField({
+                name: "image",
+                title: "Logo Image",
+                type: "image",
+                options: { hotspot: false },
+              }),
+              defineField({ name: "href", title: "Link (optional)", type: "string" }),
+            ],
+            preview: { select: { title: "name", media: "image" } },
+          }],
+        }),
       ],
     }),
 

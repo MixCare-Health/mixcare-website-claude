@@ -16,6 +16,7 @@ import {
   type SanityWhitepaper,
   type SanityWhitepaperListItem,
 } from "@/lib/sanity.queries";
+import { urlFor } from "@/sanity/lib/image";
 
 export const revalidate = 60;
 
@@ -90,6 +91,15 @@ export default async function WhitepaperPostPage({ params }: { params: Promise<P
 
       {/* Header */}
       <div className={`pt-24 pb-16 relative overflow-hidden bg-gradient-to-br ${whitepaper.gradient}`}>
+        {whitepaper.coverImage && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={urlFor(whitepaper.coverImage).width(1400).height(500).fit("crop").url()}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover opacity-20"
+          />
+        )}
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 70% 30%, white 1px, transparent 1px)", backgroundSize: "28px 28px" }} aria-hidden="true" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <Link

@@ -52,6 +52,13 @@ export const articleType = defineType({
       description: 'e.g. "8 min read"',
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: "coverImage",
+      title: "Cover Image",
+      type: "image",
+      description: "Optional hero image shown at the top of the article and in listings.",
+      options: { hotspot: true },
+    }),
 
     // ── Localised fields ──
     localeStringField("title",       "Title"),
