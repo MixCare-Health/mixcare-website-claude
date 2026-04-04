@@ -108,7 +108,7 @@ export default async function ProvidersPage() {
         ctaHeadline={tmpl.ctaHeadline}
         ctaSub={tmpl.ctaSub}
         hideSolutions={page?.hideSolutions ?? false}
-        hideTestimonial={page?.hideTestimonial ?? false}
+        hideTestimonial={true}
         hideMetrics={page?.hideMetrics ?? false}
       />
       <Footer />

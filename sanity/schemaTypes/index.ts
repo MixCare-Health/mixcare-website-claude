@@ -13,9 +13,11 @@ import { getDemoPageType } from "./getDemoPage";
 import { startNowPageType } from "./startNowPage";
 import { partnersPageType } from "./partnersPage";
 import { homePageType } from "./homePage";
+import { pressItemType } from "./pressItem";
 
 export const schemaTypes = [
   articleType,
+  pressItemType,
   audiencePageType,
   platformPageType,
   caseStudyType,

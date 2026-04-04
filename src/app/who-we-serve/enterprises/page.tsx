@@ -110,7 +110,7 @@ export default async function EnterprisesPage() {
         ctaHeadline={tmpl.ctaHeadline}
         ctaSub={tmpl.ctaSub}
         hideSolutions={page?.hideSolutions ?? false}
-        hideTestimonial={page?.hideTestimonial ?? false}
+        hideTestimonial={true}
         hideMetrics={page?.hideMetrics ?? false}
       />
       <Footer />

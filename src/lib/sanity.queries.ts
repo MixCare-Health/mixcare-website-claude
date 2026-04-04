@@ -1141,3 +1141,65 @@ export type SanityHomePage = {
   compliance: SanityHomeCompliance;
   cta: SanityHomeCta;
 };
+
+// ── Press / Media Coverage ────────────────────────────────────────────────────
+
+export const allPressItemsQuery = `
+  *[_type == "pressItem"] | order(isFeatured desc, publishedAt desc) {
+    "title":       coalesce(title[$locale],       title.en),
+    "slug":        slug.current,
+    "outlet":      outlet,
+    "outletLogo":  outletLogo,
+    "publishedAt": publishedAt,
+    "category":    category,
+    "isFeatured":  isFeatured,
+    "externalUrl": externalUrl,
+    "description": coalesce(description[$locale], description.en),
+    "coverImage":  coverImage,
+  }
+`;
+
+export const pressItemBySlugQuery = `
+  *[_type == "pressItem" && slug.current == $slug][0] {
+    "title":       coalesce(title[$locale],       title.en),
+    "slug":        slug.current,
+    "outlet":      outlet,
+    "outletLogo":  outletLogo,
+    "publishedAt": publishedAt,
+    "category":    category,
+    "isFeatured":  isFeatured,
+    "externalUrl": externalUrl,
+    "description": coalesce(description[$locale], description.en),
+    "coverImage":  coverImage,
+    "sections": sections[] {
+      "heading": coalesce(heading[$locale], heading.en),
+      "body":    coalesce(body[$locale],    body.en),
+      "bullets": coalesce(bullets[$locale], bullets.en),
+    },
+  }
+`;
+
+export const allPressSlugsQuery = `
+  *[_type == "pressItem"] { "slug": slug.current }
+`;
+
+export type SanityPressItemListItem = {
+  title: string;
+  slug: string;
+  outlet: string;
+  outletLogo?: SanityImageRef;
+  publishedAt: string;
+  category: string;
+  isFeatured: boolean;
+  externalUrl?: string;
+  description: string;
+  coverImage?: SanityImageRef;
+};
+
+export type SanityPressItem = SanityPressItemListItem & {
+  sections: Array<{
+    heading: string;
+    body: string;
+    bullets?: string[];
+  }>;
+};

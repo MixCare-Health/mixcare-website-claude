@@ -112,7 +112,7 @@ export default async function SmallBusinessPage() {
         ctaHeadline={tmpl.ctaHeadline}
         ctaSub={tmpl.ctaSub}
         hideSolutions={page?.hideSolutions ?? false}
-        hideTestimonial={page?.hideTestimonial ?? false}
+        hideTestimonial={true}
         hideMetrics={page?.hideMetrics ?? false}
       />
       <Footer />

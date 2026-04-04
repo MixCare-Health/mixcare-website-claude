@@ -82,7 +82,14 @@
       "Bash(PATH=\"$HOME/.nvm/versions/node/v20.19.5/bin:$PATH\" ~/.nvm/versions/node/v20.19.5/bin/node node_modules/.bin/next build)",
       "Bash(~/.nvm/versions/node/v20.19.5/bin/node --import tsx/esm scripts/seed-site-settings.ts)",
       "Bash(PATH=\"$HOME/.nvm/versions/node/v20.19.5/bin:$PATH\" npx tsc --noEmit)",
-      "Bash(PATH=\"$HOME/.nvm/versions/node/v20.19.5/bin:$PATH\" npm run build)"
+      "Bash(PATH=\"$HOME/.nvm/versions/node/v20.19.5/bin:$PATH\" npm run build)",
+      "Bash(PATH=\"$HOME/.nvm/versions/node/v20.19.5/bin:$PATH\" grep -n \"resources\" src/translations/en.ts)",
+      "Bash(PATH=\"$HOME/.nvm/versions/node/v20.19.5/bin:$PATH\" sed -n '1379,1450p' src/translations/zh-CN.ts)",
+      "Bash(export PATH=\"$PATH:/opt/homebrew/bin\")",
+      "Bash(node node_modules/.bin/tsc --noEmit)",
+      "mcp__Sanity__query_documents",
+      "mcp__Sanity__get_schema",
+      "Bash(npx sanity@latest schema deploy)"
     ]
   },
   "disableAllHooks": true

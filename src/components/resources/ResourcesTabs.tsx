@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { BookOpen, FileText, Download, HelpCircle } from "lucide-react";
+import { BookOpen, FileText, Download, HelpCircle, Newspaper } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { localePath } from "@/lib/locale";
 import { getTranslations } from "@/translations";
 
-export type ResourceTabKey = "articles" | "case-studies" | "whitepapers" | "faq";
+export type ResourceTabKey = "articles" | "case-studies" | "whitepapers" | "faq" | "media-coverage";
 
 interface Tab {
   key: ResourceTabKey;
@@ -12,17 +12,19 @@ interface Tab {
 }
 
 const TAB_DEFS: Tab[] = [
-  { key: "articles",     icon: BookOpen   },
-  { key: "case-studies", icon: FileText   },
-  { key: "whitepapers",  icon: Download   },
-  { key: "faq",          icon: HelpCircle },
+  { key: "articles",       icon: BookOpen   },
+  { key: "case-studies",   icon: FileText   },
+  { key: "whitepapers",    icon: Download   },
+  { key: "faq",            icon: HelpCircle },
+  { key: "media-coverage", icon: Newspaper  },
 ];
 
 const HREFS: Record<ResourceTabKey, string> = {
-  "articles":     "/resources/articles",
-  "case-studies": "/resources/case-studies",
-  "whitepapers":  "/resources/whitepapers",
-  "faq":          "/resources/faq",
+  "articles":       "/resources/articles",
+  "case-studies":   "/resources/case-studies",
+  "whitepapers":    "/resources/whitepapers",
+  "faq":            "/resources/faq",
+  "media-coverage": "/resources/media-coverage",
 };
 
 interface Props {
@@ -35,10 +37,11 @@ export default function ResourcesTabs({ active, locale }: Props) {
   const tabs = t.resources.tabs;
 
   const LABELS: Record<ResourceTabKey, string> = {
-    "articles":     tabs.articles,
-    "case-studies": tabs.caseStudies,
-    "whitepapers":  tabs.whitepapers,
-    "faq":          tabs.faq,
+    "articles":       tabs.articles,
+    "case-studies":   tabs.caseStudies,
+    "whitepapers":    tabs.whitepapers,
+    "faq":            tabs.faq,
+    "media-coverage": tabs.mediaCoverage,
   };
 
   return (

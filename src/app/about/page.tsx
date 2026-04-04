@@ -75,6 +75,7 @@ export default async function AboutPage() {
     p2:       sp?.story?.p2       ?? a.story.p2,
     p3:       sp?.story?.p3       ?? a.story.p3,
   };
+  const foundedIn   = a.foundedIn;
   const stats       = sp?.stats           ?? a.stats;
   const valuesHead  = sp?.values?.headline ?? a.values.headline;
   const valueItems  = sp?.values?.items    ?? a.values.items;
@@ -153,15 +154,20 @@ export default async function AboutPage() {
 
           {/* Stats */}
           <div
-            className="rounded-2xl p-8 grid grid-cols-2 md:grid-cols-4 gap-6"
+            className="rounded-2xl p-8"
             style={{ background: "linear-gradient(135deg, #0d9488 0%, #1e3a5f 100%)" }}
           >
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <p className="text-3xl font-extrabold text-white">{stat.value}</p>
-                <p className="text-teal-200 text-sm mt-1">{stat.label}</p>
-              </div>
-            ))}
+            <p className="text-center text-xs font-bold uppercase tracking-widest text-teal-300 mb-6">
+              {foundedIn}
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {stats.map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <p className="text-3xl font-extrabold text-white">{stat.value}</p>
+                  <p className="text-teal-200 text-sm mt-1">{stat.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
