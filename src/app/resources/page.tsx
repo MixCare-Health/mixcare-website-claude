@@ -106,20 +106,31 @@ export default async function ResourcesPage() {
       ]} />
       <AppNavbar />
 
-      {/* Page header — no visual hero, just anchor nav */}
-      <div className="pt-24 pb-4 bg-white border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Page header */}
+      <div className="pt-28 pb-12 text-center" style={{ backgroundColor: "#f8fafc" }}>
+        <div className="max-w-2xl mx-auto px-4">
+          <div className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 mb-5">
+            <span className="w-2 h-2 rounded-full bg-teal-500 inline-block" />
+            Resources
+          </div>
+          <h1 className="text-5xl sm:text-6xl font-extrabold text-slate-900 mb-5 tracking-tight">
+            Browse Resources
+          </h1>
+          <p className="text-slate-500 text-lg leading-relaxed mb-8">
+            Expert insights on AI-powered health benefits, employee wellness, and digital health across Asia-Pacific.
+          </p>
+          {/* Quick nav tabs */}
           <nav aria-label="Resource sections" className="flex flex-wrap gap-2 justify-center">
             {[
-              { label: r.blog.heading,        href: "#blog",        icon: BookOpen  },
-              { label: r.caseStudies.heading, href: "#case-studies", icon: FileText  },
-              { label: r.whitepapers.heading, href: "#whitepapers",  icon: Download  },
-              { label: r.faq.heading,         href: "#faq",          icon: HelpCircle },
+              { label: r.blog.heading,        href: localePath(locale, "/resources/articles"), icon: BookOpen, active: false },
+              { label: r.caseStudies.heading, href: "#case-studies",  icon: FileText,   active: false },
+              { label: r.whitepapers.heading, href: "#whitepapers",   icon: Download,   active: false },
+              { label: r.faq.heading,         href: "#faq",           icon: HelpCircle, active: false },
             ].map(({ label, href, icon: Icon }) => (
               <a
                 key={href}
                 href={href}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 border border-slate-200 text-sm font-semibold text-slate-700 hover:border-teal-400 hover:text-teal-700 hover:bg-teal-50 transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-sm font-semibold text-slate-700 hover:border-teal-400 hover:text-teal-700 hover:bg-teal-50 transition-colors shadow-sm"
               >
                 <Icon size={14} aria-hidden="true" />
                 {label}
