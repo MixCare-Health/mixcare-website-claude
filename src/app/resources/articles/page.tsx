@@ -8,6 +8,7 @@ import { getTranslations } from "@/translations";
 import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
 import { allArticlesQuery, type SanityArticleListItem } from "@/lib/sanity.queries";
 import ArticlesBrowser from "@/components/resources/ArticlesBrowser";
+import ResourcesTabs from "@/components/resources/ResourcesTabs";
 
 export const revalidate = 60;
 
@@ -67,6 +68,7 @@ export default async function ArticlesPage() {
         ]}
       />
       <AppNavbar />
+      <ResourcesTabs active="articles" locale={locale} />
       <ArticlesBrowser
         articles={articles}
         locale={locale}

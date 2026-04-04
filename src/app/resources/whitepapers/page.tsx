@@ -1,6 +1,6 @@
 import AppNavbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Download, ArrowLeft, CheckCircle2, FileText } from "lucide-react";
+import { Download, CheckCircle2, FileText } from "lucide-react";
 import type { Metadata } from "next";
 import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
 import { JsonLd, webPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
@@ -10,6 +10,7 @@ import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
 import { allWhitepapersQuery, type SanityWhitepaperListItem } from "@/lib/sanity.queries";
 import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
+import ResourcesTabs from "@/components/resources/ResourcesTabs";
 
 export const revalidate = 60;
 
@@ -63,16 +64,11 @@ export default async function WhitepapersPage() {
         ]),
       ]} />
       <AppNavbar />
+      <ResourcesTabs active="whitepapers" locale={locale} />
 
       {/* Page header */}
-      <div className="pt-24 pb-10 bg-white border-b border-slate-100">
+      <div className="pt-10 pb-10 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link
-            href={localePath(locale, "/resources")}
-            className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-teal-700 transition-colors mb-6"
-          >
-            <ArrowLeft size={14} aria-hidden="true" /> Resources
-          </Link>
           <div className="flex items-center gap-3 mb-3">
             <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: "#f3e8ff" }}>
               <Download size={20} style={{ color: "#7e22ce" }} aria-hidden="true" />
@@ -154,15 +150,6 @@ export default async function WhitepapersPage() {
             </article>
           ))}
 
-          {/* Back link */}
-          <div className="pt-4 text-center">
-            <Link
-              href={localePath(locale, "/resources")}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-teal-700 transition-colors"
-            >
-              <ArrowLeft size={14} aria-hidden="true" /> Back to Resources
-            </Link>
-          </div>
         </div>
       </div>
 

@@ -243,7 +243,7 @@ const platformRef = useRef<HTMLDivElement>(null);
               </div>
 
               {[
-                { label: navResources, href: "/resources" },
+                { label: navResources, href: "/resources/articles" },
                 { label: navAbout, href: "/about" },
               ].map((item) => (
                 <Link
@@ -403,7 +403,7 @@ const platformRef = useRef<HTMLDivElement>(null);
               )}
 
               {[
-                { label: navResources, href: "/resources" },
+                { label: navResources, href: "/resources/articles" },
                 { label: navAbout, href: "/about" },
               ].map((item) => (
                 <Link

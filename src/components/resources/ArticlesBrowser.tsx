@@ -281,7 +281,7 @@ export default function ArticlesBrowser({ articles, locale, badge, headline, sub
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <section className="pt-32 pb-12 text-center" style={{ backgroundColor: "#f8fafc" }}>
+      <section className="pt-10 pb-12 text-center" style={{ backgroundColor: "#f8fafc" }}>
         <div className="max-w-2xl mx-auto px-4">
           <div className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 mb-5">
             <span className="w-2 h-2 rounded-full bg-teal-500 inline-block" />
@@ -295,7 +295,8 @@ export default function ArticlesBrowser({ articles, locale, badge, headline, sub
       </section>
 
       {/* ── Category tabs ────────────────────────────────────────────────── */}
-      <div className="sticky top-16 z-20 bg-white/95 backdrop-blur-sm border-b border-slate-100 shadow-sm">
+      {/* top-[112px] = 64px navbar + 48px ResourcesTabs */}
+      <div className="sticky top-[112px] z-20 bg-white/95 backdrop-blur-sm border-b border-slate-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 py-4 overflow-x-auto scrollbar-hide">
             {categories.map((cat) => {
