@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Input, Textarea, Button } from "@heroui/react";
-import { Mail, Phone, Clock, CheckCircle2 } from "lucide-react";
+import { Mail, Phone, Clock, CheckCircle2, AlertCircle } from "lucide-react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export interface ContactOffice {
   city: string;
@@ -44,14 +45,37 @@ interface Props {
 export default function ContactForm({ content }: Props) {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [form, setForm] = useState({ name: "", email: "", company: "", message: "" });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
+
+    if (!captchaToken) {
+      setError("Please complete the reCAPTCHA verification.");
+      return;
+    }
+
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 800));
-    setSubmitted(true);
-    setLoading(false);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, recaptchaToken: captchaToken }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? "Something went wrong.");
+      setSubmitted(true);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      recaptchaRef.current?.reset();
+      setCaptchaToken(null);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const { hero, formTitle, fields, success, offices } = content;
@@ -94,28 +118,19 @@ export default function ContactForm({ content }: Props) {
                     className="rounded-2xl p-6 border border-slate-100"
                     style={{ backgroundColor: "#f8fafc" }}
                   >
-                    <h3
-                      className="text-lg font-bold mb-4"
-                      style={{ color: "#0d9488" }}
-                    >
+                    <h3 className="text-lg font-bold mb-4" style={{ color: "#0d9488" }}>
                       {office.city}
                     </h3>
                     <div className="space-y-3">
                       <div className="flex items-center gap-3">
                         <Phone size={16} className="text-slate-400 flex-shrink-0" />
-                        <a
-                          href={`tel:${office.phone.replace(/\s/g, "")}`}
-                          className="text-sm text-slate-700 hover:text-teal-600"
-                        >
+                        <a href={`tel:${office.phone.replace(/\s/g, "")}`} className="text-sm text-slate-700 hover:text-teal-600">
                           {office.phone}
                         </a>
                       </div>
                       <div className="flex items-center gap-3">
                         <Mail size={16} className="text-slate-400 flex-shrink-0" />
-                        <a
-                          href={`mailto:${office.email}`}
-                          className="text-sm text-slate-700 hover:text-teal-600"
-                        >
+                        <a href={`mailto:${office.email}`} className="text-sm text-slate-700 hover:text-teal-600">
                           {office.email}
                         </a>
                       </div>
@@ -139,9 +154,7 @@ export default function ContactForm({ content }: Props) {
                   >
                     <CheckCircle2 size={32} style={{ color: "#0d9488" }} />
                   </div>
-                  <h2 className="text-2xl font-extrabold text-slate-900 mb-3">
-                    {success.title}
-                  </h2>
+                  <h2 className="text-2xl font-extrabold text-slate-900 mb-3">{success.title}</h2>
                   <p className="text-slate-600">{success.sub}</p>
                 </div>
               ) : (
@@ -180,15 +193,35 @@ export default function ContactForm({ content }: Props) {
                       variant="bordered"
                       minRows={4}
                     />
+
+                    {/* Google reCAPTCHA v2 "I'm not a robot" */}
+                    <div className="flex justify-center pt-1">
+                      <ReCAPTCHA
+                        ref={recaptchaRef}
+                        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+                        onChange={(token) => setCaptchaToken(token)}
+                        onExpired={() => setCaptchaToken(null)}
+                      />
+                    </div>
+
+                    {/* Error banner */}
+                    {error && (
+                      <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-red-50 border border-red-100 text-red-700 text-sm">
+                        <AlertCircle size={16} className="flex-shrink-0" />
+                        {error}
+                      </div>
+                    )}
+
                     <Button
                       type="submit"
                       fullWidth
                       size="lg"
                       isLoading={loading}
+                      isDisabled={!captchaToken || loading}
                       className="text-white font-bold rounded-xl"
                       style={{ backgroundColor: "#f97316" }}
                     >
-                      {loading ? "..." : fields.submit}
+                      {loading ? "Sending…" : fields.submit}
                     </Button>
                   </form>
                 </>
