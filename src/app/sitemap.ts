@@ -4,13 +4,17 @@ import { SITE_URL, LOCALE_PREFIXES } from "@/lib/seo";
 /** All canonical page paths (without locale prefix) */
 const PAGES = [
   "/",
-  "/about",
-  "/contact",
+  "/about-us",
+  "/careers",
+  "/contact-us",
   "/get-a-demo",
   "/partners",
   "/start-now",
   "/trust",
+  "/privacy-policy",
   "/resources",
+  "/terms-and-conditions",
+  "/cookies-policy",
   "/platform/self-funded-outpatient",
   "/platform/flexible-spending-account",
   "/platform/wellness-marketplace",
@@ -40,11 +44,12 @@ const PRIORITY: Record<string, number> = {
   "/who-we-serve/enterprises": 0.8,
   "/who-we-serve/small-business": 0.8,
   "/who-we-serve/providers": 0.8,
-  "/about": 0.7,
+  "/about-us": 0.7,
+  "/careers": 0.7,
   "/trust": 0.7,
   "/partners": 0.7,
   "/resources": 0.7,
-  "/contact": 0.6,
+  "/contact-us": 0.6,
 };
 
 const CHANGE_FREQ: Record<string, MetadataRoute.Sitemap[0]["changeFrequency"]> = {

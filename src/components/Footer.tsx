@@ -177,9 +177,9 @@ export default function Footer({ footerData: footerDataProp }: FooterProps = {})
             </p>
             <div className="flex flex-wrap gap-4">
               {[
-                { label: t.footer.privacy, href: "/privacy" },
-                { label: t.footer.terms, href: "/terms" },
-                { label: t.footer.cookie, href: "/cookies" },
+                { label: t.footer.privacy, href: "/privacy-policy" },
+                { label: t.footer.terms, href: "/terms-and-conditions" },
+                { label: t.footer.cookie, href: "/cookies-policy" },
                 { label: t.footer.sitemap, href: "/sitemap.xml" },
               ].map((item) => (
                 <Link

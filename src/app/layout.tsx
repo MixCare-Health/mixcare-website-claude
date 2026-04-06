@@ -6,6 +6,7 @@ import { getLocale } from "@/lib/locale.server";
 import { SITE_URL, SITE_NAME, TWITTER_HANDLE } from "@/lib/seo";
 import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
 import { siteSettingsQuery, type SanitySiteSettings } from "@/lib/sanity.queries";
+import CookieBanner from "@/components/CookieBanner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -88,6 +89,7 @@ export default async function RootLayout({
       <body className={inter.className}>
         <Providers initialLocale={locale} siteSettings={siteSettings}>
           {children}
+          <CookieBanner />
         </Providers>
       </body>
     </html>

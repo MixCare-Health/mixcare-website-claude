@@ -342,7 +342,7 @@ export default function GetADemoForm({ content, locale }: Props) {
               {/* Privacy — no spam line removed */}
               <p className="text-xs text-center text-slate-400">
                 {fields.privacy}{" "}
-                <a href="/privacy" className="underline hover:text-slate-600">
+                <a href="/privacy-policy" className="underline hover:text-slate-600">
                   {fields.privacyLink}
                 </a>
                 .
