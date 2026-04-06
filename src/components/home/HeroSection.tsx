@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@heroui/react";
-import { ArrowRight, TrendingUp, ShieldCheck, Users } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { localePath } from "@/lib/locale";
 import type { SanityHomeHero } from "@/lib/sanity.queries";
+import { urlFor } from "@/sanity/lib/image";
 
 const P = "#10AF97";
 const S = "#0A3D59";
@@ -47,9 +49,11 @@ export default function HeroSection({ data }: HeroSectionProps = {}) {
     { value: h.statValues[2], label: h.statLabels[2] },
   ];
 
+  const heroImageUrl = data?.heroImage ? urlFor(data.heroImage).width(900).height(700).fit("crop").url() : null;
+
   return (
     <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
-      {/* Background */}
+      {/* Background gradient */}
       <div
         className="absolute inset-0 -z-10"
         style={{ background: "linear-gradient(135deg, #edfbf8 0%, #eff6ff 50%, #fff7ed 100%)" }}
@@ -108,109 +112,20 @@ export default function HeroSection({ data }: HeroSectionProps = {}) {
             </div>
           </div>
 
-          {/* Right: Dashboard mockup */}
+          {/* Right: Hero image (if available) + Dashboard mockup */}
           <div className="relative">
-            <div className="bg-white rounded-3xl shadow-2xl p-6 border border-slate-100">
-              {/* Header */}
-              <div className="flex items-center justify-between mb-4">
-                <div>
-                  <p className="text-xs text-slate-500 font-medium">{h.dashboardTitle}</p>
-                  <p className="text-lg font-bold text-black">{h.dashboardCompany}</p>
-                </div>
-                <div className="px-3 py-1.5 rounded-lg text-xs font-bold text-white" style={{ backgroundColor: P }}>
-                  {h.dashboardLive}
-                </div>
+            {heroImageUrl && (
+              <div className="mb-6 rounded-3xl overflow-hidden shadow-xl">
+                <Image
+                  src={heroImageUrl}
+                  alt="MixCare Health employee benefits"
+                  width={900}
+                  height={500}
+                  className="w-full object-cover"
+                  priority
+                />
               </div>
-
-              {/* Stats row */}
-              <div className="grid grid-cols-3 gap-3 mb-6">
-                {stats.map((stat) => (
-                  <div key={stat.label} className="rounded-xl p-3 text-center" style={{ backgroundColor: P + "15" }}>
-                    <p className="text-base font-extrabold leading-tight" style={{ color: P }}>
-                      {stat.value}
-                    </p>
-                    <p className="text-xs text-slate-500 mt-0.5">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
-
-              {/* Progress bars */}
-              <div className="space-y-3">
-                {[
-                  { label: h.claimLabels[0], pct: 72, color: P },
-                  { label: h.claimLabels[1], pct: 85, color: S },
-                  { label: h.claimLabels[2], pct: 58, color: "#f97316" },
-                ].map((item) => (
-                  <div key={item.label}>
-                    <div className="flex justify-between text-xs text-slate-600 mb-1 font-medium">
-                      <span>{item.label}</span>
-                      <span>{item.pct}%</span>
-                    </div>
-                    <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
-                      <div
-                        className="h-full rounded-full"
-                        style={{ width: `${item.pct}%`, backgroundColor: item.color }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Recent activity */}
-              <div className="mt-5 pt-4 border-t border-slate-100">
-                <p className="text-xs font-semibold text-slate-500 mb-3">{h.recentClaims}</p>
-                <div className="space-y-2">
-                  {[
-                    { name: "Sarah L.", type: "GP Visit", amount: "HK$320", status: h.approved },
-                    { name: "David K.", type: "Dental", amount: "HK$850", status: h.processing },
-                  ].map((claim) => (
-                    <div key={claim.name} className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <div
-                          className="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold"
-                          style={{ backgroundColor: P }}
-                        >
-                          {claim.name[0]}
-                        </div>
-                        <div>
-                          <p className="text-xs font-semibold text-black">{claim.name}</p>
-                          <p className="text-xs text-slate-400">{claim.type}</p>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-xs font-bold text-black">{claim.amount}</p>
-                        <span
-                          className="text-xs font-medium"
-                          style={claim.status === h.approved ? { color: P } : { color: "#f97316" }}
-                        >
-                          {claim.status}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Floating badges */}
-            <div className="absolute -top-4 -right-4 bg-white rounded-2xl shadow-lg px-4 py-3 border border-slate-100 flex items-center gap-2">
-              <TrendingUp size={18} style={{ color: P }} />
-              <div>
-                <p className="text-xs font-bold text-black">{h.costSaved}</p>
-                <p className="text-xs text-slate-400">{h.costSavedSub}</p>
-              </div>
-            </div>
-            <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-lg px-4 py-3 border border-slate-100 flex items-center gap-2">
-              <ShieldCheck size={18} style={{ color: S }} />
-              <p className="text-xs font-bold text-black">{h.compliance}</p>
-            </div>
-            <div className="absolute top-1/2 -left-8 bg-white rounded-2xl shadow-lg px-4 py-3 border border-slate-100 flex items-center gap-2">
-              <Users size={18} style={{ color: "#f97316" }} />
-              <div>
-                <p className="text-xs font-bold text-black">{h.services}</p>
-                <p className="text-xs text-slate-400">{h.servicesSub}</p>
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

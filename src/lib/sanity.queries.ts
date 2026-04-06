@@ -913,6 +913,7 @@ export const homePageQuery = `
       "compliance":       coalesce(hero.compliance[$locale],       hero.compliance.en),
       "services":         coalesce(hero.services[$locale],         hero.services.en),
       "servicesSub":      coalesce(hero.servicesSub[$locale],      hero.servicesSub.en),
+      "heroImage":        hero.heroImage,
     },
     "logoBar": {
       "label": coalesce(logoBar.label[$locale], logoBar.label.en),
@@ -1038,6 +1039,7 @@ export type SanityHomeHero = {
   compliance: string;
   services: string;
   servicesSub: string;
+  heroImage?: SanityImageRef;
 };
 
 export type SanityHomeLogoBar = {

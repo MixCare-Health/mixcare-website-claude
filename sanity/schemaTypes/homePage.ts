@@ -37,6 +37,12 @@ export const homePageType = defineType({
         localeStringField("compliance", "Compliance Badge"),
         localeStringField("services", "Services Badge"),
         localeStringField("servicesSub", "Services Sub"),
+        defineField({
+          name: "heroImage",
+          title: "Hero Image (optional background / accent photo)",
+          type: "image",
+          options: { hotspot: true },
+        }),
       ],
     }),
 
