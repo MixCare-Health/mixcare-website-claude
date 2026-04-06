@@ -7,6 +7,7 @@ import { SITE_URL, SITE_NAME, TWITTER_HANDLE } from "@/lib/seo";
 import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
 import { siteSettingsQuery, type SanitySiteSettings } from "@/lib/sanity.queries";
 import CookieBanner from "@/components/CookieBanner";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -92,6 +93,9 @@ export default async function RootLayout({
           <CookieBanner />
         </Providers>
       </body>
+      {process.env.NEXT_PUBLIC_GA_ID && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+      )}
     </html>
   );
 }
