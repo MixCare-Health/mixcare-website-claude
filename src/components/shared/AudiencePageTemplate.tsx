@@ -373,8 +373,8 @@ export default function AudiencePageTemplate({
                 const design = designs[i] ?? designs[0];
                 return (
                   <Link
-                    key={sol.href}
-                    href={sol.href}
+                    key={sol.href ?? sol.label}
+                    href={sol.href!}
                     className="bg-white rounded-2xl border border-slate-100 hover:shadow-xl transition-all hover:-translate-y-1 group overflow-hidden"
                   >
                     {/* Mockup preview */}
