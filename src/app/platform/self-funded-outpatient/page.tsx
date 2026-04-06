@@ -89,8 +89,8 @@ export default async function SelfFundedOutpatientPage() {
         bgGradient="linear-gradient(135deg, #f0fdfa 0%, #ecfeff 50%, #f0f9ff 100%)"
       />
 
-      {/* ── STATS — Floating trust band ───────────────────────────── */}
-      <section className="relative -mt-20 z-10 pb-16">
+      {/* ── STATS — Trust band ───────────────────────────────────── */}
+      <section className="relative z-10 py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             className="rounded-2xl border border-white/20 shadow-xl backdrop-blur-md overflow-hidden"
