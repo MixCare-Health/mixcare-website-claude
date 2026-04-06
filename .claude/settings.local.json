@@ -143,7 +143,9 @@
       "mcp__Sanity__patch_document_from_json",
       "Bash(PATH=\"/opt/homebrew/bin:/Users/kelvinchu/.nvm/versions/node/v20.19.5/bin:$PATH\" npm install resend react-google-recaptcha @types/react-google-recaptcha)",
       "Bash(find '/Users/kelvinchu/MixCare Health Website/node_modules/resend' -name *.ts -o -name *.d.ts)",
-      "Bash(grep -E \"\\\\.\\(png|jpg|jpeg|svg|gif\\)$\")"
+      "Bash(grep -E \"\\\\.\\(png|jpg|jpeg|svg|gif\\)$\")",
+      "Bash(GIT_OPTIONAL_LOCKS=0 git commit -m \"fix: non-null assertion on sol.href in mockup layout Link to fix TS build error:*)",
+      "Bash(grep -n -B 2 -A 10 '{ label: \"\"FAQ\"\"' \"/Users/kelvinchu/MixCare Health Website/src/translations/en.ts\")"
     ]
   },
   "disableAllHooks": true

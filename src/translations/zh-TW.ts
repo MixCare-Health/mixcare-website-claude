@@ -58,7 +58,6 @@ export const zhTW: Translations = {
       { label: "博客", href: "/resources/articles" },
       { label: "案例研究", href: "/resources/case-studies" },
       { label: "白皮書", href: "/resources/whitepapers" },
-      { label: "常見問題", href: "/resources/faq" },
     ],
     company: [
       { label: "關於我們", href: "/about-us" },

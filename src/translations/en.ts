@@ -57,7 +57,6 @@ export const en = {
       { label: "Blog", href: "/resources/articles" },
       { label: "Case Studies", href: "/resources/case-studies" },
       { label: "Whitepapers", href: "/resources/whitepapers" },
-      { label: "FAQ", href: "/resources/faq" },
     ],
     company: [
       { label: "About Us", href: "/about-us" },
