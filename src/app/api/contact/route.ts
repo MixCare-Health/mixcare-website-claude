@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-// ── Resend client — uses server-only env var, never exposed to browser ─────────
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 // ── reCAPTCHA verification ─────────────────────────────────────────────────────
 async function verifyRecaptcha(token: string): Promise<boolean> {
   const secret = process.env.RECAPTCHA_SECRET_KEY;
@@ -22,6 +19,9 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
 
 // ── POST /api/contact ──────────────────────────────────────────────────────────
 export async function POST(req: NextRequest) {
+  // Instantiate inside handler so env vars are available at runtime, not build time
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
   try {
     const { name, email, company, message, recaptchaToken } = await req.json();
 
