@@ -129,15 +129,17 @@ export default async function ArticlePostPage({ params }: { params: Promise<Para
         )}
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 70% 30%, white 1px, transparent 1px)", backgroundSize: "28px 28px" }} aria-hidden="true" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <Link
-            href={localePath(locale, "/resources/articles")}
-            className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors mb-6"
-          >
-            <ArrowLeft size={14} aria-hidden="true" /> {t.resources.blog.heading}
-          </Link>
-          <span className="inline-block px-3 py-1 rounded-full text-xs font-bold mb-4" style={{ backgroundColor: col.bg, color: col.text }}>
-            {article.category}
-          </span>
+          <div className="flex items-center gap-3 mb-6">
+            <Link
+              href={localePath(locale, "/resources/articles")}
+              className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors"
+            >
+              <ArrowLeft size={14} aria-hidden="true" /> {t.resources.blog.heading}
+            </Link>
+            <span className="inline-block px-3 py-1 rounded-full text-xs font-bold" style={{ backgroundColor: col.bg, color: col.text }}>
+              {article.category}
+            </span>
+          </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight mb-6">
             {article.title}
           </h1>
