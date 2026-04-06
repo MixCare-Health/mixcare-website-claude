@@ -152,7 +152,11 @@ export default async function AboutUsPage() {
                 <img
                   src={member.photo}
                   alt={member.name}
-                  className="w-[160px] h-[160px] object-cover object-top mx-auto rounded-full mt-5"
+                  className="object-cover object-top mx-auto rounded-full"
+                  style={member.name === "Alfred Ho"
+                    ? { width: 120, height: 120, marginTop: 55 }
+                    : { width: 160, height: 160, marginTop: 20 }
+                  }
                 />
                 {/* Info */}
                 <div className="p-5">
