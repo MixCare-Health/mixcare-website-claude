@@ -140,7 +140,7 @@ export default function WhitepapersBrowser({ whitepapers, locale, badge, headlin
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <section className="pt-10 pb-12 text-center" style={{ backgroundColor: "#f8fafc" }}>
+      <section className="pt-16 pb-12 text-center" style={{ backgroundColor: "#f8fafc" }}>
         <div className="max-w-2xl mx-auto px-4">
           <div className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 mb-5">
             <span className="w-2 h-2 rounded-full bg-purple-500 inline-block" />

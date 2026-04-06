@@ -59,7 +59,6 @@ export const zhCN: Translations = {
       { label: "案例研究", href: "/resources/case-studies" },
       { label: "白皮书", href: "/resources/whitepapers" },
       { label: "常见问题", href: "/resources/faq" },
-      { label: "媒体报道", href: "/resources/media-coverage" },
     ],
     company: [
       { label: "关于我们", href: "/about-us" },

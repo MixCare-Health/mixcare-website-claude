@@ -152,7 +152,7 @@ export default async function AboutUsPage() {
                 <img
                   src={member.photo}
                   alt={member.name}
-                  className="w-[200px] h-[200px] object-cover object-top mx-auto rounded-xl mt-5"
+                  className="w-[160px] h-[160px] object-cover object-top mx-auto rounded-full mt-5"
                 />
                 {/* Info */}
                 <div className="p-5">
