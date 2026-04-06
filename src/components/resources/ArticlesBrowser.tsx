@@ -18,7 +18,8 @@ function formatDate(iso: string): string {
   return d.toLocaleDateString("en-US", { month: "short", day: "2-digit", year: "numeric" });
 }
 
-function getInitials(name: string): string {
+function getInitials(name: string | null | undefined): string {
+  if (!name) return "MC";
   return name
     .split(" ")
     .map((n) => n[0])
@@ -37,7 +38,8 @@ const AVATAR_COLORS = [
   { bg: "#e0f2fe", text: "#0369a1" },
 ];
 
-function avatarColor(name: string) {
+function avatarColor(name: string | null | undefined) {
+  if (!name) return AVATAR_COLORS[0];
   let h = 0;
   for (const c of name) h = (h * 31 + c.charCodeAt(0)) % AVATAR_COLORS.length;
   return AVATAR_COLORS[h];
@@ -64,100 +66,6 @@ const CATEGORY_ICONS: Record<string, string> = {
   "Compliance":        "🛡️",
   "Insurers":          "📋",
 };
-
-// ── Featured card ─────────────────────────────────────────────────────────────
-function FeaturedCard({
-  post,
-  index,
-  locale,
-  featuredLabel,
-  categoryLabel,
-}: {
-  post: SanityArticleListItem;
-  index: number;
-  locale: string;
-  featuredLabel: string;
-  categoryLabel: string;
-}) {
-  const col = catColor(post.category);
-  const av = avatarColor(post.author);
-  const gradients = [
-    "linear-gradient(135deg, #0d9488 0%, #1e3a5f 100%)",
-    "linear-gradient(135deg, #1e3a5f 0%, #f97316 100%)",
-  ];
-
-  return (
-    <Link
-      href={localePath(locale as "en" | "zh-TW" | "zh-CN", `/resources/articles/${post.slug}`)}
-      className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col"
-    >
-      {/* Cover image */}
-      <div className="relative h-52 overflow-hidden">
-        {post.coverImage ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={urlFor(post.coverImage).width(640).height(416).fit("crop").url()}
-            alt={post.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-        ) : (
-          <div className="w-full h-full" style={{ background: gradients[index % gradients.length] }}>
-            <div
-              className="absolute inset-0 opacity-10"
-              style={{
-                backgroundImage: "radial-gradient(circle at 70% 30%, white 1px, transparent 1px)",
-                backgroundSize: "22px 22px",
-              }}
-            />
-          </div>
-        )}
-        {/* Featured badge */}
-        {index === 1 && (
-          <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold bg-teal-100 text-teal-700 shadow-sm">
-            ✦ {featuredLabel}
-          </div>
-        )}
-        {/* Category badge */}
-        <div
-          className="absolute top-4 right-4 px-2.5 py-1 rounded-full text-[11px] font-bold shadow-sm"
-          style={{ backgroundColor: col.bg, color: col.text }}
-        >
-          {categoryLabel}
-        </div>
-      </div>
-
-      {/* Body */}
-      <div className="p-6 flex flex-col flex-1">
-        <h2 className="text-[17px] font-extrabold text-slate-900 mb-2 leading-snug group-hover:text-teal-700 transition-colors line-clamp-2">
-          {post.title}
-        </h2>
-        <p className="text-sm text-slate-500 leading-relaxed mb-5 line-clamp-3 flex-1">
-          {post.description}
-        </p>
-        <div className="flex items-center justify-between">
-          {/* Author */}
-          <div className="flex items-center gap-2.5">
-            <div
-              className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 shadow-sm"
-              style={{ backgroundColor: av.bg, color: av.text }}
-            >
-              {getInitials(post.author)}
-            </div>
-            <div>
-              <p className="text-xs font-semibold text-slate-800 leading-none">{post.author}</p>
-              <p className="text-[11px] text-slate-400 mt-0.5">MixCare Health</p>
-            </div>
-          </div>
-          {/* Date */}
-          <div className="flex items-center gap-1.5 text-xs text-slate-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-teal-400 inline-block" />
-            <time>{formatDate(post.publishedAt)}</time>
-          </div>
-        </div>
-      </div>
-    </Link>
-  );
-}
 
 // ── Small card ────────────────────────────────────────────────────────────────
 function SmallCard({ post, locale, categoryLabel }: { post: SanityArticleListItem; locale: string; categoryLabel: string }) {
@@ -218,7 +126,7 @@ function SmallCard({ post, locale, categoryLabel }: { post: SanityArticleListIte
               {getInitials(post.author)}
             </div>
             <div>
-              <p className="text-[11px] font-semibold text-slate-800 leading-none">{post.author}</p>
+              <p className="text-[11px] font-semibold text-slate-800 leading-none">{post.author ?? "MixCare Health"}</p>
               <p className="text-[10px] text-slate-400 mt-0.5">MixCare Health</p>
             </div>
           </div>
@@ -262,11 +170,9 @@ export default function ArticlesBrowser({ articles, locale, badge, headline, sub
     return articles.filter((a) => a.category === activeCategory);
   }, [articles, activeCategory]);
 
-  // Split featured (top 2) and recently added (rest, paginated)
-  const featured = filtered.slice(0, 3);
-  const recentAll = filtered.slice(3);
-  const totalPages = Math.max(1, Math.ceil(recentAll.length / RECENTLY_PER_PAGE));
-  const recent = recentAll.slice((page - 1) * RECENTLY_PER_PAGE, page * RECENTLY_PER_PAGE);
+  // All articles paginated
+  const totalPages = Math.max(1, Math.ceil(filtered.length / RECENTLY_PER_PAGE));
+  const recent = filtered.slice((page - 1) * RECENTLY_PER_PAGE, page * RECENTLY_PER_PAGE);
 
   function switchCategory(cat: string) {
     setActiveCategory(cat);
@@ -333,40 +239,9 @@ export default function ArticlesBrowser({ articles, locale, badge, headline, sub
       <div className="min-h-screen" style={{ backgroundColor: "#f8fafc" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
-          {/* Featured 2-col */}
-          {featured.length > 0 && (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
-              {featured.map((post, i) => (
-                <FeaturedCard key={post.slug} post={post} index={i} locale={locale}
-                  featuredLabel={ui.featured}
-                  categoryLabel={catLabels[post.category as keyof typeof catLabels] ?? post.category}
-                />
-              ))}
-            </div>
-          )}
-
-          {/* Recently Added */}
+          {/* All articles grid */}
           {recent.length > 0 && (
             <div>
-              {/* Section header */}
-              <div className="flex items-center gap-3 mb-7">
-                <div className="flex -space-x-1.5">
-                  {[
-                    { initials: "AI", bg: "#f97316", text: "#fff" },
-                    { initials: "HR", bg: "#0d9488", text: "#fff" },
-                  ].map(({ initials, bg, text }) => (
-                    <div
-                      key={initials}
-                      className="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center text-[10px] font-bold shadow-sm"
-                      style={{ backgroundColor: bg, color: text }}
-                    >
-                      {initials}
-                    </div>
-                  ))}
-                </div>
-                <h2 className="text-xl font-extrabold text-slate-900">{ui.recentlyAdded}</h2>
-              </div>
-
               {/* 3-col grid */}
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {recent.map((post) => (

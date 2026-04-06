@@ -141,7 +141,7 @@ export const allCaseStudiesQuery = `
     "color": color,
     "gradient": gradient,
     "publishedAt": publishedAt,
-    "featuredImage": featuredImage,
+    "featuredImage": coalesce(featuredImage, coverImage),
   }
 `;
 
@@ -345,7 +345,7 @@ export type SanityPlatformPage = {
 // ── FAQ Items ────────────────────────────────────────────────────────────────
 
 export const allFaqItemsQuery = `
-  *[_type == "faqItem"] | order(order asc) {
+  *[_type == "faqItem"] | order(_createdAt desc) {
     _id,
     "question": coalesce(question[$locale], question.en),
     "answer": coalesce(answer[$locale], answer.en),
@@ -1145,7 +1145,7 @@ export type SanityHomePage = {
 // ── Press / Media Coverage ────────────────────────────────────────────────────
 
 export const allPressItemsQuery = `
-  *[_type == "pressItem"] | order(isFeatured desc, publishedAt desc) {
+  *[_type == "pressItem"] | order(publishedAt desc) {
     "title":       coalesce(title[$locale],       title.en),
     "slug":        slug.current,
     "outlet":      outlet,

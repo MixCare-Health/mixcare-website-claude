@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Input, Textarea, Button } from "@heroui/react";
-import { Mail, Phone, MapPin, Clock, CheckCircle2 } from "lucide-react";
+import { Mail, Phone, Clock, CheckCircle2 } from "lucide-react";
 
 export interface ContactOffice {
   city: string;
@@ -54,7 +54,7 @@ export default function ContactForm({ content }: Props) {
     setLoading(false);
   };
 
-  const { hero, officesTitle, formTitle, formSub, fields, success, offices } = content;
+  const { hero, formTitle, fields, success, offices } = content;
 
   return (
     <main>
@@ -87,7 +87,6 @@ export default function ContactForm({ content }: Props) {
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact info */}
             <div>
-              <h2 className="text-2xl font-extrabold text-slate-900 mb-8">{officesTitle}</h2>
               <div className="space-y-8">
                 {offices.map((office) => (
                   <div
@@ -102,10 +101,6 @@ export default function ContactForm({ content }: Props) {
                       {office.city}
                     </h3>
                     <div className="space-y-3">
-                      <div className="flex items-start gap-3">
-                        <MapPin size={16} className="text-slate-400 mt-0.5 flex-shrink-0" />
-                        <p className="text-sm text-slate-700">{office.address}</p>
-                      </div>
                       <div className="flex items-center gap-3">
                         <Phone size={16} className="text-slate-400 flex-shrink-0" />
                         <a
@@ -132,25 +127,6 @@ export default function ContactForm({ content }: Props) {
                   </div>
                 ))}
               </div>
-
-              {/* Quick links */}
-              <div className="mt-8 grid grid-cols-2 gap-3">
-                {[
-                  { label: "Book a Demo", href: "https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-", color: "#f97316" },
-                  { label: "Partner With Us", href: "/partners", color: "#0d9488" },
-                  { label: "Start Now", href: "/start-now", color: "#1e3a5f" },
-                  { label: "Trust & Security", href: "/trust", color: "#7c3aed" },
-                ].map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    className="rounded-xl px-4 py-3 text-sm font-semibold text-white text-center"
-                    style={{ backgroundColor: link.color }}
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
             </div>
 
             {/* Form */}
@@ -170,8 +146,7 @@ export default function ContactForm({ content }: Props) {
                 </div>
               ) : (
                 <>
-                  <h2 className="text-2xl font-extrabold text-slate-900 mb-2">{formTitle}</h2>
-                  <p className="text-sm text-slate-500 mb-6">{formSub}</p>
+                  <h2 className="text-2xl font-extrabold text-slate-900 mb-6">{formTitle}</h2>
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       <Input

@@ -40,86 +40,6 @@ function buildPageNumbers(page: number, totalPages: number): (number | "…")[] 
   return pages;
 }
 
-// ── Featured card ─────────────────────────────────────────────────────────────
-function FeaturedCard({
-  item,
-  index,
-  locale,
-  readMore,
-  featuredLabel,
-}: {
-  item: SanityCaseStudyListItem;
-  index: number;
-  locale: string;
-  readMore: string;
-  featuredLabel: string;
-}) {
-  const gradients = [
-    "linear-gradient(135deg, #0d9488 0%, #1e3a5f 100%)",
-    "linear-gradient(135deg, #1e3a5f 0%, #f97316 100%)",
-  ];
-
-  return (
-    <div className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col">
-      {/* Cover image / gradient */}
-      <div className="relative h-52 overflow-hidden">
-        {item.featuredImage ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={urlFor(item.featuredImage).width(640).height(416).fit("crop").url()}
-            alt={item.headline}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-        ) : (
-          <div
-            className="w-full h-full"
-            style={{ background: item.color ? `linear-gradient(135deg, ${item.color} 0%, ${item.color}88 100%)` : gradients[index % 2] }}
-          >
-            <div
-              className="absolute inset-0 opacity-10"
-              style={{ backgroundImage: "radial-gradient(circle at 70% 30%, white 1px, transparent 1px)", backgroundSize: "22px 22px" }}
-            />
-          </div>
-        )}
-        {index === 1 && (
-          <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold bg-teal-100 text-teal-700 shadow-sm">
-            ✦ {featuredLabel}
-          </div>
-        )}
-        <div
-          className="absolute top-4 right-4 px-2.5 py-1 rounded-full text-[11px] font-bold shadow-sm bg-white/90"
-          style={{ color: item.color || "#0d9488" }}
-        >
-          {item.segment}
-        </div>
-      </div>
-
-      {/* Body */}
-      <div className="p-6 flex flex-col flex-1">
-        <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">{item.company}</p>
-        <h2 className="text-[17px] font-extrabold text-slate-900 mb-3 leading-snug group-hover:text-teal-700 transition-colors line-clamp-2 flex-1">
-          {item.headline}
-        </h2>
-        {/* Result callout */}
-        <div
-          className="rounded-xl px-4 py-3 mb-5 flex items-start gap-2"
-          style={{ backgroundColor: (item.color || "#0d9488") + "12", borderLeft: `3px solid ${item.color || "#0d9488"}` }}
-        >
-          <TrendingUp size={14} className="flex-shrink-0 mt-0.5" style={{ color: item.color || "#0d9488" }} aria-hidden="true" />
-          <p className="text-xs font-semibold leading-snug" style={{ color: item.color || "#0d9488" }}>{item.result}</p>
-        </div>
-        <Link
-          href={localePath(locale as "en" | "zh-TW" | "zh-CN", `/resources/case-studies/${item.slug}`)}
-          className="inline-flex items-center gap-2 text-sm font-bold text-white px-4 py-2.5 rounded-xl transition-all hover:-translate-y-0.5 shadow hover:shadow-md self-start"
-          style={{ backgroundColor: item.color || "#0d9488" }}
-        >
-          {readMore} →
-        </Link>
-      </div>
-    </div>
-  );
-}
-
 // ── Small card ────────────────────────────────────────────────────────────────
 function SmallCard({
   item,
@@ -208,10 +128,8 @@ export default function CaseStudiesBrowser({ caseStudies, locale, badge, headlin
     return caseStudies.filter((c) => c.segment === activeSegment);
   }, [caseStudies, activeSegment]);
 
-  const featured = filtered.slice(0, 3);
-  const recentAll = filtered.slice(3);
-  const totalPages = Math.max(1, Math.ceil(recentAll.length / RECENTLY_PER_PAGE));
-  const recent = recentAll.slice((page - 1) * RECENTLY_PER_PAGE, page * RECENTLY_PER_PAGE);
+  const totalPages = Math.max(1, Math.ceil(filtered.length / RECENTLY_PER_PAGE));
+  const recent = filtered.slice((page - 1) * RECENTLY_PER_PAGE, page * RECENTLY_PER_PAGE);
 
   function switchSegment(seg: string) {
     setActiveSegment(seg);
@@ -263,36 +181,9 @@ export default function CaseStudiesBrowser({ caseStudies, locale, badge, headlin
       <div className="min-h-screen" style={{ backgroundColor: "#f8fafc" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
-          {/* Featured 2-col */}
-          {featured.length > 0 && (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
-              {featured.map((item, i) => (
-                <FeaturedCard key={item.slug} item={item} index={i} locale={locale} readMore={readMore} featuredLabel={ui.featured} />
-              ))}
-            </div>
-          )}
-
-          {/* More stories */}
+          {/* All case studies */}
           {recent.length > 0 && (
             <div>
-              <div className="flex items-center gap-3 mb-7">
-                <div className="flex -space-x-1.5">
-                  {[
-                    { initials: "CS", bg: "#1d4ed8", text: "#fff" },
-                    { initials: "AI", bg: "#0d9488", text: "#fff" },
-                  ].map(({ initials, bg, text }) => (
-                    <div
-                      key={initials}
-                      className="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center text-[10px] font-bold shadow-sm"
-                      style={{ backgroundColor: bg, color: text }}
-                    >
-                      {initials}
-                    </div>
-                  ))}
-                </div>
-                <h2 className="text-xl font-extrabold text-slate-900">{ui.moreStories}</h2>
-              </div>
-
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {recent.map((item) => (
                   <SmallCard key={item.slug} item={item} locale={locale} readMore={readMore} />

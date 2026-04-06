@@ -8,6 +8,7 @@ import { getTranslations } from "@/translations";
 import { localePath } from "@/lib/locale";
 import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
 import { allPressItemsQuery, type SanityPressItemListItem } from "@/lib/sanity.queries";
+import { urlFor } from "@/sanity/lib/image";
 import ResourcesTabs from "@/components/resources/ResourcesTabs";
 import Link from "next/link";
 import { ArrowRight, ExternalLink, Newspaper } from "lucide-react";
@@ -62,9 +63,6 @@ export default async function MediaCoveragePage() {
       })
     : [];
 
-  const featured = pressItems.filter((p) => p.isFeatured);
-  const rest = pressItems.filter((p) => !p.isFeatured);
-
   return (
     <main>
       <JsonLd
@@ -95,9 +93,9 @@ export default async function MediaCoveragePage() {
             <Newspaper size={15} aria-hidden="true" />
             {t.resources.tabs.mediaCoverage}
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-white mb-3">媒體報道</h1>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-white mb-3">{t.resources.tabs.mediaCoverage}</h1>
           <p className="text-teal-100 text-lg max-w-xl mx-auto">
-            MixCare Health in the press — coverage, interviews, and announcements.
+            {t.resources.ui.mediaCoverageSub}
           </p>
         </div>
       </div>
@@ -111,35 +109,11 @@ export default async function MediaCoveragePage() {
               <p className="font-semibold">{ui.noMediaCoverage}</p>
             </div>
           ) : (
-            <>
-              {/* Featured */}
-              {featured.length > 0 && (
-                <div className="mb-14">
-                  <p className="text-xs font-bold uppercase tracking-widest text-teal-600 mb-6">✦ {ui.featured}</p>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    {featured.map((item) => (
-                      <PressCard key={item.slug} item={item} locale={locale} large />
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* All coverage */}
-              {rest.length > 0 && (
-                <div>
-                  {featured.length > 0 && (
-                    <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-6">
-                      {ui.recentlyAdded}
-                    </p>
-                  )}
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                    {rest.map((item) => (
-                      <PressCard key={item.slug} item={item} locale={locale} />
-                    ))}
-                  </div>
-                </div>
-              )}
-            </>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {pressItems.map((item) => (
+                <PressCard key={item.slug} item={item} locale={locale} readMore={ui.readMore} viewOriginal={ui.viewOriginal} />
+              ))}
+            </div>
           )}
         </div>
       </div>
@@ -154,11 +128,13 @@ export default async function MediaCoveragePage() {
 function PressCard({
   item,
   locale,
-  large = false,
+  readMore,
+  viewOriginal,
 }: {
   item: SanityPressItemListItem;
   locale: string;
-  large?: boolean;
+  readMore: string;
+  viewOriginal: string;
 }) {
   const col = getCategoryColor(item.category);
   const hasContent = !item.externalUrl;
@@ -171,9 +147,26 @@ function PressCard({
       href={href}
       target={hasContent ? undefined : "_blank"}
       rel={hasContent ? undefined : "noopener noreferrer"}
-      className={`group block bg-white rounded-2xl border border-slate-100 hover:shadow-lg transition-all hover:-translate-y-0.5 overflow-hidden ${large ? "flex flex-col" : ""}`}
+      className="group block bg-white rounded-2xl border border-slate-100 hover:shadow-lg transition-all hover:-translate-y-0.5 overflow-hidden flex flex-col"
     >
-      <div className={`p-6 flex flex-col gap-3 flex-1 ${large ? "p-7" : ""}`}>
+      {/* Cover image */}
+      {item.coverImage ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={urlFor(item.coverImage).width(480).height(240).fit("crop").url()}
+          alt={item.title ?? item.outlet}
+          className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+      ) : (
+        <div
+          className="w-full h-40 flex items-center justify-center"
+          style={{ background: "linear-gradient(135deg, #0d9488 0%, #1e3a5f 100%)" }}
+        >
+          <Newspaper size={32} className="text-white/40" />
+        </div>
+      )}
+
+      <div className="p-5 flex flex-col gap-3 flex-1">
         {/* Outlet + date */}
         <div className="flex items-center justify-between gap-2">
           <span className="text-xs font-bold text-slate-500 uppercase tracking-wide">
@@ -191,9 +184,7 @@ function PressCard({
         </span>
 
         {/* Title */}
-        <h3
-          className={`font-bold text-slate-900 group-hover:text-teal-700 transition-colors leading-snug ${large ? "text-lg" : "text-sm"}`}
-        >
+        <h3 className="font-bold text-slate-900 group-hover:text-teal-700 transition-colors leading-snug text-sm">
           {item.title}
         </h3>
 
@@ -205,9 +196,9 @@ function PressCard({
         {/* CTA */}
         <div className="mt-auto pt-2 flex items-center gap-1.5 text-xs font-semibold" style={{ color: "#0d9488" }}>
           {hasContent ? (
-            <>Read more <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" /></>
+            <>{readMore} <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" /></>
           ) : (
-            <>View original <ExternalLink size={12} /></>
+            <>{viewOriginal} <ExternalLink size={12} /></>
           )}
         </div>
       </div>
