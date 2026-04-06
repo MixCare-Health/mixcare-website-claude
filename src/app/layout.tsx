@@ -7,7 +7,7 @@ import { SITE_URL, SITE_NAME, TWITTER_HANDLE } from "@/lib/seo";
 import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
 import { siteSettingsQuery, type SanitySiteSettings } from "@/lib/sanity.queries";
 import CookieBanner from "@/components/CookieBanner";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -93,9 +93,19 @@ export default async function RootLayout({
           <CookieBanner />
         </Providers>
       </body>
-      {process.env.NEXT_PUBLIC_GA_ID && (
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
-      )}
+      {/* Google tag (gtag.js) */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-R6W6RRTH7X"
+        strategy="afterInteractive"
+      />
+      <Script id="gtag-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-R6W6RRTH7X');
+        `}
+      </Script>
     </html>
   );
 }
