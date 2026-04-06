@@ -114,7 +114,7 @@ export default async function BrokersPage() {
         ctaHeadline={tmpl.ctaHeadline}
         ctaSub={tmpl.ctaSub}
         hideSolutions={page?.hideSolutions ?? true}
-        hideTestimonial={page?.hideTestimonial ?? true}
+        hideTestimonial={true}
         hideMetrics={page?.hideMetrics ?? true}
         featuredLayout="mockup"
         featuredHeadlineOverride="How We Solve?"
