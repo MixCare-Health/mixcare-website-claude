@@ -10,7 +10,7 @@ import { getTranslations } from "@/translations";
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 const ALL = "All";
-const RECENTLY_PER_PAGE = 6;
+const RECENTLY_PER_PAGE = 12;
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 const FORMAT_ICONS: Record<string, string> = {

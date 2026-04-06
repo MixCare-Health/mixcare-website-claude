@@ -84,7 +84,7 @@ export default async function SmallBusinessPage() {
         badge={badge}
         badgeIcon={Store}
         headline={headline}
-        headlineHighlight={headlineHighlight}
+        headlineHighlight={undefined}
         subheadline={sub}
         accentColor={page?.accentColor ?? "#f97316"}
         bgGradient={page?.bgGradient ?? "linear-gradient(135deg, #f0fdfa 0%, #eff6ff 50%, #fff7ed 100%)"}
@@ -111,9 +111,12 @@ export default async function SmallBusinessPage() {
         featuredSub={tmpl.featuredSub}
         ctaHeadline={tmpl.ctaHeadline}
         ctaSub={tmpl.ctaSub}
-        hideSolutions={page?.hideSolutions ?? false}
+        hideSolutions={true}
         hideTestimonial={true}
-        hideMetrics={page?.hideMetrics ?? false}
+        hideHeroCtaButton={true}
+        hideMetrics={true}
+        featuredSectionBg="white"
+        hideBottomCtaButton={true}
       />
       <Footer />
     </main>

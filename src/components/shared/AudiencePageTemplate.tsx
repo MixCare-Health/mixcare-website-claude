@@ -14,7 +14,7 @@ interface Solution {
 
 interface FeaturedSolution {
   label: string;
-  href: string;
+  href?: string;
   desc: string;
   tag?: string;
 }
@@ -59,6 +59,9 @@ interface AudiencePageTemplateProps {
   featuredLayout?: "default" | "mockup";
   featuredHeadlineOverride?: string;
   featuredSubOverride?: string;
+  featuredSectionBg?: string;
+  hideHeroCtaButton?: boolean;
+  hideBottomCtaButton?: boolean;
 }
 
 export default function AudiencePageTemplate({
@@ -95,6 +98,9 @@ export default function AudiencePageTemplate({
   featuredLayout = "default",
   featuredHeadlineOverride,
   featuredSubOverride,
+  featuredSectionBg,
+  hideHeroCtaButton = false,
+  hideBottomCtaButton = false,
 }: AudiencePageTemplateProps) {
   return (
     <>
@@ -130,13 +136,15 @@ export default function AudiencePageTemplate({
             </h1>
             <p className="text-xl text-slate-600 leading-relaxed mb-10">{subheadline}</p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href={ctaHref}
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl text-white font-bold text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
-                style={{ backgroundColor: "#f97316" }}
-              >
-                {ctaLabel} <ArrowRight size={20} />
-              </Link>
+              {!hideHeroCtaButton && (
+                <Link
+                  href={ctaHref}
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl text-white font-bold text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
+                  style={{ backgroundColor: "#f97316" }}
+                >
+                  {ctaLabel} <ArrowRight size={20} />
+                </Link>
+              )}
               {secondaryCtaLabel && secondaryCtaHref && (
                 <Link
                   href={secondaryCtaHref}
@@ -231,7 +239,7 @@ export default function AudiencePageTemplate({
       )}
 
       {/* Featured solutions */}
-      <section className="py-16" style={{ backgroundColor: "#f8fafc" }}>
+      <section className="py-16" style={{ backgroundColor: featuredSectionBg ?? "#f8fafc" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold text-slate-900 text-center mb-3">
             {featuredHeadlineOverride ?? featuredHeadline}
@@ -408,27 +416,42 @@ export default function AudiencePageTemplate({
           ) : (
             /* Default card layout */
             <div className={`grid gap-5 ${featuredSolutions.length === 2 ? "md:grid-cols-2" : featuredSolutions.length === 4 ? "grid-cols-2 md:grid-cols-4" : "md:grid-cols-3"}`}>
-              {featuredSolutions.map((sol) => (
-                <Link
-                  key={sol.href}
-                  href={sol.href}
-                  className="bg-white rounded-2xl p-7 border border-slate-100 hover:shadow-lg transition-all hover:-translate-y-1 group"
-                >
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
-                      {sol.label}
-                    </h3>
-                    {sol.tag ? (
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 whitespace-nowrap">
-                        {sol.tag}
-                      </span>
-                    ) : (
-                      <ArrowRight size={18} className="text-slate-300 group-hover:text-teal-600 transition-colors group-hover:translate-x-1" />
-                    )}
+              {featuredSolutions.map((sol) => {
+                const hasLink = !!sol.href;
+                const cardContent = (
+                  <>
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className={`font-bold text-slate-900 ${hasLink ? "group-hover:text-teal-700 transition-colors" : ""}`}>
+                        {sol.label}
+                      </h3>
+                      {sol.tag ? (
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 whitespace-nowrap">
+                          {sol.tag}
+                        </span>
+                      ) : hasLink ? (
+                        <ArrowRight size={18} className="text-slate-300 group-hover:text-teal-600 transition-colors group-hover:translate-x-1" />
+                      ) : null}
+                    </div>
+                    <p className="text-sm text-slate-600 leading-relaxed">{sol.desc}</p>
+                  </>
+                );
+                return hasLink ? (
+                  <Link
+                    key={sol.href}
+                    href={sol.href!}
+                    className="bg-white rounded-2xl p-7 border border-slate-100 hover:shadow-lg transition-all hover:-translate-y-1 group"
+                  >
+                    {cardContent}
+                  </Link>
+                ) : (
+                  <div
+                    key={sol.label}
+                    className="bg-white rounded-2xl p-7 border border-slate-100 cursor-default"
+                  >
+                    {cardContent}
                   </div>
-                  <p className="text-sm text-slate-600 leading-relaxed">{sol.desc}</p>
-                </Link>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>
@@ -493,13 +516,15 @@ export default function AudiencePageTemplate({
               {ctaSub}
             </p>
             <div className="flex flex-wrap gap-4 justify-center relative z-10">
-              <Link
-                href={ctaHref}
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
-                style={{ backgroundColor: "#f97316", color: "#fff" }}
-              >
-                {ctaLabel} <ArrowRight size={20} />
-              </Link>
+              {!hideBottomCtaButton && (
+                <Link
+                  href={ctaHref}
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
+                  style={{ backgroundColor: "#f97316", color: "#fff" }}
+                >
+                  {ctaLabel} <ArrowRight size={20} />
+                </Link>
+              )}
               {secondaryCtaLabel && secondaryCtaHref && (
                 <Link
                   href={secondaryCtaHref}

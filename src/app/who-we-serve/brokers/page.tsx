@@ -123,6 +123,8 @@ export default async function BrokersPage() {
           { name: "Mercer", src: "/logos/mixcare-health-client-mercer.png" },
           { name: "Pacific Prime", src: "/logos/mixcare-health-client-pp.png" },
           { name: "Nova", src: "/logos/mixcare-health-client-nova.png" },
+          { name: "Howden", src: "/logos/mixcare-health-client-howden.png" },
+          { name: "Hanson", src: "/logos/mixcare-health-client-hanson.png" },
         ]}
       />
       <Footer />

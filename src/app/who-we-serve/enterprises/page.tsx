@@ -61,6 +61,12 @@ export default async function EnterprisesPage() {
   const p = t.whoWeServe.enterprises;
   const tmpl = t.whoWeServe.template;
 
+  // Enterprises-specific: override challengesHeadline per locale
+  const enterpriseChallengesHeadline =
+    locale === "zh-TW" ? "傳統福利計劃面臨的挑戰" :
+    locale === "zh-CN" ? "传统福利计划面临的挑战" :
+    "Challenges with Traditional Benefits Plans";
+
   const badge = page?.badge ?? p.badge;
   const headline = page?.headline ?? p.headline;
   const headlineHighlight = page?.headlineHighlight ?? p.headlineHighlight;
@@ -102,15 +108,16 @@ export default async function EnterprisesPage() {
         testimonialName={page?.testimonial.name ?? p.testimonial.name}
         testimonialTitle={page?.testimonial.title ?? p.testimonial.title}
         testimonialCompany={page?.testimonial.company ?? p.testimonial.company}
-        challengesHeadline={tmpl.challengesHeadline}
+        challengesHeadline={enterpriseChallengesHeadline}
         challengesSub={tmpl.challengesSub}
         solutionsHeadline={tmpl.solutionsHeadline}
         featuredHeadline={tmpl.featuredHeadline}
         featuredSub={tmpl.featuredSub}
         ctaHeadline={tmpl.ctaHeadline}
         ctaSub={tmpl.ctaSub}
-        hideSolutions={page?.hideSolutions ?? false}
+        hideSolutions={true}
         hideTestimonial={true}
+        featuredSectionBg="white"
         hideMetrics={page?.hideMetrics ?? false}
       />
       <Footer />
