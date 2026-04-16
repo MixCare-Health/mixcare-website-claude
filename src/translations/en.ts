@@ -229,8 +229,8 @@ export const en = {
         {
           label: "Insurance Broker",
           tagline: "Win more clients. Retain them for longer.",
-          cta: "Partner Sign-Up",
-          ctaHref: "/partners",
+          cta: "Book a Demo",
+          ctaHref: "https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-",
           bullets: [
             "We partner with innovative brokers and consultants to deliver the cost-effective, high-quality solutions your clients have been waiting for.",
             "Deliver more value to corporate clients with a modern, flexible benefits platform",
@@ -255,8 +255,8 @@ export const en = {
         {
           label: "SME",
           tagline: "Enterprise-grade benefits. SME-friendly pricing.",
-          cta: "Start Now",
-          ctaHref: "/start-now",
+          cta: "Book a Demo",
+          ctaHref: "https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-",
           bullets: [
             "Access enterprise-grade benefits solutions designed and priced for smaller teams",
             "Simple, fast setup with minimal administrative burden on HR or finance teams",
@@ -268,8 +268,8 @@ export const en = {
         {
           label: "Medical & Wellness Service Provider",
           tagline: "Reach more corporate clients. Grow your practice.",
-          cta: "Become a Partner",
-          ctaHref: "/partners",
+          cta: "Book a Demo",
+          ctaHref: "https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-",
           bullets: [
             "Join a growing network of 3,000+ vetted providers across Hong Kong, Macau & Singapore",
             "Reach corporate clients and their employees through a trusted, high-intent platform",

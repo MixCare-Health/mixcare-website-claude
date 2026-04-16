@@ -182,7 +182,6 @@ export default function GetADemoForm({ content, locale }: Props) {
               <div className="grid grid-cols-2 gap-4">
                 <Input
                   label={fields.name}
-                  placeholder="Jane Smith"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   isRequired
@@ -192,7 +191,6 @@ export default function GetADemoForm({ content, locale }: Props) {
                 <Input
                   label={fields.email}
                   type="email"
-                  placeholder="jane@company.com"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   isRequired
@@ -204,7 +202,6 @@ export default function GetADemoForm({ content, locale }: Props) {
               {/* Row 2: Company */}
               <Input
                 label={fields.company}
-                placeholder="Acme Corporation"
                 value={form.company}
                 onChange={(e) => setForm({ ...form, company: e.target.value })}
                 isRequired

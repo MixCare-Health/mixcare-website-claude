@@ -220,9 +220,18 @@ export default function PlatformFeaturesSection({ data }: PlatformFeaturesSectio
           <h2 className="text-3xl sm:text-4xl font-extrabold text-black mb-4">
             {pf.headline}
           </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-6">
             {pf.sub}
           </p>
+          <Link
+            href="https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold text-white shadow-md hover:shadow-lg transition-all"
+            style={{ backgroundColor: "#f97316" }}
+          >
+            Book a Demo <ArrowRight size={16} />
+          </Link>
         </div>
 
         {/* Accordion + Mockup */}

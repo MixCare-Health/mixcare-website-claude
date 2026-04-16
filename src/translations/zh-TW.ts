@@ -230,8 +230,8 @@ export const zhTW: Translations = {
         {
           label: "保險經紀",
           tagline: "贏得更多客戶。長期留住他們",
-          cta: "成為合作夥伴",
-          ctaHref: "/partners",
+          cta: "預約示範",
+          ctaHref: "https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-",
           bullets: [
             "我們與經紀商和顧問合作，向您客戶提供具成本效益且高品質的員工福利解決方案。",
             "透過靈活彈性的福利平台，填補傳統團體保險產品的缺口，為企業客戶提供更多價值",
@@ -256,8 +256,8 @@ export const zhTW: Translations = {
         {
           label: "中小企業",
           tagline: "企業級福利。中小企友好定價。",
-          cta: "立即開始",
-          ctaHref: "/start-now",
+          cta: "預約示範",
+          ctaHref: "https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-",
           bullets: [
             "獲取專為小型團隊設計及定價的企業級福利解決方案",
             "簡單快速設置，對人力資源或財務團隊的行政負擔最小",
@@ -269,8 +269,8 @@ export const zhTW: Translations = {
         {
           label: "醫療或健康服務供應商",
           tagline: "接觸更多企業客戶。發展您的業務。",
-          cta: "成為合作夥伴",
-          ctaHref: "/partners",
+          cta: "預約示範",
+          ctaHref: "https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-",
           bullets: [
             "加入香港、澳門及新加坡逾3,000名優質供應商的成長網絡",
             "透過可信任的高意向平台接觸企業客戶及其員工",

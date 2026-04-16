@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import AppNavbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PartnersForm from "@/components/forms/PartnersForm";
@@ -10,6 +11,37 @@ import {
   partnersPageQuery,
   type SanityPartnersPage,
 } from "@/lib/sanity.queries";
+import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  title: "Become a Partner — Brokers & Providers",
+  description:
+    "Partner with MixCare Health as a broker or healthcare provider. Join our growing network and offer clients AI-powered employee benefits solutions across Hong Kong, Macau, and Singapore.",
+  keywords: [
+    "MixCare Health partner",
+    "health benefits broker partnership",
+    "healthcare provider network",
+    "employee benefits distribution",
+    "broker partner Hong Kong",
+    "healthcare provider Singapore",
+    "digital health partnership",
+    "corporate wellness partner",
+  ],
+  alternates: buildAlternates("/partners"),
+  openGraph: {
+    title: `Become a Partner — ${SITE_NAME}`,
+    description:
+      "Join the MixCare Health partner network. Offer clients AI-powered employee benefits as a broker or healthcare provider across Asia-Pacific.",
+    url: "https://www.mixcarehealth.com/en/partners",
+    images: ogImage(`Become a Partner — ${SITE_NAME}`),
+  },
+  twitter: {
+    title: `Become a Partner — ${SITE_NAME}`,
+    description:
+      "Join the MixCare Health partner network. Offer clients AI-powered employee benefits as a broker or healthcare provider across Asia-Pacific.",
+    images: ogImage(`Become a Partner — ${SITE_NAME}`),
+  },
+};
 
 export const revalidate = 60;
 

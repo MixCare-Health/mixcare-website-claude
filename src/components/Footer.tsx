@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Twitter, Linkedin, Facebook, Instagram, Globe, ChevronDown } from "lucide-react";
+import { Linkedin, Facebook, Instagram, Globe, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useSiteSettings } from "@/contexts/SiteSettingsContext";
 import { LOCALES, LOCALE_LABELS, LOCALE_URL, localePath, parseLocalePath } from "@/lib/locale";
@@ -17,10 +17,9 @@ interface FooterProps {
 const P = "#10AF97";
 
 const socialLinks = [
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/mixcarehealth/", label: "LinkedIn" },
+  { icon: Instagram, href: "https://www.instagram.com/mixcarehealth/", label: "Instagram" },
+  { icon: Facebook, href: "https://www.facebook.com/MixCareHealth", label: "Facebook" },
 ];
 
 export default function Footer({ footerData: footerDataProp }: FooterProps = {}) {
@@ -92,6 +91,8 @@ export default function Footer({ footerData: footerDataProp }: FooterProps = {})
                   key={item.label}
                   href={item.href}
                   aria-label={item.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-teal-600 transition-colors"
                 >
                   <item.icon size={16} />

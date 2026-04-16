@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import AppNavbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StartNowForm from "@/components/forms/StartNowForm";
@@ -11,6 +12,37 @@ import {
   startNowPageQuery,
   type SanityStartNowPage,
 } from "@/lib/sanity.queries";
+import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  title: "Start Now — Launch Your Employee Benefits Plan",
+  description:
+    "Get started with MixCare Health in minutes. Choose a plan, set up your employee benefits wallet, and give your team access to digital health and wellness services across Hong Kong, Macau, and Singapore.",
+  keywords: [
+    "start employee benefits",
+    "SMB health benefits",
+    "small business wellness plan",
+    "digital health wallet",
+    "MixCare Health sign up",
+    "employee benefits Hong Kong",
+    "corporate wellness Singapore",
+    "health FSA wallet",
+  ],
+  alternates: buildAlternates("/start-now"),
+  openGraph: {
+    title: `Start Now — ${SITE_NAME}`,
+    description:
+      "Launch your employee benefits plan with MixCare Health. Set up digital health wallets and wellness services for your team in minutes.",
+    url: "https://www.mixcarehealth.com/en/start-now",
+    images: ogImage(`Start Now — ${SITE_NAME}`),
+  },
+  twitter: {
+    title: `Start Now — ${SITE_NAME}`,
+    description:
+      "Launch your employee benefits plan with MixCare Health. Set up digital health wallets and wellness services for your team in minutes.",
+    images: ogImage(`Start Now — ${SITE_NAME}`),
+  },
+};
 
 export const revalidate = 60;
 

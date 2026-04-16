@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import AppNavbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GetADemoForm from "@/components/forms/GetADemoForm";
@@ -7,6 +8,37 @@ import { getDemoPageQuery } from "@/lib/sanity.queries";
 import type { SanityGetDemoPage } from "@/lib/sanity.queries";
 import { getLocale } from "@/lib/locale.server";
 import { getTranslations } from "@/translations";
+import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  title: "Get a Demo — See MixCare Health in Action",
+  description:
+    "Book a personalised demo of MixCare Health's AI-powered employee benefits platform. See how self-funded outpatient, FSA, and wellness solutions work for insurers, enterprises, and SMBs in Hong Kong and Singapore.",
+  keywords: [
+    "MixCare Health demo",
+    "employee benefits demo",
+    "digital health platform demo",
+    "corporate wellness demo",
+    "health benefits Hong Kong",
+    "Singapore employee benefits",
+    "book a demo",
+    "AI health platform",
+  ],
+  alternates: buildAlternates("/get-a-demo"),
+  openGraph: {
+    title: `Get a Demo — ${SITE_NAME}`,
+    description:
+      "See MixCare Health's AI-powered employee benefits platform in action. Book a personalised demo for your organisation.",
+    url: "https://www.mixcarehealth.com/en/get-a-demo",
+    images: ogImage(`Get a Demo — ${SITE_NAME}`),
+  },
+  twitter: {
+    title: `Get a Demo — ${SITE_NAME}`,
+    description:
+      "See MixCare Health's AI-powered employee benefits platform in action. Book a personalised demo for your organisation.",
+    images: ogImage(`Get a Demo — ${SITE_NAME}`),
+  },
+};
 
 export const revalidate = 60;
 

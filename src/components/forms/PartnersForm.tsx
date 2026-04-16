@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Input, Select, SelectItem, Textarea, Button } from "@heroui/react";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, AlertCircle } from "lucide-react";
 
 export interface PartnersFormContent {
   formTitle: string;
@@ -32,16 +32,29 @@ interface Props {
 export default function PartnersForm({ content }: Props) {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({
     name: "", email: "", company: "", type: "", website: "", message: "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1000));
-    setSubmitted(true);
-    setLoading(false);
+    try {
+      const res = await fetch("/api/partners", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? "Something went wrong.");
+      setSubmitted(true);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -115,15 +128,22 @@ export default function PartnersForm({ content }: Props) {
               variant="bordered"
               minRows={3}
             />
+            {error && (
+              <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-red-50 border border-red-100 text-red-700 text-sm">
+                <AlertCircle size={16} className="flex-shrink-0" />
+                {error}
+              </div>
+            )}
             <Button
               type="submit"
               fullWidth
               size="lg"
               isLoading={loading}
+              isDisabled={loading}
               className="text-white font-bold rounded-xl"
               style={{ backgroundColor: "#f97316" }}
             >
-              {loading ? "..." : content.fields.submit}
+              {loading ? "Sending…" : content.fields.submit}
             </Button>
             <p className="text-xs text-center text-slate-400">
               {content.fields.note}
