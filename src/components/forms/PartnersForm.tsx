@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Input, Select, SelectItem, Textarea, Button } from "@heroui/react";
 import { CheckCircle2, AlertCircle } from "lucide-react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export interface PartnersFormContent {
   formTitle: string;
@@ -33,6 +34,8 @@ export default function PartnersForm({ content }: Props) {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [form, setForm] = useState({
     name: "", email: "", company: "", type: "", website: "", message: "",
   });
@@ -40,18 +43,26 @@ export default function PartnersForm({ content }: Props) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+
+    if (!captchaToken) {
+      setError("Please complete the reCAPTCHA verification.");
+      return;
+    }
+
     setLoading(true);
     try {
       const res = await fetch("/api/partners", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, recaptchaToken: captchaToken }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? "Something went wrong.");
       setSubmitted(true);
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      recaptchaRef.current?.reset();
+      setCaptchaToken(null);
     } finally {
       setLoading(false);
     }
@@ -128,6 +139,14 @@ export default function PartnersForm({ content }: Props) {
               variant="bordered"
               minRows={3}
             />
+            <div className="flex justify-center pt-1">
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+                onChange={(token) => setCaptchaToken(token)}
+                onExpired={() => setCaptchaToken(null)}
+              />
+            </div>
             {error && (
               <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-red-50 border border-red-100 text-red-700 text-sm">
                 <AlertCircle size={16} className="flex-shrink-0" />
@@ -139,7 +158,7 @@ export default function PartnersForm({ content }: Props) {
               fullWidth
               size="lg"
               isLoading={loading}
-              isDisabled={loading}
+              isDisabled={!captchaToken || loading}
               className="text-white font-bold rounded-xl"
               style={{ backgroundColor: "#f97316" }}
             >

@@ -1,15 +1,46 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
+// ── reCAPTCHA verification ─────────────────────────────────────────────────────
+async function verifyRecaptcha(token: string): Promise<boolean> {
+  const secret = process.env.RECAPTCHA_SECRET_KEY;
+  if (!secret) {
+    console.warn("RECAPTCHA_SECRET_KEY is not set — skipping verification.");
+    return true;
+  }
+  try {
+    const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `secret=${secret}&response=${token}`,
+    });
+    const data = await res.json();
+    if (!data.success) {
+      console.warn("reCAPTCHA failed:", data["error-codes"]);
+    }
+    return data.success === true;
+  } catch (err) {
+    console.error("reCAPTCHA fetch error:", err);
+    return true;
+  }
+}
+
 // ── POST /api/partners ─────────────────────────────────────────────────────────
 export async function POST(req: NextRequest) {
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
-    const { name, email, company, type, website, message } = await req.json();
+    const { name, email, company, type, website, message, recaptchaToken } = await req.json();
 
     if (!name || !email || !company || !type) {
       return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
+    }
+
+    if (recaptchaToken) {
+      const captchaOk = await verifyRecaptcha(recaptchaToken);
+      if (!captchaOk) {
+        return NextResponse.json({ error: "reCAPTCHA verification failed. Please try again." }, { status: 400 });
+      }
     }
 
     const now = new Date().toLocaleString("en-HK", {
@@ -80,7 +111,11 @@ export async function POST(req: NextRequest) {
     const { error } = await resend.emails.send({
       from: "MixCare Health Website <noreply@mixcarehealth.com>",
       to: ["sales@mixcarehealth.com"],
-      cc: ["alex@mixcarehealth.com", "kelvin.chu@mixcarehealth.com"],
+      cc: [
+        "kelvin.chu@mixcarehealth.com",
+        "alex.wong@mixcarehealth.com",
+        "jason.ang@mixcarehealth.com",
+      ],
       replyTo: email,
       subject: `New Partner Application: ${name} — ${company} (${type})`,
       html: htmlBody,

@@ -6,6 +6,13 @@ export const siteSettingsType = defineType({
   title: "Site Settings",
   type: "document",
   fields: [
+    // OG / Link preview image
+    defineField({
+      name: "ogImage",
+      title: "OG / Link Preview Image (1200×630 recommended)",
+      type: "image",
+      options: { hotspot: true },
+    }),
     // Nav
     defineField({
       name: "nav",

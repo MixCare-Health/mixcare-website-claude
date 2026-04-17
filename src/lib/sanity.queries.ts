@@ -742,6 +742,7 @@ export type SanityStartNowPage = {
 
 export const siteSettingsQuery = `
   *[_id == "siteSettings"][0] {
+    "ogImage": ogImage,
     "nav": {
       "platform":         coalesce(nav.platform[$locale],         nav.platform.en),
       "whoWeServe":       coalesce(nav.whoWeServe[$locale],       nav.whoWeServe.en),
@@ -786,6 +787,7 @@ export const siteSettingsQuery = `
 `;
 
 export type SanitySiteSettings = {
+  ogImage?: SanityImageRef;
   nav: {
     platform: string;
     whoWeServe: string;

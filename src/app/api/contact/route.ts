@@ -102,7 +102,11 @@ export async function POST(req: NextRequest) {
     const { error } = await resend.emails.send({
       from: "MixCare Health Website <noreply@mixcarehealth.com>",
       to: ["sales@mixcarehealth.com"],
-      cc: ["alex@mixcarehealth.com", "kelvin.chu@mixcarehealth.com"],
+      cc: [
+        "kelvin.chu@mixcarehealth.com",
+        "alex.wong@mixcarehealth.com",
+        "jason.ang@mixcarehealth.com",
+      ],
       replyTo: email,
       subject: `New Contact: ${name}${company ? ` — ${company}` : ""}`,
       html: htmlBody,
