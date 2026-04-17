@@ -16,6 +16,12 @@ interface FooterProps {
 
 const P = "#10AF97";
 
+// Pages that are not yet live — rendered as plain text + "Coming Soon" badge
+const COMING_SOON_HREFS = new Set([
+  "/platform/flexible-benefits",
+  "/platform/wellness-hub",
+]);
+
 const socialLinks = [
   { icon: Linkedin, href: "https://www.linkedin.com/company/mixcarehealth/", label: "LinkedIn" },
   { icon: Instagram, href: "https://www.instagram.com/mixcarehealth/", label: "Instagram" },
@@ -141,12 +147,26 @@ export default function Footer({ footerData: footerDataProp }: FooterProps = {})
               <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link.href}>
-                    <Link
-                      href={localePath(locale, link.href)}
-                      className="text-sm text-slate-400 hover:text-teal-300 transition-colors"
-                    >
-                      {link.label}
-                    </Link>
+                    {COMING_SOON_HREFS.has(link.href) ? (
+                      <span className="flex items-center gap-2">
+                        <span className="text-sm text-slate-600 cursor-default select-none">
+                          {link.label}
+                        </span>
+                        <span
+                          className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full"
+                          style={{ backgroundColor: "rgba(249,115,22,0.15)", color: "#f97316" }}
+                        >
+                          Soon
+                        </span>
+                      </span>
+                    ) : (
+                      <Link
+                        href={localePath(locale, link.href)}
+                        className="text-sm text-slate-400 hover:text-teal-300 transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
