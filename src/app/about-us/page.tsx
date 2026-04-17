@@ -38,10 +38,10 @@ export const metadata: Metadata = {
 // ── Static data ───────────────────────────────────────────────────────────────
 
 const TEAM = [
-  { name: "Alex Wong",   role: "CEO",              photo: "/team/AW.png" },
-  { name: "Kelvin Chu",  role: "CPO",              photo: "/team/KC.png" },
-  { name: "Jason Ang",   role: "CBO",              photo: "/team/JA.png" },
-  { name: "Alfred Ho",   role: "Head of Finance",  photo: "/team/alfred-ho.png" },
+  { name: "Alex Wong",   role: "CEO",              photo: "/team/Alex-wong-photo.png" },
+  { name: "Kelvin Chu",  role: "CPO",              photo: "/team/kelvin-chu-photo.png" },
+  { name: "Jason Ang",   role: "CBO",              photo: "/team/Jason-ang-photo.png" },
+  { name: "Alfred Ho",   role: "Head of Finance",  photo: "/team/alfred-ho-mixcare-150x150.png" },
 ];
 
 const AWARDS = [
@@ -164,7 +164,7 @@ export default async function AboutUsPage() {
             {/* Left — award photo */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/team/reward-photo.png"
+              src="/team/reward-photo.f0b0efc2.png"
               alt="MixCare Health award ceremony — Start-Up Express by HKTDC"
               className="rounded-2xl shadow-lg w-full h-80 lg:h-full min-h-[360px] object-cover object-center"
               onError={(e) => {
