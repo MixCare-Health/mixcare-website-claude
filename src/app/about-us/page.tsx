@@ -47,7 +47,6 @@ const TEAM = [
 const AWARDS = [
   "HR Vendor of the Year 2025 - Best Corporate Health and Wellness Provider",
   "HR Vendor of the Year 2024 - Best Corporate Health and Wellness Provider",
-  "HR Vendor of the Year 2024 - Silver Winner",
   "InsureTech Connect Asia - 2024 Hong Kong Winner",
   "Insurtech Insights - People Choice Award Asia 2023",
   "HKSTP X PwC Tech Raiser 2022",
