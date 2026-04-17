@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { Input, Textarea, Button } from "@heroui/react";
-import { Mail, Phone, Clock, CheckCircle2, AlertCircle } from "lucide-react";
+import { Mail, Phone, CheckCircle2, AlertCircle } from "lucide-react";
 import ReCAPTCHA from "react-google-recaptcha";
 
 export interface ContactOffice {
@@ -114,7 +114,26 @@ export default function ContactForm({ content }: Props) {
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact info */}
             <div>
-              <div className="space-y-8">
+              {/* Shared phone & email — shown once */}
+              <div className="rounded-2xl p-6 border border-slate-100 mb-6" style={{ backgroundColor: "#f0fdfa" }}>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <Phone size={16} className="flex-shrink-0" style={{ color: "#0d9488" }} />
+                    <a href="tel:+85237008888" className="text-sm font-medium text-slate-700 hover:text-teal-600">
+                      +852 3700 8888
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Mail size={16} className="flex-shrink-0" style={{ color: "#0d9488" }} />
+                    <a href="mailto:info@mixcarehealth.com" className="text-sm font-medium text-slate-700 hover:text-teal-600">
+                      info@mixcarehealth.com
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Office cards — company names only */}
+              <div className="space-y-4">
                 {offices.map((office) => (
                   <div
                     key={office.city}
@@ -128,7 +147,7 @@ export default function ContactForm({ content }: Props) {
                       <p className="text-sm font-medium text-slate-500 mb-3">{office.cityZh}</p>
                     )}
                     {(office.companyEn || office.companyZh) && (
-                      <div className="mb-4 pb-3 border-b border-slate-200">
+                      <div>
                         {office.companyEn && (
                           <p className="text-sm font-semibold text-slate-800">{office.companyEn}</p>
                         )}
@@ -137,24 +156,6 @@ export default function ContactForm({ content }: Props) {
                         )}
                       </div>
                     )}
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-3">
-                        <Phone size={16} className="text-slate-400 flex-shrink-0" />
-                        <a href={`tel:${office.phone.replace(/\s/g, "")}`} className="text-sm text-slate-700 hover:text-teal-600">
-                          {office.phone}
-                        </a>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <Mail size={16} className="text-slate-400 flex-shrink-0" />
-                        <a href={`mailto:${office.email}`} className="text-sm text-slate-700 hover:text-teal-600">
-                          {office.email}
-                        </a>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <Clock size={16} className="text-slate-400 flex-shrink-0" />
-                        <p className="text-sm text-slate-700">{office.hours}</p>
-                      </div>
-                    </div>
                   </div>
                 ))}
               </div>
