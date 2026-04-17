@@ -3,7 +3,7 @@
  * Provides helpers for building consistent metadata across all pages.
  */
 
-export const SITE_URL = "https://www.mixcarehealth.com";
+export const SITE_URL = "https://m.mixcarehealth.com";
 export const SITE_NAME = "MixCare Health";
 export const DEFAULT_OG_IMAGE = "/opengraph-image.png";
 export const TWITTER_HANDLE = "@mixcarehealth";
