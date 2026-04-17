@@ -73,7 +73,7 @@ export default async function ContactPage() {
       title: sp?.success?.title ?? t.contact.success.title,
       sub: sp?.success?.sub ?? t.contact.success.sub,
     },
-    offices: sp?.offices?.length ? sp.offices : FALLBACK_OFFICES,
+    offices: FALLBACK_OFFICES,
   };
 
   return (
