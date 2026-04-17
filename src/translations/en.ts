@@ -65,7 +65,7 @@ export const en = {
       { label: "Partner With Us", href: "/partners" },
       { label: "Contact Us", href: "/contact-us" },
     ],
-    copyright: (year: number) => `© ${year} MixCare Health Limited. All rights reserved.`,
+    copyright: (year: number) => `© ${year} MixUp Solution Company Limited. All rights reserved.`,
     privacy: "Privacy Policy",
     terms: "Terms & Conditions",
     cookie: "Cookie Policy",

@@ -66,7 +66,7 @@ export const zhTW: Translations = {
       { label: "與我們合作", href: "/partners" },
       { label: "聯繫我們", href: "/contact-us" },
     ],
-    copyright: (year: number) => `© ${year} MixCare Health Limited. 版權所有。`,
+    copyright: (year: number) => `© ${year} MixUp Solution Company Limited. 版權所有。`,
     privacy: "私隱政策",
     terms: "條款及細則",
     cookie: "Cookie政策",

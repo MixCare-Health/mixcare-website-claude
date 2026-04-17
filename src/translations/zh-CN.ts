@@ -66,7 +66,7 @@ export const zhCN: Translations = {
       { label: "与我们合作", href: "/partners" },
       { label: "联系我们", href: "/contact-us" },
     ],
-    copyright: (year: number) => `© ${year} MixCare Health Limited. 版权所有。`,
+    copyright: (year: number) => `© ${year} MixUp Solution Company Limited. 版权所有。`,
     privacy: "隐私政策",
     terms: "条款及细则",
     cookie: "Cookie政策",
