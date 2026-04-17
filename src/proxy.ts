@@ -2,6 +2,17 @@ import { NextRequest, NextResponse } from "next/server";
 import { URL_LOCALE, LOCALE_URL_PREFIXES } from "@/lib/locale";
 
 export function proxy(request: NextRequest) {
+  // 1. Redirect old Vercel URL to canonical custom domain (301 permanent)
+  const host = request.headers.get("host") ?? "";
+  if (host.includes("vercel.app")) {
+    const url = request.nextUrl.clone();
+    url.host = "m.mixcarehealth.com";
+    url.protocol = "https:";
+    url.port = "";
+    return NextResponse.redirect(url, { status: 301 });
+  }
+
+  // 2. Locale routing — rewrite /zh-hk/... and /zh-cn/... paths
   const { pathname } = request.nextUrl;
 
   for (const prefix of LOCALE_URL_PREFIXES) {
