@@ -43,9 +43,10 @@ export interface ContactContent {
 
 interface Props {
   content: ContactContent;
+  locale?: string;
 }
 
-export default function ContactForm({ content }: Props) {
+export default function ContactForm({ content, locale = "en" }: Props) {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -116,34 +117,32 @@ export default function ContactForm({ content }: Props) {
             <div>
               {/* Office cards — company names only */}
               <div className="space-y-4 mb-6">
-                {offices.map((office) => (
-                  <div
-                    key={office.city}
-                    className="rounded-2xl p-6 border border-slate-100"
-                    style={{ backgroundColor: "#f8fafc" }}
-                  >
-                    <h3 className="text-lg font-bold mb-1" style={{ color: "#0d9488" }}>
-                      {office.city}
-                    </h3>
-                    {office.cityZh && (
-                      <p className="text-sm font-medium text-slate-500 mb-3">{office.cityZh}</p>
-                    )}
-                    {(office.companyEn || office.companyZh) && (
-                      <div>
-                        {office.companyEn && (
-                          <p className="text-sm font-semibold text-slate-800">{office.companyEn}</p>
-                        )}
-                        {office.companyZh && (
-                          <p className="text-sm text-slate-500">{office.companyZh}</p>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                ))}
+                {offices.map((office) => {
+                  const isZh = locale === "zh-hk" || locale === "zh-cn";
+                  const cityDisplay = isZh ? (office.cityZh ?? office.city) : office.city;
+                  const companyDisplay = isZh ? (office.companyZh ?? office.companyEn) : office.companyEn;
+                  return (
+                    <div
+                      key={office.city}
+                      className="rounded-2xl p-6 border border-slate-100"
+                      style={{ backgroundColor: "#f8fafc" }}
+                    >
+                      <h3 className="text-lg font-bold mb-1" style={{ color: "#0d9488" }}>
+                        {cityDisplay}
+                      </h3>
+                      {companyDisplay && (
+                        <p className="text-sm font-semibold text-slate-800 mt-2">{companyDisplay}</p>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
 
               {/* Shared phone & email — shown once, after all offices */}
               <div className="rounded-2xl p-6 border border-slate-100" style={{ backgroundColor: "#f0fdfa" }}>
+                <h3 className="text-lg font-bold mb-4" style={{ color: "#0d9488" }}>
+                  {locale === "zh-hk" || locale === "zh-cn" ? "聯絡我們" : "Contact Us"}
+                </h3>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
                     <Phone size={16} className="flex-shrink-0" style={{ color: "#0d9488" }} />

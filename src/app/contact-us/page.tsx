@@ -79,7 +79,7 @@ export default async function ContactPage() {
   return (
     <main>
       <AppNavbar />
-      <ContactForm content={content} />
+      <ContactForm content={content} locale={locale} />
       <Footer />
     </main>
   );
