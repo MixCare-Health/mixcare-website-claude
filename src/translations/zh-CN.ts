@@ -6,6 +6,7 @@ export const zhCN: Translations = {
     whoWeServe: "服务对象",
     resources: "资源库",
     about: "关于我们",
+    contact: "联系我们",
     trust: "信任保障",
     startNow: "立即开始",
     getDemo: "预约演示",

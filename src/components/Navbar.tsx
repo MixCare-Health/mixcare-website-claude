@@ -67,6 +67,7 @@ export default function AppNavbar({ navData: navDataProp }: NavbarProps = {}) {
   const navWhoWeServe       = navData?.whoWeServe       ?? n.whoWeServe;
   const navResources        = navData?.resources        ?? n.resources;
   const navAbout            = navData?.about            ?? n.about;
+  const navContact          = n.contact;
   const navGetDemo          = navData?.getDemo          ?? n.getDemo;
   const navPlatformSolutions= navData?.platformSolutions?? n.platformSolutions;
   const navByAudience       = navData?.byAudience       ?? n.byAudience;
@@ -246,6 +247,7 @@ const platformRef = useRef<HTMLDivElement>(null);
               {[
                 { label: navResources, href: "/resources/articles" },
                 { label: navAbout, href: "/about-us" },
+                { label: navContact, href: "/contact-us" },
               ].map((item) => (
                 <Link
                   key={item.href}
@@ -408,6 +410,7 @@ const platformRef = useRef<HTMLDivElement>(null);
               {[
                 { label: navResources, href: "/resources/articles" },
                 { label: navAbout, href: "/about-us" },
+                { label: navContact, href: "/contact-us" },
               ].map((item) => (
                 <Link
                   key={item.href}

@@ -7,9 +7,11 @@ import ReCAPTCHA from "react-google-recaptcha";
 
 export interface ContactOffice {
   city: string;
-  cityZh?: string;
+  cityZhTW?: string;   // Traditional Chinese
+  cityZhCN?: string;   // Simplified Chinese
   companyEn?: string;
-  companyZh?: string;
+  companyZhTW?: string;
+  companyZhCN?: string;
   address: string;
   phone: string;
   email: string;
@@ -118,9 +120,14 @@ export default function ContactForm({ content, locale = "en" }: Props) {
               {/* Office cards — company names only */}
               <div className="space-y-4 mb-6">
                 {offices.map((office) => {
-                  const isZh = locale === "zh-TW" || locale === "zh-CN";
-                  const cityDisplay = isZh ? (office.cityZh ?? office.city) : office.city;
-                  const companyDisplay = isZh ? (office.companyZh ?? office.companyEn) : office.companyEn;
+                  const cityDisplay =
+                    locale === "zh-TW" ? (office.cityZhTW ?? office.city) :
+                    locale === "zh-CN" ? (office.cityZhCN ?? office.cityZhTW ?? office.city) :
+                    office.city;
+                  const companyDisplay =
+                    locale === "zh-TW" ? (office.companyZhTW ?? office.companyEn) :
+                    locale === "zh-CN" ? (office.companyZhCN ?? office.companyZhTW ?? office.companyEn) :
+                    office.companyEn;
                   return (
                     <div
                       key={office.city}
@@ -141,7 +148,7 @@ export default function ContactForm({ content, locale = "en" }: Props) {
               {/* Shared phone & email — shown once, after all offices */}
               <div className="rounded-2xl p-6 border border-slate-100" style={{ backgroundColor: "#f0fdfa" }}>
                 <h3 className="text-lg font-bold mb-4" style={{ color: "#0d9488" }}>
-                  {locale === "zh-TW" || locale === "zh-CN" ? "聯絡我們" : "Contact Us"}
+                  {locale === "zh-TW" ? "聯絡我們" : locale === "zh-CN" ? "联系我们" : "Contact Us"}
                 </h3>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">

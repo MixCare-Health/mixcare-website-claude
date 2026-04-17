@@ -4,6 +4,7 @@ export const en = {
     whoWeServe: "Who We Serve",
     resources: "Resources",
     about: "About Us",
+    contact: "Contact Us",
     trust: "Trust",
     startNow: "Start Now",
     getDemo: "Get a Demo",

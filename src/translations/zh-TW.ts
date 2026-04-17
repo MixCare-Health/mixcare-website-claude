@@ -6,6 +6,7 @@ export const zhTW: Translations = {
     whoWeServe: "服務對象",
     resources: "資源庫",
     about: "關於我們",
+    contact: "聯絡我們",
     trust: "信任保障",
     startNow: "立即開始",
     getDemo: "預約示範",
