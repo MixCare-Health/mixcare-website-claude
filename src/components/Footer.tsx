@@ -85,7 +85,7 @@ export default function Footer({ footerData: footerDataProp }: FooterProps = {})
             <Link href={localePath(locale, "/")} className="flex items-center gap-2 mb-4">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/logos/mixcare-logo.257ebb39.png"
+                src="/logos/mixcare-logo-257ebb39.png"
                 alt="MixCare Health"
                 className="h-7 w-auto brightness-0 invert"
               />
