@@ -114,26 +114,8 @@ export default function ContactForm({ content }: Props) {
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact info */}
             <div>
-              {/* Shared phone & email — shown once */}
-              <div className="rounded-2xl p-6 border border-slate-100 mb-6" style={{ backgroundColor: "#f0fdfa" }}>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <Phone size={16} className="flex-shrink-0" style={{ color: "#0d9488" }} />
-                    <a href="tel:+85237008888" className="text-sm font-medium text-slate-700 hover:text-teal-600">
-                      +852 3700 8888
-                    </a>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Mail size={16} className="flex-shrink-0" style={{ color: "#0d9488" }} />
-                    <a href="mailto:info@mixcarehealth.com" className="text-sm font-medium text-slate-700 hover:text-teal-600">
-                      info@mixcarehealth.com
-                    </a>
-                  </div>
-                </div>
-              </div>
-
               {/* Office cards — company names only */}
-              <div className="space-y-4">
+              <div className="space-y-4 mb-6">
                 {offices.map((office) => (
                   <div
                     key={office.city}
@@ -158,6 +140,24 @@ export default function ContactForm({ content }: Props) {
                     )}
                   </div>
                 ))}
+              </div>
+
+              {/* Shared phone & email — shown once, after all offices */}
+              <div className="rounded-2xl p-6 border border-slate-100" style={{ backgroundColor: "#f0fdfa" }}>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <Phone size={16} className="flex-shrink-0" style={{ color: "#0d9488" }} />
+                    <a href="tel:+85237008888" className="text-sm font-medium text-slate-700 hover:text-teal-600">
+                      +852 3700 8888
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Mail size={16} className="flex-shrink-0" style={{ color: "#0d9488" }} />
+                    <a href="mailto:info@mixcarehealth.com" className="text-sm font-medium text-slate-700 hover:text-teal-600">
+                      info@mixcarehealth.com
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
 
