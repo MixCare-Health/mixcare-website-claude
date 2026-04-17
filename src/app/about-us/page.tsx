@@ -1,5 +1,6 @@
 import AppNavbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import TeamPhoto from "@/components/shared/TeamPhoto";
 import { JsonLd, webPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
 import type { Metadata } from "next";
 import { getLocale } from "@/lib/locale.server";
@@ -37,29 +38,15 @@ export const metadata: Metadata = {
 // ── Static data ───────────────────────────────────────────────────────────────
 
 const TEAM = [
-  {
-    name: "Alex Wong",
-    role: "CEO",
-    photo: "https://m.mixcarehealth.com/wp-content/uploads/2024/05/AW.b71ae8fe.png",
-  },
-  {
-    name: "Kelvin Chu",
-    role: "CPO",
-    photo: "https://m.mixcarehealth.com/wp-content/uploads/2024/05/KC.61d2585e.png",
-  },
-  {
-    name: "Jason Ang",
-    role: "CBO",
-    photo: "https://m.mixcarehealth.com/wp-content/uploads/2024/05/JA.15e08f1d.png",
-  },
-  {
-    name: "Alfred Ho",
-    role: "Head of Finance",
-    photo: "https://m.mixcarehealth.com/wp-content/uploads/2024/10/alfred-ho-mixcare.png",
-  },
+  { name: "Alex Wong",   role: "CEO",              photo: "/team/AW.png" },
+  { name: "Kelvin Chu",  role: "CPO",              photo: "/team/KC.png" },
+  { name: "Jason Ang",   role: "CBO",              photo: "/team/JA.png" },
+  { name: "Alfred Ho",   role: "Head of Finance",  photo: "/team/alfred-ho.png" },
 ];
 
 const AWARDS = [
+  "HR Vendor of the Year 2025 - Best Corporate Health and Wellness Provider",
+  "HR Vendor of the Year 2024 - Best Corporate Health and Wellness Provider",
   "HR Vendor of the Year 2024 - Silver Winner",
   "InsureTech Connect Asia - 2024 Hong Kong Winner",
   "Insurtech Insights - People Choice Award Asia 2023",
@@ -148,10 +135,9 @@ export default async function AboutUsPage() {
                 className="bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-md transition-all text-center"
               >
                 {/* Photo */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <TeamPhoto
                   src={member.photo}
-                  alt={member.name}
+                  name={member.name}
                   className="object-cover object-top mx-auto rounded-full"
                   style={member.name === "Alfred Ho"
                     ? { width: 120, height: 120, marginTop: 55 }
@@ -178,9 +164,13 @@ export default async function AboutUsPage() {
             {/* Left — award photo */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://m.mixcarehealth.com/wp-content/uploads/2024/05/reward-photo.f0b0efc2.png"
+              src="/team/reward-photo.png"
               alt="MixCare Health award ceremony — Start-Up Express by HKTDC"
               className="rounded-2xl shadow-lg w-full h-80 lg:h-full min-h-[360px] object-cover object-center"
+              onError={(e) => {
+                const el = e.currentTarget;
+                el.style.display = "none";
+              }}
             />
 
             {/* Right — award list */}
