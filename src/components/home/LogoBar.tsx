@@ -10,7 +10,6 @@ const defaultLogos = [
   { name: "PwC",       src: "/logos/mixcare-health-client-pwc.png" },
   { name: "Blue",      src: "/logos/mixcare-health-client-blue.png" },
   { name: "Chubb",     src: "/logos/mixcare-health-client-chubblife.png" },
-  { name: "Chinalife", src: "/logos/chinalife.svg" },
   { name: "Mercer",    src: "/logos/mixcare-health-client-mercer.png" },
   { name: "PP",        src: "/logos/mixcare-health-client-pp.png" },
   { name: "Nova",      src: "/logos/mixcare-health-client-nova.png" },
