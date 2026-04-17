@@ -4,18 +4,18 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import type { SanityHomeLogoBar } from "@/lib/sanity.queries";
 import { urlFor } from "@/sanity/lib/image";
 
-// Fallback logos — SVG for smaller payload & crisp rendering at any scale
+// Fallback logos — real client brand assets
 const defaultLogos = [
-  { name: "AXA",       src: "/logos/axa.svg" },
-  { name: "PwC",       src: "/logos/pwc.svg" },
-  { name: "Blue",      src: "/logos/blue.svg" },
-  { name: "Chubb",     src: "/logos/chubb.svg" },
+  { name: "AXA",       src: "/logos/mixcare-health-client-axa.png" },
+  { name: "PwC",       src: "/logos/mixcare-health-client-pwc.png" },
+  { name: "Blue",      src: "/logos/mixcare-health-client-blue.png" },
+  { name: "Chubb",     src: "/logos/mixcare-health-client-chubblife.png" },
   { name: "Chinalife", src: "/logos/chinalife.svg" },
-  { name: "Mercer",    src: "/logos/mercer.svg" },
-  { name: "PP",        src: "/logos/pp.svg" },
-  { name: "Nova",      src: "/logos/nova.svg" },
-  { name: "HKBN",      src: "/logos/hkbn.svg" },
-  { name: "Cyberport", src: "/logos/cyberport.svg" },
+  { name: "Mercer",    src: "/logos/mixcare-health-client-mercer.png" },
+  { name: "PP",        src: "/logos/mixcare-health-client-pp.png" },
+  { name: "Nova",      src: "/logos/mixcare-health-client-nova.png" },
+  { name: "HKBN",      src: "/logos/mixcare-health-client-hkbn.png" },
+  { name: "Cyberport", src: "/logos/mixcare-health-client-cyberport.png" },
 ];
 
 interface LogoBarProps {
