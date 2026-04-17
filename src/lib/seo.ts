@@ -5,7 +5,7 @@
 
 export const SITE_URL = "https://m.mixcarehealth.com";
 export const SITE_NAME = "MixCare Health";
-export const DEFAULT_OG_IMAGE = "/opengraph-image.png";
+export const DEFAULT_OG_IMAGE = "https://cdn.sanity.io/images/usfkxchk/production/237287d7fb7d054118a13d5cf228b828bb9b25d7-1424x752.jpg";
 export const TWITTER_HANDLE = "@mixcarehealth";
 
 /** Locale → hreflang value mapping */
