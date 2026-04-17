@@ -7,6 +7,9 @@ import ReCAPTCHA from "react-google-recaptcha";
 
 export interface ContactOffice {
   city: string;
+  cityZh?: string;
+  companyEn?: string;
+  companyZh?: string;
   address: string;
   phone: string;
   email: string;
@@ -118,9 +121,22 @@ export default function ContactForm({ content }: Props) {
                     className="rounded-2xl p-6 border border-slate-100"
                     style={{ backgroundColor: "#f8fafc" }}
                   >
-                    <h3 className="text-lg font-bold mb-4" style={{ color: "#0d9488" }}>
+                    <h3 className="text-lg font-bold mb-1" style={{ color: "#0d9488" }}>
                       {office.city}
                     </h3>
+                    {office.cityZh && (
+                      <p className="text-sm font-medium text-slate-500 mb-3">{office.cityZh}</p>
+                    )}
+                    {(office.companyEn || office.companyZh) && (
+                      <div className="mb-4 pb-3 border-b border-slate-200">
+                        {office.companyEn && (
+                          <p className="text-sm font-semibold text-slate-800">{office.companyEn}</p>
+                        )}
+                        {office.companyZh && (
+                          <p className="text-sm text-slate-500">{office.companyZh}</p>
+                        )}
+                      </div>
+                    )}
                     <div className="space-y-3">
                       <div className="flex items-center gap-3">
                         <Phone size={16} className="text-slate-400 flex-shrink-0" />

@@ -12,14 +12,29 @@ export const revalidate = 60;
 
 const FALLBACK_OFFICES = [
   {
-    city: "Hong Kong",
+    city: "Hong Kong (Headquarter)",
+    cityZh: "香港 (總部)",
+    companyEn: "MixUp Solution Company Limited",
+    companyZh: "職想科技有限公司",
     address: "23/F, Two International Finance Centre, 8 Finance Street, Central, Hong Kong",
     phone: "+852 3700 8888",
     email: "hk@mixcarehealth.com",
     hours: "Mon–Fri, 9:00am–6:00pm HKT",
   },
   {
-    city: "Singapore",
+    city: "Macau Branch",
+    cityZh: "澳門分公司",
+    companyEn: "Mixup Solution (Macau) Company Limited",
+    companyZh: "職想科技 (澳門) 有限公司",
+    address: "23/F, Two International Finance Centre, 8 Finance Street, Central, Hong Kong",
+    phone: "+852 3700 8888",
+    email: "hk@mixcarehealth.com",
+    hours: "Mon–Fri, 9:00am–6:00pm HKT",
+  },
+  {
+    city: "Singapore Branch",
+    cityZh: "新加坡分公司",
+    companyEn: "MIXCARE HEALTH (SG) PTE. LTD.",
     address: "1 Raffles Place, #20-01, One Raffles Place, Singapore 048616",
     phone: "+65 6800 8888",
     email: "sg@mixcarehealth.com",
