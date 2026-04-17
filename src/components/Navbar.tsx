@@ -120,7 +120,7 @@ const platformRef = useRef<HTMLDivElement>(null);
             <Link href={localePath(locale, "/")} className="flex items-center flex-shrink-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="https://m.mixcarehealth.com/wp-content/uploads/2024/05/mixcare-logo.257ebb39.png"
+                src="/logos/mixcare-logo.257ebb39.png"
                 alt="MixCare Health"
                 className="h-8 w-auto"
               />

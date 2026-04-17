@@ -27,7 +27,7 @@ export const organizationSchema = {
   url: SITE_URL,
   logo: {
     "@type": "ImageObject",
-    url: "https://m.mixcarehealth.com/wp-content/uploads/2024/05/mixcare-logo.257ebb39.png",
+    url: "/logos/mixcare-logo.257ebb39.png",
     width: 200,
     height: 60,
   },
