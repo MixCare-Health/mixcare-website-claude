@@ -4,18 +4,18 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import type { SanityHomeLogoBar } from "@/lib/sanity.queries";
 import { urlFor } from "@/sanity/lib/image";
 
-// Fallback logos — used when no logos are set in Sanity
+// Fallback logos — SVG for smaller payload & crisp rendering at any scale
 const defaultLogos = [
-  { name: "AXA",       src: "/logos/mixcare-health-client-axa.png" },
-  { name: "PwC",       src: "/logos/mixcare-health-client-pwc.png" },
-  { name: "Blue",      src: "/logos/mixcare-health-client-chubblife.png" },
-  { name: "Chubb",     src: "/logos/mixcare-health-client-blue.png" },
-  { name: "Chinalife", src: "/logos/mixcare-health-client-chubblife.png" },
-  { name: "Mercer",    src: "/logos/mixcare-health-client-mercer.png" },
-  { name: "PP",        src: "/logos/mixcare-health-client-pp.png" },
-  { name: "Nova",      src: "/logos/mixcare-health-client-nova.png" },
-  { name: "HKBN",      src: "/logos/mixcare-health-client-hkbn.png" },
-  { name: "Cyberport", src: "/logos/mixcare-health-client-cyberport.png" },
+  { name: "AXA",       src: "/logos/axa.svg" },
+  { name: "PwC",       src: "/logos/pwc.svg" },
+  { name: "Blue",      src: "/logos/blue.svg" },
+  { name: "Chubb",     src: "/logos/chubb.svg" },
+  { name: "Chinalife", src: "/logos/chinalife.svg" },
+  { name: "Mercer",    src: "/logos/mercer.svg" },
+  { name: "PP",        src: "/logos/pp.svg" },
+  { name: "Nova",      src: "/logos/nova.svg" },
+  { name: "HKBN",      src: "/logos/hkbn.svg" },
+  { name: "Cyberport", src: "/logos/cyberport.svg" },
 ];
 
 interface LogoBarProps {
@@ -54,7 +54,9 @@ export default function LogoBar({ data }: LogoBarProps = {}) {
                 <img
                   src={logo.src}
                   alt={logo.name}
-                  style={{ height: "80px", width: "auto", objectFit: "contain" }}
+                  width={160}
+                  height={80}
+                  style={{ height: "80px", width: "auto", maxWidth: "160px", objectFit: "contain" }}
                 />
               </div>
             ))}

@@ -117,6 +117,7 @@ export default function AudienceSection({ data }: AudienceSectionProps = {}) {
                 </Link>
                 <Link
                   href={localePath(locale, current.href)}
+                  aria-label={`${aud.learnMore} — ${currentContent.label}`}
                   className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-sm font-semibold bg-white border text-slate-600 hover:text-slate-800 transition-colors"
                   style={{ borderColor: current.color + "40" }}
                 >

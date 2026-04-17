@@ -19,8 +19,8 @@ const PAGES = [
   "/platform/flexible-spending-account",
   "/platform/wellness-marketplace",
   "/platform/wellness-event",
-  "/platform/flexible-benefits",
-  "/platform/wellness-hub",
+  // "/platform/flexible-benefits" — coming soon, excluded from sitemap
+  // "/platform/wellness-hub" — coming soon, excluded from sitemap
   "/who-we-serve/insurers",
   "/who-we-serve/brokers",
   "/who-we-serve/enterprises",
@@ -37,8 +37,6 @@ const PRIORITY: Record<string, number> = {
   "/platform/flexible-spending-account": 0.8,
   "/platform/wellness-marketplace": 0.8,
   "/platform/wellness-event": 0.8,
-  "/platform/flexible-benefits": 0.8,
-  "/platform/wellness-hub": 0.8,
   "/who-we-serve/insurers": 0.8,
   "/who-we-serve/brokers": 0.8,
   "/who-we-serve/enterprises": 0.8,

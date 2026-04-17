@@ -21,30 +21,32 @@ export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/platform/flexible-spending-account");
 
-export const metadata: Metadata = {
-  title: "Flexible Spending Account (FSA) Platform",
-  description:
-    "Create and manage FSA wallets for healthcare, wellness, and lifestyle expenses. 91% employee utilisation rate. Fully customisable for any company size across Hong Kong and Singapore.",
-  keywords: [
-    "flexible spending account", "FSA wallet", "employee benefits Hong Kong",
-    "healthcare FSA", "wellness spending account", "benefits management platform",
-    "FSA Singapore", "corporate wellness wallet", "MixCare FSA",
-  ],
-  alternates: { canonical, languages },
-  openGraph: {
-    title: `Flexible Spending Account (FSA) Platform | ${SITE_NAME}`,
-    description:
-      "Create and manage FSA wallets for healthcare, wellness, and lifestyle. 91% utilisation rate. Fully customisable for any company size.",
-    url: canonical,
-    images: ogImage("MixCare FSA Platform — Flexible Spending Account"),
-  },
-  twitter: {
-    title: `FSA Platform | ${SITE_NAME}`,
-    description:
-      "Create FSA wallets for healthcare, wellness, and lifestyle. 91% employee utilisation. Customisable for any company.",
-    images: ["/opengraph-image.png"],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = getTranslations(locale);
+  const meta = t.flexibleSpendingAccount.meta;
+  return {
+    title: meta.title,
+    description: meta.description,
+    keywords: [
+      "flexible spending account", "FSA wallet", "employee benefits Hong Kong",
+      "healthcare FSA", "wellness spending account", "benefits management platform",
+      "FSA Singapore", "corporate wellness wallet", "MixCare FSA",
+    ],
+    alternates: { canonical, languages },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: canonical,
+      images: ogImage("MixCare FSA Platform — Flexible Spending Account"),
+    },
+    twitter: {
+      title: meta.title,
+      description: meta.description,
+      images: ["/opengraph-image.png"],
+    },
+  };
+}
 
 const P = "#1e3a5f";
 const T = "#0d9488";

@@ -15,29 +15,34 @@ export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/who-we-serve/insurers");
 
-export const metadata: Metadata = {
-  title: "Digital Health Solutions for Insurers",
-  description:
-    "Add scalable health and wellness add-ons to your insurance policies. Reduce claims costs with AI, expand policyholder value, and launch white-label wellness platforms with MixCare Health.",
-  keywords: [
-    "insurer health technology", "digital health insurer", "white-label wellness insurer",
-    "insurance claims reduction AI", "policyholder wellness", "health insurance add-ons",
-    "insurance wellness platform Hong Kong", "insurer digital transformation", "MixCare insurer",
-  ],
-  alternates: { canonical, languages },
-  openGraph: {
-    title: `Digital Health Solutions for Insurers | ${SITE_NAME}`,
-    description:
-      "Add scalable wellness add-ons to your policies. Reduce claims costs with AI and expand policyholder value.",
-    url: canonical,
-    images: ogImage("MixCare for Insurers"),
-  },
-  twitter: {
-    title: `For Insurers | ${SITE_NAME}`,
-    description: "Scale wellness add-ons, reduce claims costs with AI, white-label wellness platforms.",
-    images: ["/opengraph-image.png"],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = getTranslations(locale);
+  const p = t.whoWeServe.insurers;
+  const title = `${p.headline} ${p.headlineHighlight} | MixCare Health`;
+  const description = p.sub;
+  return {
+    title,
+    description,
+    keywords: [
+      "insurer health technology", "digital health insurer", "white-label wellness insurer",
+      "insurance claims reduction AI", "policyholder wellness", "health insurance add-ons",
+      "insurance wellness platform Hong Kong", "insurer digital transformation", "MixCare insurer",
+    ],
+    alternates: { canonical, languages },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      images: ogImage("MixCare for Insurers"),
+    },
+    twitter: {
+      title,
+      description,
+      images: ["/opengraph-image.png"],
+    },
+  };
+}
 
 const featuredHrefs = [
   "/platform/wellness-hub",

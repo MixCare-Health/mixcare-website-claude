@@ -18,30 +18,32 @@ export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/platform/wellness-hub");
 
-export const metadata: Metadata = {
-  title: "Employee Wellness Hub — Unified Health & Benefits Platform",
-  description:
-    "One hub connecting every wellness solution. Integrate with insurance policies, HR systems, and wellness programs without friction. Built for insurers and enterprises in Hong Kong and Singapore.",
-  keywords: [
-    "wellness hub", "employee wellness platform", "HR wellness integration",
-    "health benefits hub", "insurance wellness integration", "corporate health platform",
-    "wellness management Hong Kong", "employee health hub", "MixCare wellness hub",
-  ],
-  alternates: { canonical, languages },
-  openGraph: {
-    title: `Employee Wellness Hub | ${SITE_NAME}`,
-    description:
-      "One hub connecting every wellness solution. Integrate with insurance, HR systems, and wellness programs without friction.",
-    url: canonical,
-    images: ogImage("MixCare Employee Wellness Hub"),
-  },
-  twitter: {
-    title: `Wellness Hub | ${SITE_NAME}`,
-    description:
-      "One hub connecting every wellness solution — insurance, HR, and wellness all integrated.",
-    images: ["/opengraph-image.png"],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = getTranslations(locale);
+  const meta = t.wellnessHub.meta;
+  return {
+    title: meta.title,
+    description: meta.description,
+    keywords: [
+      "wellness hub", "employee wellness platform", "HR wellness integration",
+      "health benefits hub", "insurance wellness integration", "corporate health platform",
+      "wellness management Hong Kong", "employee health hub", "MixCare wellness hub",
+    ],
+    alternates: { canonical, languages },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: canonical,
+      images: ogImage("MixCare Employee Wellness Hub"),
+    },
+    twitter: {
+      title: meta.title,
+      description: meta.description,
+      images: ["/opengraph-image.png"],
+    },
+  };
+}
 
 const benefitIcons = [LayoutDashboard, Plug, Sliders];
 const nodeColors = ["#0d9488", "#1e3a5f", "#f97316", "#7c3aed", "#0891b2"];

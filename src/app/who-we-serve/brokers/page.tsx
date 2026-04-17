@@ -15,29 +15,34 @@ export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/who-we-serve/brokers");
 
-export const metadata: Metadata = {
-  title: "Health Benefits Technology for Insurance Brokers",
-  description:
-    "Differentiate your broker offering with flexible, competitive benefit packages. Partner with MixCare to retain clients, win new business, and deliver modern digital health benefits.",
-  keywords: [
-    "insurance broker benefits technology", "broker health platform", "flexible benefits broker",
-    "MixCare broker partner", "health benefits distribution", "broker wellness solutions",
-    "digital benefits Hong Kong broker", "employee benefits broker Singapore", "MixCare broker",
-  ],
-  alternates: { canonical, languages },
-  openGraph: {
-    title: `Health Benefits Technology for Insurance Brokers | ${SITE_NAME}`,
-    description:
-      "Flexible, competitive benefit packages. Partner with MixCare to retain clients and win new business.",
-    url: canonical,
-    images: ogImage("MixCare for Insurance Brokers"),
-  },
-  twitter: {
-    title: `For Brokers | ${SITE_NAME}`,
-    description: "Differentiate your offering with flexible digital health benefits. Retain clients and win new business.",
-    images: ["/opengraph-image.png"],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = getTranslations(locale);
+  const p = t.whoWeServe.brokers;
+  const title = `${p.headline} ${p.headlineHighlight} | MixCare Health`;
+  const description = p.sub;
+  return {
+    title,
+    description,
+    keywords: [
+      "insurance broker benefits technology", "broker health platform", "flexible benefits broker",
+      "MixCare broker partner", "health benefits distribution", "broker wellness solutions",
+      "digital benefits Hong Kong broker", "employee benefits broker Singapore", "MixCare broker",
+    ],
+    alternates: { canonical, languages },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      images: ogImage("MixCare for Insurance Brokers"),
+    },
+    twitter: {
+      title,
+      description,
+      images: ["/opengraph-image.png"],
+    },
+  };
+}
 
 const featuredHrefs = [
   "/platform/self-funded-outpatient",

@@ -15,30 +15,35 @@ export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/who-we-serve/enterprises");
 
-export const metadata: Metadata = {
-  title: "Enterprise Employee Wellness & Benefits Platform",
-  description:
-    "Customisable enterprise employee benefit programs with analytics, PDPO and GDPR compliance, and seamless HR system integration. Built for large organisations in Hong Kong and Singapore.",
-  keywords: [
-    "enterprise employee benefits", "enterprise wellness platform", "HR benefits integration",
-    "enterprise health benefits Hong Kong", "employee wellbeing enterprise",
-    "benefits analytics enterprise", "corporate wellness enterprise", "HRIS integration benefits",
-    "MixCare enterprise",
-  ],
-  alternates: { canonical, languages },
-  openGraph: {
-    title: `Enterprise Employee Wellness & Benefits Platform | ${SITE_NAME}`,
-    description:
-      "Customisable benefits programs with analytics, compliance, and seamless HR integration at enterprise scale.",
-    url: canonical,
-    images: ogImage("MixCare for Enterprises"),
-  },
-  twitter: {
-    title: `For Enterprises | ${SITE_NAME}`,
-    description: "Enterprise-scale customisable benefits with analytics, compliance, and HR integration.",
-    images: ["/opengraph-image.png"],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = getTranslations(locale);
+  const p = t.whoWeServe.enterprises;
+  const title = `${p.headline} ${p.headlineHighlight} | MixCare Health`;
+  const description = p.sub;
+  return {
+    title,
+    description,
+    keywords: [
+      "enterprise employee benefits", "enterprise wellness platform", "HR benefits integration",
+      "enterprise health benefits Hong Kong", "employee wellbeing enterprise",
+      "benefits analytics enterprise", "corporate wellness enterprise", "HRIS integration benefits",
+      "MixCare enterprise",
+    ],
+    alternates: { canonical, languages },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      images: ogImage("MixCare for Enterprises"),
+    },
+    twitter: {
+      title,
+      description,
+      images: ["/opengraph-image.png"],
+    },
+  };
+}
 
 const featuredHrefs = [
   "/platform/flexible-benefits",

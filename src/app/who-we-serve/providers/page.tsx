@@ -15,29 +15,34 @@ export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/who-we-serve/providers");
 
-export const metadata: Metadata = {
-  title: "Join MixCare's Provider Network — Reach Corporate Clients",
-  description:
-    "Connect with thousands of corporate employees across Asia-Pacific. Digital tools for online bookings, cashless payments, and client management. Join MixCare's 3,000+ provider network.",
-  keywords: [
-    "wellness provider network", "medical provider platform", "join MixCare provider",
-    "corporate wellness provider Hong Kong", "clinic FSA payments", "provider wellness marketplace",
-    "digital booking health provider", "corporate client wellness", "MixCare provider",
-  ],
-  alternates: { canonical, languages },
-  openGraph: {
-    title: `Join MixCare's Provider Network | ${SITE_NAME}`,
-    description:
-      "Reach thousands of corporate employees. Digital tools for bookings, cashless payments, and client management.",
-    url: canonical,
-    images: ogImage("MixCare Provider Network"),
-  },
-  twitter: {
-    title: `For Providers | ${SITE_NAME}`,
-    description: "Reach corporate employees across Asia-Pacific with digital bookings and cashless payments.",
-    images: ["/opengraph-image.png"],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = getTranslations(locale);
+  const p = t.whoWeServe.providers;
+  const title = `${p.headline} ${p.headlineHighlight} | MixCare Health`;
+  const description = p.sub;
+  return {
+    title,
+    description,
+    keywords: [
+      "wellness provider network", "medical provider platform", "join MixCare provider",
+      "corporate wellness provider Hong Kong", "clinic FSA payments", "provider wellness marketplace",
+      "digital booking health provider", "corporate client wellness", "MixCare provider",
+    ],
+    alternates: { canonical, languages },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      images: ogImage("MixCare Provider Network"),
+    },
+    twitter: {
+      title,
+      description,
+      images: ["/opengraph-image.png"],
+    },
+  };
+}
 
 const featuredHrefs = [
   "/platform/wellness-marketplace",

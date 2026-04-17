@@ -18,30 +18,32 @@ export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/platform/flexible-benefits");
 
-export const metadata: Metadata = {
-  title: "Flexible Benefits Platform — Personalised Employee Packages",
-  description:
-    "Personalised employee benefit packages that adapt to every individual. Scalable top-up and top-down flexible benefits structures for SMBs and enterprises in Hong Kong and Singapore.",
-  keywords: [
-    "flexible benefits platform", "personalised employee benefits", "flexible benefits Hong Kong",
-    "top-up benefits", "cafeteria benefits plan", "employee benefits customisation",
-    "flexible benefits Singapore", "SMB employee benefits", "MixCare flexible benefits",
-  ],
-  alternates: { canonical, languages },
-  openGraph: {
-    title: `Flexible Benefits Platform | ${SITE_NAME}`,
-    description:
-      "Personalised benefit packages that adapt to every individual. Top-up and top-down structures for SMBs and enterprises.",
-    url: canonical,
-    images: ogImage("MixCare Flexible Benefits Platform"),
-  },
-  twitter: {
-    title: `Flexible Benefits | ${SITE_NAME}`,
-    description:
-      "Personalised benefit packages that adapt to every employee. Scalable for SMBs and enterprises.",
-    images: ["/opengraph-image.png"],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = getTranslations(locale);
+  const meta = t.flexibleBenefits.meta;
+  return {
+    title: meta.title,
+    description: meta.description,
+    keywords: [
+      "flexible benefits platform", "personalised employee benefits", "flexible benefits Hong Kong",
+      "top-up benefits", "cafeteria benefits plan", "employee benefits customisation",
+      "flexible benefits Singapore", "SMB employee benefits", "MixCare flexible benefits",
+    ],
+    alternates: { canonical, languages },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: canonical,
+      images: ogImage("MixCare Flexible Benefits Platform"),
+    },
+    twitter: {
+      title: meta.title,
+      description: meta.description,
+      images: ["/opengraph-image.png"],
+    },
+  };
+}
 
 const benefitIcons = [Users2, Sliders, BarChart3];
 const stepColors = ["#7c3aed", "#0d9488", "#f97316"];

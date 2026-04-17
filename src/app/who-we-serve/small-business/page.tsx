@@ -15,30 +15,35 @@ export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/who-we-serve/small-business");
 
-export const metadata: Metadata = {
-  title: "SMB Health Benefits & Wellness — Setup in Minutes",
-  description:
-    "Affordable, high-impact employee benefits for small businesses. Setup in minutes, no HR team required. FSA wallets, wellness marketplace, and outpatient benefits for SMBs in Hong Kong and Singapore.",
-  keywords: [
-    "SMB employee benefits", "small business health benefits Hong Kong",
-    "affordable employee wellness", "SMB wellness platform", "small business FSA",
-    "employee benefits setup minutes", "startup health benefits", "MixCare SMB",
-    "small business benefits Singapore",
-  ],
-  alternates: { canonical, languages },
-  openGraph: {
-    title: `SMB Health Benefits & Wellness | ${SITE_NAME}`,
-    description:
-      "Affordable, high-impact employee benefits for small businesses. Setup in minutes, no HR team required.",
-    url: canonical,
-    images: ogImage("MixCare for Small Businesses"),
-  },
-  twitter: {
-    title: `For Small Businesses | ${SITE_NAME}`,
-    description: "Affordable employee benefits for SMBs. Setup in minutes, no HR team needed.",
-    images: ["/opengraph-image.png"],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = getTranslations(locale);
+  const p = t.whoWeServe.smallBusiness;
+  const title = `${p.headline} ${p.headlineHighlight} | MixCare Health`;
+  const description = p.sub;
+  return {
+    title,
+    description,
+    keywords: [
+      "SMB employee benefits", "small business health benefits Hong Kong",
+      "affordable employee wellness", "SMB wellness platform", "small business FSA",
+      "employee benefits setup minutes", "startup health benefits", "MixCare SMB",
+      "small business benefits Singapore",
+    ],
+    alternates: { canonical, languages },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      images: ogImage("MixCare for Small Businesses"),
+    },
+    twitter: {
+      title,
+      description,
+      images: ["/opengraph-image.png"],
+    },
+  };
+}
 
 const featuredHrefs = [
   "/platform/flexible-spending-account",

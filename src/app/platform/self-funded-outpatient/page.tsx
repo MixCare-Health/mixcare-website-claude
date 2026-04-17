@@ -20,30 +20,32 @@ export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/platform/self-funded-outpatient");
 
-export const metadata: Metadata = {
-  title: "Self-Funded Outpatient Benefits",
-  description:
-    "AI-powered self-funded outpatient claims processing with a 2,000+ panel doctor network across Hong Kong, Macau, and Singapore. Reduce costs by 30% vs traditional group insurance.",
-  keywords: [
-    "self-funded outpatient", "outpatient benefits Hong Kong", "panel doctor network",
-    "outpatient claims processing", "corporate health insurance", "SMB health benefits",
-    "outpatient plan Singapore", "MixCare outpatient",
-  ],
-  alternates: { canonical, languages },
-  openGraph: {
-    title: `Self-Funded Outpatient Benefits | ${SITE_NAME}`,
-    description:
-      "AI-powered outpatient claims processing with a 2,000+ panel doctor network. Reduce costs by 30% vs traditional group insurance.",
-    url: canonical,
-    images: ogImage("MixCare Self-Funded Outpatient Platform"),
-  },
-  twitter: {
-    title: `Self-Funded Outpatient Benefits | ${SITE_NAME}`,
-    description:
-      "AI-powered outpatient claims with 2,000+ panel doctors. Cut costs vs traditional group insurance.",
-    images: ["/opengraph-image.png"],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = getTranslations(locale);
+  const meta = t.selfFundedOutpatient.meta;
+  return {
+    title: meta.title,
+    description: meta.description,
+    keywords: [
+      "self-funded outpatient", "outpatient benefits Hong Kong", "panel doctor network",
+      "outpatient claims processing", "corporate health insurance", "SMB health benefits",
+      "outpatient plan Singapore", "MixCare outpatient",
+    ],
+    alternates: { canonical, languages },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: canonical,
+      images: ogImage("MixCare Self-Funded Outpatient Platform"),
+    },
+    twitter: {
+      title: meta.title,
+      description: meta.description,
+      images: ["/opengraph-image.png"],
+    },
+  };
+}
 
 const P = "#0d9488";   // brand teal
 const N = "#1e3a5f";   // brand navy

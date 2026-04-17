@@ -22,30 +22,32 @@ export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/platform/wellness-marketplace");
 
-export const metadata: Metadata = {
-  title: "Employee Wellness Marketplace — 3,000+ Services",
-  description:
-    "Curated employee wellness marketplace with 3,000+ services redeemable via FSA wallets. Yoga, nutrition, mental health, health screenings and more. White-label for insurers and enterprises.",
-  keywords: [
-    "employee wellness marketplace", "corporate wellness services", "FSA redeemable services",
-    "wellness benefits Hong Kong", "yoga corporate benefits", "mental health employee benefits",
-    "white-label wellness platform", "3000 wellness services", "MixCare marketplace",
-  ],
-  alternates: { canonical, languages },
-  openGraph: {
-    title: `Employee Wellness Marketplace — 3,000+ Services | ${SITE_NAME}`,
-    description:
-      "3,000+ wellness services redeemable via FSA wallets. Yoga, nutrition, mental health, health screenings. White-label for insurers and enterprises.",
-    url: canonical,
-    images: ogImage("MixCare Wellness Marketplace — 3,000+ Employee Wellness Services"),
-  },
-  twitter: {
-    title: `Wellness Marketplace | ${SITE_NAME}`,
-    description:
-      "3,000+ wellness services redeemable via FSA wallets. White-label options for insurers and enterprises.",
-    images: ["/opengraph-image.png"],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = getTranslations(locale);
+  const meta = t.wellnessMarketplace.meta;
+  return {
+    title: meta.title,
+    description: meta.description,
+    keywords: [
+      "employee wellness marketplace", "corporate wellness services", "FSA redeemable services",
+      "wellness benefits Hong Kong", "yoga corporate benefits", "mental health employee benefits",
+      "white-label wellness platform", "3000 wellness services", "MixCare marketplace",
+    ],
+    alternates: { canonical, languages },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: canonical,
+      images: ogImage("MixCare Wellness Marketplace — 3,000+ Employee Wellness Services"),
+    },
+    twitter: {
+      title: meta.title,
+      description: meta.description,
+      images: ["/opengraph-image.png"],
+    },
+  };
+}
 
 const P = "#f97316";
 

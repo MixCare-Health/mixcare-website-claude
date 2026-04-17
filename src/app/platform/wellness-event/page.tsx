@@ -20,30 +20,32 @@ export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/platform/wellness-event");
 
-export const metadata: Metadata = {
-  title: "Corporate Wellness Events — Yoga, Mindfulness & More",
-  description:
-    "Book curated corporate wellness events — yoga, mindfulness, nutrition workshops, mental health first aid, and health screenings. Managed end-to-end through MixCare for Hong Kong and Singapore companies.",
-  keywords: [
-    "corporate wellness events", "employee wellness activities", "corporate yoga Hong Kong",
-    "workplace mindfulness", "health screening corporate", "mental health workplace events",
-    "wellness event booking", "corporate wellness Singapore", "MixCare wellness events",
-  ],
-  alternates: { canonical, languages },
-  openGraph: {
-    title: `Corporate Wellness Events | ${SITE_NAME}`,
-    description:
-      "Curated corporate wellness events — yoga, mindfulness, nutrition, mental health, health screenings. End-to-end managed for HK & SG companies.",
-    url: canonical,
-    images: ogImage("MixCare Corporate Wellness Events"),
-  },
-  twitter: {
-    title: `Corporate Wellness Events | ${SITE_NAME}`,
-    description:
-      "Yoga, mindfulness, nutrition, mental health events for your team. Managed end-to-end by MixCare.",
-    images: ["/opengraph-image.png"],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = getTranslations(locale);
+  const meta = t.wellnessEvent.meta;
+  return {
+    title: meta.title,
+    description: meta.description,
+    keywords: [
+      "corporate wellness events", "employee wellness activities", "corporate yoga Hong Kong",
+      "workplace mindfulness", "health screening corporate", "mental health workplace events",
+      "wellness event booking", "corporate wellness Singapore", "MixCare wellness events",
+    ],
+    alternates: { canonical, languages },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: canonical,
+      images: ogImage("MixCare Corporate Wellness Events"),
+    },
+    twitter: {
+      title: meta.title,
+      description: meta.description,
+      images: ["/opengraph-image.png"],
+    },
+  };
+}
 
 const P = "#0891b2";
 const benefitIcons = [CalendarDays, BookOpen, Monitor, BarChart2];

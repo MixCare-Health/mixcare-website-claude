@@ -109,12 +109,12 @@ export default async function RootLayout({
           <CookieBanner />
         </Providers>
       </body>
-      {/* Google tag (gtag.js) */}
+      {/* Google tag (gtag.js) — lazyOnload defers until page is idle */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-R6W6RRTH7X"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
-      <Script id="gtag-init" strategy="afterInteractive">
+      <Script id="gtag-init" strategy="lazyOnload">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
