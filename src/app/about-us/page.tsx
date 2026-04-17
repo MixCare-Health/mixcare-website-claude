@@ -167,10 +167,6 @@ export default async function AboutUsPage() {
               src="/team/reward-photo.f0b0efc2.png"
               alt="MixCare Health award ceremony — Start-Up Express by HKTDC"
               className="rounded-2xl shadow-lg w-full h-80 lg:h-full min-h-[360px] object-cover object-center"
-              onError={(e) => {
-                const el = e.currentTarget;
-                el.style.display = "none";
-              }}
             />
 
             {/* Right — award list */}
