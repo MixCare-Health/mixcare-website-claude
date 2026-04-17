@@ -87,7 +87,7 @@ export default function Footer({ footerData: footerDataProp }: FooterProps = {})
               <img
                 src="/logos/mixcare-logo-257ebb39.png"
                 alt="MixCare Health"
-                className="h-7 w-auto brightness-0 invert"
+                className="h-7 w-auto"
               />
             </Link>
             {/* Social links */}
