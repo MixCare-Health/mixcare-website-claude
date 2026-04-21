@@ -153,8 +153,8 @@ export default function ContactForm({ content, locale = "en" }: Props) {
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
                     <Phone size={16} className="flex-shrink-0" style={{ color: "#0d9488" }} />
-                    <a href="tel:+85237008888" className="text-sm font-medium text-slate-700 hover:text-teal-600">
-                      +852 3700 8888
+                    <a href="tel:+85223233132" className="text-sm font-medium text-slate-700 hover:text-teal-600">
+                      +852 2323 3132
                     </a>
                   </div>
                   <div className="flex items-center gap-3">
