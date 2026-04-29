@@ -7,7 +7,7 @@ import { JsonLd, breadcrumbSchema } from "@/components/seo/JsonLd";
 import { getLocale } from "@/lib/locale.server";
 import { localePath } from "@/lib/locale";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
 import {
   allCaseStudySlugsQuery,
@@ -64,6 +64,9 @@ export default async function CaseStudyPostPage({ params }: { params: Promise<Pa
   ]);
 
   if (!caseStudy) notFound();
+
+  // If admin set an external/custom URL, redirect there immediately.
+  if (caseStudy.externalUrl) redirect(caseStudy.externalUrl);
 
   const related = allCaseStudies.filter((c) => c.slug !== slug).slice(0, 2);
 

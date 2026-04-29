@@ -170,6 +170,7 @@ export const caseStudyBySlugQuery = `
     },
     "publishedAt": publishedAt,
     "featuredImage": featuredImage,
+    "externalUrl": externalUrl,
   }
 `;
 
@@ -191,6 +192,7 @@ export type SanityCaseStudy = SanityCaseStudyListItem & {
   approach: string;
   outcomes: Array<{ value: string; label: string }>;
   sections: Array<{ heading: string; body: string; bullets?: string[] }>;
+  externalUrl?: string;
 };
 
 // ── Whitepapers ──────────────────────────────────────────────────────────────

@@ -52,6 +52,14 @@ export const caseStudyType = defineType({
     }),
     defineField({ name: "featuredImage", title: "Featured Image", type: "image", options: { hotspot: true } }),
     defineField({ name: "publishedAt", title: "Published At", type: "date" }),
+    defineField({
+      name: "externalUrl",
+      title: "External / Custom Page URL",
+      type: "url",
+      description:
+        "Optional. If set, clicking this case study will redirect to this URL instead of rendering content. " +
+        "Use a relative path like /articles/2026-hk-benefits-trends.html for hosted HTML, or a full https:// URL.",
+    }),
   ],
   preview: {
     select: { title: "company.en", subtitle: "segment.en" },
