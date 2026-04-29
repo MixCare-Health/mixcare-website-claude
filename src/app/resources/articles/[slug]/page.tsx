@@ -8,7 +8,7 @@ import { getLocale } from "@/lib/locale.server";
 import { getTranslations } from "@/translations";
 import { localePath } from "@/lib/locale";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
 import {
   allArticleSlugsQuery,
@@ -85,6 +85,9 @@ export default async function ArticlePostPage({ params }: { params: Promise<Para
   ]);
 
   if (!article) notFound();
+
+  // If the admin set an external/custom URL, redirect there immediately.
+  if (article.externalUrl) redirect(article.externalUrl);
 
   const t = getTranslations(locale);
   const col = getCategoryColor(article.category);

@@ -60,6 +60,16 @@ export const articleType = defineType({
       options: { hotspot: true },
     }),
 
+    defineField({
+      name: "externalUrl",
+      title: "External / Custom Page URL",
+      type: "url",
+      description:
+        "Optional. If set, clicking this article will redirect to this URL instead of rendering the post content. " +
+        "Use a relative path like /articles/2026-hk-benefits-trends.html for hosted HTML pages, " +
+        "or a full URL like https://... for external links.",
+    }),
+
     // ── Localised fields ──
     localeStringField("title",       "Title"),
     localeTextField("description",   "Description (SEO + intro callout)"),

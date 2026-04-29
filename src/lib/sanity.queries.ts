@@ -27,6 +27,7 @@ export const articleBySlugQuery = `
     "readTime":    readTime,
     "description": coalesce(description[$locale], description.en),
     "coverImage":  coverImage,
+    "externalUrl": externalUrl,
     "sections": sections[] {
       "heading": coalesce(heading[$locale], heading.en),
       "body":    coalesce(body[$locale],    body.en),
@@ -71,6 +72,7 @@ export type SanityArticleSection = {
 
 export type SanityArticle = SanityArticleListItem & {
   sections: SanityArticleSection[];
+  externalUrl?: string;
 };
 
 // ── Audience Pages ──────────────────────────────────────────────────────────
