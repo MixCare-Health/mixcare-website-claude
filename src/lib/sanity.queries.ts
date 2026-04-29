@@ -144,6 +144,7 @@ export const allCaseStudiesQuery = `
     "gradient": gradient,
     "publishedAt": publishedAt,
     "featuredImage": coalesce(featuredImage, coverImage),
+    "externalUrl": externalUrl,
   }
 `;
 
@@ -185,6 +186,7 @@ export type SanityCaseStudyListItem = {
   gradient: string;
   publishedAt: string;
   featuredImage?: SanityImageRef;
+  externalUrl?: string;
 };
 
 export type SanityCaseStudy = SanityCaseStudyListItem & {

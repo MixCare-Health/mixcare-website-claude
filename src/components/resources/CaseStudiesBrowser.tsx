@@ -50,9 +50,14 @@ function SmallCard({
   locale: string;
   readMore: string;
 }) {
+  const href = item.externalUrl ?? localePath(locale as "en" | "zh-TW" | "zh-CN", `/resources/case-studies/${item.slug}`);
+  const isExternal = !!item.externalUrl;
+
   return (
     <Link
-      href={localePath(locale as "en" | "zh-TW" | "zh-CN", `/resources/case-studies/${item.slug}`)}
+      href={href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
       className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col"
     >
       {/* Cover image / gradient */}
