@@ -71,10 +71,14 @@ const CATEGORY_ICONS: Record<string, string> = {
 function SmallCard({ post, locale, categoryLabel }: { post: SanityArticleListItem; locale: string; categoryLabel: string }) {
   const col = catColor(post.category);
   const av = avatarColor(post.author);
+  const href = post.externalUrl ?? localePath(locale as "en" | "zh-TW" | "zh-CN", `/resources/articles/${post.slug}`);
+  const isExternal = !!post.externalUrl;
 
   return (
     <Link
-      href={localePath(locale as "en" | "zh-TW" | "zh-CN", `/resources/articles/${post.slug}`)}
+      href={href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
       className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col"
     >
       {/* Cover image */}

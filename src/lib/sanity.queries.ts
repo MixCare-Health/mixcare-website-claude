@@ -13,6 +13,7 @@ export const allArticlesQuery = `
     "readTime":    readTime,
     "description": coalesce(description[$locale], description.en),
     "coverImage":  coverImage,
+    "externalUrl": externalUrl,
   }
 `;
 
@@ -62,6 +63,7 @@ export type SanityArticleListItem = {
   readTime: string;
   description: string;
   coverImage?: SanityImageRef;
+  externalUrl?: string;
 };
 
 export type SanityArticleSection = {
@@ -215,6 +217,7 @@ export const allWhitepapersQuery = `
     "accentColor": accentColor,
     "publishedAt": publishedAt,
     "coverImage": coverImage,
+    "externalUrl": externalUrl,
   }
 `;
 
@@ -236,6 +239,7 @@ export const whitepaperBySlugQuery = `
     },
     "publishedAt": publishedAt,
     "coverImage": coverImage,
+    "externalUrl": externalUrl,
   }
 `;
 
@@ -250,6 +254,7 @@ export type SanityWhitepaperListItem = {
   accentColor: string;
   publishedAt: string;
   coverImage?: SanityImageRef;
+  externalUrl?: string;
 };
 
 export type SanityWhitepaper = SanityWhitepaperListItem & {

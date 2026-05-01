@@ -38,6 +38,14 @@ export const whitepaperType = defineType({
     }),
     defineField({ name: "coverImage", title: "Cover Image", type: "image", options: { hotspot: true } }),
     defineField({ name: "publishedAt", title: "Published At", type: "date" }),
+    defineField({
+      name: "externalUrl",
+      title: "External / Custom Page URL",
+      type: "url",
+      description:
+        "Optional. If set, clicking this whitepaper will redirect to this URL instead of rendering content. " +
+        "Use a relative path like /articles/my-report.html for hosted HTML, or a full https:// URL.",
+    }),
   ],
   preview: {
     select: { title: "title.en" },

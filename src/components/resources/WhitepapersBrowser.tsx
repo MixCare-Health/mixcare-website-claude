@@ -50,6 +50,8 @@ function SmallCard({
 }) {
   const accentColor = item.accentColor || "#0d9488";
   const gradient = item.gradient || FALLBACK_GRADIENT;
+  const href = item.externalUrl ?? localePath(locale as "en" | "zh-TW" | "zh-CN", `/resources/whitepapers/${item.slug}`);
+  const isExternal = !!item.externalUrl;
 
   return (
     <div className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
@@ -93,7 +95,9 @@ function SmallCard({
             <Download size={12} /> {downloadBtn}
           </a>
           <Link
-            href={localePath(locale as "en" | "zh-TW" | "zh-CN", `/resources/whitepapers/${item.slug}`)}
+            href={href}
+            target={isExternal ? "_blank" : undefined}
+            rel={isExternal ? "noopener noreferrer" : undefined}
             className="text-xs font-semibold text-slate-500 hover:text-teal-700 transition-colors"
           >
             {readPreview} →

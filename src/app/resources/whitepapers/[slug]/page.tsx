@@ -7,7 +7,7 @@ import { JsonLd, breadcrumbSchema } from "@/components/seo/JsonLd";
 import { getLocale } from "@/lib/locale.server";
 import { localePath } from "@/lib/locale";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
 import {
   allWhitepaperSlugsQuery,
@@ -64,6 +64,9 @@ export default async function WhitepaperPostPage({ params }: { params: Promise<P
   ]);
 
   if (!whitepaper) notFound();
+
+  // If admin set an external/custom URL, redirect there immediately.
+  if (whitepaper.externalUrl) redirect(whitepaper.externalUrl);
 
   const related = allWhitepapers.filter((w) => w.slug !== slug).slice(0, 2);
 
