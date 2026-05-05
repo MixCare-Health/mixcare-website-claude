@@ -1,5 +1,5 @@
 import { defineField, defineType } from "sanity";
-import { localeStringField, localeTextField, localeBulletsField } from "./locale-helpers";
+import { localeStringField, localeTextField, localeBulletsField, localeRichTextField } from "./locale-helpers";
 
 // ── Press / Media Coverage document type ─────────────────────────────────────
 
@@ -86,8 +86,8 @@ export const pressItemType = defineType({
           name: "section",
           title: "Section",
           fields: [
-            localeStringField("heading", "Heading"),
-            localeTextField("body",      "Body"),
+            localeStringField("heading",  "Heading"),
+            localeRichTextField("body",  "Body (Rich Text — bold, italic, headings, lists, images, tables…)"),
             localeBulletsField,
           ],
           preview: {

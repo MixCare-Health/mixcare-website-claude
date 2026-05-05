@@ -14,8 +14,11 @@ import { startNowPageType } from "./startNowPage";
 import { partnersPageType } from "./partnersPage";
 import { homePageType } from "./homePage";
 import { pressItemType } from "./pressItem";
+import { tableBlockType } from "./tableBlock";
 
 export const schemaTypes = [
+  // Custom shared blocks (must be registered before types that reference them)
+  tableBlockType,
   articleType,
   pressItemType,
   audiencePageType,

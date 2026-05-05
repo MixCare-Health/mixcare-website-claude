@@ -9,6 +9,7 @@ import { getTranslations } from "@/translations";
 import { localePath } from "@/lib/locale";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
+import RichTextRenderer from "@/components/shared/RichTextRenderer";
 import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
 import {
   allArticleSlugsQuery,
@@ -168,7 +169,7 @@ export default async function ArticlePostPage({ params }: { params: Promise<Para
                 {article.sections.map((section, i) => (
                   <section key={i}>
                     <h2 className="text-xl font-extrabold text-slate-900 mb-3">{section.heading}</h2>
-                    <p className="text-slate-600 leading-relaxed mb-3">{section.body}</p>
+                    <RichTextRenderer value={section.body} />
                     {section.bullets && section.bullets.length > 0 && (
                       <ul className="space-y-2 mt-3" role="list">
                         {section.bullets.map((b, bi) => (

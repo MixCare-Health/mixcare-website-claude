@@ -1,5 +1,5 @@
 import { defineField, defineType } from "sanity";
-import { localeStringField, localeTextField, localeBulletsField } from "./locale-helpers";
+import { localeStringField, localeTextField, localeBulletsField, localeRichTextField } from "./locale-helpers";
 
 export const caseStudyType = defineType({
   name: "caseStudy",
@@ -43,8 +43,8 @@ export const caseStudyType = defineType({
         type: "object",
         name: "section",
         fields: [
-          localeStringField("heading", "Heading"),
-          localeTextField("body", "Body"),
+          localeStringField("heading",  "Heading"),
+          localeRichTextField("body",  "Body (Rich Text — bold, italic, headings, lists, images, tables…)"),
           localeBulletsField,
         ],
         preview: { select: { title: "heading.en" } },

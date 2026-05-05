@@ -46,6 +46,10 @@ export const allArticleSlugsQuery = `
 // The GROQ projection resolves locale fields server-side,
 // so these types stay as plain strings regardless of locale.
 
+// Portable Text body — new docs return an array of blocks; legacy docs return a
+// plain string (from before the rich-text migration). Both are handled by RichTextRenderer.
+export type RichBody = Array<Record<string, unknown>> | string | null;
+
 // Reusable Sanity image reference type (works with urlFor())
 export type SanityImageRef = {
   _type: "image";
@@ -68,7 +72,7 @@ export type SanityArticleListItem = {
 
 export type SanityArticleSection = {
   heading: string;
-  body: string;
+  body: RichBody;
   bullets?: string[];
 };
 
@@ -195,7 +199,7 @@ export type SanityCaseStudy = SanityCaseStudyListItem & {
   challenge: string;
   approach: string;
   outcomes: Array<{ value: string; label: string }>;
-  sections: Array<{ heading: string; body: string; bullets?: string[] }>;
+  sections: Array<{ heading: string; body: RichBody; bullets?: string[] }>;
   externalUrl?: string;
 };
 
@@ -259,7 +263,7 @@ export type SanityWhitepaperListItem = {
 
 export type SanityWhitepaper = SanityWhitepaperListItem & {
   topics: string[];
-  sections: Array<{ heading: string; body: string; bullets?: string[] }>;
+  sections: Array<{ heading: string; body: RichBody; bullets?: string[] }>;
 };
 
 // ── Platform Pages ───────────────────────────────────────────────────────────
@@ -1214,7 +1218,7 @@ export type SanityPressItemListItem = {
 export type SanityPressItem = SanityPressItemListItem & {
   sections: Array<{
     heading: string;
-    body: string;
+    body: RichBody;
     bullets?: string[];
   }>;
 };
