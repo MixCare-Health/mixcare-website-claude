@@ -15,10 +15,12 @@ import { partnersPageType } from "./partnersPage";
 import { homePageType } from "./homePage";
 import { pressItemType } from "./pressItem";
 import { tableBlockType } from "./tableBlock";
+import { htmlEmbedType } from "./htmlEmbed";
 
 export const schemaTypes = [
   // Custom shared blocks (must be registered before types that reference them)
   tableBlockType,
+  htmlEmbedType,
   articleType,
   pressItemType,
   audiencePageType,

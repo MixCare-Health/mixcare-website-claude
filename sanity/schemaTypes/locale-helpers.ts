@@ -129,6 +129,8 @@ const RICH_TEXT_OF: any[] = [
   },
   // Custom structured table block — no external plugin required
   { type: "tableBlock" },
+  // Raw HTML embed — paste any HTML (tables, iframes, embeds, etc.)
+  { type: "htmlEmbed" },
 ];
 
 // Rich-text (Portable Text) field with EN / 繁體中文 / 简体中文 tabs.

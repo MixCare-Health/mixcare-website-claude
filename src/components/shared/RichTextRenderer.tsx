@@ -74,6 +74,25 @@ const components: PortableTextComponents = {
     },
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     tableBlock: ({ value }: { value: any }) => <TableBlock value={value} />,
+
+    // Raw HTML embed — renders whatever HTML the editor pasted
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    htmlEmbed: ({ value }: { value: any }) => {
+      if (!value?.html) return null;
+      return (
+        <figure className="my-6">
+          <div
+            className="overflow-x-auto [&_table]:w-full [&_table]:border-collapse [&_td]:border [&_td]:border-slate-200 [&_td]:px-3 [&_td]:py-2 [&_th]:border [&_th]:border-slate-200 [&_th]:px-3 [&_th]:py-2 [&_th]:bg-slate-100 [&_th]:font-bold [&_th]:text-xs [&_th]:uppercase [&_th]:tracking-wide [&_th]:text-slate-600 [&_tr:nth-child(even)]:bg-slate-50 [&_a]:text-teal-700 [&_a]:underline"
+            dangerouslySetInnerHTML={{ __html: value.html }}
+          />
+          {value.caption && (
+            <figcaption className="text-center text-xs text-slate-400 mt-2 italic">
+              {value.caption}
+            </figcaption>
+          )}
+        </figure>
+      );
+    },
   },
 
   marks: {
