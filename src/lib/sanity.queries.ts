@@ -1222,3 +1222,71 @@ export type SanityPressItem = SanityPressItemListItem & {
     bullets?: string[];
   }>;
 };
+
+// ── Events ────────────────────────────────────────────────────────────────────
+
+export const allEventsQuery = `
+  *[_type == "eventItem"] | order(eventDate desc) {
+    "title":           coalesce(title[$locale],       title.en),
+    "slug":            slug.current,
+    "eventDate":       eventDate,
+    "eventEndDate":    eventEndDate,
+    "eventType":       eventType,
+    "isVirtual":       isVirtual,
+    "isFeatured":      isFeatured,
+    "registrationUrl": registrationUrl,
+    "description":     coalesce(description[$locale], description.en),
+    "organizer":       coalesce(organizer[$locale],   organizer.en),
+    "location":        coalesce(location[$locale],    location.en),
+    "coverImage":      coverImage,
+  }
+`;
+
+export const eventBySlugQuery = `
+  *[_type == "eventItem" && slug.current == $slug][0] {
+    "title":           coalesce(title[$locale],       title.en),
+    "slug":            slug.current,
+    "eventDate":       eventDate,
+    "eventEndDate":    eventEndDate,
+    "eventType":       eventType,
+    "isVirtual":       isVirtual,
+    "isFeatured":      isFeatured,
+    "registrationUrl": registrationUrl,
+    "description":     coalesce(description[$locale], description.en),
+    "organizer":       coalesce(organizer[$locale],   organizer.en),
+    "location":        coalesce(location[$locale],    location.en),
+    "coverImage":      coverImage,
+    "sections": sections[] {
+      "heading": coalesce(heading[$locale], heading.en),
+      "body":    coalesce(body[$locale],    body.en),
+      "bullets": coalesce(bullets[$locale], bullets.en),
+    },
+  }
+`;
+
+export const allEventSlugsQuery = `
+  *[_type == "eventItem"] { "slug": slug.current }
+`;
+
+export type SanityEventListItem = {
+  title: string;
+  slug: string;
+  eventDate: string;        // "YYYY-MM-DD"
+  eventEndDate?: string;
+  eventType: string;
+  isVirtual: boolean;
+  isFeatured: boolean;
+  registrationUrl?: string;
+  description: string;
+  organizer?: string;
+  location?: string;
+  coverImage?: SanityImageRef;
+};
+
+export type SanityEvent = SanityEventListItem & {
+  sections: Array<{
+    heading: string;
+    body: RichBody;
+    bullets?: string[];
+  }>;
+};

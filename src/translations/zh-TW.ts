@@ -1411,6 +1411,7 @@ export const zhTW: Translations = {
       whitepapers:   "白皮書",
       faq:           "常見問題",
       mediaCoverage: "媒體報道",
+      events:        "活動",
     },
     ui: {
       all:             "全部",
@@ -1427,9 +1428,12 @@ export const zhTW: Translations = {
       mediaCoverageSub: "MixCare Health 媒體報道 — 新聞、專訪及公告。",
       readMore:         "閱讀更多",
       viewOriginal:     "查看原文",
-      backToMedia:     "所有媒體報道",
-      relatedCoverage: "相關報道",
-      source:          "來源",
+      backToMedia:      "所有媒體報道",
+      relatedCoverage:  "相關報道",
+      source:           "來源",
+      noEvents:         "暫無活動，請稍後再查看。",
+      eventsSub:        "MixCare Health 活動 — 亞太區會議、網絡研討會、工作坊及交流活動。",
+      register:         "立即報名",
     },
     categoryLabels: {
       "AI & Claims":       "AI與理賠",

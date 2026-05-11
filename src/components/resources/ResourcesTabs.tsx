@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { BookOpen, FileText, Download, Newspaper } from "lucide-react";
+import { BookOpen, FileText, Download, Newspaper, Calendar } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { localePath } from "@/lib/locale";
 import { getTranslations } from "@/translations";
 
-export type ResourceTabKey = "articles" | "case-studies" | "whitepapers" | "media-coverage";
+export type ResourceTabKey = "articles" | "case-studies" | "whitepapers" | "media-coverage" | "events";
 
 interface Tab {
   key: ResourceTabKey;
@@ -16,6 +16,7 @@ const TAB_DEFS: Tab[] = [
   { key: "case-studies",   icon: FileText  },
   { key: "whitepapers",    icon: Download  },
   { key: "media-coverage", icon: Newspaper },
+  { key: "events",         icon: Calendar  },
 ];
 
 const HREFS: Record<ResourceTabKey, string> = {
@@ -23,6 +24,7 @@ const HREFS: Record<ResourceTabKey, string> = {
   "case-studies":   "/resources/case-studies",
   "whitepapers":    "/resources/whitepapers",
   "media-coverage": "/resources/media-coverage",
+  "events":         "/resources/events",
 };
 
 interface Props {
@@ -39,6 +41,7 @@ export default function ResourcesTabs({ active, locale }: Props) {
     "case-studies":   tabs.caseStudies,
     "whitepapers":    tabs.whitepapers,
     "media-coverage": tabs.mediaCoverage,
+    "events":         tabs.events,
   };
 
   return (

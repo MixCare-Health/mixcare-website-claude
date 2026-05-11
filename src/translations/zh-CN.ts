@@ -1411,6 +1411,7 @@ export const zhCN: Translations = {
       whitepapers:   "白皮书",
       faq:           "常见问题",
       mediaCoverage: "媒体报道",
+      events:        "活动",
     },
     ui: {
       all:             "全部",
@@ -1427,9 +1428,12 @@ export const zhCN: Translations = {
       mediaCoverageSub: "MixCare Health 媒体报道 — 新闻、专访及公告。",
       readMore:         "阅读更多",
       viewOriginal:     "查看原文",
-      backToMedia:     "所有媒体报道",
-      relatedCoverage: "相关报道",
-      source:          "来源",
+      backToMedia:      "所有媒体报道",
+      relatedCoverage:  "相关报道",
+      source:           "来源",
+      noEvents:         "暂无活动，请稍后再查看。",
+      eventsSub:        "MixCare Health 活动 — 亚太区会议、网络研讨会、工作坊及交流活动。",
+      register:         "立即报名",
     },
     categoryLabels: {
       "AI & Claims":       "AI与理赔",

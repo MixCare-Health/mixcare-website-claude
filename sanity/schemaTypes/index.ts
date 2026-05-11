@@ -16,6 +16,7 @@ import { homePageType } from "./homePage";
 import { pressItemType } from "./pressItem";
 import { tableBlockType } from "./tableBlock";
 import { htmlEmbedType } from "./htmlEmbed";
+import { eventItemType } from "./eventItem";
 
 export const schemaTypes = [
   // Custom shared blocks (must be registered before types that reference them)
@@ -37,4 +38,5 @@ export const schemaTypes = [
   startNowPageType,
   partnersPageType,
   homePageType,
+  eventItemType,
 ];

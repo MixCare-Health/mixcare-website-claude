@@ -1413,6 +1413,7 @@ export const en = {
       whitepapers:   "Whitepapers",
       faq:           "FAQ",
       mediaCoverage: "Press Release",
+      events:        "Events",
     },
     ui: {
       all:             "All",
@@ -1429,9 +1430,12 @@ export const en = {
       mediaCoverageSub: "MixCare Health in the press — coverage, interviews, and announcements.",
       readMore:         "Read more",
       viewOriginal:     "View original article",
-      backToMedia:     "All Media Coverage",
-      relatedCoverage: "Related Coverage",
-      source:          "Source",
+      backToMedia:      "All Media Coverage",
+      relatedCoverage:  "Related Coverage",
+      source:           "Source",
+      noEvents:         "No events yet — check back soon.",
+      eventsSub:        "MixCare Health events — conferences, webinars, workshops, and networking across Asia-Pacific.",
+      register:         "Register",
     },
     categoryLabels: {
       "AI & Claims":       "AI & Claims",
