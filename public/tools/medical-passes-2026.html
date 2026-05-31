@@ -1,0 +1,3071 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MixCare Outpatient Plans — AI-Powered Health Benefits for Hong Kong</title>
+<meta name="description" content="Choose from MixCare's flexible outpatient plans (Plan A/B/C) or Discount Membership. Cashless visits, 1,000+ network doctors across Hong Kong and Macau, family-ready coverage." />
+<style>
+  :root {
+    color-scheme: light;
+    --primary: #0F2A47;
+    --primary-2: #1F4E78;
+    --accent: #06B6D4;
+    --accent-2: #0891B2;
+    --teal: #14B8A6;
+    --green: #10B981;
+    --green-pale: #D1FAE5;
+    --gold: #C7A35E;
+    --gold-pale: #F6EFDD;
+    --ink: #0F172A;
+    --ink-2: #334155;
+    --ink-3: #64748B;
+    --ink-4: #94A3B8;
+    --line: #E2E8F0;
+    --line-2: #CBD5E1;
+    --bg: #F8FAFC;
+    --bg-2: #F1F5F9;
+    --paper: #FFFFFF;
+    --shadow-sm: 0 1px 3px rgba(15,23,42,.06), 0 1px 2px rgba(15,23,42,.04);
+    --shadow: 0 4px 12px rgba(15,23,42,.08), 0 2px 4px rgba(15,23,42,.04);
+    --shadow-lg: 0 20px 50px -10px rgba(15,23,42,.20);
+    --shadow-xl: 0 30px 60px -15px rgba(15,23,42,.25);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink); background: white;
+    line-height: 1.6; font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { color: var(--primary-2); }
+
+  /* ============ Layout containers ============ */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .container-narrow { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+  /* ============ NAV ============ */
+  nav.topnav {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: sticky; top: 0; z-index: 100;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 24px; max-width: 1200px; margin: 0 auto;
+  }
+  .nav-logo img { height: 52px; }
+  @media (max-width: 720px) { .nav-logo img { height: 40px; } }
+  .nav-right { display: flex; align-items: center; gap: 12px; }
+  .lang-switch {
+    display: inline-flex; gap: 0; background: var(--bg-2);
+    border-radius: 7px; padding: 3px; border: 1px solid var(--line);
+  }
+  .lang-switch button {
+    border: none; background: transparent; cursor: pointer;
+    padding: 5px 10px; font-size: 12px; font-weight: 600;
+    color: var(--ink-3); border-radius: 5px;
+    font-family: inherit;
+  }
+  .lang-switch button.active { background: white; color: var(--primary); box-shadow: var(--shadow-sm); }
+  .lang-switch button:hover:not(.active) { color: var(--primary-2); }
+  @media (max-width: 720px) {
+    .lang-switch button { padding: 4px 7px; font-size: 11px; }
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 20px; border-radius: 8px;
+    font-size: 14px; font-weight: 600; font-family: inherit;
+    border: 1px solid transparent;
+    cursor: pointer; transition: all .15s;
+    text-decoration: none;
+  }
+  .btn.primary {
+    background: linear-gradient(135deg, var(--primary-2) 0%, var(--accent-2) 100%);
+    color: white; border: none;
+    box-shadow: 0 4px 12px rgba(8, 145, 178, 0.25);
+  }
+  .btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(8, 145, 178, 0.35); color: white; }
+  .btn.secondary {
+    background: white; color: var(--primary-2); border: 1px solid var(--line-2);
+  }
+  .btn.secondary:hover { border-color: var(--primary-2); color: var(--primary); }
+  .btn.lg { padding: 14px 28px; font-size: 15px; }
+
+  /* ============ HERO ============ */
+  .hero {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 50%, var(--accent-2) 100%);
+    color: white;
+    padding: 80px 0 100px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; top: -120px; right: -120px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ""; position: absolute; bottom: -100px; left: -100px;
+    width: 350px; height: 350px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(6,182,212,0.2) 0%, transparent 70%);
+  }
+  .hero-inner {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px;
+    align-items: center; position: relative; z-index: 2;
+  }
+  @media (max-width: 880px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero { padding: 60px 0 80px 0; }
+  }
+  .hero .tag {
+    display: inline-block; background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    padding: 6px 14px; border-radius: 20px;
+    font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+    margin-bottom: 24px; color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .hero h1 {
+    font-size: 52px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 880px) { .hero h1 { font-size: 36px; } }
+  .hero h1 .accent { color: #5EEAD4; }
+  .hero .lede {
+    font-size: 18px; line-height: 1.6; opacity: 0.9; margin-bottom: 32px; max-width: 540px;
+  }
+  .hero .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .hero-card {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: var(--shadow-xl);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-card::before {
+    content: ""; position: absolute; top: -50%; right: -50%;
+    width: 200%; height: 200%;
+    background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.05) 50%, transparent 60%);
+  }
+  .hero-card h3 {
+    font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    color: #5EEAD4; margin-bottom: 18px;
+  }
+  .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .hero-stat .num { font-size: 36px; font-weight: 800; line-height: 1; color: white; font-variant-numeric: tabular-nums; }
+  .hero-stat .lbl { font-size: 11px; font-weight: 600; opacity: 0.8; margin-top: 6px; }
+
+  /* ============ TRUST STRIP ============ */
+  .trust {
+    background: var(--bg-2);
+    padding: 40px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .trust .title {
+    text-align: center;
+    font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--ink-3); margin-bottom: 24px;
+  }
+  .trust .logos {
+    display: flex; align-items: center; justify-content: center; gap: 56px; flex-wrap: wrap;
+    opacity: 0.75;
+  }
+  .trust .logos img { height: 46px; filter: grayscale(100%); transition: all .2s; }
+  .trust .logos img:hover { filter: grayscale(0%); opacity: 1; transform: scale(1.05); }
+  @media (max-width: 720px) {
+    .trust .logos { gap: 32px; }
+    .trust .logos img { height: 34px; }
+  }
+
+  /* ============ SECTIONS ============ */
+  section.block { padding: 80px 0; }
+  section.block-light { background: var(--bg); }
+  @media (max-width: 720px) { section.block { padding: 60px 0; } }
+
+  .sec-head { text-align: center; margin-bottom: 50px; }
+  .sec-head .eyebrow {
+    display: inline-block;
+    font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--accent-2); margin-bottom: 12px;
+  }
+  .sec-head h2 {
+    font-size: 38px; font-weight: 800; line-height: 1.15; letter-spacing: -0.01em;
+    color: var(--primary); margin-bottom: 14px;
+  }
+  @media (max-width: 720px) { .sec-head h2 { font-size: 28px; } }
+  .sec-head .sub {
+    font-size: 17px; color: var(--ink-2); max-width: 680px; margin: 0 auto;
+  }
+
+  /* ============ MODEL TABS (Capitation vs Self-Funded) ============ */
+  .model-tabs {
+    display: inline-flex;
+    background: var(--bg-2);
+    border-radius: 10px;
+    padding: 4px;
+    border: 1px solid var(--line);
+    margin: 0 auto 32px auto;
+    gap: 2px;
+  }
+  .model-tabs button {
+    border: none; background: transparent; cursor: pointer;
+    padding: 10px 22px;
+    font-size: 13px; font-weight: 700;
+    color: var(--ink-3);
+    border-radius: 7px;
+    font-family: inherit;
+    transition: all .2s;
+    letter-spacing: 0.01em;
+  }
+  .model-tabs button.active {
+    background: white;
+    color: var(--primary);
+    box-shadow: var(--shadow-sm);
+  }
+  .model-tabs button:hover:not(.active) { color: var(--primary-2); }
+  .model-tabs-wrap { text-align: center; }
+  .pricing-tab { display: none; }
+  .pricing-tab.active { display: block; }
+
+  /* ============ SELF-FUNDED ============ */
+  .selffunded-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+    align-items: stretch;
+  }
+  @media (max-width: 880px) { .selffunded-grid { grid-template-columns: 1fr; } }
+  .sf-plan {
+    background: white;
+    border: 2px solid var(--line);
+    border-radius: 14px;
+    padding: 28px 24px 24px 24px;
+    position: relative;
+    display: flex; flex-direction: column;
+    height: 100%;
+    transition: all .2s;
+  }
+  .sf-plan:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
+  .sf-plan.well { border-color: #14B8A6; background: linear-gradient(180deg, #CCFBF1 0%, white 30%); }
+  .sf-plan.med { border-color: var(--primary-2); background: linear-gradient(180deg, var(--primary-pale) 0%, white 30%); box-shadow: var(--shadow); }
+  .sf-plan.health { border-color: var(--gold); background: linear-gradient(180deg, var(--gold-pale) 0%, white 30%); }
+  .sf-plan.ffs { border-color: var(--green); background: linear-gradient(180deg, #DCFCE7 0%, white 30%); }
+  .sf-plan .ribbon {
+    position: absolute; top: -11px; right: 18px;
+    color: white;
+    font-size: 9px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 20px;
+  }
+  .sf-plan.well .ribbon { background: #14B8A6; }
+  .sf-plan.med .ribbon { background: var(--primary-2); }
+  .sf-plan.health .ribbon { background: var(--gold); }
+  .sf-plan.ffs .ribbon { background: var(--green); }
+  .sf-plan .sf-tag {
+    font-size: 22px; font-weight: 900; letter-spacing: 0.12em;
+    margin-bottom: 6px;
+  }
+  .sf-plan.well .sf-tag { color: #0D9488; }
+  .sf-plan.med .sf-tag { color: var(--primary); }
+  .sf-plan.health .sf-tag { color: #B45309; }
+  .sf-plan.ffs .sf-tag { color: #15803D; }
+  .sf-plan .sf-sub { font-size: 13px; color: var(--ink-2); margin-bottom: 14px; line-height: 1.45; min-height: 96px; }
+  .sf-plan .sf-funding {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em;
+    padding: 5px 10px; border-radius: 999px;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    border: 1.5px solid;
+  }
+  .sf-plan.well .sf-funding,
+  .sf-plan.med .sf-funding,
+  .sf-plan.health .sf-funding {
+    background: #EFF6FF; color: #1D4ED8; border-color: #BFDBFE;
+  }
+  .sf-plan.ffs .sf-funding {
+    background: #FEF3C7; color: #B45309; border-color: #FCD34D;
+  }
+  .sf-plan .sf-funding .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex: none; }
+  .sf-plan .sf-price {
+    font-size: 30px; font-weight: 800; color: var(--primary);
+    line-height: 1.1; font-variant-numeric: tabular-nums;
+    display: block;
+  }
+  .sf-plan .sf-price .lbl { display: block; font-size: 12.5px; font-weight: 500; color: var(--ink-3); margin-top: 4px; }
+  .sf-plan .sf-price-sub { font-size: 12px; color: var(--ink-3); margin-top: 6px; margin-bottom: 18px; min-height: 16px; }
+  .sf-plan ul { list-style: none; padding: 0; margin: 0 0 20px 0; flex: 1; }
+  .sf-plan ul li {
+    font-size: 13px; color: var(--ink-2);
+    padding: 7px 0 7px 28px;
+    position: relative; line-height: 1.4;
+  }
+  .sf-plan ul li::before {
+    content: "✓";
+    color: var(--green); font-weight: 800;
+    position: absolute; left: 0; top: 7px;
+    width: 18px; height: 18px;
+    background: var(--green-pale); border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 11px;
+  }
+  .sf-plan ul li.excl { color: var(--ink-4); }
+  .sf-plan ul li.excl::before { content: "—"; color: var(--ink-4); background: var(--bg); font-size: 10px; }
+  .sf-plan .card-cta {
+    display: block; text-align: center;
+    padding: 12px 16px; border-radius: 8px;
+    font-size: 14px; font-weight: 700;
+    color: white; text-decoration: none;
+    transition: all .15s;
+  }
+  .sf-plan.well .card-cta { background: linear-gradient(135deg, #14B8A6 0%, #0D9488 100%); }
+  .sf-plan.med .card-cta { background: linear-gradient(135deg, var(--primary-2) 0%, var(--primary) 100%); }
+  .sf-plan.health .card-cta { background: linear-gradient(135deg, var(--gold) 0%, #B8923F 100%); }
+  .sf-plan.ffs .card-cta { background: linear-gradient(135deg, var(--green) 0%, #15803D 100%); }
+  .sf-plan .card-cta:hover { transform: translateY(-1px); }
+
+  .sf-notes {
+    margin-top: 26px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 22px;
+  }
+  .sf-notes h3 {
+    font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--ink-3); margin-bottom: 10px;
+  }
+  .sf-notes ul { list-style: none; padding: 0; margin: 0; }
+  .sf-notes ul li {
+    font-size: 12px; color: var(--ink-2); line-height: 1.55;
+    padding: 4px 0 4px 16px; position: relative;
+  }
+  .sf-notes ul li::before {
+    content: "•"; color: var(--accent-2); font-weight: 800;
+    position: absolute; left: 0;
+  }
+  .sf-notes ul li strong { color: var(--primary); }
+
+  /* ============ PRICING CARDS ============ */
+  .pricing-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+    align-items: stretch;  /* every card stretches to the tallest card's height */
+  }
+  @media (max-width: 1300px) { .pricing-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 880px)  { .pricing-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px)  { .pricing-grid { grid-template-columns: 1fr; } }
+
+  .plan-card {
+    background: white;
+    border: 2px solid var(--line);
+    border-radius: 14px;
+    padding: 24px 20px 22px 20px;
+    position: relative;
+    transition: all .2s;
+    display: flex; flex-direction: column;
+    height: 100%;  /* fill the grid cell so all cards in a row are equal height */
+  }
+  .plan-card:hover {
+    transform: translateY(-4px); box-shadow: var(--shadow-lg);
+    border-color: var(--accent);
+  }
+  .plan-card.featured {
+    border-color: var(--gold);
+    background: linear-gradient(180deg, var(--gold-pale) 0%, white 40%);
+    box-shadow: var(--shadow);
+  }
+  .plan-card.vip {
+    border-color: #7C3AED;
+    background: linear-gradient(180deg, #EDE9FE 0%, white 40%);
+  }
+  .plan-card.ffs {
+    border-color: var(--green);
+    background: linear-gradient(180deg, var(--green-pale) 0%, white 40%);
+  }
+  .plan-card .ribbon {
+    position: absolute; top: -12px; right: 16px;
+    background: var(--gold); color: white;
+    font-size: 9px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+    padding: 5px 10px; border-radius: 20px;
+    white-space: nowrap;
+  }
+  .plan-card.vip .ribbon { background: #7C3AED; }
+  .plan-card.ffs .ribbon { background: var(--green); }
+  .plan-card .tier {
+    font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--accent-2); margin-bottom: 4px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .plan-card .tier-icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 22px; height: 22px; border-radius: 6px;
+    background: var(--primary-pale); color: var(--primary-2);
+    font-size: 12px;
+  }
+  .plan-card.featured .tier { color: #B45309; }
+  .plan-card.featured .tier-icon { background: var(--gold-pale); color: #B45309; }
+  .plan-card.vip .tier { color: #6D28D9; }
+  .plan-card.vip .tier-icon { background: #EDE9FE; color: #6D28D9; }
+  .plan-card.ffs .tier { color: #047857; }
+  .plan-card.ffs .tier-icon { background: var(--green-pale); color: #047857; }
+  .plan-card .name {
+    font-size: 18px; font-weight: 800; color: var(--primary); margin-bottom: 6px;
+    line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .plan-card .desc {
+    font-size: 12.5px; color: var(--ink-2); line-height: 1.5; margin-bottom: 16px;
+    min-height: 95px;  /* Reserve enough space for ~5 lines so all cards align */
+  }
+  @media (max-width: 1300px) { .plan-card .desc { min-height: 0; } }
+  .plan-card .price {
+    font-size: 26px; font-weight: 800; color: var(--primary);
+    line-height: 1.1; font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .plan-card .price .small { font-size: 12px; font-weight: 500; color: var(--ink-3); }
+  .plan-card .price-sub {
+    font-size: 11px; color: var(--ink-3); margin-top: 5px; margin-bottom: 16px;
+  }
+  .plan-card ul {
+    list-style: none; padding: 0; margin: 0 0 20px 0; flex: 1;
+  }
+  .plan-card ul li {
+    font-size: 12.5px; color: var(--ink-2); padding: 6px 0;
+    display: flex; align-items: flex-start; gap: 8px;
+    line-height: 1.45;
+  }
+  .plan-card ul li::before {
+    content: "✓"; color: var(--green); font-weight: 800; flex-shrink: 0;
+    width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;
+    background: var(--green-pale); border-radius: 50%; font-size: 10px;
+    margin-top: 1px;
+  }
+  .plan-card ul li.excl { color: var(--ink-4); }
+  .plan-card ul li.excl::before {
+    content: "—"; color: var(--ink-4); background: var(--bg); font-size: 10px;
+  }
+
+  /* Inpatient badge inside VIP plan card */
+  .inpatient-badge {
+    margin: 4px 0 14px 0;
+    padding: 10px 12px;
+    background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+    color: white;
+    border-radius: 10px;
+    display: flex; align-items: center; gap: 10px;
+    box-shadow: 0 4px 10px rgba(124,58,237,0.25);
+  }
+  /* Non-panel highlight badge — cyan/accent variant */
+  .nonpanel-badge {
+    margin: 4px 0 14px 0;
+    padding: 10px 12px;
+    background: linear-gradient(135deg, #0891B2 0%, #06B6D4 100%);
+    color: white;
+    border-radius: 10px;
+    display: flex; align-items: center; gap: 10px;
+    box-shadow: 0 4px 10px rgba(6,182,212,0.25);
+  }
+  .nonpanel-badge .np-icon { font-size: 22px; line-height: 1; flex-shrink: 0; }
+  .nonpanel-badge .np-title {
+    font-size: 13px; font-weight: 800; letter-spacing: .01em; line-height: 1.2;
+  }
+  .nonpanel-badge .np-sub {
+    font-size: 10.5px; opacity: 0.9; margin-top: 2px;
+  }
+  /* Free webinar tag inline */
+  .free-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, #16A34A 0%, #15803D 100%);
+    color: white;
+    font-size: 9px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+    padding: 1px 6px; border-radius: 4px;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+  .inpatient-badge .ib-icon { font-size: 22px; line-height: 1; flex-shrink: 0; }
+  .inpatient-badge .ib-title {
+    font-size: 13px; font-weight: 800; letter-spacing: .01em; line-height: 1.2;
+  }
+  .inpatient-badge .ib-sub {
+    font-size: 10.5px; opacity: 0.9; margin-top: 2px;
+  }
+
+  /* Dedicated insurer-partners section */
+  .insurer-section {
+    background: linear-gradient(180deg, white 0%, var(--bg) 100%);
+    padding: 60px 0;
+  }
+  .insurer-section .sec-head { margin-bottom: 32px; }
+  .insurer-section .insurer-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px;
+    max-width: 920px; margin: 0 auto;
+  }
+  @media (max-width: 880px) { .insurer-section .insurer-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 480px) { .insurer-section .insurer-grid { grid-template-columns: repeat(2, 1fr); } }
+  .insurer-tile {
+    background: white; border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 16px;
+    height: 78px;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    transition: all .2s;
+    box-shadow: var(--shadow-sm);
+    position: relative; overflow: hidden;
+  }
+  .insurer-tile:hover {
+    border-color: #7C3AED;
+    box-shadow: 0 8px 20px rgba(124,58,237,0.18);
+    transform: translateY(-2px);
+  }
+  .insurer-tile img {
+    max-width: 100%; max-height: 42px; object-fit: contain;
+    transition: opacity .2s;
+  }
+  .insurer-tile .tile-text {
+    font-size: 14px; font-weight: 700; color: var(--ink);
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+  }
+  .insurer-tile.text-only .tile-text { opacity: 1; pointer-events: auto; }
+  .insurer-tile.text-only img { display: none; }
+  .insurer-section .insurer-note {
+    text-align: center; margin-top: 22px; font-size: 12px; color: var(--ink-3);
+  }
+  .insurer-section .insurer-note a {
+    color: var(--accent-2); font-weight: 700; text-decoration: none;
+  }
+
+  /* Insurer partner logos (DEPRECATED — kept for backward compat) */
+  .insurer-row {
+    margin-top: 14px; padding-top: 14px;
+    border-top: 1px dashed var(--line);
+  }
+  .insurer-label {
+    font-size: 10px; font-weight: 700; color: var(--ink-3);
+    text-transform: uppercase; letter-spacing: .06em;
+    margin-bottom: 10px;
+  }
+  .insurer-chips {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;
+  }
+  .insurer-chip {
+    background: white; border: 1px solid var(--line);
+    padding: 8px 6px; border-radius: 6px;
+    font-size: 10px; font-weight: 700; color: var(--ink);
+    box-shadow: 0 1px 2px rgba(15,23,42,.04);
+    letter-spacing: 0.01em;
+    display: flex; align-items: center; justify-content: center;
+    height: 32px;
+    text-decoration: none;
+    transition: all .15s;
+    overflow: hidden;
+    position: relative;
+  }
+  .insurer-chip:hover {
+    border-color: #7C3AED; box-shadow: 0 4px 10px rgba(124,58,237,0.15);
+    transform: translateY(-1px); color: var(--ink);
+  }
+  .insurer-chip img {
+    max-width: 100%; max-height: 22px; object-fit: contain;
+  }
+  /* If image fails to load, the text fallback inside <span class="chip-text"> shows */
+  .insurer-chip .chip-text {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+  }
+  .insurer-chip.text-only .chip-text {
+    position: static; opacity: 1; pointer-events: auto;
+  }
+  .insurer-chip.more {
+    background: var(--bg); color: var(--ink-3); font-weight: 600;
+    border-style: dashed; grid-column: span 3;
+    text-align: center; font-size: 11px;
+  }
+  .plan-card .card-cta {
+    display: block; text-align: center;
+    padding: 11px 16px; border-radius: 8px;
+    font-size: 13px; font-weight: 600;
+    background: var(--bg); color: var(--primary-2);
+    border: 1px solid var(--line-2);
+    transition: all .15s;
+  }
+  .plan-card .card-cta:hover {
+    background: var(--primary-2); color: white; border-color: var(--primary-2);
+  }
+  .plan-card.featured .card-cta {
+    background: linear-gradient(135deg, var(--gold) 0%, #B8923F 100%);
+    color: white; border: none;
+    box-shadow: 0 4px 12px rgba(199, 163, 94, 0.3);
+  }
+  .plan-card.featured .card-cta:hover { transform: translateY(-1px); }
+  .plan-card.ffs .card-cta {
+    background: linear-gradient(135deg, var(--green) 0%, #059669 100%);
+    color: white; border: none;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  }
+
+  .pricing-note {
+    text-align: center; font-size: 12px; color: var(--ink-3); margin-top: 24px; line-height: 1.6;
+    max-width: 720px; margin-left: auto; margin-right: auto;
+  }
+
+  /* ============ HOW IT WORKS ============ */
+  .steps-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+  }
+  @media (max-width: 880px) { .steps-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .steps-grid { grid-template-columns: 1fr; } }
+
+  .step {
+    background: white; border: 1px solid var(--line); border-radius: 14px;
+    padding: 28px 24px; text-align: left;
+    transition: all .2s;
+  }
+  .step:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+  .step .step-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+    color: white; font-weight: 800; font-size: 16px;
+    margin-bottom: 18px;
+  }
+  .step h3 {
+    font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 10px;
+  }
+  .step p { font-size: 14px; color: var(--ink-2); line-height: 1.55; }
+
+  /* ============ WHY US (feature grid) ============ */
+  .features-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  @media (max-width: 880px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .features-grid { grid-template-columns: 1fr; } }
+  .feature {
+    background: white; border: 1px solid var(--line);
+    border-radius: 14px; padding: 26px 24px;
+  }
+  .feature .icon {
+    width: 42px; height: 42px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+    color: white; display: inline-flex; align-items: center; justify-content: center;
+    font-size: 22px; font-weight: 800;
+    margin-bottom: 16px;
+  }
+  .feature h3 { font-size: 17px; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+  .feature p { font-size: 14px; color: var(--ink-2); line-height: 1.55; }
+
+  /* ============ COMPARISON TABLE ============ */
+  .compare-table {
+    background: white; border-radius: 16px; box-shadow: var(--shadow);
+    overflow: hidden; border: 1px solid var(--line);
+  }
+  .compare-table table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+  .compare-table col.feature-col { width: 22%; }
+  .compare-table col.plan-col { width: 15.6%; }
+  .compare-table th, .compare-table td {
+    padding: 12px 10px; text-align: center;
+    border-bottom: 1px solid var(--line); font-size: 12.5px;
+    vertical-align: middle; word-wrap: break-word;
+  }
+  .compare-table th {
+    background: var(--bg); font-weight: 700; font-size: 11px;
+    text-transform: uppercase; letter-spacing: .04em; color: var(--ink-3);
+    padding: 14px 10px;
+  }
+  .compare-table th.featured-h {
+    background: var(--gold-pale); color: #B45309;
+  }
+  .compare-table th.vip-h {
+    background: #EDE9FE; color: #6D28D9;
+  }
+  .compare-table th.ffs-h {
+    background: var(--green-pale); color: #047857;
+  }
+  .compare-table td.svc {
+    font-weight: 700; color: var(--primary);
+    text-align: left;
+    font-size: 13px;
+  }
+  .compare-table td.num { text-align: center; font-variant-numeric: tabular-nums; font-weight: 500; color: var(--ink-2); }
+  .compare-table td.col-featured { background: rgba(199, 163, 94, 0.04); }
+  .compare-table td.col-vip { background: rgba(124, 58, 237, 0.04); }
+  .compare-table td.col-ffs { background: rgba(16, 185, 129, 0.04); }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table .check { color: var(--green); font-weight: 800; font-size: 16px; }
+  .compare-table .cross { color: var(--ink-4); }
+  .compare-table .check-50 { color: var(--green); font-weight: 700; font-size: 12px; line-height: 1.3; display: inline-block; }
+  .compare-table .panel-only-pill {
+    display: inline-block; margin-left: 6px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.03em;
+    color: var(--primary); background: var(--primary-pale);
+    border: 1px solid #BFDBFE;
+    padding: 2px 7px; border-radius: 999px;
+    vertical-align: middle; text-transform: uppercase;
+  }
+  .compare-table .panel-contact { color: var(--primary); font-weight: 600; font-size: 12.5px; font-style: italic; }
+  @media (max-width: 720px) {
+    .compare-table { overflow-x: auto; }
+    .compare-table th, .compare-table td { padding: 10px 8px; font-size: 12px; }
+  }
+
+  /* ============ PANEL OVERVIEW ============ */
+  .panel-section {
+    background: linear-gradient(180deg, white 0%, var(--bg) 100%);
+  }
+  .panel-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 30px;
+    margin-bottom: 36px;
+  }
+  @media (max-width: 880px) { .panel-grid { grid-template-columns: 1fr; } }
+  .region-card {
+    background: white; border: 1px solid var(--line);
+    border-radius: 16px; padding: 28px 30px;
+    box-shadow: var(--shadow-sm);
+    position: relative; overflow: hidden;
+  }
+  .region-card .region-head {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 22px;
+  }
+  .region-card .region-flag {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-2) 0%, var(--accent-2) 100%);
+    color: white; display: inline-flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 800; flex-shrink: 0;
+  }
+  .region-card .region-flag.macau { background: linear-gradient(135deg, var(--green) 0%, var(--accent-2) 100%); }
+  .region-card .region-name {
+    font-size: 13px; font-weight: 700; color: var(--ink-3);
+    text-transform: uppercase; letter-spacing: .06em;
+  }
+  .region-card .region-count {
+    font-size: 44px; font-weight: 800; color: var(--primary);
+    line-height: 1; font-variant-numeric: tabular-nums;
+  }
+  .region-card .region-sub {
+    font-size: 12px; color: var(--ink-3); margin-top: 4px;
+  }
+  .region-stats {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+    margin-top: 12px;
+  }
+  .region-stat {
+    background: var(--bg); border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .region-stat .rs-num {
+    font-size: 24px; font-weight: 800; color: var(--accent-2);
+    line-height: 1; font-variant-numeric: tabular-nums;
+  }
+  .region-stat .rs-lbl {
+    font-size: 11px; color: var(--ink-2); font-weight: 600;
+    margin-top: 6px; line-height: 1.4;
+  }
+  .panel-total-card {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent-2) 100%);
+    color: white; text-align: center;
+    padding: 26px 30px; border-radius: 16px;
+    margin-bottom: 26px;
+    box-shadow: var(--shadow-lg);
+  }
+  .panel-total-card .pt-eyebrow {
+    font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    color: #5EEAD4; margin-bottom: 8px;
+  }
+  .panel-total-card .pt-num {
+    font-size: 56px; font-weight: 800; line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  @media (max-width: 720px) { .panel-total-card .pt-num { font-size: 42px; } }
+  .panel-total-card .pt-sub {
+    font-size: 13px; opacity: 0.85; margin-top: 6px;
+  }
+  .panel-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 20px; flex-wrap: wrap;
+    background: white; border: 1px solid var(--line);
+    border-radius: 12px; padding: 18px 24px;
+  }
+  .panel-footer .pf-label {
+    font-size: 12px; color: var(--ink-3); font-weight: 600;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .panel-footer .pf-label strong { color: var(--primary); font-weight: 700; font-size: 13px; }
+
+  /* ============ WELLNESS CALLOUT ============ */
+  .wellness-callout {
+    margin-top: 28px;
+    background: linear-gradient(135deg, #ECFEFF 0%, #CFFAFE 100%);
+    border: 1px solid var(--accent);
+    border-radius: 14px;
+    padding: 22px 28px;
+    display: flex; align-items: center; gap: 22px;
+    box-shadow: var(--shadow-sm);
+  }
+  @media (max-width: 720px) { .wellness-callout { flex-direction: column; align-items: flex-start; padding: 20px 22px; } }
+  .wellness-callout .wc-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+    color: white; display: inline-flex; align-items: center; justify-content: center;
+    font-size: 24px; flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(6, 182, 212, 0.35);
+  }
+  .wellness-callout .wc-body { flex: 1; }
+  .wellness-callout .wc-title {
+    font-size: 16px; font-weight: 800; color: var(--primary); margin-bottom: 4px;
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  }
+  .wellness-callout .wc-title .badge-included {
+    display: inline-block; background: var(--accent-2); color: white;
+    font-size: 10px; font-weight: 800; padding: 3px 9px; border-radius: 12px;
+    letter-spacing: .06em; text-transform: uppercase;
+  }
+  .wellness-callout .wc-desc {
+    font-size: 13.5px; color: var(--ink-2); line-height: 1.55;
+  }
+  .wellness-callout .btn { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%); white-space: nowrap; flex-shrink: 0; }
+
+  /* ============ FAMILY CALLOUT ============ */
+  .family-callout {
+    margin-top: 28px;
+    background: linear-gradient(135deg, var(--green-pale) 0%, #ECFDF5 100%);
+    border: 1px solid var(--green);
+    border-radius: 14px;
+    padding: 22px 28px;
+    display: flex; align-items: center; gap: 22px;
+    box-shadow: var(--shadow-sm);
+  }
+  @media (max-width: 720px) { .family-callout { flex-direction: column; align-items: flex-start; padding: 20px 22px; } }
+  .family-callout .fc-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--green) 0%, #059669 100%);
+    color: white; display: inline-flex; align-items: center; justify-content: center;
+    font-size: 26px; flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.35);
+  }
+  .family-callout .fc-body { flex: 1; }
+  .family-callout .fc-title {
+    font-size: 16px; font-weight: 800; color: var(--primary); margin-bottom: 4px;
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  }
+  .family-callout .fc-title .badge-new {
+    display: inline-block; background: var(--green); color: white;
+    font-size: 10px; font-weight: 800; padding: 3px 9px; border-radius: 12px;
+    letter-spacing: .06em; text-transform: uppercase;
+  }
+  .family-callout .fc-desc {
+    font-size: 13.5px; color: var(--ink-2); line-height: 1.55;
+  }
+  .family-callout .fc-eligible {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px;
+  }
+  .family-callout .fc-chip {
+    background: white; border: 1px solid var(--green);
+    color: #047857; font-size: 12px; font-weight: 700;
+    padding: 4px 12px; border-radius: 20px;
+    display: inline-flex; align-items: center; gap: 5px;
+  }
+
+  /* ============ CUSTOMISE CALLOUT ============ */
+  .customise-callout {
+    margin-top: 28px;
+    background: linear-gradient(135deg, #FFFBEB 0%, var(--gold-pale) 100%);
+    border: 1px solid var(--gold);
+    border-radius: 14px;
+    padding: 22px 28px;
+    display: flex; align-items: center; gap: 22px;
+    box-shadow: var(--shadow-sm);
+  }
+  @media (max-width: 720px) { .customise-callout { flex-direction: column; align-items: flex-start; padding: 20px 22px; } }
+  .customise-callout .cc-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--gold) 0%, #B8923F 100%);
+    color: white; display: inline-flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(199, 163, 94, 0.35);
+  }
+  .customise-callout .cc-body { flex: 1; }
+  .customise-callout .cc-title {
+    font-size: 16px; font-weight: 800; color: var(--primary); margin-bottom: 4px;
+  }
+  .customise-callout .cc-desc {
+    font-size: 13.5px; color: var(--ink-2); line-height: 1.55;
+  }
+  .customise-callout .btn { background: linear-gradient(135deg, #B45309 0%, #B8923F 100%); white-space: nowrap; flex-shrink: 0; }
+
+  /* ============ LIFESTYLE BANNER (image section) ============ */
+  .lifestyle-banner {
+    position: relative;
+    min-height: 360px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex; align-items: center;
+    border-radius: 0;
+    overflow: hidden;
+  }
+  .lifestyle-banner::before {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(110deg, rgba(15, 42, 71, 0.85) 0%, rgba(15, 42, 71, 0.55) 50%, rgba(15, 42, 71, 0.1) 100%);
+  }
+  .lifestyle-banner .lb-inner {
+    position: relative; z-index: 2; max-width: 600px;
+    padding: 60px 28px;
+    color: white;
+  }
+  .lifestyle-banner .lb-eyebrow {
+    font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: #5EEAD4; margin-bottom: 14px;
+  }
+  .lifestyle-banner h2 {
+    font-size: 36px; font-weight: 800; line-height: 1.2; letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 720px) { .lifestyle-banner h2 { font-size: 26px; } }
+  .lifestyle-banner p {
+    font-size: 16px; opacity: 0.92; line-height: 1.6; margin-bottom: 22px;
+    max-width: 480px;
+  }
+
+  /* Hero image (right column complement to stats card) */
+  .hero-imagery {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .hero-photo {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    background: rgba(255,255,255,0.08);
+    aspect-ratio: 4/3;
+    background-size: cover; background-position: center;
+  }
+  .hero-photo-caption {
+    font-size: 11px; opacity: 0.7; text-align: center;
+  }
+
+  /* ============ STATS BAND ============ */
+  .stats-band {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
+    color: white;
+    padding: 60px 0;
+  }
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px;
+    text-align: center;
+  }
+  @media (max-width: 720px) { .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; } }
+  .stat .stat-num {
+    font-size: 44px; font-weight: 800; color: #5EEAD4;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .stat .stat-lbl {
+    font-size: 13px; font-weight: 600; opacity: 0.85;
+    margin-top: 10px; line-height: 1.4;
+  }
+
+  /* ============ COMPLIANCE ============ */
+  .compliance {
+    background: var(--bg);
+    padding: 60px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .compliance-inner {
+    display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; align-items: center;
+  }
+  @media (max-width: 880px) { .compliance-inner { grid-template-columns: 1fr; gap: 30px; } }
+  .compliance h3 {
+    font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--accent-2); margin-bottom: 14px;
+  }
+  .compliance h2 {
+    font-size: 28px; font-weight: 800; color: var(--primary); line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  .compliance p { font-size: 15px; color: var(--ink-2); line-height: 1.6; }
+  .badges { display: flex; flex-wrap: wrap; gap: 14px; }
+  .badge {
+    background: white; border: 1px solid var(--line);
+    border-radius: 12px; padding: 18px 22px;
+    box-shadow: var(--shadow-sm);
+    display: flex; flex-direction: column;
+    min-width: 160px;
+  }
+  .badge .b-icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: var(--accent); color: white;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .badge .b-name { font-size: 14px; font-weight: 700; color: var(--primary); }
+  .badge .b-desc { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+
+  /* ============ FINAL CTA ============ */
+  .final-cta {
+    background: linear-gradient(135deg, var(--accent-2) 0%, var(--primary) 100%);
+    color: white;
+    padding: 70px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta::before {
+    content: ""; position: absolute; top: -50%; left: -10%;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(94, 234, 212, 0.15) 0%, transparent 70%);
+  }
+  .final-cta-inner { position: relative; z-index: 2; }
+  .final-cta h2 {
+    font-size: 36px; font-weight: 800; line-height: 1.2;
+    margin-bottom: 16px; max-width: 700px; margin-left: auto; margin-right: auto;
+  }
+  @media (max-width: 720px) { .final-cta h2 { font-size: 26px; } }
+  .final-cta p {
+    font-size: 17px; opacity: 0.9; margin-bottom: 32px;
+    max-width: 600px; margin-left: auto; margin-right: auto;
+  }
+  .final-cta .cta-row { display: inline-flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .final-cta .btn.primary {
+    background: white; color: var(--primary);
+  }
+  .final-cta .btn.primary:hover { background: #5EEAD4; color: var(--primary); }
+  .final-cta .btn.secondary {
+    background: transparent; color: white; border: 1px solid rgba(255,255,255,0.4);
+  }
+  .final-cta .btn.secondary:hover { background: rgba(255,255,255,0.1); color: white; }
+
+  /* ============ BROKER FOOTER ============ */
+  .broker-footer {
+    background: white;
+    padding: 40px 0;
+    border-top: 1px solid var(--line);
+  }
+  .broker-footer-inner {
+    display: flex; justify-content: space-between; align-items: center; gap: 30px;
+    flex-wrap: wrap;
+  }
+  .broker-block { display: flex; align-items: center; gap: 16px; }
+  .broker-logo img { max-height: 48px; max-width: 160px; object-fit: contain; }
+  .broker-info .name { font-size: 15px; font-weight: 700; color: var(--primary); }
+  .broker-info .sub { font-size: 13px; color: var(--ink-3); }
+  .broker-info a { color: var(--accent-2); }
+
+  /* ============ MAIN FOOTER ============ */
+  footer.site-footer {
+    background: var(--primary);
+    color: white;
+    padding: 40px 0 24px 0;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 880px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
+  footer .ft-logo img { height: 32px; margin-bottom: 16px; filter: brightness(0) invert(1); }
+  footer .ft-tagline { font-size: 13px; opacity: 0.7; max-width: 280px; line-height: 1.5; }
+  footer h4 { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 14px; opacity: 0.9; }
+  footer ul { list-style: none; padding: 0; }
+  footer ul li { padding: 4px 0; }
+  footer a { color: rgba(255,255,255,0.7); font-size: 13px; text-decoration: none; }
+  footer a:hover { color: white; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 18px; font-size: 12px; opacity: 0.6;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+
+  /* ============ Broker Customize drawer ============ */
+  .customize-toggle {
+    position: fixed; right: 20px; bottom: 20px; z-index: 200;
+    background: linear-gradient(135deg, var(--primary-2) 0%, var(--accent-2) 100%);
+    color: white; border: none;
+    padding: 12px 18px; border-radius: 24px;
+    font-size: 13px; font-weight: 600; cursor: pointer;
+    box-shadow: var(--shadow-lg);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .customize-toggle:hover { transform: translateY(-2px); }
+  .customize-drawer {
+    position: fixed; right: 20px; bottom: 70px;
+    background: white; border-radius: 16px;
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--line);
+    width: 340px; max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    z-index: 200;
+    transform: translateY(20px); opacity: 0; pointer-events: none;
+    transition: all .2s;
+  }
+  .customize-drawer.open { transform: translateY(0); opacity: 1; pointer-events: all; }
+  .cd-header {
+    padding: 16px 20px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    border-radius: 16px 16px 0 0;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .cd-header h4 {
+    font-size: 13px; font-weight: 700; color: var(--primary);
+    text-transform: uppercase; letter-spacing: .06em;
+  }
+  .cd-close { background: none; border: none; cursor: pointer; font-size: 20px; color: var(--ink-3); padding: 0; }
+  .cd-body { padding: 16px 20px; }
+  .cd-body .field { margin-bottom: 12px; }
+  .cd-body label {
+    display: block; font-size: 11px; font-weight: 600; color: var(--ink-2);
+    margin-bottom: 4px; letter-spacing: .04em;
+  }
+  .cd-body input, .cd-body textarea {
+    width: 100%; padding: 7px 10px; font-size: 13px;
+    border: 1px solid var(--line-2); border-radius: 6px;
+    font-family: inherit; color: var(--ink);
+  }
+  .cd-body input:focus, .cd-body textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(6,182,212,0.15); }
+  .cd-actions { display: flex; gap: 8px; padding: 12px 20px; border-top: 1px solid var(--line); background: var(--bg); border-radius: 0 0 16px 16px; }
+  .cd-actions .btn { padding: 7px 14px; font-size: 12px; flex: 1; justify-content: center; }
+  .file-input-wrap {
+    border: 2px dashed var(--line-2); border-radius: 6px;
+    padding: 8px; text-align: center; cursor: pointer;
+    background: var(--bg);
+  }
+  .file-input-wrap:hover { border-color: var(--accent); background: rgba(6,182,212,0.05); }
+  .file-input-wrap input[type="file"] { display: none; }
+  .file-input-wrap .file-label { font-size: 11px; color: var(--ink-2); font-weight: 600; }
+
+  /* ============================================================
+     Print / PDF stylesheet
+     Goal: clean A4-friendly layout, smart page breaks, force colour
+  ============================================================ */
+  @media print {
+    /* One tall continuous page when printed — no page breaks */
+    @page { size: 297mm 1500mm; margin: 14mm 14mm; }
+    /* Disable all forced page breaks */
+    .page-break, section { page-break-before: auto !important; page-break-after: auto !important; }
+
+    /* Force colour printing on all gradients / backgrounds */
+    *, *::before, *::after {
+      print-color-adjust: exact !important;
+      -webkit-print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+
+    html, body { background: white !important; font-size: 12pt; }
+
+    /* Hide interactive / nav elements */
+    nav.topnav,
+    .customize-toggle,
+    .customize-drawer,
+    .lang-switch,
+    #navCta, #heroCta, #brokerCtaLink, #finalCta,
+    .card-cta, .cta-row { display: none !important; }
+
+    /* Tighter container & section spacing */
+    .container, .container-narrow { padding: 0 14px; max-width: 100%; }
+    section.block { padding: 28px 0; }
+    .sec-head { margin-bottom: 26px; }
+    .sec-head h2 { font-size: 26pt; }
+    .sec-head .sub { font-size: 13pt; max-width: 100%; }
+    .sec-head .eyebrow { font-size: 10pt; }
+
+    /* HERO — keep brand gradient but compact */
+    .hero { padding: 34px 0 28px 0; page-break-after: avoid; }
+    .hero h1 { font-size: 30pt; line-height: 1.15; margin-bottom: 12px; }
+    .hero .lede { font-size: 13pt; margin-bottom: 18px; max-width: 100%; }
+    .hero .tag { padding: 5px 12px; font-size: 9pt; margin-bottom: 14px; }
+    .hero-inner {
+      display: flex !important; flex-direction: row !important;
+      gap: 26px; align-items: center;
+    }
+    .hero-inner > div:first-child { flex: 1.5; }
+    .hero-imagery { flex: 1; }
+    .hero-imagery { gap: 12px; }
+    .hero-card { padding: 20px; border-radius: 12px; }
+    .hero-card h3 { font-size: 9pt; margin-bottom: 12px; }
+    .hero-stats { gap: 16px; }
+    .hero-stat .num { font-size: 26pt; }
+    .hero-stat .lbl { font-size: 9pt; }
+
+    /* TRUST STRIP */
+    .trust { padding: 22px 0; page-break-inside: avoid; }
+    .trust .title { font-size: 10pt; margin-bottom: 14px; }
+    .trust .logos { gap: 30px; }
+    .trust .logos img { height: 36px; filter: grayscale(0%); opacity: 1; }
+
+    /* PRICING — 3 cards per row (5 plans → 2 rows: A/B/C + VIP/Discount) */
+    .pricing-grid {
+      display: flex !important; flex-direction: row !important; flex-wrap: wrap !important;
+      gap: 12px !important; align-items: stretch !important;
+    }
+    .plan-card { flex: 0 0 calc(33.333% - 8px); min-width: 0; box-sizing: border-box; }
+    .plan-card {
+      padding: 18px 14px;
+      border-width: 1.5px;
+      page-break-inside: avoid;
+      break-inside: avoid;
+      box-shadow: none !important;
+    }
+    .plan-card { overflow: hidden; padding: 18px 16px; }
+    .plan-card .tier { font-size: 9pt; margin-bottom: 6px; word-break: break-word; }
+    .plan-card .tier-icon { width: 22px; height: 22px; font-size: 13px; }
+    .plan-card .name { font-size: 16pt; margin-bottom: 8px; white-space: normal !important; }
+    .plan-card .desc { font-size: 10.5pt; min-height: 0 !important; margin-bottom: 12px; }
+    .plan-card .price { font-size: 22pt; white-space: normal !important; line-height: 1.15; }
+    .plan-card .price .small { font-size: 11pt; font-weight: 500; display: inline; }
+    .plan-card .price-sub { font-size: 9.5pt; margin-bottom: 14px; line-height: 1.3; }
+    .plan-card ul li { font-size: 10pt; padding: 5px 0; gap: 7px; line-height: 1.45; }
+    .plan-card ul li::before { width: 15px; height: 15px; font-size: 9pt; }
+    .plan-card .ribbon { font-size: 8pt; padding: 4px 10px; top: -10px; }
+    .inpatient-badge { padding: 9px 10px; margin-bottom: 10px; }
+    .inpatient-badge .ib-icon { font-size: 16pt; }
+    .inpatient-badge .ib-title { font-size: 11pt; }
+    .inpatient-badge .ib-sub { font-size: 9pt; }
+    .pricing-note { font-size: 9.5pt; margin-top: 14px; }
+
+    /* Callouts (wellness / family / customisation) */
+    .wellness-callout, .family-callout, .customise-callout {
+      padding: 18px 22px; margin-top: 18px;
+      page-break-inside: avoid;
+    }
+    .wellness-callout .wc-icon,
+    .family-callout .fc-icon,
+    .customise-callout .cc-icon { width: 46px; height: 46px; font-size: 20pt; }
+    .wellness-callout .wc-title,
+    .family-callout .fc-title,
+    .customise-callout .cc-title { font-size: 14pt; }
+    .wellness-callout .wc-desc,
+    .family-callout .fc-desc,
+    .customise-callout .cc-desc { font-size: 11pt; }
+    .family-callout .fc-chip { font-size: 9.5pt; padding: 4px 11px; }
+
+    /* INSURER SECTION */
+    .insurer-section { padding: 30px 0; page-break-inside: avoid; }
+    .insurer-section .insurer-grid {
+      display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important;
+      gap: 10px; max-width: 100%; align-items: stretch;
+    }
+    .insurer-tile { flex: 1 1 0; min-width: 0; }
+    .insurer-tile { height: 70px; padding: 12px; }
+    .insurer-tile img { max-height: 40px; }
+    .insurer-note { font-size: 9.5pt; margin-top: 16px; }
+
+    /* PANEL OVERVIEW */
+    .panel-section { padding: 30px 0; }
+    .panel-total-card { padding: 20px; margin-bottom: 20px; }
+    .panel-total-card .pt-num { font-size: 36pt; }
+    .panel-total-card .pt-eyebrow { font-size: 10pt; }
+    .panel-total-card .pt-sub { font-size: 11pt; }
+    .panel-grid { gap: 18px; margin-bottom: 22px; }
+    .region-card { padding: 20px; }
+    .region-card .region-count { font-size: 28pt; }
+    .region-card .region-flag { width: 42px; height: 42px; font-size: 18pt; }
+    .region-card .region-name { font-size: 11pt; }
+    .region-card .region-sub { font-size: 10pt; }
+    .region-stats { gap: 10px; }
+    .region-stat { padding: 11px 13px; }
+    .region-stat .rs-num { font-size: 18pt; }
+    .region-stat .rs-lbl { font-size: 10pt; }
+    .panel-footer { padding: 14px 18px; }
+    .panel-footer .pf-label { font-size: 10.5pt; }
+
+    /* HOW IT WORKS */
+    .steps-grid {
+      display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important;
+      gap: 12px; align-items: stretch;
+    }
+    .step { flex: 1 1 0; min-width: 0; }
+    .step { padding: 18px 14px; page-break-inside: avoid; }
+    .step .step-num { width: 32px; height: 32px; font-size: 13pt; margin-bottom: 10px; }
+    .step h3 { font-size: 13pt; margin-bottom: 6px; }
+    .step p { font-size: 10.5pt; }
+
+    /* WHY MIXCARE — wrap to multi-row flex */
+    .features-grid {
+      display: flex !important; flex-direction: row !important; flex-wrap: wrap !important;
+      gap: 14px; align-items: stretch;
+    }
+    .feature { flex: 0 0 calc(33.333% - 10px); min-width: 0; box-sizing: border-box; }
+    .feature { padding: 18px 16px; page-break-inside: avoid; }
+    .feature .icon { width: 38px; height: 38px; font-size: 18pt; margin-bottom: 10px; }
+    .feature h3 { font-size: 13pt; margin-bottom: 6px; }
+    .feature p { font-size: 10.5pt; }
+
+    /* STATS BAND */
+    .stats-band { padding: 28px 0; page-break-inside: avoid; }
+    .stat .stat-num { font-size: 32pt; }
+    .stat .stat-lbl { font-size: 10.5pt; }
+
+    /* COMPARISON TABLE — keep readable */
+    .compare-table { box-shadow: none !important; page-break-inside: auto; }
+    .compare-table table { font-size: 10pt; }
+    .compare-table th, .compare-table td { padding: 9px 7px; font-size: 10pt; }
+    .compare-table th { font-size: 9.5pt; padding: 11px 7px; }
+    .compare-table td.svc { font-size: 10.5pt; }
+    .compare-table tr { page-break-inside: avoid; }
+
+    /* COMPLIANCE */
+    .compliance { padding: 30px 0; page-break-inside: avoid; }
+    .compliance h2 { font-size: 20pt; }
+    .compliance p { font-size: 11.5pt; }
+    .badge { padding: 14px 16px; min-width: 150px; }
+    .badge .b-icon { width: 30px; height: 30px; font-size: 12pt; }
+    .badge .b-name { font-size: 12pt; }
+    .badge .b-desc { font-size: 9.5pt; }
+
+    /* FINAL CTA */
+    .final-cta { padding: 30px 0; page-break-inside: avoid; }
+    .final-cta h2 { font-size: 22pt; margin-bottom: 10px; }
+    .final-cta p { font-size: 12pt; }
+
+    /* Broker footer + site footer */
+    .broker-footer, footer.site-footer { padding: 18px 0; page-break-inside: avoid; }
+    footer.site-footer { background: white !important; color: var(--ink-2) !important; border-top: 1px solid var(--line); }
+    footer.site-footer a, footer .ft-tagline { color: var(--ink-2) !important; }
+    footer.site-footer h4 { color: var(--ink-2) !important; }
+    footer .ft-logo img { filter: none !important; }
+
+    /* Smart page breaks — allow tall sections to flow naturally */
+    section { page-break-inside: auto; }
+    .plan-card, .step, .feature, .badge, .region-card,
+    .wellness-callout, .family-callout, .customise-callout,
+    .panel-total-card, .panel-footer, .inpatient-badge {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .pricing-grid, .insurer-grid, .features-grid, .steps-grid,
+    .panel-grid, .stats-grid, .badges, .compare-table { page-break-inside: auto; }
+
+    /* Prevent orphan headers */
+    .sec-head h2, .sec-head .sub, .sec-head .eyebrow { page-break-after: avoid; }
+
+    /* No animations / transforms in print */
+    * { transition: none !important; animation: none !important; transform: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<nav class="topnav">
+  <div class="nav-inner">
+    <a href="https://m.mixcarehealth.com/" class="nav-logo">
+      <img src="https://m.mixcarehealth.com/logos/mixcare-logo-257ebb39.png" alt="MixCare Health" />
+    </a>
+    <div class="nav-right">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button data-lang="en" class="active">EN</button>
+        <button data-lang="zh-hk">繁中</button>
+        <button data-lang="zh-cn">简中</button>
+      </div>
+      <a class="btn secondary" href="#plans" data-i18n="nav_view_plans">View Plans</a>
+      <a class="btn primary" id="navCta" href="https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-" target="_blank" rel="noopener" data-i18n="nav_demo">Get a Demo</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <span class="tag" data-i18n="hero_tag">AI-Powered Health & Wellness</span>
+        <h1><span data-i18n="hero_h1_a">Smarter outpatient health benefits —</span> <span class="accent" data-i18n="hero_h1_b">at a fraction of traditional cost.</span></h1>
+        <p class="lede" data-i18n="hero_lede">
+          Pick a fixed-fee outpatient plan or a pay-as-you-go discount membership. Cashless visits across 1,000+ network doctors in Hong Kong and Macau. No claim forms, no reimbursement waits, no surprises.
+        </p>
+        <div class="cta-row">
+          <a class="btn primary lg" href="#plans" data-i18n="hero_cta1">See Pricing Plans</a>
+          <a class="btn secondary lg" id="heroCta" href="https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-" target="_blank" rel="noopener" style="background:rgba(255,255,255,0.1);color:white;border-color:rgba(255,255,255,0.3);" data-i18n="hero_cta2">Talk to Your Broker</a>
+        </div>
+      </div>
+      <div class="hero-imagery">
+        <div class="hero-card">
+          <h3 data-i18n="hero_card_h">Trusted Performance</h3>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="num">100%</div>
+              <div class="lbl" data-i18n="hero_stat1">Cashless experience</div>
+            </div>
+            <div class="hero-stat">
+              <div class="num">1,059</div>
+              <div class="lbl" data-i18n="hero_stat2">Network doctors</div>
+            </div>
+            <div class="hero-stat">
+              <div class="num">&lt; 7 days</div>
+              <div class="lbl" data-i18n="hero_stat3">Quote to activate employees</div>
+            </div>
+            <div class="hero-stat">
+              <div class="num">200+</div>
+              <div class="lbl" data-i18n="hero_stat4">Enterprise clients</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TRUST STRIP ===================== -->
+<div class="trust">
+  <div class="container">
+    <div class="title" data-i18n="trust_title">Trusted by leading organisations across Asia-Pacific</div>
+    <div class="logos">
+      <img src="https://m.mixcarehealth.com/logos/mixcare-health-client-axa.png" alt="AXA" />
+      <img src="https://m.mixcarehealth.com/logos/mixcare-health-client-pwc.png" alt="PwC" />
+      <img src="https://m.mixcarehealth.com/logos/mixcare-health-client-blue.png" alt="Blue" />
+      <img src="https://m.mixcarehealth.com/logos/mixcare-health-client-chubblife.png" alt="Chubb" />
+      <img src="https://m.mixcarehealth.com/logos/mixcare-health-client-mercer.png" alt="Mercer" />
+      <img src="https://m.mixcarehealth.com/logos/mixcare-health-client-pp.png" alt="Pacific Prime" />
+      <img src="https://m.mixcarehealth.com/logos/mixcare-health-client-hkbn.png" alt="HKBN" />
+      <img src="https://m.mixcarehealth.com/logos/mixcare-health-client-cyberport.png" alt="Cyberport" />
+    </div>
+  </div>
+</div>
+
+<!-- ===================== PRICING PLANS ===================== -->
+<section class="block" id="plans">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="plans_eyebrow">Pricing plans</span>
+      <h2 data-i18n="plans_h2">Two models · choose what fits your team</h2>
+      <p class="sub" data-i18n="plans_sub">Pre-paid <strong>Capitation Plans</strong> for predictable per-employee cost, or <strong>Self-Funded Plans</strong> for clients who want to manage their own wellness budget. Pick a tab to compare.</p>
+    </div>
+
+    <div class="model-tabs-wrap">
+      <div class="model-tabs" role="tablist">
+        <button type="button" data-model-tab="capitation" class="active" data-i18n="tab_capitation">Capitation (Fixed cost)</button>
+        <button type="button" data-model-tab="selffunded" data-i18n="tab_selffunded">Self-Funded Plans</button>
+      </div>
+    </div>
+
+    <!-- TAB: Capitation -->
+    <div class="pricing-tab active" id="tab-capitation">
+    <div class="pricing-grid">
+
+      <!-- Plan A -->
+      <div class="plan-card">
+        <div class="tier"><span class="tier-icon">🩺</span><span data-i18n="plan_tier_outpatient">Outpatient Plan</span></div>
+        <div class="name" data-i18n="planA_name">Plan A — Essential</div>
+        <div class="desc" data-i18n="planA_desc">GP + Specialist core cover. Best for small teams and cost-sensitive groups.</div>
+        <div class="price"><span class="small" data-i18n="from">from</span> HK$820 <span class="small" data-i18n="per_yr">/yr</span></div>
+        <div class="price-sub" data-i18n="planA_price_sub">per employee · HK$68/month</div>
+        <ul>
+          <li data-i18n="planA_li1">GP — up to 10 visits/yr</li>
+          <li data-i18n="planA_li2">Specialist (referral) — 5 visits/yr</li>
+          <li data-i18n="planA_li3">HK-wide Fullerton panel</li>
+          <li data-i18n="planA_li4">No claim forms · cashless</li>
+          <li><span class="free-tag" data-i18n="free_tag">Free</span><span data-i18n="webinar_feature">Monthly wellbeing webinar</span></li>
+          <li class="excl" data-i18n="planA_li5">Chinese Medicine / Physio (Plan B/C)</li>
+        </ul>
+        <a class="card-cta" href="#cta" data-i18n="card_cta">Get a Special Rate</a>
+      </div>
+
+      <!-- Plan B (featured) -->
+      <div class="plan-card featured">
+        <div class="ribbon" data-i18n="ribbon_recommended">Recommended</div>
+        <div class="tier"><span class="tier-icon">⭐</span><span data-i18n="plan_tier_outpatient">Outpatient Plan</span></div>
+        <div class="name" data-i18n="planB_name">Plan B — Standard</div>
+        <div class="desc" data-i18n="planB_desc">All six panel services with sensible visit caps. Best fit for most teams.</div>
+        <div class="price"><span class="small" data-i18n="from">from</span> HK$1,800 <span class="small" data-i18n="per_yr">/yr</span></div>
+        <div class="price-sub" data-i18n="planB_price_sub">per employee · HK$150/month</div>
+        <ul>
+          <li data-i18n="planB_li1">GP — 15 visits/yr</li>
+          <li data-i18n="planB_li2">Specialist (referral) — 10 visits/yr</li>
+          <li data-i18n="planB_li3">Chinese Medicine — 10 visits/yr</li>
+          <li data-i18n="planB_li4">Physiotherapy (referral) — 5 visits/yr</li>
+          <li data-i18n="planB_li5">Bonesetter — 5 visits/yr</li>
+          <li data-i18n="planB_li6">Acupuncture — 5 visits/yr</li>
+          <li><span class="free-tag" data-i18n="free_tag">Free</span><span data-i18n="webinar_feature">Monthly wellbeing webinar</span></li>
+          <li class="excl" data-i18n="planB_li7">Non-panel claim (Plan C)</li>
+        </ul>
+        <a class="card-cta" href="#cta" data-i18n="card_cta">Get a Special Rate</a>
+      </div>
+
+      <!-- Plan C -->
+      <div class="plan-card">
+        <div class="tier"><span class="tier-icon">🏥</span><span data-i18n="plan_tier_outpatient">Outpatient Plan</span></div>
+        <div class="name" data-i18n="planC_name">Plan C — Excellent</div>
+        <div class="desc" data-i18n="planC_desc">Everything in Plan B plus non-panel flexibility — see any doctor of your choice and get reimbursed.</div>
+        <div class="price"><span class="small" data-i18n="from">from</span> HK$2,800 <span class="small" data-i18n="per_yr">/yr</span></div>
+        <div class="price-sub" data-i18n="planC_price_sub">per employee · HK$233/month</div>
+        <div class="nonpanel-badge">
+          <span class="np-icon">🌐</span>
+          <div>
+            <div class="np-title" data-i18n="np_title">Non-panel claim</div>
+            <div class="np-sub" data-i18n="np_sub">HK$1,500 allowance · 80% reimbursement</div>
+          </div>
+        </div>
+        <ul>
+          <li data-i18n="planC_li1">GP — 15 visits/yr</li>
+          <li data-i18n="planC_li2">Specialist (referral) — 10 visits/yr</li>
+          <li data-i18n="planC_li3">Chinese Medicine — 10 visits/yr</li>
+          <li data-i18n="planC_li4">Physio (referral) — 5 visits/yr</li>
+          <li data-i18n="planC_li5">Bonesetter + Acupuncture — 5 each/yr</li>
+          <li><span class="free-tag" data-i18n="free_tag">Free</span><span data-i18n="webinar_feature">Monthly wellbeing webinar</span></li>
+        </ul>
+        <a class="card-cta" href="#cta" data-i18n="card_cta">Get a Special Rate</a>
+      </div>
+
+      <!-- VIP Plan — Total Wellbeing (Plan C + Wellbeing credit) -->
+      <div class="plan-card vip">
+        <div class="ribbon" data-i18n="ribbon_premium">Premium</div>
+        <div class="tier"><span class="tier-icon">👑</span><span data-i18n="plan_tier_vip">Total Wellbeing</span></div>
+        <div class="name" data-i18n="planV_name">Plan VIP — Total Wellbeing</div>
+        <div class="desc" data-i18n="planV_desc">Everything in Plan C plus an annual wellbeing credit, redeemable on the MixCare marketplace for fitness, beauty, mental wellness, and more.</div>
+        <div class="price"><span class="small" data-i18n="from">from</span> HK$4,150 <span class="small" data-i18n="per_yr">/yr</span></div>
+        <div class="price-sub" data-i18n="planV_price_sub">per employee · HK$345/month</div>
+        <div class="inpatient-badge">
+          <span class="ib-icon">✨</span>
+          <div>
+            <div class="ib-title" data-i18n="ib_title">HK$1,000 Wellbeing Credit</div>
+            <div class="ib-sub" data-i18n="ib_sub">Redeem on MixCare marketplace</div>
+          </div>
+        </div>
+        <div class="nonpanel-badge">
+          <span class="np-icon">🌐</span>
+          <div>
+            <div class="np-title" data-i18n="np_title">Non-panel claim</div>
+            <div class="np-sub" data-i18n="np_sub">HK$1,500 allowance · 80% reimbursement</div>
+          </div>
+        </div>
+        <ul>
+          <li data-i18n="planV_li1">GP — 15 visits/yr</li>
+          <li data-i18n="planV_li3">Specialist (referral) — 10 visits/yr</li>
+          <li data-i18n="planV_li4">Chinese Medicine — 10 visits/yr</li>
+          <li data-i18n="planV_li5">Physio + Bonesetter + Acupuncture</li>
+          <li data-i18n="planV_li6">Wellbeing marketplace · 30+ categories</li>
+          <li><span class="free-tag" data-i18n="free_tag">Free</span><span data-i18n="webinar_feature">Monthly wellbeing webinar</span></li>
+        </ul>
+        <a class="card-cta" href="#cta" data-i18n="card_cta">Get a Special Rate</a>
+      </div>
+    </div>
+
+    <p class="pricing-note" data-i18n="plans_note">
+      Outpatient plan prices indicative — calibrated for a baseline group of 30–99 employees at average age 40.
+      Final pricing flexes by group size, average age, and workforce profile.
+      Speak to your broker or MixCare for a tailored quotation.
+    </p>
+    </div><!-- /tab-capitation -->
+
+    <!-- TAB: Self-Funded -->
+    <div class="pricing-tab" id="tab-selffunded">
+      <div class="selffunded-grid">
+
+        <!-- WELL -->
+        <div class="sf-plan well">
+          <div class="ribbon" data-i18n="sf_well_tag">Wellness focus</div>
+          <div class="sf-tag">WELL</div>
+          <div class="sf-sub" data-i18n="sf_well_sub">Flexible spending + wellness marketplace. For employers who want to fund wellbeing without the medical complexity.</div>
+          <div class="sf-funding"><span class="dot"></span><span data-i18n="sf_funding_employer">Usage-based · Employer-funded</span></div>
+          <div class="sf-price">HK$200<span class="lbl" data-i18n="per_yr_member">/ yr per member</span></div>
+          <div class="sf-price-sub" data-i18n="sf_well_sub2">Annual platform subscription · pro-rated by enrollment</div>
+          <ul>
+            <li data-i18n="sf_f1">Flexible Spending Account</li>
+            <li data-i18n="sf_f2">Digital Wellness Marketplace</li>
+            <li data-i18n="sf_f4">Flex Benefit Administration Platform</li>
+            <li data-i18n="sf_f5">E-Claim Platform</li>
+            <li data-i18n="sf_f6">Claim Adjudication &amp; Bank Remittance</li>
+            <li data-i18n="sf_f8">Reporting &amp; AI Analysis</li>
+            <li class="excl" data-i18n="sf_excl_med">Self-Funded Outpatient · Medical Panel (MED/HEALTH)</li>
+          </ul>
+          <a class="card-cta" href="#cta" data-i18n="card_cta">Get a Special Rate</a>
+        </div>
+
+        <!-- MED -->
+        <div class="sf-plan med">
+          <div class="ribbon" data-i18n="sf_med_tag">Most popular</div>
+          <div class="sf-tag">MED</div>
+          <div class="sf-sub" data-i18n="sf_med_sub">Self-funded outpatient with full medical panel access. Pay only for what your team uses.</div>
+          <div class="sf-funding"><span class="dot"></span><span data-i18n="sf_funding_employer">Usage-based · Employer-funded</span></div>
+          <div class="sf-price">HK$300<span class="lbl" data-i18n="per_yr_member">/ yr per member</span></div>
+          <div class="sf-price-sub" data-i18n="sf_med_sub2">Annual platform subscription · pro-rated by enrollment</div>
+          <ul>
+            <li data-i18n="sf_f3">Self-Funded Outpatient Solution</li>
+            <li data-i18n="sf_f4">Flex Benefit Administration Platform</li>
+            <li data-i18n="sf_f5">E-Claim Platform</li>
+            <li data-i18n="sf_f6">Claim Adjudication &amp; Bank Remittance</li>
+            <li data-i18n="sf_f7">Access to Medical Panel Network</li>
+            <li data-i18n="sf_f8">Reporting &amp; AI Analysis</li>
+            <li class="excl" data-i18n="sf_excl_well">FSA · Wellness Marketplace (WELL/HEALTH)</li>
+          </ul>
+          <a class="card-cta" href="#cta" data-i18n="card_cta">Get a Special Rate</a>
+        </div>
+
+        <!-- HEALTH -->
+        <div class="sf-plan health">
+          <div class="ribbon" data-i18n="sf_health_tag">Full stack</div>
+          <div class="sf-tag">HEALTH</div>
+          <div class="sf-sub" data-i18n="sf_health_sub">Everything — medical, wellness, FSA, marketplace. The complete self-funded benefits platform.</div>
+          <div class="sf-funding"><span class="dot"></span><span data-i18n="sf_funding_employer">Usage-based · Employer-funded</span></div>
+          <div class="sf-price">HK$400<span class="lbl" data-i18n="per_yr_member">/ yr per member</span></div>
+          <div class="sf-price-sub" data-i18n="sf_health_sub2">Annual platform subscription · pro-rated by enrollment</div>
+          <ul>
+            <li data-i18n="sf_f1">Flexible Spending Account</li>
+            <li data-i18n="sf_f2">Digital Wellness Marketplace</li>
+            <li data-i18n="sf_f3">Self-Funded Outpatient Solution</li>
+            <li data-i18n="sf_f4">Flex Benefit Administration Platform</li>
+            <li data-i18n="sf_f5">E-Claim Platform</li>
+            <li data-i18n="sf_f6">Claim Adjudication &amp; Bank Remittance</li>
+            <li data-i18n="sf_f7">Access to Medical Panel Network</li>
+            <li data-i18n="sf_f8">Reporting &amp; AI Analysis</li>
+          </ul>
+          <a class="card-cta" href="#cta" data-i18n="card_cta">Get a Special Rate</a>
+        </div>
+
+        <!-- FFS Membership (Pay as you go) -->
+        <div class="sf-plan ffs">
+          <div class="ribbon" data-i18n="ribbon_payg">New · Pay as you go</div>
+          <div class="sf-tag">DISCOUNT</div>
+          <div class="sf-sub" data-i18n="ffs_desc">Annual membership unlocks 50% off panel consultations. Perfect for individuals and families — enrol spouse, children, parents, or domestic helper.</div>
+          <div class="sf-funding"><span class="dot"></span><span data-i18n="sf_funding_voluntary">Voluntary · Individual purchase</span></div>
+          <div class="sf-price">HK$299<span class="lbl" data-i18n="per_yr_person">/ yr per person</span></div>
+          <div class="sf-price-sub" data-i18n="ffs_price_sub">per person · HK$24.92/month</div>
+          <ul>
+            <li data-i18n="ffs_li1">GP, Specialist, TCM consultations</li>
+            <li data-i18n="ffs_li2">Physio, Bonesetter, Acupuncture, Chiropractor, Dental</li>
+            <li data-i18n="ffs_li3">No utilisation cap — discount applies every visit</li>
+            <li data-i18n="ffs_li4">Member pays clinic directly at the discounted rate</li>
+            <li data-i18n="ffs_li_family">Enrol family members at the same rate</li>
+            <li data-i18n="ffs_li5">Break-even from 3 visits/yr</li>
+            <li><span class="free-tag" data-i18n="free_tag">Free</span><span data-i18n="webinar_feature">Monthly wellbeing webinar</span></li>
+          </ul>
+          <a class="card-cta" href="#cta" data-i18n="card_cta">Get a Special Rate</a>
+        </div>
+
+      </div>
+
+      <div class="sf-notes">
+        <h3 data-i18n="sf_charges_h">Additional charges &amp; notes</h3>
+        <ul>
+          <li><strong data-i18n="sf_note_claim_h">Claim fee:</strong> <span data-i18n="sf_note_claim">7% of approved claim amount, charged if MixCare provides claim adjudication and bank remittance services.</span></li>
+          <li><strong data-i18n="sf_note_member_h">Member definition:</strong> <span data-i18n="sf_note_member">Each "member" corresponds to one individual employee or dependent with platform access.</span></li>
+          <li><strong data-i18n="sf_note_proration_h">Pro-ration:</strong> <span data-i18n="sf_note_proration">Annual subscription fees are pro-rated from the member's enrollment date to the end of the 12-month contract. Upon renewal, fees are charged in full for each subsequent 12-month term. In the event of early termination, fees are pro-rated to the termination date with no refund on amounts already paid.</span></li>
+          <li><strong data-i18n="sf_note_budget_h">Wellness budget:</strong> <span data-i18n="sf_note_budget">MixCare charges the Employer for the Wellness Budget strictly based on the actual usage of eligible employees.</span></li>
+          <li><strong data-i18n="sf_note_prefund_h">HealthCoin Pre-fund Pool:</strong> <span data-i18n="sf_note_prefund">Client settles 50% of the total employee wellness budget as a "HealthCoin Pre-fund Pool" within 15 business days of the launch Effective Date.</span></li>
+        </ul>
+      </div>
+    </div><!-- /tab-selffunded -->
+  </div>
+</section>
+
+<!-- ===================== INSURER PARTNERS (for VIP inpatient) ===================== -->
+<section class="insurer-section" id="insurers">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="insurer_eyebrow">Inpatient insurer partners</span>
+      <h2 data-i18n="insurer_h2">Optional inpatient cover via leading insurers</h2>
+      <p class="sub" data-i18n="insurer_sub">Add inpatient hospital cover as an optional add-on to any plan. Choose from 5+ established Hong Kong insurance partners. From HK$700/yr per member, depending on ward class and insurer. Click any logo to view their group / inpatient product page.</p>
+    </div>
+    <div class="insurer-grid">
+      <a class="insurer-tile" href="https://www.hsbclife.com.hk/en/our-products/group-insurance.html" target="_blank" rel="noopener" title="HSBC Life — Group Insurance">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/aa/HSBC_logo_%282018%29.svg/200px-HSBC_logo_%282018%29.svg.png" alt="HSBC" onerror="this.parentNode.classList.add('text-only')" />
+        <span class="tile-text">HSBC</span>
+      </a>
+      <a class="insurer-tile" href="https://www.axa.com.hk/en/group-medical-insurance" target="_blank" rel="noopener" title="AXA — Group Medical">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/AXA_Logo.svg/200px-AXA_Logo.svg.png" alt="AXA" onerror="this.parentNode.classList.add('text-only')" />
+        <span class="tile-text">AXA</span>
+      </a>
+      <a class="insurer-tile" href="https://www.fwd.com.hk/en/business/" target="_blank" rel="noopener" title="FWD Group — Business">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/FWD_Group_logo.svg/200px-FWD_Group_logo.svg.png" alt="FWD" onerror="this.parentNode.classList.add('text-only')" />
+        <span class="tile-text">FWD</span>
+      </a>
+      <a class="insurer-tile" href="https://www.aia.com.hk/en/our-products/employee-benefits" target="_blank" rel="noopener" title="AIA — Employee Benefits">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/AIA_Group_logo.svg/200px-AIA_Group_logo.svg.png" alt="AIA" onerror="this.parentNode.classList.add('text-only')" />
+        <span class="tile-text">AIA</span>
+      </a>
+      <a class="insurer-tile" href="https://www.boclife.com.hk/en/business/group-insurance.html" target="_blank" rel="noopener" title="BOC Life — Group Insurance">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Bank_of_China_logo.svg/200px-Bank_of_China_logo.svg.png" alt="BOC Life" onerror="this.parentNode.classList.add('text-only')" />
+        <span class="tile-text">BOC Life</span>
+      </a>
+      <a class="insurer-tile" href="https://www.manulife.com.hk/en/business.html" target="_blank" rel="noopener" title="Manulife — Group Insurance">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Manulife_logo.svg/200px-Manulife_logo.svg.png" alt="Manulife" onerror="this.parentNode.classList.add('text-only')" />
+        <span class="tile-text">Manulife</span>
+      </a>
+    </div>
+    <div class="insurer-note" data-i18n="insurer_note">+ more partners available on request. Inpatient component of Plan VIP is administered through your chosen insurer's group medical policy.</div>
+  </div>
+</section>
+
+<!-- ===================== PANEL OVERVIEW (Fullerton network) ===================== -->
+<section class="block panel-section" id="panel">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="panel_eyebrow">Our network</span>
+      <h2 data-i18n="panel_h2">Hong Kong & Macau panel doctors</h2>
+      <p class="sub" data-i18n="panel_sub">A comprehensive Fullerton Health panel network across Hong Kong and Macau. Members access cashless care at the nearest clinic via the MixCare app.</p>
+    </div>
+
+    <!-- Total card -->
+    <div class="panel-total-card">
+      <div class="pt-eyebrow" data-i18n="panel_total_eyebrow">Total network doctors</div>
+      <div class="pt-num">1,059</div>
+      <div class="pt-sub" data-i18n="panel_total_sub">As of 28 Feb 2026 · 截至 2026 年 2 月 28 日</div>
+    </div>
+
+    <!-- HK + Macau side-by-side -->
+    <div class="panel-grid">
+
+      <!-- Hong Kong -->
+      <div class="region-card">
+        <div class="region-head">
+          <div class="region-flag">🇭🇰</div>
+          <div>
+            <div class="region-name" data-i18n="region_hk">Hong Kong</div>
+            <div class="region-count">741</div>
+            <div class="region-sub" data-i18n="region_doctors">network doctors</div>
+          </div>
+        </div>
+        <div class="region-stats">
+          <div class="region-stat">
+            <div class="rs-num">323</div>
+            <div class="rs-lbl" data-i18n="cat_gp">General Practitioner</div>
+          </div>
+          <div class="region-stat">
+            <div class="rs-num">246</div>
+            <div class="rs-lbl" data-i18n="cat_sp">Specialist</div>
+          </div>
+          <div class="region-stat">
+            <div class="rs-num">114</div>
+            <div class="rs-lbl" data-i18n="cat_tcm">Traditional Chinese Medicine</div>
+          </div>
+          <div class="region-stat">
+            <div class="rs-num">58</div>
+            <div class="rs-lbl" data-i18n="cat_physio">Physiotherapist</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Macau -->
+      <div class="region-card">
+        <div class="region-head">
+          <div class="region-flag macau">🇲🇴</div>
+          <div>
+            <div class="region-name" data-i18n="region_mo">Macau</div>
+            <div class="region-count">318</div>
+            <div class="region-sub" data-i18n="region_doctors">network doctors</div>
+          </div>
+        </div>
+        <div class="region-stats">
+          <div class="region-stat">
+            <div class="rs-num">201</div>
+            <div class="rs-lbl" data-i18n="cat_gp">General Practitioner</div>
+          </div>
+          <div class="region-stat">
+            <div class="rs-num">41</div>
+            <div class="rs-lbl" data-i18n="cat_sp">Specialist</div>
+          </div>
+          <div class="region-stat">
+            <div class="rs-num">66</div>
+            <div class="rs-lbl" data-i18n="cat_tcm">Traditional Chinese Medicine</div>
+          </div>
+          <div class="region-stat">
+            <div class="rs-num">10</div>
+            <div class="rs-lbl" data-i18n="cat_physio">Physiotherapist</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer: Fullerton attribution + CTA -->
+    <div class="panel-footer">
+      <div class="pf-label">
+        <strong data-i18n="panel_powered">Powered by Fullerton Health network</strong>
+        <span data-i18n="panel_coverage">· coverage confirmed in every district</span>
+      </div>
+      <a class="btn primary" id="panelListBtn" href="#cta" data-i18n="panel_list_btn">Access Full Doctor Panel List · Contact Us →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HOW IT WORKS ===================== -->
+<section class="block block-light">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="how_eyebrow">How it works</span>
+      <h2 data-i18n="how_h2">From quote to first visit in 14 days</h2>
+      <p class="sub" data-i18n="how_sub">No long enrolment cycles. Members get on the platform fast and start using benefits the same week.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3 data-i18n="step1_h">Pick a plan</h3>
+        <p data-i18n="step1_p">Your broker (or MixCare directly) shares an indicative quote based on your headcount and age profile. We refine on receipt of your group census.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3 data-i18n="step2_h">Sign agreement</h3>
+        <p data-i18n="step2_p">Service Agreement and onboarding pack delivered within 3 working days. Plan effective date scheduled minimum 14 days post-signing.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3 data-i18n="step3_h">Members onboarded</h3>
+        <p data-i18n="step3_p">Each employee receives MixCare app credentials and a digital member card. HR briefing materials provided. No paper.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3 data-i18n="step4_h">Use anywhere</h3>
+        <p data-i18n="step4_p">Open the app, find a panel clinic, book in seconds. Show the member card. Cashless for outpatient plans; discounted rate for the Discount Membership.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHY MIXCARE ===================== -->
+<section class="block">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="why_eyebrow">Why MixCare</span>
+      <h2 data-i18n="why_h2">Smarter benefits. Lower friction. Better outcomes.</h2>
+      <p class="sub" data-i18n="why_sub">Built for the way Hong Kong teams actually use healthcare — digital-first, no paperwork, real network coverage.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature">
+        <div class="icon">⚡</div>
+        <h3 data-i18n="f1_h">Cashless · no paperwork</h3>
+        <p data-i18n="f1_p">Members pay only the copay at the clinic. MixCare settles with the panel directly. No claim forms, no reimbursement waits, no end-of-month admin for HR.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🏥</div>
+        <h3 data-i18n="f2_h">1,000+ network doctors</h3>
+        <p data-i18n="f2_p">Comprehensive Fullerton network coverage across Hong Kong and Macau. Density confirmed in every district.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">📱</div>
+        <h3 data-i18n="f3_h">Digital-first</h3>
+        <p data-i18n="f3_p">MixCare app for clinic search, appointment booking, member card, and benefit balance — all in one place.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">$</div>
+        <h3 data-i18n="f4_h">Predictable budget</h3>
+        <p data-i18n="f4_p">Fixed annual cost per employee for outpatient plans. No mid-year true-ups, no end-of-year reconciliations, no surprise claims spikes.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🛡</div>
+        <h3 data-i18n="f5_h">Transparent pricing</h3>
+        <p data-i18n="f5_p">We publish our pricing methodology — every multiplier, every assumption. Audit-defensible for any procurement team.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🎯</div>
+        <h3 data-i18n="f6_h">HK-calibrated</h3>
+        <p data-i18n="f6_p">Pricing built specifically for Hong Kong — using local benchmarks and panel-doctor cost data. Not a generic regional template.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">👪</div>
+        <h3 data-i18n="f7_h">Family coverage</h3>
+        <p data-i18n="f7_p">Extend any plan to spouse, children, parents, or domestic helper. The Discount Membership is especially popular for family enrolment — one card per person, no group required.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== STATS BAND ===================== -->
+<section class="stats-band">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-num">95%</div>
+        <div class="stat-lbl" data-i18n="stat1_lbl">Client retention rate</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">88%</div>
+        <div class="stat-lbl" data-i18n="stat2_lbl">Employee benefit utilisation</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">60%</div>
+        <div class="stat-lbl" data-i18n="stat3_lbl">Admin time reduction for HR</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3×</div>
+        <div class="stat-lbl" data-i18n="stat4_lbl">Higher engagement vs. traditional</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PLAN COMPARISON TABLE ===================== -->
+<section class="block block-light">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="compare_eyebrow">Side-by-side</span>
+      <h2 data-i18n="compare_h2">Compare all four plans at a glance</h2>
+      <p class="sub" data-i18n="compare_sub">Outpatient plans give you cashless, fixed-cost coverage. The Discount Membership gives you discount-card flexibility. Pick what your workforce actually needs.</p>
+    </div>
+
+    <div class="compare-table">
+      <table>
+        <colgroup>
+          <col class="feature-col" />
+          <col class="plan-col" />
+          <col class="plan-col" />
+          <col class="plan-col" />
+          <col class="plan-col" />
+          <col class="plan-col" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th data-i18n="ct_feature">Feature</th>
+            <th data-i18n="ct_planA">Plan A</th>
+            <th class="featured-h" data-i18n="ct_planB">Plan B ★</th>
+            <th data-i18n="ct_planC">Plan C</th>
+            <th class="vip-h" data-i18n="ct_planV">VIP</th>
+            <th class="ffs-h" data-i18n="ct_ffs">Discount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="svc" data-i18n="ct_model">Model</td><td class="num" data-i18n="ct_outpatient">Outpatient Plan</td><td class="num col-featured" data-i18n="ct_outpatient">Outpatient Plan</td><td class="num" data-i18n="ct_outpatient">Outpatient Plan</td><td class="num col-vip" data-i18n="ct_in_out">Total Wellbeing</td><td class="num col-ffs" data-i18n="ct_disccard">Discount card</td></tr>
+          <tr><td class="svc" data-i18n="ct_price">HR price /yr (from)</td><td class="num">HK$820</td><td class="num col-featured">HK$1,800</td><td class="num">HK$2,800</td><td class="num col-vip">HK$4,150</td><td class="num col-ffs">HK$299</td></tr>
+          <tr><td class="svc" data-i18n="ct_pppm">Per employee per month</td><td class="num">HK$68</td><td class="num col-featured">HK$150</td><td class="num">HK$233</td><td class="num col-vip">HK$345</td><td class="num col-ffs">HK$24.92</td></tr>
+          <tr><td class="svc" data-i18n="ct_cap">Combined visit cap (panel only)</td><td class="num" data-i18n="ct_cap10">10 visits per year</td><td class="num col-featured" data-i18n="ct_cap15">15 visits per year</td><td class="num" data-i18n="ct_cap15">15 visits per year</td><td class="num col-vip" data-i18n="ct_cap15">15 visits per year</td><td class="num col-ffs" data-i18n="ct_nocap">No cap</td></tr>
+          <tr><td class="svc" data-i18n="ct_min">Minimum group size</td><td class="num" data-i18n="ct_min_5incl">5 (employees + dependents)</td><td class="num col-featured" data-i18n="ct_min_5incl">5 (employees + dependents)</td><td class="num" data-i18n="ct_min_5incl">5 (employees + dependents)</td><td class="num col-vip" data-i18n="ct_min_5incl">5 (employees + dependents)</td><td class="num col-ffs" data-i18n="ct_min_none">No minimum · individuals & families welcome</td></tr>
+          <tr><td class="svc" data-i18n="ct_copay">Copayment per visit</td><td class="num" data-i18n="ct_copay_a">GP HK$50 · SP HK$100</td><td class="num col-featured" data-i18n="ct_copay_bc">HK$50–100 by service</td><td class="num" data-i18n="ct_copay_bc">HK$50–100 by service</td><td class="num col-vip" data-i18n="ct_copay_bc">HK$50–100 by service</td><td class="num col-ffs" data-i18n="ct_copay_ffs">50% off standard fee</td></tr>
+          <tr><td class="svc" data-i18n="ct_gp">GP</td><td class="check">✓</td><td class="check col-featured">✓</td><td class="check">✓</td><td class="check col-vip">✓</td><td class="check col-ffs">✓</td></tr>
+          <tr><td class="svc" data-i18n="ct_sp">Specialist (referral)</td><td class="check">✓</td><td class="check col-featured">✓</td><td class="check">✓</td><td class="check col-vip">✓</td><td class="check col-ffs">✓</td></tr>
+          <tr><td class="svc" data-i18n="ct_tcm">Chinese Medicine (TCM)</td><td class="cross">—</td><td class="check col-featured">✓</td><td class="check">✓</td><td class="check col-vip">✓</td><td class="check col-ffs">✓</td></tr>
+          <tr><td class="svc" data-i18n="ct_physio">Physiotherapy</td><td class="cross">—</td><td class="check col-featured">✓</td><td class="check">✓</td><td class="check col-vip">✓</td><td class="check col-ffs">✓</td></tr>
+          <tr><td class="svc" data-i18n="ct_bone_acu">Bonesetter / Acupuncture</td><td class="cross">—</td><td class="check col-featured">✓</td><td class="check">✓</td><td class="check col-vip">✓</td><td class="check col-ffs">✓</td></tr>
+          <tr><td class="svc" data-i18n="ct_panellist">Access full doctor panel list</td><td colspan="5" class="num panel-contact" style="text-align:center;" data-i18n="ct_panellist_val">Please contact us — full network of Fullerton + MixCare panel clinics across Hong Kong &amp; Macau</td></tr>
+          <tr><td class="svc" data-i18n="ct_nonpanel">Non-panel reimbursement</td><td class="cross">—</td><td class="cross col-featured">—</td><td class="check"><span class="check-50" data-i18n="ct_nonpanel_val">HK$1,500 · 80%</span></td><td class="check col-vip"><span class="check-50" data-i18n="ct_nonpanel_val">HK$1,500 · 80%</span></td><td class="cross col-ffs">—</td></tr>
+          <tr><td class="svc" data-i18n="ct_wellbeing">Wellbeing credit</td><td class="cross">—</td><td class="cross col-featured">—</td><td class="cross">—</td><td class="check col-vip"><span class="check-50" data-i18n="ct_wellbeing_val">HK$1,000/yr · marketplace</span></td><td class="cross col-ffs">—</td></tr>
+          <tr><td class="svc" data-i18n="ct_inpatient">Inpatient / hospital</td><td colspan="5" class="num" style="text-align:center;color:var(--accent-2);font-weight:700;" data-i18n="ct_inpatient_addon">Optional add-on for any plan — from HK$700/yr per member · 5+ insurer partners</td></tr>
+          <tr><td class="svc" data-i18n="ct_bestfor">Best for</td><td class="num" data-i18n="ct_best_a">Cost-sensitive teams</td><td class="num col-featured" data-i18n="ct_best_b">General workforce</td><td class="num" data-i18n="ct_best_c">Teams wanting off-panel flexibility</td><td class="num col-vip" data-i18n="ct_best_v">Wellness-focused teams</td><td class="num col-ffs" data-i18n="ct_best_ffs">Individuals & families</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Wellness Marketplace callout -->
+    <div class="wellness-callout">
+      <div class="wc-icon">✨</div>
+      <div class="wc-body">
+        <div class="wc-title">
+          <span data-i18n="wellness_title">Up to 50% off wellness marketplace</span>
+          <span class="badge-included" data-i18n="wellness_badge">Included in every plan</span>
+        </div>
+        <div class="wc-desc" data-i18n="wellness_desc">Every MixCare member unlocks discounts of up to 50% across the digital wellness marketplace — fitness, beauty, mental wellness, nutrition, dental, vision, and more. Vetted local providers, redeemable in-app.</div>
+      </div>
+      <a class="btn primary" href="https://portal.mixcarehealth.com/zh-hk/products" target="_blank" rel="noopener" data-i18n="wellness_btn">Browse marketplace →</a>
+    </div>
+
+    <!-- Family & dependents callout -->
+    <div class="family-callout">
+      <div class="fc-icon">👨‍👩‍👧‍👦</div>
+      <div class="fc-body">
+        <div class="fc-title">
+          <span data-i18n="family_title">Cover your whole family</span>
+          <span class="badge-new" data-i18n="family_badge">Family ready</span>
+        </div>
+        <div class="fc-desc" data-i18n="family_desc">Every plan extends to spouse, children, and elderly parents as named dependents — at the same per-person rates. The Discount Membership is particularly popular for family enrolment: one card per person, 50% off across the full Fullerton panel, no group requirement.</div>
+        <div class="fc-eligible">
+          <span class="fc-chip" data-i18n="family_chip1">Spouse</span>
+          <span class="fc-chip" data-i18n="family_chip2">Children</span>
+          <span class="fc-chip" data-i18n="family_chip3">Parents</span>
+          <span class="fc-chip" data-i18n="family_chip4">Domestic helper</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Customisation callout below the comparison table -->
+    <div class="customise-callout">
+      <div class="cc-icon">⚙</div>
+      <div class="cc-body">
+        <div class="cc-title" data-i18n="cust_callout_title">Want a tailored plan?</div>
+        <div class="cc-desc" data-i18n="cust_callout_desc">Visit caps, copayments, included services, and add-ons (dental, health check, non-panel pay-and-claim reimbursement, wellness budget) can all be customised to fit your team's profile and budget. Speak to your broker or contact MixCare directly.</div>
+      </div>
+      <a class="btn primary" href="#cta" data-i18n="cust_callout_btn">Contact your broker or MixCare</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== COMPLIANCE ===================== -->
+<section class="compliance">
+  <div class="container">
+    <div class="compliance-inner">
+      <div>
+        <h3 data-i18n="comp_eyebrow">Trust & Compliance</h3>
+        <h2 data-i18n="comp_h2">Enterprise-grade security. Fully audited.</h2>
+        <p data-i18n="comp_p">Healthcare and financial data demand the highest standards. MixCare is built with security and regulatory compliance at its core — independently audited annually.</p>
+      </div>
+      <div class="badges">
+        <div class="badge">
+          <div class="b-icon">P</div>
+          <div class="b-name">PDPO (HK)</div>
+          <div class="b-desc" data-i18n="comp_b1">HK Privacy Ordinance</div>
+        </div>
+        <div class="badge">
+          <div class="b-icon">ISO</div>
+          <div class="b-name">ISO 27001</div>
+          <div class="b-desc" data-i18n="comp_b2">Information security management</div>
+        </div>
+        <div class="badge">
+          <div class="b-icon">A</div>
+          <div class="b-name" data-i18n="comp_b3_name">Annual Audit</div>
+          <div class="b-desc" data-i18n="comp_b3">Independent penetration testing</div>
+        </div>
+        <div class="badge">
+          <div class="b-icon">🌐</div>
+          <div class="b-name" data-i18n="comp_b4_name">Regional residency</div>
+          <div class="b-desc" data-i18n="comp_b4">HK, SG, MO data hosting</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FINAL CTA ===================== -->
+<section class="final-cta" id="cta">
+  <div class="container">
+    <div class="final-cta-inner">
+      <h2 data-i18n="final_h2">Ready to transform your team's health benefits?</h2>
+      <p data-i18n="final_p">Get an indicative quote in minutes. Tailored proposal within 3 working days of your group census.</p>
+      <div class="cta-row">
+        <a class="btn primary lg" id="finalCta" href="https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-" target="_blank" rel="noopener" data-i18n="nav_demo">Get a Demo</a>
+        <a class="btn secondary lg" id="brokerCtaLink" href="#" data-i18n="hero_cta2">Talk to Your Broker</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BROKER FOOTER (customizable) ===================== -->
+<div class="broker-footer" id="brokerFooter" style="display:none;">
+  <div class="container">
+    <div class="broker-footer-inner">
+      <div class="broker-block">
+        <div class="broker-logo" id="brokerLogoWrap">
+          <img id="brokerLogoImg" src="" alt="Broker logo" />
+        </div>
+        <div class="broker-info">
+          <div class="name" id="brokerNameDisplay"></div>
+          <div class="sub" id="brokerCompanyDisplay"></div>
+          <div class="sub"><a id="brokerEmailLink" href="#"></a></div>
+        </div>
+      </div>
+      <div>
+        <a class="btn primary" id="brokerEmailBtn" href="#" data-i18n="email_broker">Email broker for a quote</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SITE FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="ft-logo">
+          <img src="https://m.mixcarehealth.com/logos/mixcare-logo-257ebb39.png" alt="MixCare Health" />
+        </div>
+        <div class="ft-tagline" data-i18n="ft_tagline">AI-powered digital health and wellness platform for insurers, enterprises, and SMBs across Hong Kong, Macau, and Singapore.</div>
+      </div>
+      <div>
+        <h4 data-i18n="ft_platform">Platform</h4>
+        <ul>
+          <li><a href="https://m.mixcarehealth.com/en/platform/self-funded-outpatient" target="_blank">Self-Funded Outpatient</a></li>
+          <li><a href="https://m.mixcarehealth.com/en/platform/flexible-spending-account" target="_blank">Flexible Spending Account</a></li>
+          <li><a href="https://m.mixcarehealth.com/en/platform/wellness-marketplace" target="_blank">Wellness Marketplace</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="ft_who">Who we serve</h4>
+        <ul>
+          <li><a href="https://m.mixcarehealth.com/en/who-we-serve/insurers" target="_blank">Insurers</a></li>
+          <li><a href="https://m.mixcarehealth.com/en/who-we-serve/brokers" target="_blank">Insurance Brokers</a></li>
+          <li><a href="https://m.mixcarehealth.com/en/who-we-serve/enterprises" target="_blank">Large Enterprises</a></li>
+          <li><a href="https://m.mixcarehealth.com/en/who-we-serve/small-business" target="_blank">Small Businesses</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="ft_company">Company</h4>
+        <ul>
+          <li><a href="https://m.mixcarehealth.com/en/about-us" target="_blank">About</a></li>
+          <li><a href="https://m.mixcarehealth.com/en/resources/articles" target="_blank">Blog</a></li>
+          <li><a href="https://m.mixcarehealth.com/en/contact-us" target="_blank">Contact</a></li>
+          <li><a href="https://m.mixcarehealth.com/en/privacy-policy" target="_blank">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 MixUp Solution Company Limited. All rights reserved.</div>
+      <div>PDPO (HK) · ISO 27001 · Annual Security Test</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== BROKER CUSTOMIZE DRAWER ===================== -->
+<button class="customize-toggle" id="customizeBtn" data-i18n="cust_btn">⚙ Customise for sharing</button>
+<div class="customize-drawer" id="customizeDrawer">
+  <div class="cd-header">
+    <h4>Broker customisation</h4>
+    <button class="cd-close" id="closeDrawer">×</button>
+  </div>
+  <div class="cd-body">
+    <div class="field">
+      <label>Your name</label>
+      <input type="text" id="brokerName" placeholder="e.g. Alex Wong" />
+    </div>
+    <div class="field">
+      <label>Your company</label>
+      <input type="text" id="brokerCompany" placeholder="e.g. ABC Insurance Brokers" />
+    </div>
+    <div class="field">
+      <label>Your email</label>
+      <input type="email" id="brokerEmail" placeholder="you@example.com" />
+    </div>
+    <div class="field">
+      <label>Your phone (optional)</label>
+      <input type="text" id="brokerPhone" placeholder="+852 ..." />
+    </div>
+    <div class="field">
+      <label>Your logo (optional, max 1 MB)</label>
+      <label class="file-input-wrap" for="brokerLogoInput">
+        <input type="file" id="brokerLogoInput" accept="image/png,image/jpeg,image/svg+xml,image/webp" />
+        <div class="file-label" id="logoLabel">Click to upload</div>
+      </label>
+    </div>
+    <div class="field">
+      <label>Custom CTA URL (overrides Demo button)</label>
+      <input type="url" id="customCtaUrl" placeholder="https://yourcompany.com/contact" />
+    </div>
+  </div>
+  <div class="cd-actions">
+    <button class="btn secondary" id="copyLinkBtn">Copy share link</button>
+    <button class="btn primary" id="printBtn">Print / PDF</button>
+  </div>
+</div>
+
+<script>
+// ====================================================================
+// Broker customisation state
+// ====================================================================
+const state = {
+  brokerName: "",
+  brokerCompany: "",
+  brokerEmail: "",
+  brokerPhone: "",
+  brokerLogo: null,
+  customCtaUrl: "",
+};
+
+// Load from URL params
+(function loadFromURL() {
+  const p = new URLSearchParams(window.location.search);
+  if (p.get("bn")) state.brokerName = decodeURIComponent(p.get("bn"));
+  if (p.get("bc")) state.brokerCompany = decodeURIComponent(p.get("bc"));
+  if (p.get("be")) state.brokerEmail = decodeURIComponent(p.get("be"));
+  if (p.get("bp")) state.brokerPhone = decodeURIComponent(p.get("bp"));
+  if (p.get("cta")) state.customCtaUrl = decodeURIComponent(p.get("cta"));
+})();
+
+function renderBrokerFooter() {
+  const wrap = document.getElementById("brokerFooter");
+  const hasAnyBrokerInfo = state.brokerName || state.brokerCompany || state.brokerEmail || state.brokerLogo;
+  if (!hasAnyBrokerInfo) { wrap.style.display = "none"; return; }
+  wrap.style.display = "block";
+
+  document.getElementById("brokerNameDisplay").textContent = state.brokerName || "";
+  document.getElementById("brokerCompanyDisplay").textContent = state.brokerCompany || "";
+  const emailLink = document.getElementById("brokerEmailLink");
+  if (state.brokerEmail) {
+    emailLink.textContent = state.brokerEmail;
+    emailLink.href = "mailto:" + state.brokerEmail + "?subject=" + encodeURIComponent("MixCare Plans — Request a Quote");
+  } else {
+    emailLink.textContent = "";
+    emailLink.removeAttribute("href");
+  }
+  // Email broker button
+  const emailBtn = document.getElementById("brokerEmailBtn");
+  if (state.brokerEmail) {
+    emailBtn.href = "mailto:" + state.brokerEmail + "?subject=" + encodeURIComponent("MixCare Plans — Request a Quote");
+    emailBtn.style.display = "";
+  } else {
+    emailBtn.style.display = "none";
+  }
+  // Logo
+  const logoWrap = document.getElementById("brokerLogoWrap");
+  const logoImg = document.getElementById("brokerLogoImg");
+  if (state.brokerLogo) {
+    logoImg.src = state.brokerLogo;
+    logoWrap.style.display = "block";
+  } else {
+    logoWrap.style.display = "none";
+  }
+}
+
+function renderCTAs() {
+  // If broker email is set, "Talk to Your Broker" links to email; otherwise hide
+  const heroCta = document.getElementById("heroCta");
+  const brokerCtaLink = document.getElementById("brokerCtaLink");
+  if (state.brokerEmail) {
+    const mailto = "mailto:" + state.brokerEmail + "?subject=" + encodeURIComponent("MixCare Plans — Request a Quote");
+    heroCta.href = mailto;
+    brokerCtaLink.href = mailto;
+  } else {
+    heroCta.href = "#cta";
+    brokerCtaLink.href = "#cta";
+  }
+  // If custom CTA URL set, override demo buttons
+  if (state.customCtaUrl) {
+    document.getElementById("navCta").href = state.customCtaUrl;
+    document.getElementById("finalCta").href = state.customCtaUrl;
+    const lc = document.getElementById("lifestyleCta");
+    if (lc) lc.href = state.customCtaUrl;
+  }
+}
+
+function syncInputsFromState() {
+  document.getElementById("brokerName").value = state.brokerName;
+  document.getElementById("brokerCompany").value = state.brokerCompany;
+  document.getElementById("brokerEmail").value = state.brokerEmail;
+  document.getElementById("brokerPhone").value = state.brokerPhone;
+  document.getElementById("customCtaUrl").value = state.customCtaUrl;
+}
+
+// Wire inputs
+["brokerName","brokerCompany","brokerEmail","brokerPhone","customCtaUrl"].forEach(id => {
+  document.getElementById(id).addEventListener("input", e => {
+    state[id] = e.target.value;
+    renderBrokerFooter();
+    renderCTAs();
+  });
+});
+
+// Logo upload
+document.getElementById("brokerLogoInput").addEventListener("change", e => {
+  const file = e.target.files && e.target.files[0];
+  if (!file) return;
+  if (file.size > 1024 * 1024) { alert("Logo too large (max 1 MB)."); e.target.value = ""; return; }
+  const reader = new FileReader();
+  reader.onload = ev => {
+    state.brokerLogo = ev.target.result;
+    document.getElementById("logoLabel").textContent = "Replace logo";
+    renderBrokerFooter();
+  };
+  reader.readAsDataURL(file);
+});
+
+// Drawer open/close
+const drawer = document.getElementById("customizeDrawer");
+document.getElementById("customizeBtn").addEventListener("click", () => drawer.classList.toggle("open"));
+document.getElementById("closeDrawer").addEventListener("click", () => drawer.classList.remove("open"));
+
+// Copy share link
+document.getElementById("copyLinkBtn").addEventListener("click", () => {
+  const p = new URLSearchParams();
+  if (state.brokerName) p.set("bn", encodeURIComponent(state.brokerName));
+  if (state.brokerCompany) p.set("bc", encodeURIComponent(state.brokerCompany));
+  if (state.brokerEmail) p.set("be", encodeURIComponent(state.brokerEmail));
+  if (state.brokerPhone) p.set("bp", encodeURIComponent(state.brokerPhone));
+  if (state.customCtaUrl) p.set("cta", encodeURIComponent(state.customCtaUrl));
+  const url = window.location.origin + window.location.pathname + "?" + p.toString();
+  navigator.clipboard.writeText(url).then(() => {
+    const btn = document.getElementById("copyLinkBtn");
+    const orig = btn.textContent;
+    btn.textContent = "✓ Copied";
+    setTimeout(() => btn.textContent = orig, 2000);
+  });
+});
+
+// Print
+document.getElementById("printBtn").addEventListener("click", () => window.print());
+
+// ====================================================================
+// I18N — EN / Traditional Chinese (繁中) / Simplified Chinese (简中)
+// ====================================================================
+const I18N = {
+  "en": {
+    nav_view_plans: "View Plans",
+    nav_demo: "Get a Demo",
+    hero_tag: "AI-Powered Health & Wellness",
+    hero_h1_a: "Smarter outpatient health benefits —",
+    hero_h1_b: "at a fraction of traditional cost.",
+    hero_lede: "Pick a fixed-fee outpatient plan or a pay-as-you-go discount membership. Cashless visits across 1,000+ network doctors in Hong Kong and Macau. No claim forms, no reimbursement waits, no surprises.",
+    hero_cta1: "See Pricing Plans",
+    hero_cta2: "Talk to Your Broker",
+    hero_card_h: "Trusted Performance",
+    hero_stat1: "Cashless experience",
+    hero_stat2: "Network doctors",
+    hero_stat3: "Quote to activate employees",
+    hero_stat4: "Enterprise clients",
+    trust_title: "Trusted by leading organisations across Asia-Pacific",
+    plans_eyebrow: "Pricing plans",
+    plans_h2: "Two models · choose what fits your team",
+    plans_sub: "Pre-paid Capitation Plans for predictable per-employee cost, or Self-Funded Plans for clients who want to manage their own wellness budget. Pick a tab to compare.",
+    tab_capitation: "Capitation (Fixed cost)",
+    panel_only: "Panel network only",
+    ct_panellist: "Access full doctor panel list",
+    ct_panellist_val: "Please contact us — full network of Fullerton + MixCare panel clinics across Hong Kong & Macau",
+    tab_selffunded: "Self-Funded Plans",
+    per_yr_member: "/ yr per member",
+    per_yr_person: "/ yr per person",
+    sf_funding_employer: "Usage-based · Employer-funded",
+    sf_funding_voluntary: "Voluntary · Individual purchase",
+    sf_well_tag: "Wellness focus",
+    sf_well_sub: "Flexible spending + wellness marketplace. For employers who want to fund wellbeing without the medical complexity.",
+    sf_well_sub2: "Annual platform subscription · pro-rated by enrollment",
+    sf_med_tag: "Most popular",
+    sf_med_sub: "Self-funded outpatient with full medical panel access. Pay only for what your team uses.",
+    sf_med_sub2: "Annual platform subscription · pro-rated by enrollment",
+    sf_health_tag: "Full stack",
+    sf_health_sub: "Everything — medical, wellness, FSA, marketplace. The complete self-funded benefits platform.",
+    sf_health_sub2: "Annual platform subscription · pro-rated by enrollment",
+    sf_f1: "Flexible Spending Account",
+    sf_f2: "Digital Wellness Marketplace",
+    sf_f3: "Self-Funded Outpatient Solution",
+    sf_f4: "Flex Benefit Administration Platform",
+    sf_f5: "E-Claim Platform",
+    sf_f6: "Claim Adjudication & Bank Remittance",
+    sf_f7: "Access to Medical Panel Network",
+    sf_f8: "Reporting & AI Analysis",
+    sf_excl_med: "Self-Funded Outpatient · Medical Panel (MED/HEALTH)",
+    sf_excl_well: "FSA · Wellness Marketplace (WELL/HEALTH)",
+    sf_charges_h: "Additional charges & notes",
+    sf_note_claim_h: "Claim fee:",
+    sf_note_claim: "7% of approved claim amount, charged if MixCare provides claim adjudication and bank remittance services.",
+    sf_note_member_h: "Member definition:",
+    sf_note_member: "Each \"member\" corresponds to one individual employee or dependent with platform access.",
+    sf_note_proration_h: "Pro-ration:",
+    sf_note_proration: "Annual subscription fees are pro-rated from the member's enrollment date to the end of the 12-month contract. Upon renewal, fees are charged in full for each subsequent 12-month term. In the event of early termination, fees are pro-rated to the termination date with no refund on amounts already paid.",
+    sf_note_budget_h: "Wellness budget:",
+    sf_note_budget: "MixCare charges the Employer for the Wellness Budget strictly based on the actual usage of eligible employees.",
+    sf_note_prefund_h: "HealthCoin Pre-fund Pool:",
+    sf_note_prefund: "Client settles 50% of the total employee wellness budget as a \"HealthCoin Pre-fund Pool\" within 15 business days of the launch Effective Date.",
+    plan_tier_outpatient: "Outpatient Plan",
+    plan_tier_ffs: "Discount Membership",
+    ribbon_recommended: "Recommended",
+    ribbon_payg: "New · Pay as you go",
+    from: "from",
+    per_yr: "/yr",
+    card_cta: "Get a Special Rate",
+    planA_name: "Plan A — Essential",
+    planA_desc: "GP + Specialist core cover. Best for small teams and cost-sensitive groups.",
+    planA_price_sub: "per employee · HK$68/month",
+    planA_li1: "GP — up to 10 visits/yr",
+    planA_li2: "Specialist (referral) — 5 visits/yr",
+    planA_li3: "HK-wide Fullerton panel",
+    planA_li4: "No claim forms · cashless",
+    planA_li5: "Chinese Medicine / Physio / X-ray (Plan B/C)",
+    planB_name: "Plan B — Standard",
+    planB_desc: "All six panel services with sensible visit caps. Best fit for most teams.",
+    planB_price_sub: "per employee · HK$150/month",
+    planB_li1: "GP — 15 visits/yr",
+    planB_li2: "Specialist (referral) — 10 visits/yr",
+    planB_li3: "Chinese Medicine — 10 visits/yr",
+    planB_li4: "Physiotherapy (referral) — 5 visits/yr",
+    planB_li5: "Bonesetter — 5 visits/yr",
+    planB_li6: "Acupuncture — 5 visits/yr",
+    planB_li7: "X-ray / extra meds (Plan C)",
+    planC_name: "Plan C — Excellent",
+    planC_desc: "Everything in Plan B plus non-panel flexibility — see any doctor of your choice and get reimbursed.",
+    planC_price_sub: "per employee · HK$233/month",
+    planC_li1: "GP — 15 visits/yr",
+    planC_li2: "Specialist (referral) — 10 visits/yr",
+    planC_li3: "Chinese Medicine — 10 visits/yr",
+    planC_li4: "Physio (referral) — 5 visits/yr",
+    planC_li5: "Bonesetter + Acupuncture — 5 each/yr",
+    planC_li6: "Non-panel claim — HK$1,500 allowance · 80% · cap HK$300/yr",
+    ffs_name: "Discount Card",
+    ffs_desc: "Annual membership unlocks 50% off panel consultations. Perfect for individuals and families — enrol spouse, children, parents, or domestic helper.",
+    ffs_price_sub: "per person · HK$24.92/month",
+    ffs_li1: "GP, Specialist, TCM consultations",
+    ffs_li2: "Physio, Bonesetter, Acupuncture, Chiropractor, Dental",
+    ribbon_premium: "Premium",
+    plan_tier_vip: "Total Wellbeing",
+    planV_name: "Plan VIP — Total Wellbeing",
+    planV_desc: "Full medical cover plus an annual wellbeing credit, redeemable on the MixCare marketplace for fitness, beauty, mental wellness, and more.",
+    planV_price_sub: "per employee · HK$345/month",
+    planV_li1: "GP — 15 visits/yr",
+    planV_li2: "Specialist (referral) — 10 visits/yr",
+    planV_li3: "Specialist (referral) — 10 visits/yr",
+    planV_li4: "Chinese Medicine — 10 visits/yr",
+    planV_li5: "Physio + Bonesetter + Acupuncture",
+    planV_li6: "Wellbeing marketplace · 30+ categories",
+    free_tag: "Free",
+    webinar_feature: "Monthly wellbeing webinar",
+    np_title: "Non-panel claim",
+    np_sub: "HK$1,500 allowance · 80% reimbursement",
+    ct_planV: "VIP",
+    ct_in_out: "Total Wellbeing",
+    ct_cap20plus: "15/yr",
+    ct_min_5incl: "5 (employees + dependents)",
+    ct_copay_vip: "HK$50–100 by service",
+    ct_inpatient: "Inpatient / hospital",
+    ct_vip_inpatient: "Optional add-on",
+    ct_best_v: "Wellness-focused teams",
+    ct_best_c: "Teams wanting off-panel flexibility",
+    ct_nonpanel: "Non-panel reimbursement",
+    ct_nonpanel_val: "HK$1,500 · 80%",
+    ct_wellbeing: "Wellbeing credit",
+    ct_wellbeing_val: "HK$1,000/yr · marketplace",
+    ct_inpatient_addon: "Optional add-on for any plan — from HK$700/yr per member · 5+ insurer partners",
+    insurer_label: "Insurer partners — click for inpatient details",
+    insurer_more: "+ more partners on request",
+    insurer_eyebrow: "Optional inpatient cover",
+    insurer_h2: "Optional inpatient cover via leading insurers",
+    insurer_sub: "Add inpatient hospital cover as an optional add-on to any plan. Choose from 5+ established Hong Kong insurance partners. From HK$700/yr per member, depending on ward class and insurer. Click any logo to view their group / inpatient product page.",
+    insurer_note: "+ more partners available on request. Inpatient cover is administered through your chosen insurer's group medical policy and can be stacked on any MixCare plan.",
+    ib_title: "HK$1,000 Wellbeing Credit",
+    ib_sub: "Redeem on MixCare marketplace",
+    ffs_li3: "No utilisation cap — discount applies every visit",
+    ffs_li4: "Member pays clinic directly at the discounted rate",
+    ffs_li5: "Break-even from 3 visits/yr",
+    plans_note: "Outpatient plan prices indicative — calibrated for a baseline group of 30–99 employees at average age 40. Final pricing flexes by group size, average age, and workforce profile. Discount Membership is fixed annual per-person pricing. Speak to your broker or MixCare for a tailored quotation.",
+    panel_eyebrow: "Our network",
+    panel_h2: "Hong Kong & Macau panel doctors",
+    panel_sub: "A comprehensive Fullerton Health panel network across Hong Kong and Macau. Members access cashless care at the nearest clinic via the MixCare app.",
+    panel_total_eyebrow: "Total network doctors",
+    panel_total_sub: "As of 28 Feb 2026",
+    region_hk: "Hong Kong",
+    region_mo: "Macau",
+    region_doctors: "network doctors",
+    cat_gp: "General Practitioner",
+    cat_sp: "Specialist",
+    cat_tcm: "Traditional Chinese Medicine",
+    cat_physio: "Physiotherapist",
+    panel_powered: "Powered by Fullerton Health network",
+    panel_coverage: "· coverage confirmed in every district",
+    panel_list_btn: "Access Full Doctor Panel List · Contact Us →",
+    how_eyebrow: "How it works",
+    how_h2: "From quote to first visit in 14 days",
+    how_sub: "No long enrolment cycles. Members get on the platform fast and start using benefits the same week.",
+    step1_h: "Pick a plan",
+    step1_p: "Your broker (or MixCare directly) shares an indicative quote based on your headcount and age profile. We refine on receipt of your group census.",
+    step2_h: "Sign agreement",
+    step2_p: "Service Agreement and onboarding pack delivered within 3 working days. Plan effective date scheduled minimum 14 days post-signing.",
+    step3_h: "Members onboarded",
+    step3_p: "Each employee receives MixCare app credentials and a digital member card. HR briefing materials provided. No paper.",
+    step4_h: "Use anywhere",
+    step4_p: "Open the app, find a panel clinic, book in seconds. Show the member card. Cashless for outpatient plans; discounted rate for the Discount Membership.",
+    why_eyebrow: "Why MixCare",
+    why_h2: "Smarter benefits. Lower friction. Better outcomes.",
+    why_sub: "Built for the way Hong Kong teams actually use healthcare — digital-first, no paperwork, real network coverage.",
+    f1_h: "Cashless · no paperwork",
+    f1_p: "Members pay only the copay at the clinic. MixCare settles with the panel directly. No claim forms, no reimbursement waits, no end-of-month admin for HR.",
+    f2_h: "1,000+ network doctors",
+    f2_p: "Comprehensive Fullerton network coverage across Hong Kong and Macau. Density confirmed in every district.",
+    f3_h: "Digital-first",
+    f3_p: "MixCare app for clinic search, appointment booking, member card, and benefit balance — all in one place.",
+    f4_h: "Predictable budget",
+    f4_p: "Fixed annual cost per employee for outpatient plans. No mid-year true-ups, no end-of-year reconciliations, no surprise claims spikes.",
+    f5_h: "Transparent pricing",
+    f5_p: "We publish our pricing methodology — every multiplier, every assumption. Audit-defensible for any procurement team.",
+    f6_h: "HK-calibrated",
+    f6_p: "Pricing built specifically for Hong Kong — using local benchmarks and panel-doctor cost data. Not a generic regional template.",
+    stat1_lbl: "Client retention rate",
+    stat2_lbl: "Employee benefit utilisation",
+    stat3_lbl: "Admin time reduction for HR",
+    stat4_lbl: "Higher engagement vs. traditional",
+    compare_eyebrow: "Side-by-side",
+    compare_h2: "Compare all four plans at a glance",
+    compare_sub: "Outpatient plans give you cashless, fixed-cost coverage. The Discount Membership gives you discount-card flexibility. Pick what your workforce actually needs.",
+    ct_feature: "Feature", ct_planA: "Plan A", ct_planB: "Plan B ★", ct_planC: "Plan C", ct_ffs: "Discount",
+    ct_model: "Model", ct_outpatient: "Outpatient Plan", ct_disccard: "Discount card",
+    ct_price: "HR price /yr (from)", ct_pppm: "Per employee per month",
+    ct_cap: "Combined visit cap (panel only)", ct_cap10: "10 visits per year", ct_cap15: "15 visits per year", ct_cap20: "20 visits per year", ct_nocap: "No cap",
+    ct_min: "Minimum group size",
+    ct_min_5: "5 employees",
+    ct_min_none: "No minimum · individuals & families welcome",
+    ct_copay: "Copayment per visit",
+    ct_copay_a: "GP HK$50 · SP HK$100",
+    ct_copay_bc: "HK$50–100 by service",
+    ct_copay_ffs: "50% off standard fee",
+    ct_gp: "GP", ct_sp: "Specialist (referral)", ct_tcm: "Chinese Medicine (TCM)",
+    ct_physio: "Physiotherapy", ct_bone_acu: "Bonesetter / Acupuncture",
+    ct_xray: "X-ray / Lab", ct_meds: "Extra medication",
+    ct_member_pays: "Member pays at clinic", ct_smallcopay: "Small copay", ct_50pct: "50% of standard fee",
+    ct_risk: "Utilisation risk", ct_risk_member: "Member",
+    ct_bestfor: "Best for",
+    ct_best_a: "Cost-sensitive teams", ct_best_b: "General workforce",
+    ct_best_c: "Mature workforce, higher utilisation", ct_best_ffs: "Individuals & families",
+    ct_check_50: "✓ (50% off)",
+    cust_callout_title: "Want a tailored plan?",
+    cust_callout_desc: "Visit caps, copayments, included services, and add-ons (dental, health check, non-panel pay-and-claim reimbursement, wellness budget) can all be customised to fit your team's profile and budget. Speak to your broker or contact MixCare directly.",
+    cust_callout_btn: "Contact your broker or MixCare",
+    wellness_title: "Up to 50% off wellness marketplace",
+    wellness_badge: "Included in every plan",
+    wellness_desc: "Every MixCare member unlocks discounts of up to 50% across the digital wellness marketplace — fitness, beauty, mental wellness, nutrition, dental, vision, and more. Vetted local providers, redeemable in-app.",
+    wellness_btn: "Browse marketplace →",
+    lifestyle_eyebrow: "Healthcare your team will actually use",
+    lifestyle_h2: "Cashless visits. Real network. Zero paperwork.",
+    lifestyle_p: "Members tap to find a panel clinic, walk in, and pay only a small copay. We handle settlement with the panel. Visit history and benefit balance live in their pocket.",
+    lifestyle_cta: "See it in action",
+    family_title: "Cover your whole family",
+    family_badge: "Family ready",
+    family_desc: "Every plan extends to spouse, children, and elderly parents as named dependents — at the same per-person rates. The Discount Membership is particularly popular for family enrolment: one card per person, 50% off across the full Fullerton panel, no group requirement.",
+    family_chip1: "Spouse",
+    family_chip2: "Children",
+    family_chip3: "Parents",
+    family_chip4: "Domestic helper",
+    ffs_li_family: "Enrol family members at the same rate",
+    f7_h: "Family coverage",
+    f7_p: "Extend any plan to spouse, children, parents, or domestic helper. The Discount Membership is especially popular for family enrolment — one card per person, no group required.",
+    comp_eyebrow: "Trust & Compliance",
+    comp_h2: "Enterprise-grade security. Fully audited.",
+    comp_p: "Healthcare and financial data demand the highest standards. MixCare is built with security and regulatory compliance at its core — independently audited annually.",
+    comp_b1: "HK Privacy Ordinance",
+    comp_b2: "Information security management",
+    comp_b3_name: "Annual Audit", comp_b3: "Independent penetration testing",
+    comp_b4_name: "Regional residency", comp_b4: "HK, SG, MO data hosting",
+    final_h2: "Ready to transform your team's health benefits?",
+    final_p: "Get an indicative quote in minutes. Tailored proposal within 3 working days of your group census.",
+    email_broker: "Email broker for a quote",
+    ft_tagline: "AI-powered digital health and wellness platform for insurers, enterprises, and SMBs across Hong Kong, Macau, and Singapore.",
+    ft_platform: "Platform", ft_who: "Who we serve", ft_company: "Company",
+    cust_btn: "⚙ Customise for sharing",
+  },
+
+  "zh-hk": {
+    nav_view_plans: "查看計劃",
+    nav_demo: "預約示範",
+    hero_tag: "AI 智能健康及保健平台",
+    hero_h1_a: "更聰明的門診醫療福利 ——",
+    hero_h1_b: "以傳統醫保的一小部分成本提供。",
+    hero_lede: "選擇定額門診計劃或按次付費的折扣會員。覆蓋香港及澳門逾 1,000 位網絡醫生，免現金就診。無申報表格、無等待賠付、無意外開支。",
+    hero_cta1: "查看定價方案",
+    hero_cta2: "聯絡保險經紀",
+    hero_card_h: "可靠的數據表現",
+    hero_stat1: "100% 免現金體驗",
+    hero_stat2: "網絡醫生",
+    hero_stat3: "由報價至員工啟用",
+    hero_stat4: "企業客戶",
+    trust_title: "亞太地區領先機構信賴之選",
+    plans_eyebrow: "定價方案",
+    plans_h2: "兩種模式 · 任您選擇",
+    plans_sub: "預付式定額計劃，每位員工成本可預測；或自付式計劃，由企業自行管理保健預算。請選擇下方標籤比較。",
+    tab_capitation: "定額計劃（固定費用）",
+    panel_only: "僅限網絡內醫生",
+    ct_panellist: "完整醫生網絡名單",
+    ct_panellist_val: "歡迎聯絡我們 — 涵蓋香港及澳門 Fullerton + MixCare 全網絡診所",
+    tab_selffunded: "自付式計劃",
+    per_yr_member: "/ 每位會員每年",
+    per_yr_person: "/ 每人每年",
+    sf_funding_employer: "按使用量計費 · 僱主承擔",
+    sf_funding_voluntary: "自願參加 · 個人自費",
+    sf_well_tag: "保健為主",
+    sf_well_sub: "彈性支出帳戶 + 保健市場。適合想資助員工保健，但無需醫療複雜度的僱主。",
+    sf_well_sub2: "年度平台訂閱 · 按登記日期按比例計算",
+    sf_med_tag: "最受歡迎",
+    sf_med_sub: "自付式門診加全面醫療網絡。只為團隊實際使用量付費。",
+    sf_med_sub2: "年度平台訂閱 · 按登記日期按比例計算",
+    sf_health_tag: "全方位",
+    sf_health_sub: "全部 — 醫療、保健、彈性支出、市場。最完整的自付式員工福利平台。",
+    sf_health_sub2: "年度平台訂閱 · 按登記日期按比例計算",
+    sf_f1: "彈性支出帳戶",
+    sf_f2: "數碼保健市場",
+    sf_f3: "自付式門診方案",
+    sf_f4: "彈性福利管理平台",
+    sf_f5: "電子理賠平台",
+    sf_f6: "理賠審核及銀行匯款",
+    sf_f7: "醫療網絡使用權",
+    sf_f8: "報告及 AI 分析",
+    sf_excl_med: "自付式門診 · 醫療網絡（MED/HEALTH 計劃）",
+    sf_excl_well: "彈性支出 · 保健市場（WELL/HEALTH 計劃）",
+    sf_charges_h: "額外收費及說明",
+    sf_note_claim_h: "理賠收費：",
+    sf_note_claim: "如需 MixCare 提供理賠審核及銀行匯款服務，按已批核理賠金額收取 7%。",
+    sf_note_member_h: "會員定義：",
+    sf_note_member: "每位「會員」相當於一位可使用平台的員工或受供養人。",
+    sf_note_proration_h: "按比例計算：",
+    sf_note_proration: "年度訂閱費按會員登記日期至 12 個月合約期末按比例計算。續約時，每個後續 12 個月期收取全費。如提前終止，按終止日期按比例計算，已付款項不予退還。",
+    sf_note_budget_h: "保健預算：",
+    sf_note_budget: "MixCare 按合資格員工的實際使用量向僱主收取保健預算費用。",
+    sf_note_prefund_h: "HealthCoin 預存資金池：",
+    sf_note_prefund: "客戶須於計劃生效日起 15 個工作天內，存入員工保健預算總額的 50% 作為「HealthCoin 預存資金池」。",
+    plan_tier_outpatient: "門診計劃",
+    plan_tier_ffs: "折扣會員",
+    ribbon_recommended: "推薦",
+    ribbon_payg: "全新 · 按次付費",
+    from: "起步",
+    per_yr: "/年",
+    card_cta: "獲取專屬優惠",
+    planA_name: "計劃 A — 基本",
+    planA_desc: "全科醫生 + 專科醫生基本保障。適合小型團隊及成本敏感的客戶。",
+    planA_price_sub: "每位員工 · 港幣 68/月",
+    planA_li1: "全科醫生 — 每年最多 10 次",
+    planA_li2: "專科醫生（需轉介）— 每年 5 次",
+    planA_li3: "全港 Fullerton 網絡",
+    planA_li4: "無申報文件 · 免現金支付",
+    planA_li5: "中醫 / 物理治療 / X 光（請選計劃 B/C）",
+    planB_name: "計劃 B — 標準",
+    planB_desc: "六項網絡服務齊備，配以合理的次數上限。最適合大多數團隊。",
+    planB_price_sub: "每位員工 · 港幣 150/月",
+    planB_li1: "全科醫生 — 每年 15 次",
+    planB_li2: "專科醫生（需轉介）— 每年 10 次",
+    planB_li3: "中醫 — 每年 10 次",
+    planB_li4: "物理治療（需轉介）— 每年 5 次",
+    planB_li5: "跌打 — 每年 5 次",
+    planB_li6: "針灸 — 每年 5 次",
+    planB_li7: "X 光 / 額外藥物（請選計劃 C）",
+    planC_name: "計劃 C — 卓越",
+    planC_desc: "包含計劃 B 所有保障，加上網絡外彈性 — 可選任何醫生並獲賠付。",
+    planC_price_sub: "每位員工 · 港幣 233/月",
+    planC_li1: "全科醫生 — 每年 15 次",
+    planC_li2: "專科醫生（需轉介）— 每年 10 次",
+    planC_li3: "中醫 — 每年 10 次",
+    planC_li4: "物理治療（需轉介）— 每年 5 次",
+    planC_li5: "跌打 + 針灸 — 每項每年 5 次",
+    planC_li6: "網絡外賠付 — HK$1,500 額度 · 80% · 每年上限 HK$300",
+    ffs_name: "折扣卡",
+    ffs_desc: "年費會員享網絡醫生諮詢 5 折優惠。最適合個人及家庭 — 可為配偶、子女、父母或家庭傭工登記。",
+    ffs_price_sub: "每人 · 港幣 24.92/月",
+    ffs_li1: "全科醫生、專科醫生、中醫諮詢",
+    ffs_li2: "物理治療、跌打、針灸、脊醫、牙醫",
+    ribbon_premium: "尊尚",
+    plan_tier_vip: "全方位健康",
+    planV_name: "VIP 全方位健康計劃",
+    planV_desc: "全面醫療保障，再加每年保健額度，可於 MixCare 市場兌換健身、美容、心理健康等服務。",
+    planV_price_sub: "每位員工 · 港幣 345/月",
+    planV_li1: "全科醫生 — 每年 15 次",
+    planV_li2: "專科醫生（需轉介）— 每年 10 次",
+    planV_li3: "專科醫生（需轉介）— 每年 10 次",
+    planV_li4: "中醫 — 每年 10 次",
+    planV_li5: "物理治療 + 跌打 + 針灸",
+    planV_li6: "保健市場 · 30+ 類別",
+    free_tag: "免費",
+    webinar_feature: "每月保健網上講座",
+    np_title: "網絡外賠付",
+    np_sub: "HK$1,500 額度 · 80% 報銷",
+    ct_planV: "VIP",
+    ct_in_out: "全方位健康",
+    ct_cap20plus: "每年 15 次",
+    ct_min_5incl: "5 位（員工 + 受供養人）",
+    ct_copay_vip: "HK$50–100 視服務而定",
+    ct_inpatient: "住院 / 醫院",
+    ct_vip_inpatient: "可選附加",
+    ct_best_v: "重視健康的團隊",
+    ct_best_c: "想要網絡外彈性的團隊",
+    ct_nonpanel: "網絡外賠付",
+    ct_nonpanel_val: "HK$1,500 · 80%",
+    ct_wellbeing: "保健額度",
+    ct_wellbeing_val: "HK$1,000/年 · 市場兌換",
+    ct_inpatient_addon: "任何計劃可選附加 — 每位成員每年 HK$700 起 · 5+ 保險夥伴",
+    insurer_label: "保險夥伴 — 點擊查看住院詳情",
+    insurer_more: "+ 更多夥伴可供洽詢",
+    insurer_eyebrow: "可選附加住院保障",
+    insurer_h2: "透過知名保險公司提供可選住院保障",
+    insurer_sub: "可為任何計劃加購住院醫院保障。可選 5 間以上知名香港保險公司。每位成員每年 HK$700 起，視乎病房等級及保險公司。點擊任何標誌可查看其團體 / 住院產品頁。",
+    insurer_note: "+ 更多夥伴可供洽詢。住院保障由您選擇的保險公司團體醫療保單承保，可附加於任何 MixCare 計劃。",
+    ib_title: "HK$1,000 保健額度",
+    ib_sub: "於 MixCare 市場兌換",
+    ffs_li3: "無使用次數上限 — 每次就診均享折扣",
+    ffs_li4: "會員按折扣價直接支付診所",
+    ffs_li5: "每年使用 3 次以上即回本",
+    plans_note: "門診計劃價格僅供參考 — 以 30–99 名員工、平均年齡 40 歲作基準。最終定價會因團隊規模、平均年齡及員工特性而變動。折扣會員為固定年費。請聯絡保險經紀或 MixCare 獲取度身訂造的報價。",
+    panel_eyebrow: "我們的網絡",
+    panel_h2: "香港及澳門網絡醫生",
+    panel_sub: "全面的 Fullerton Health 網絡覆蓋香港及澳門。會員透過 MixCare 應用程式即可在最就近的診所享免現金支付服務。",
+    panel_total_eyebrow: "網絡醫生總數",
+    panel_total_sub: "截至 2026 年 2 月 28 日",
+    region_hk: "香港",
+    region_mo: "澳門",
+    region_doctors: "位網絡醫生",
+    cat_gp: "全科醫生",
+    cat_sp: "專科醫生",
+    cat_tcm: "中醫",
+    cat_physio: "物理治療師",
+    panel_powered: "由 Fullerton Health 網絡支援",
+    panel_coverage: "· 所有地區均有覆蓋",
+    panel_list_btn: "查看完整網絡醫生名單 · 聯絡我們 →",
+    how_eyebrow: "運作方式",
+    how_h2: "從報價到首次就診僅需 14 天",
+    how_sub: "毋須冗長的招募流程。會員可於同一週內登入平台並開始使用福利。",
+    step1_h: "選擇計劃",
+    step1_p: "保險經紀（或 MixCare 直接）根據貴公司人數及年齡分佈提供初步報價，並會在收到團隊資料後進行優化。",
+    step2_h: "簽訂協議",
+    step2_p: "3 個工作天內交付服務協議及啟動資料包。計劃生效日於簽署後至少 14 天安排。",
+    step3_h: "會員啟動",
+    step3_p: "每位員工會收到 MixCare 應用程式登入資料及數碼會員卡。提供人力資源簡介資料，零紙本。",
+    step4_h: "隨處可用",
+    step4_p: "開啟應用程式，搜尋網絡診所並秒速預約。出示會員卡。門診計劃免現金支付，折扣會員享折扣價。",
+    why_eyebrow: "為何選擇 MixCare",
+    why_h2: "更聰明的福利，更少摩擦，更佳結果。",
+    why_sub: "貼合香港團隊的實際使用習慣 — 數碼優先、零文件、真實的網絡覆蓋。",
+    f1_h: "免現金 · 零文件",
+    f1_p: "會員只需在診所支付小額共付額，由 MixCare 直接與網絡結算。無申報表格、無等待賠付、人力資源毋須月終跟進。",
+    f2_h: "逾 1,000 位網絡醫生",
+    f2_p: "Fullerton 網絡全面覆蓋香港及澳門。所有地區均確認密度。",
+    f3_h: "數碼優先",
+    f3_p: "MixCare 應用程式整合診所搜尋、預約、會員卡及福利餘額查詢 — 一站式平台。",
+    f4_h: "可預測的預算",
+    f4_p: "門診計劃每位員工年度成本固定。無年中追補、無年末對賬、無突發理賠激增。",
+    f5_h: "透明定價",
+    f5_p: "我們公開所有定價方法 — 每個倍數、每項假設。任何採購團隊均可審計核實。",
+    f6_h: "貼合香港市場",
+    f6_p: "定價專為香港市場而設 — 採用本地基準及網絡醫生成本數據。並非通用區域模板。",
+    stat1_lbl: "客戶續約率",
+    stat2_lbl: "員工福利使用率",
+    stat3_lbl: "人力資源行政時間減幅",
+    stat4_lbl: "比傳統方案高的參與度",
+    compare_eyebrow: "並列對比",
+    compare_h2: "一覽四個計劃對比",
+    compare_sub: "門診計劃提供免現金、固定成本的保障。折扣會員提供折扣卡式的靈活方案。挑選最適合貴團隊的方案。",
+    ct_feature: "項目", ct_planA: "計劃 A", ct_planB: "計劃 B ★", ct_planC: "計劃 C", ct_ffs: "折扣會員",
+    ct_model: "類型", ct_outpatient: "門診計劃", ct_disccard: "折扣卡",
+    ct_price: "HR 年費（起步）", ct_pppm: "每位員工每月",
+    ct_cap: "綜合就診上限（僅限網絡內）", ct_cap10: "每年 10 次", ct_cap15: "每年 15 次", ct_cap20: "每年 20 次", ct_nocap: "無上限",
+    ct_min: "最低團隊人數",
+    ct_min_5: "5 位員工",
+    ct_min_none: "無下限 · 個人及家庭適用",
+    ct_copay: "每次就診共付額",
+    ct_copay_a: "全科 HK$50 · 專科 HK$100",
+    ct_copay_bc: "HK$50–100 視服務而定",
+    ct_copay_ffs: "標準收費 5 折",
+    ct_gp: "全科醫生", ct_sp: "專科醫生（需轉介）", ct_tcm: "中醫",
+    ct_physio: "物理治療", ct_bone_acu: "跌打 / 針灸",
+    ct_xray: "X 光 / 化驗", ct_meds: "額外藥物",
+    ct_member_pays: "會員於診所支付", ct_smallcopay: "小額共付", ct_50pct: "標準收費 5 折",
+    ct_risk: "使用風險", ct_risk_member: "會員",
+    ct_bestfor: "適合對象",
+    ct_best_a: "成本敏感團隊", ct_best_b: "一般員工",
+    ct_best_c: "成熟團隊、較高使用率", ct_best_ffs: "個人及家庭",
+    ct_check_50: "✓（5 折）",
+    cust_callout_title: "想要度身訂造的計劃？",
+    cust_callout_desc: "就診次數、共付額、納入服務及附加福利（牙科、健康檢查、非網絡先付後賠、保健預算）均可根據貴團隊的特性及預算靈活調整。請聯絡您的保險經紀或直接聯絡 MixCare。",
+    cust_callout_btn: "聯絡保險經紀或 MixCare",
+    wellness_title: "保健市場最高 5 折優惠",
+    wellness_badge: "所有計劃適用",
+    wellness_desc: "每位 MixCare 會員均可享數碼保健市場高達 5 折優惠 — 涵蓋健身、美容、心理健康、營養、牙科、視光等服務。本地優質供應商，應用程式內即可兌換。",
+    wellness_btn: "瀏覽市場 →",
+    lifestyle_eyebrow: "貴團隊真正會使用的醫療福利",
+    lifestyle_h2: "免現金就診。真實網絡。零文件處理。",
+    lifestyle_p: "會員一按即可搜尋網絡診所，到診後僅支付小額共付額。我們負責與網絡結算。就診紀錄及福利餘額盡在掌握。",
+    lifestyle_cta: "了解運作詳情",
+    family_title: "為全家提供保障",
+    family_badge: "全家適用",
+    family_desc: "所有計劃均可延伸至配偶、子女及年長父母作為指定受供養人 — 每人收費相同。折扣會員特別受家庭歡迎：每人一張卡，全 Fullerton 網絡 5 折優惠，無需團體要求。",
+    family_chip1: "配偶",
+    family_chip2: "子女",
+    family_chip3: "父母",
+    family_chip4: "家庭傭工",
+    ffs_li_family: "可按相同收費為家庭成員登記",
+    f7_h: "家庭保障",
+    f7_p: "任何計劃均可延伸至配偶、子女、父母或家庭傭工。折扣會員特別受家庭歡迎 — 每人一張卡，無需團體要求。",
+    comp_eyebrow: "信任與合規",
+    comp_h2: "企業級安全。完整審計。",
+    comp_p: "醫療及財務數據需要最高標準。MixCare 以安全及合規為核心 — 每年由獨立機構審核。",
+    comp_b1: "香港私隱條例",
+    comp_b2: "資訊安全管理",
+    comp_b3_name: "年度審計", comp_b3: "獨立滲透測試",
+    comp_b4_name: "區域數據駐留", comp_b4: "香港、新加坡、澳門",
+    final_h2: "準備好變革團隊的醫療福利了嗎？",
+    final_p: "幾分鐘內取得初步報價。收到團隊資料後 3 個工作天內提供定制建議書。",
+    email_broker: "電郵保險經紀索取報價",
+    ft_tagline: "AI 智能數碼健康及保健平台，為香港、澳門及新加坡的保險公司、企業及中小企而設。",
+    ft_platform: "平台", ft_who: "服務對象", ft_company: "公司",
+    cust_btn: "⚙ 自訂分享",
+  },
+
+  "zh-cn": {
+    nav_view_plans: "查看计划",
+    nav_demo: "预约演示",
+    hero_tag: "AI 智能健康与保健平台",
+    hero_h1_a: "更聪明的门诊医疗福利 ——",
+    hero_h1_b: "以传统医保一小部分的成本提供。",
+    hero_lede: "选择固定费用门诊计划或按次付费的折扣会员。覆盖香港及澳门逾 1,000 位网络医生，免现金就诊。无申报表格、无等待赔付、无意外开支。",
+    hero_cta1: "查看定价方案",
+    hero_cta2: "联系保险经纪",
+    hero_card_h: "可靠的数据表现",
+    hero_stat1: "100% 免现金体验",
+    hero_stat2: "网络医生",
+    hero_stat3: "由报价至员工启用",
+    hero_stat4: "企业客户",
+    trust_title: "亚太地区领先机构信赖之选",
+    plans_eyebrow: "定价方案",
+    plans_h2: "两种模式 · 任您选择",
+    plans_sub: "预付式固定费用计划，每位员工成本可预测；或自付式计划，由企业自行管理保健预算。请选择下方标签比较。",
+    tab_capitation: "定额计划（固定费用）",
+    panel_only: "仅限网络内医生",
+    ct_panellist: "完整医生网络名单",
+    ct_panellist_val: "欢迎联系我们 — 涵盖香港及澳门 Fullerton + MixCare 全网络诊所",
+    tab_selffunded: "自付式计划",
+    per_yr_member: "/ 每位会员每年",
+    per_yr_person: "/ 每人每年",
+    sf_funding_employer: "按使用量计费 · 雇主承担",
+    sf_funding_voluntary: "自愿参加 · 个人自费",
+    sf_well_tag: "保健为主",
+    sf_well_sub: "弹性支出帐户 + 保健市场。适合想资助员工保健，但无需医疗复杂度的雇主。",
+    sf_well_sub2: "年度平台订阅 · 按登记日期按比例计算",
+    sf_med_tag: "最受欢迎",
+    sf_med_sub: "自付式门诊加全面医疗网络。只为团队实际使用量付费。",
+    sf_med_sub2: "年度平台订阅 · 按登记日期按比例计算",
+    sf_health_tag: "全方位",
+    sf_health_sub: "全部 — 医疗、保健、弹性支出、市场。最完整的自付式员工福利平台。",
+    sf_health_sub2: "年度平台订阅 · 按登记日期按比例计算",
+    sf_f1: "弹性支出帐户",
+    sf_f2: "数码保健市场",
+    sf_f3: "自付式门诊方案",
+    sf_f4: "弹性福利管理平台",
+    sf_f5: "电子理赔平台",
+    sf_f6: "理赔审核及银行汇款",
+    sf_f7: "医疗网络使用权",
+    sf_f8: "报告及 AI 分析",
+    sf_excl_med: "自付式门诊 · 医疗网络（MED/HEALTH 计划）",
+    sf_excl_well: "弹性支出 · 保健市场（WELL/HEALTH 计划）",
+    sf_charges_h: "额外收费及说明",
+    sf_note_claim_h: "理赔收费：",
+    sf_note_claim: "如需 MixCare 提供理赔审核及银行汇款服务，按已批核理赔金额收取 7%。",
+    sf_note_member_h: "会员定义：",
+    sf_note_member: "每位「会员」相当于一位可使用平台的员工或受供养人。",
+    sf_note_proration_h: "按比例计算：",
+    sf_note_proration: "年度订阅费按会员登记日期至 12 个月合约期末按比例计算。续约时，每个后续 12 个月期收取全费。如提前终止，按终止日期按比例计算，已付款项不予退还。",
+    sf_note_budget_h: "保健预算：",
+    sf_note_budget: "MixCare 按合资格员工的实际使用量向雇主收取保健预算费用。",
+    sf_note_prefund_h: "HealthCoin 预存资金池：",
+    sf_note_prefund: "客户须于计划生效日起 15 个工作天内，存入员工保健预算总额的 50% 作为「HealthCoin 预存资金池」。",
+    plan_tier_outpatient: "门诊计划",
+    plan_tier_ffs: "折扣会员",
+    ribbon_recommended: "推荐",
+    ribbon_payg: "全新 · 按次付费",
+    from: "起",
+    per_yr: "/年",
+    card_cta: "获取专属优惠",
+    planA_name: "计划 A — 基础",
+    planA_desc: "全科医生 + 专科医生核心保障。适合小型团队及成本敏感的客户。",
+    planA_price_sub: "每位员工 · 港币 68/月",
+    planA_li1: "全科医生 — 每年最多 10 次",
+    planA_li2: "专科医生（需转介）— 每年 5 次",
+    planA_li3: "全港 Fullerton 网络",
+    planA_li4: "无申报文件 · 免现金支付",
+    planA_li5: "中医 / 物理治疗 / X 光（请选计划 B/C）",
+    planB_name: "计划 B — 标准",
+    planB_desc: "六项网络服务齐备，配以合理的次数上限。最适合大多数团队。",
+    planB_price_sub: "每位员工 · 港币 150/月",
+    planB_li1: "全科医生 — 每年 15 次",
+    planB_li2: "专科医生(需转介)— 每年 10 次",
+    planB_li3: "中医 — 每年 10 次",
+    planB_li4: "物理治疗（需转介）— 每年 5 次",
+    planB_li5: "跌打 — 每年 5 次",
+    planB_li6: "针灸 — 每年 5 次",
+    planB_li7: "X 光 / 额外药物（请选计划 C）",
+    planC_name: "计划 C — 卓越",
+    planC_desc: "包含计划 B 所有保障，加上网络外弹性 — 可选任何医生并获赔付。",
+    planC_price_sub: "每位员工 · 港币 233/月",
+    planC_li1: "全科医生 — 每年 15 次",
+    planC_li2: "专科医生（需转介）— 每年 10 次",
+    planC_li3: "中医 — 每年 10 次",
+    planC_li4: "物理治疗（需转介）— 每年 5 次",
+    planC_li5: "跌打 + 针灸 — 每项每年 5 次",
+    planC_li6: "网络外赔付 — HK$1,500 额度 · 80% · 每年上限 HK$300",
+    ffs_name: "折扣卡",
+    ffs_desc: "年费会员享网络医生咨询 5 折优惠。最适合个人及家庭 — 可为配偶、子女、父母或家庭佣工登记。",
+    ffs_price_sub: "每人 · 港币 24.92/月",
+    ffs_li1: "全科医生、专科医生、中医咨询",
+    ffs_li2: "物理治疗、跌打、针灸、脊医、牙医",
+    ribbon_premium: "尊尚",
+    plan_tier_vip: "全方位健康",
+    planV_name: "VIP 全方位健康计划",
+    planV_desc: "全面医疗保障，再加每年保健额度，可于 MixCare 市场兑换健身、美容、心理健康等服务。",
+    planV_price_sub: "每位员工 · 港币 345/月",
+    planV_li1: "全科医生 — 每年 15 次",
+    planV_li2: "专科医生（需转介）— 每年 10 次",
+    planV_li3: "专科医生（需转介）— 每年 10 次",
+    planV_li4: "中医 — 每年 10 次",
+    planV_li5: "物理治疗 + 跌打 + 针灸",
+    planV_li6: "保健市场 · 30+ 类别",
+    free_tag: "免费",
+    webinar_feature: "每月保健网上讲座",
+    np_title: "网络外赔付",
+    np_sub: "HK$1,500 额度 · 80% 报销",
+    ct_planV: "VIP",
+    ct_in_out: "全方位健康",
+    ct_cap20plus: "每年 15 次",
+    ct_min_5incl: "5 位（员工 + 受供养人）",
+    ct_copay_vip: "HK$50–100 视服务而定",
+    ct_inpatient: "住院 / 医院",
+    ct_vip_inpatient: "可选附加",
+    ct_best_v: "重视健康的团队",
+    ct_best_c: "想要网络外弹性的团队",
+    ct_nonpanel: "网络外赔付",
+    ct_nonpanel_val: "HK$1,500 · 80%",
+    ct_wellbeing: "保健额度",
+    ct_wellbeing_val: "HK$1,000/年 · 市场兑换",
+    ct_inpatient_addon: "任何计划可选附加 — 每位成员每年 HK$700 起 · 5+ 保险伙伴",
+    insurer_label: "保险伙伴 — 点击查看住院详情",
+    insurer_more: "+ 更多伙伴可供洽询",
+    insurer_eyebrow: "可选附加住院保障",
+    insurer_h2: "通过知名保险公司提供可选住院保障",
+    insurer_sub: "可为任何计划加购住院医院保障。可选 5 家以上知名香港保险公司。每位成员每年 HK$700 起，视乎病房等级及保险公司。点击任何标志可查看其团体 / 住院产品页。",
+    insurer_note: "+ 更多伙伴可供洽询。住院保障由您选择的保险公司团体医疗保单承保，可附加于任何 MixCare 计划。",
+    ib_title: "HK$1,000 保健额度",
+    ib_sub: "于 MixCare 市场兑换",
+    ffs_li3: "无使用次数上限 — 每次就诊均享折扣",
+    ffs_li4: "会员按折扣价直接支付诊所",
+    ffs_li5: "每年使用 3 次以上即回本",
+    plans_note: "门诊计划价格仅供参考 — 以 30–99 名员工、平均年龄 40 岁作基准。最终定价会因团队规模、平均年龄及员工特性而变动。折扣会员为固定年费。请联系保险经纪或 MixCare 获取量身定制的报价。",
+    panel_eyebrow: "我们的网络",
+    panel_h2: "香港及澳门网络医生",
+    panel_sub: "全面的 Fullerton Health 网络覆盖香港及澳门。会员通过 MixCare 应用程序即可在最就近的诊所享免现金支付服务。",
+    panel_total_eyebrow: "网络医生总数",
+    panel_total_sub: "截至 2026 年 2 月 28 日",
+    region_hk: "香港",
+    region_mo: "澳门",
+    region_doctors: "位网络医生",
+    cat_gp: "全科医生",
+    cat_sp: "专科医生",
+    cat_tcm: "中医",
+    cat_physio: "物理治疗师",
+    panel_powered: "由 Fullerton Health 网络支持",
+    panel_coverage: "· 所有地区均有覆盖",
+    panel_list_btn: "查看完整网络医生名单 · 联系我们 →",
+    how_eyebrow: "运作方式",
+    how_h2: "从报价到首次就诊仅需 14 天",
+    how_sub: "无需冗长的招募流程。会员可于同一周内登入平台并开始使用福利。",
+    step1_h: "选择计划",
+    step1_p: "保险经纪（或 MixCare 直接）根据贵公司人数及年龄分布提供初步报价，并会在收到团队资料后进行优化。",
+    step2_h: "签订协议",
+    step2_p: "3 个工作日内交付服务协议及启动资料包。计划生效日于签署后至少 14 天安排。",
+    step3_h: "会员启动",
+    step3_p: "每位员工会收到 MixCare 应用程序登入资料及数码会员卡。提供人力资源简介资料，零纸本。",
+    step4_h: "随处可用",
+    step4_p: "打开应用程序，搜索网络诊所并秒速预约。出示会员卡。门诊计划免现金支付，折扣会员享折扣价。",
+    why_eyebrow: "为何选择 MixCare",
+    why_h2: "更聪明的福利，更少摩擦，更佳结果。",
+    why_sub: "贴合香港团队的实际使用习惯 — 数码优先、零文件、真实的网络覆盖。",
+    f1_h: "免现金 · 零文件",
+    f1_p: "会员只需在诊所支付小额共付额，由 MixCare 直接与网络结算。无申报表格、无等待赔付、人力资源无需月底跟进。",
+    f2_h: "逾 1,000 位网络医生",
+    f2_p: "Fullerton 网络全面覆盖香港及澳门。所有地区均确认密度。",
+    f3_h: "数码优先",
+    f3_p: "MixCare 应用程序整合诊所搜索、预约、会员卡及福利余额查询 — 一站式平台。",
+    f4_h: "可预测的预算",
+    f4_p: "门诊计划每位员工年度成本固定。无年中追补、无年末对账、无突发理赔激增。",
+    f5_h: "透明定价",
+    f5_p: "我们公开所有定价方法 — 每个倍数、每项假设。任何采购团队均可审计核实。",
+    f6_h: "贴合香港市场",
+    f6_p: "定价专为香港市场而设 — 采用本地基准及网络医生成本数据。并非通用区域模板。",
+    stat1_lbl: "客户续约率",
+    stat2_lbl: "员工福利使用率",
+    stat3_lbl: "人力资源行政时间减幅",
+    stat4_lbl: "比传统方案高的参与度",
+    compare_eyebrow: "并列对比",
+    compare_h2: "一览四个计划对比",
+    compare_sub: "门诊计划提供免现金、固定成本的保障。折扣会员提供折扣卡式的灵活方案。挑选最适合贵团队的方案。",
+    ct_feature: "项目", ct_planA: "计划 A", ct_planB: "计划 B ★", ct_planC: "计划 C", ct_ffs: "折扣会员",
+    ct_model: "类型", ct_outpatient: "门诊计划", ct_disccard: "折扣卡",
+    ct_price: "HR 年费（起）", ct_pppm: "每位员工每月",
+    ct_cap: "综合就诊上限（仅限网络内）", ct_cap10: "每年 10 次", ct_cap15: "每年 15 次", ct_cap20: "每年 20 次", ct_nocap: "无上限",
+    ct_min: "最低团队人数",
+    ct_min_5: "5 位员工",
+    ct_min_none: "无下限 · 个人及家庭适用",
+    ct_copay: "每次就诊共付额",
+    ct_copay_a: "全科 HK$50 · 专科 HK$100",
+    ct_copay_bc: "HK$50–100 视服务而定",
+    ct_copay_ffs: "标准收费 5 折",
+    ct_gp: "全科医生", ct_sp: "专科医生（需转介）", ct_tcm: "中医",
+    ct_physio: "物理治疗", ct_bone_acu: "跌打 / 针灸",
+    ct_xray: "X 光 / 化验", ct_meds: "额外药物",
+    ct_member_pays: "会员于诊所支付", ct_smallcopay: "小额共付", ct_50pct: "标准收费 5 折",
+    ct_risk: "使用风险", ct_risk_member: "会员",
+    ct_bestfor: "适合对象",
+    ct_best_a: "成本敏感团队", ct_best_b: "一般员工",
+    ct_best_c: "成熟团队、较高使用率", ct_best_ffs: "个人及家庭",
+    ct_check_50: "✓（5 折）",
+    cust_callout_title: "想要量身定制的计划？",
+    cust_callout_desc: "就诊次数、共付额、纳入服务及附加福利（牙科、健康检查、非网络先付后赔、保健预算）均可根据贵团队的特性及预算灵活调整。请联系您的保险经纪或直接联系 MixCare。",
+    cust_callout_btn: "联系保险经纪或 MixCare",
+    wellness_title: "保健市场最高 5 折优惠",
+    wellness_badge: "所有计划适用",
+    wellness_desc: "每位 MixCare 会员均可享数码保健市场高达 5 折优惠 — 涵盖健身、美容、心理健康、营养、牙科、视光等服务。本地优质供应商，应用程序内即可兑换。",
+    wellness_btn: "浏览市场 →",
+    lifestyle_eyebrow: "贵团队真正会使用的医疗福利",
+    lifestyle_h2: "免现金就诊。真实网络。零文件处理。",
+    lifestyle_p: "会员一按即可搜索网络诊所，到诊后仅支付小额共付额。我们负责与网络结算。就诊记录及福利余额尽在掌握。",
+    lifestyle_cta: "了解运作详情",
+    family_title: "为全家提供保障",
+    family_badge: "全家适用",
+    family_desc: "所有计划均可延伸至配偶、子女及年长父母作为指定受供养人 — 每人收费相同。折扣会员特别受家庭欢迎：每人一张卡，全 Fullerton 网络 5 折优惠，无需团体要求。",
+    family_chip1: "配偶",
+    family_chip2: "子女",
+    family_chip3: "父母",
+    family_chip4: "家庭佣工",
+    ffs_li_family: "可按相同收费为家庭成员登记",
+    f7_h: "家庭保障",
+    f7_p: "任何计划均可延伸至配偶、子女、父母或家庭佣工。折扣会员特别受家庭欢迎 — 每人一张卡，无需团体要求。",
+    comp_eyebrow: "信任与合规",
+    comp_h2: "企业级安全。完整审计。",
+    comp_p: "医疗及财务数据需要最高标准。MixCare 以安全及合规为核心 — 每年由独立机构审核。",
+    comp_b1: "香港私隐条例",
+    comp_b2: "信息安全管理",
+    comp_b3_name: "年度审计", comp_b3: "独立渗透测试",
+    comp_b4_name: "区域数据驻留", comp_b4: "香港、新加坡、澳门",
+    final_h2: "准备好变革团队的医疗福利了吗？",
+    final_p: "几分钟内取得初步报价。收到团队资料后 3 个工作日内提供定制建议书。",
+    email_broker: "电邮保险经纪索取报价",
+    ft_tagline: "AI 智能数码健康与保健平台，为香港、澳门及新加坡的保险公司、企业及中小企而设。",
+    ft_platform: "平台", ft_who: "服务对象", ft_company: "公司",
+    cust_btn: "⚙ 自定分享",
+  },
+};
+
+let currentLang = "en";
+
+function setLang(lang) {
+  if (!I18N[lang]) lang = "en";
+  currentLang = lang;
+  document.documentElement.lang = lang === "en" ? "en" : (lang === "zh-hk" ? "zh-Hant" : "zh-Hans");
+  const dict = I18N[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (dict[key] !== undefined) el.textContent = dict[key];
+  });
+  // Toggle active state on switcher
+  document.querySelectorAll('.lang-switch button').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  // Reflect in URL (without reload)
+  try {
+    const url = new URL(window.location.href);
+    if (lang === "en") url.searchParams.delete("lang");
+    else url.searchParams.set("lang", lang);
+    window.history.replaceState({}, "", url.toString());
+  } catch(e) {}
+}
+
+// Lang switcher click handler
+document.querySelectorAll('.lang-switch button').forEach(b => {
+  b.addEventListener('click', () => setLang(b.dataset.lang));
+});
+
+// Model tab switcher (Capitation vs Self-Funded)
+document.querySelectorAll('.model-tabs button').forEach(b => {
+  b.addEventListener('click', () => {
+    const target = b.dataset.modelTab;
+    document.querySelectorAll('.model-tabs button').forEach(x => x.classList.toggle('active', x.dataset.modelTab === target));
+    document.querySelectorAll('.pricing-tab').forEach(p => p.classList.toggle('active', p.id === 'tab-' + target));
+  });
+});
+
+// Detect initial language: URL param > browser language > English
+(function initLang() {
+  const p = new URLSearchParams(window.location.search);
+  let pick = p.get("lang");
+  if (!pick) {
+    const browserLang = (navigator.language || "en").toLowerCase();
+    if (browserLang.startsWith("zh-hk") || browserLang === "zh-tw" || browserLang === "zh-hant") pick = "zh-hk";
+    else if (browserLang.startsWith("zh")) pick = "zh-cn";
+    else pick = "en";
+  }
+  setLang(pick);
+})();
+
+// Init
+syncInputsFromState();
+renderBrokerFooter();
+renderCTAs();
+</script>
+
+</body>
+</html>
