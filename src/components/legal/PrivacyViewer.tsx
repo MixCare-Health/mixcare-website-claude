@@ -10,7 +10,8 @@ type Entry =
   | { t: "s1"; en: string; zh: string }
   | { t: "s2"; en: string; zh: string }
   | { t: "p";  en: string; zh: string }
-  | { t: "li"; en: string; zh: string };
+  | { t: "li"; en: string; zh: string }
+  | { t: "table"; header: { en: string[]; zh: string[] }; rows: { en: string[]; zh: string[] }[] };
 
 // ── Parser ────────────────────────────────────────────────────────────────────
 function hasChinese(s: string) { return /[\u4e00-\u9fff\uac00-\ud7af]/.test(s); }
@@ -30,6 +31,17 @@ function parse(lines: string[]): Entry[] {
       const { en, zh } = parseBi(line.slice(5));
       entries.push({ t: "s2", en, zh });
       i++;
+    } else if (line.startsWith("[TH] ")) {
+      const [enPart, zhPart] = line.slice(5).split("  //  ");
+      const header = { en: enPart.split(" | "), zh: zhPart ? zhPart.split(" | ") : [] };
+      const rows: { en: string[]; zh: string[] }[] = [];
+      i++;
+      while (i < lines.length && lines[i].startsWith("[TR] ")) {
+        const [rowEn, rowZh] = lines[i].slice(5).split("  //  ");
+        rows.push({ en: rowEn.split(" | "), zh: rowZh ? rowZh.split(" | ") : [] });
+        i++;
+      }
+      entries.push({ t: "table", header, rows });
     } else if (line.startsWith(">> ")) {
       const clean = line.slice(3);
       if (isBi(clean)) {
@@ -68,6 +80,34 @@ function PpContent({ entries, lang }: { entries: Entry[]; lang: Lang }) {
   return (
     <div>
       {entries.map((e, idx) => {
+        if (e.t === "table") {
+          const header = lang === "zh" && e.header.zh.length ? e.header.zh : e.header.en;
+          return (
+            <div key={idx} className="overflow-x-auto my-4 ml-4">
+              <table className="w-full border-collapse text-xs">
+                <thead>
+                  <tr>
+                    {header.map((h, ci) => (
+                      <th key={ci} className="bg-slate-50 text-slate-500 font-bold px-3 py-2 border border-slate-200 text-left whitespace-nowrap">{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {e.rows.map((row, ri) => {
+                    const cells = lang === "zh" && row.zh.length ? row.zh : row.en;
+                    return (
+                      <tr key={ri} className={ri % 2 === 1 ? "bg-slate-50" : ""}>
+                        {cells.map((cell, ci) => (
+                          <td key={ci} className="px-3 py-2 border border-slate-200 text-slate-600 align-top leading-relaxed">{cell}</td>
+                        ))}
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          );
+        }
         const text = e[lang];
         if (!text) return null;
         if (e.t === "s1") return (
@@ -211,6 +251,26 @@ const HK_LINES = [
   `>> Right to Complain: If you believe your rights under the PDPO have been infringed, you may lodge a complaint with the Privacy Commissioner for Personal Data (PCPD) at www.pcpd.org.hk.  |  投訴權：如您認為您在條例下的權利受到侵犯，可向個人資料私隱專員公署（網址：www.pcpd.org.hk）提出投訴。`,
   `To exercise your rights, please contact us in writing at info@mixcarehealth.com, clearly stating the nature of your request. We may charge a reasonable fee for processing Data Access Requests, as permitted under the PDPO.`,
   `如需行使權利，請以書面形式向info@mixcarehealth.com發出請求，請清楚說明您請求的性質。我們可能會按條例所允許收取合理費用以處理查閱資料請求。`,
+  `[H1] Your Right to Erasure  |  您的刪除權`,
+  `Under the Personal Data (Privacy) Ordinance (Cap. 486) you have the right to request deletion of personal data that MixCare Health holds about you, where it is no longer necessary for the purpose for which it was collected, or where you withdraw consent on which processing is based.`,
+  `根據《個人資料（私隱）條例》（第486章），您有權要求刪除MixCare Health持有的關於您的個人資料，前提是該資料不再是其收集目的所必需的，或您撤回處理所依據的同意。`,
+  `[H2] How to submit a request  |  如何提出申請`,
+  `You may submit a data deletion request through any of the following channels:`,
+  `您可通過以下任一渠道提出資料刪除申請：`,
+  `>> Email (recommended): Send an email to privacy@mixcarehealth.com with the subject line "Data Deletion Request". Please include your full name, employee / member ID, registered email address, and the company or employer group you belong to. Reason for deletion is optional.  |  電郵（推薦）：發送電郵至 privacy@mixcarehealth.com，主題為「資料刪除申請」。請提供您的全名、員工／會員編號、已登記電郵地址及所屬公司或雇主群組。刪除原因可選填。`,
+  `>> Via your HR administrator: If you do not wish to contact us directly, your HR administrator or plan sponsor can submit a deletion request on your behalf.  |  通過人力資源管理員：如您不希望直接聯絡我們，您的人力資源管理員或計劃發起人可代表您提出刪除申請。`,
+  `>> MixCare in-app support: Open the MixCare app, go to Support, and submit a Data Deletion Request through the chat.  |  MixCare應用程式支援：開啟MixCare應用程式，前往「支援」，並通過聊天提交資料刪除申請。`,
+  `[H2] What happens next  |  後續流程`,
+  `We will acknowledge your request within 5 business days and complete the deletion within 30 days, unless we are legally required to retain certain records.`,
+  `我們將在5個工作天內確認您的申請，並在30天內完成刪除，除非我們依法須保留某些記錄。`,
+  `[H2] Your rights by jurisdiction  |  各司法管轄區的權利`,
+  `[TH] Jurisdiction | Regulation | Notes  //  管轄區 | 法規 | 備注`,
+  `[TR] Hong Kong | PDPO (Cap. 486) | Right to correction; erasure applies where data is no longer necessary for the original purpose.  //  香港 | PDPO（第486章） | 更正權；在資料不再是原來目的所必需的情況下適用刪除權。`,
+  `[TR] Macau | Lei n.º 8/2005 | Right to erasure where processing is unlawful or data is incomplete / inaccurate.  //  澳門 | Lei n.º 8/2005 | 在處理違法或資料不完整／不準確的情況下，適用刪除權。`,
+  `Deletion of your account data may affect your ability to access the portal and retrieve past claims. Benefit and medical records required for insurance or regulatory purposes may be retained for the legally mandated period.`,
+  `刪除您的帳戶資料可能影響您存取門戶及查閱過往理賠記錄的能力。保險或監管目的所需的福利及醫療記錄可能會依法定期限保留。`,
+  `If you have questions, contact our Data Protection Officer at info@mixcarehealth.com.`,
+  `如有疑問，請聯絡我們的個人資料保護主任：info@mixcarehealth.com。`,
   `[H1] Cookies and Tracking Technologies  |  Cookie及追蹤技術`,
   `We use cookies and similar tracking technologies on our website and app to improve functionality, analyse usage, and personalise your experience. You may manage cookie preferences through your browser settings. Disabling cookies may affect the functionality of certain features.`,
   `我們在網站及應用程式上使用Cookie及類似追蹤技術，以改善功能性、分析使用情況及個人化您的體驗。您可通過瀏覽器設定管理Cookie偏好。禁用Cookie可能影響某些功能的使用。`,
@@ -343,6 +403,25 @@ const SG_LINES = [
   `>> Right to Complain: You may lodge a complaint with the Personal Data Protection Commission (PDPC) at www.pdpc.gov.sg.  |  投诉权：您可就个人数据保护委员会（PDPC）提出投诉，网址：www.pdpc.gov.sg。`,
   `To exercise any of your rights, please contact our DPO in writing at info@mixcarehealth.com, clearly stating your request.`,
   `如需行使任何权利，请以书面形式向我们的DPO发送请求，电邮地址：info@mixcarehealth.com，请清楚说明您的请求。`,
+  `[H1] Your Right to Erasure  |  您的删除权`,
+  `Under the Personal Data Protection Act 2012 (PDPA) you have the right to withdraw consent to our processing of your personal data at any time. Upon withdrawal, we will cease to process and delete your personal data within a reasonable period, unless retention is required by law or for legitimate business purposes.`,
+  `根据新加坡《个人数据保护法》（2012年）（PDPA），您有权随时撤回对我们处理您个人数据的同意。撤回后，我们将停止处理并在合理期限内删除您的个人数据，除非法律要求或合法商业目的需要保留。`,
+  `[H2] How to submit a request  |  如何提出申请`,
+  `You may submit a data deletion request through any of the following channels:`,
+  `您可通过以下任一渠道提出数据删除申请：`,
+  `>> Email (recommended): Send an email to privacy@mixcarehealth.com with the subject line "Data Deletion Request". Please include your full name, NRIC / FIN or employee ID, registered email address, and the company or employer group you belong to. Reason for deletion is optional.  |  电邮（推荐）：发送电邮至 privacy@mixcarehealth.com，主题为「数据删除申请」。请提供您的全名、NRIC/FIN或员工编号、已登记电邮地址及所属公司或雇主群组。删除原因可选填。`,
+  `>> Via your HR administrator: If you do not wish to contact us directly, your HR administrator or plan sponsor can submit a deletion request on your behalf.  |  通过人力资源管理员：如您不希望直接联系我们，您的人力资源管理员或计划发起人可代表您提出删除申请。`,
+  `>> MixCare in-app support: Open the MixCare app, go to Support, and submit a Data Deletion Request through the chat.  |  MixCare应用程序支持：开启MixCare应用程序，前往「支持」，并通过聊天提交数据删除申请。`,
+  `[H2] What happens next  |  后续流程`,
+  `We will acknowledge your request within 5 business days and complete the deletion within 30 days, unless we are legally required to retain certain records.`,
+  `我们将在5个工作天内确认您的申请，并在30天内完成删除，除非我们依法须保留某些记录。`,
+  `[H2] Your rights by jurisdiction  |  各司法管辖区的权利`,
+  `[TH] Jurisdiction | Regulation | Notes  //  管辖区 | 法规 | 备注`,
+  `[TR] Singapore | PDPA 2012 | Right to withdraw consent; data deleted within a reasonable period after withdrawal.  //  新加坡 | PDPA 2012 | 撤回同意权；撤回后在合理期限内删除数据。`,
+  `Deletion of your account data may affect your ability to access the portal and retrieve past claims. Financial and medical records required for IRAS or other regulatory compliance may be retained for the legally mandated period.`,
+  `删除您的账户数据可能影响您访问门户及查阅过往理赔记录的能力。IRAS或其他监管合规所需的财务及医疗记录可能会依法定期限保留。`,
+  `If you have questions, contact our Data Protection Officer at info@mixcarehealth.com.`,
+  `如有疑问，请联系我们的个人数据保护官：info@mixcarehealth.com。`,
   `[H1] Cookies and Tracking Technologies  |  Cookie及追踪技术`,
   `We use cookies and similar tracking technologies to improve functionality, analyse usage, and personalise your experience. You may manage cookie preferences through your browser settings. Disabling cookies may affect platform functionality.`,
   `我们使用Cookie及类似追踪技术来改善功能性、分析使用情况并个性化您的体验。您可通过浏览器设置管理Cookie偏好。禁用Cookie可能影响平台功能。`,
