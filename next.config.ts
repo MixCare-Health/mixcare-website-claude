@@ -17,6 +17,12 @@ const nextConfig: NextConfig = {
     ],
   },
 
+  async rewrites() {
+    return [
+      { source: '/fit21', destination: '/fit21/index.html' },
+    ];
+  },
+
   async redirects() {
     // Helper: redirect both /slug and /slug/ to the same destination
     const r = (source: string, destination: string, permanent = true) => [
