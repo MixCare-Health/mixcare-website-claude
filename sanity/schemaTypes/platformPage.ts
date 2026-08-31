@@ -171,6 +171,7 @@ export const platformPageType = defineType({
         preview: { select: { title: "heading.en" } },
       }],
     }),
+    defineField({ name: "seo", title: "SEO", type: "seoMetaFields" }),
   ],
   preview: {
     select: { title: "pageId" },

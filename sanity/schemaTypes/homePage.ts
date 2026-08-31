@@ -289,6 +289,7 @@ export const homePageType = defineType({
         localeStringField("ctaSecondary", "CTA Secondary"),
       ],
     }),
+    defineField({ name: "seo", title: "SEO", type: "seoMetaFields" }),
   ],
 
   preview: {

@@ -87,6 +87,7 @@ export const audiencePageType = defineType({
     defineField({ name: "hideSolutions",  title: "Hide Solutions Section", type: "boolean", initialValue: false }),
     defineField({ name: "hideTestimonial", title: "Hide Testimonial",      type: "boolean", initialValue: false }),
     defineField({ name: "hideMetrics",    title: "Hide Metrics",           type: "boolean", initialValue: false }),
+    defineField({ name: "seo", title: "SEO", type: "seoMetaFields" }),
   ],
   preview: {
     select: { title: "pageId" },

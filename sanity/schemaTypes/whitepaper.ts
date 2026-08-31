@@ -46,6 +46,7 @@ export const whitepaperType = defineType({
         "Optional. If set, clicking this whitepaper will redirect to this URL instead of rendering content. " +
         "Use a relative path like /articles/my-report.html for hosted HTML, or a full https:// URL.",
     }),
+    defineField({ name: "seo", title: "SEO", type: "seoMetaFields" }),
   ],
   preview: {
     select: { title: "title.en" },

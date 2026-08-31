@@ -77,6 +77,7 @@ export const partnersPageType = defineType({
         localeTextField("sub",    "Sub-text"),
       ],
     }),
+    defineField({ name: "seo", title: "SEO", type: "seoMetaFields" }),
   ],
   preview: {
     prepare() { return { title: "Partners Page" }; },

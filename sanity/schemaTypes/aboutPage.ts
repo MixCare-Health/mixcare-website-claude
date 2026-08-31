@@ -124,6 +124,7 @@ export const aboutPageType = defineType({
         localeStringField("secondaryLabel", "Secondary Label"),
       ],
     }),
+    defineField({ name: "seo", title: "SEO", type: "seoMetaFields" }),
   ],
   preview: {
     prepare() { return { title: "About Page" }; },

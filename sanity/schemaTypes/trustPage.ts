@@ -116,6 +116,7 @@ export const trustPageType = defineType({
         localeStringField("secondaryLabel", "Secondary Label"),
       ],
     }),
+    defineField({ name: "seo", title: "SEO", type: "seoMetaFields" }),
   ],
   preview: {
     prepare() { return { title: "Trust Page" }; },

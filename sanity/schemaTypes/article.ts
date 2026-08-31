@@ -94,6 +94,7 @@ export const articleType = defineType({
         },
       ],
     }),
+    defineField({ name: "seo", title: "SEO", type: "seoMetaFields" }),
   ],
 
   preview: {

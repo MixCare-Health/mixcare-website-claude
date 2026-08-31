@@ -60,6 +60,7 @@ export const caseStudyType = defineType({
         "Optional. If set, clicking this case study will redirect to this URL instead of rendering content. " +
         "Use a relative path like /articles/2026-hk-benefits-trends.html for hosted HTML, or a full https:// URL.",
     }),
+    defineField({ name: "seo", title: "SEO", type: "seoMetaFields" }),
   ],
   preview: {
     select: { title: "company.en", subtitle: "segment.en" },

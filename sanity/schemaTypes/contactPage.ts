@@ -67,5 +67,6 @@ export const contactPageType = defineType({
         preview: { select: { title: "city", subtitle: "address" } },
       }],
     }),
+    defineField({ name: "seo", title: "SEO", type: "seoMetaFields" }),
   ],
 });

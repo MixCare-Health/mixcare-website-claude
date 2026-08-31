@@ -69,5 +69,6 @@ export const getDemoPageType = defineType({
     // Dropdown options
     localeStringsField("sizes", "Company Sizes"),
     localeStringsField("roles", "Roles"),
+    defineField({ name: "seo", title: "SEO", type: "seoMetaFields" }),
   ],
 });

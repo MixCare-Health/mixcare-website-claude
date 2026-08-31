@@ -89,6 +89,7 @@ export const startNowPageType = defineType({
 
     // Testimonials
     localeStringField("testimonialsTitle", "Testimonials Section Title"),
+    defineField({ name: "seo", title: "SEO", type: "seoMetaFields" }),
   ],
   preview: {
     prepare() { return { title: "Start Now Page" }; },
