@@ -20,6 +20,6 @@ export default defineConfig({
   plugins: [
     structureTool(),
     visionTool(),
-    seoPlugin(),
+    seoPlugin({}),
   ],
 });
