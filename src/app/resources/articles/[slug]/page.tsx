@@ -2,11 +2,11 @@ import AppNavbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { BookOpen, Clock, Calendar, ArrowLeft, ArrowRight, User } from "lucide-react";
 import type { Metadata } from "next";
-import { SITE_NAME, SITE_URL, ogImage } from "@/lib/seo";
+import { SITE_NAME, SITE_URL, ogImage, buildAlternates } from "@/lib/seo";
 import { JsonLd, breadcrumbSchema } from "@/components/seo/JsonLd";
 import { getLocale } from "@/lib/locale.server";
 import { getTranslations } from "@/translations";
-import { localePath } from "@/lib/locale";
+import { localePath, LOCALE_URL } from "@/lib/locale";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import RichTextRenderer from "@/components/shared/RichTextRenderer";
@@ -54,23 +54,69 @@ export async function generateStaticParams(): Promise<Params[]> {
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params;
   if (!isSanityConfigured) return {};
-  const article: SanityArticle | null = await sanityClient.fetch(articleBySlugQuery, { slug, locale: "en" });
+  const locale = await getLocale();
+  const article: SanityArticle | null = await sanityClient.fetch(articleBySlugQuery, {
+    slug,
+    locale: toSanityLocale(locale),
+  });
   if (!article) return {};
+
+  const path = `/resources/articles/${slug}`;
+  const { canonical, languages } = articleAlternates(path, locale, article);
+
+  // The Sanity SEO tab is English-only, so only use it on the English page.
+  const seo = locale === "en" ? article.seo ?? undefined : undefined;
+  const seoTitle = seo?.metaTitle?.trim();
+  const description = seo?.metaDescription?.trim() || article.description;
+  // Marketing-written SEO titles are used as-is; add the brand only if it still fits in ~60 characters.
+  const fullTitle = seoTitle
+    ? (seoTitle.length + SITE_NAME.length + 3 <= 60 ? `${seoTitle} | ${SITE_NAME}` : seoTitle)
+    : `${article.title} | ${SITE_NAME}`;
+
+  const ogSource = seo?.ogImage?.asset ? seo.ogImage : article.coverImage?.asset ? article.coverImage : null;
+  const ogUrl = ogSource ? urlFor(ogSource).width(1200).height(630).fit("crop").auto("format").url() : undefined;
+  const ogTitle = seo?.ogTitle?.trim() || seoTitle || article.title;
+  const ogDescription = seo?.ogDescription?.trim() || description;
+
   return {
-    title: `${article.title} | ${SITE_NAME}`,
-    description: article.description,
+    title: { absolute: fullTitle },
+    description,
     // Articles with no body sections (old newsletter stubs) render as near-empty pages: keep them out of search
     ...(!(article.sections && article.sections.length) ? { robots: { index: false, follow: true } } : {}),
-    alternates: { canonical: `${SITE_URL}/en/resources/articles/${slug}` },
+    alternates: { canonical, languages },
     openGraph: {
-      title: article.title,
-      description: article.description,
-      url: `${SITE_URL}/en/resources/articles/${slug}`,
+      title: ogTitle,
+      description: ogDescription,
+      url: canonical,
       type: "article",
-      images: ogImage(article.title),
+      publishedTime: article.publishedAt,
+      ...(article.updatedAt ? { modifiedTime: article.updatedAt } : {}),
+      images: ogUrl ? ogImage(ogTitle, ogUrl) : ogImage(ogTitle),
     },
-    twitter: { card: "summary_large_image", title: article.title, description: article.description },
+    twitter: {
+      card: "summary_large_image",
+      title: ogTitle,
+      description: ogDescription,
+      ...(ogUrl ? { images: [ogUrl] } : {}),
+    },
   };
+}
+
+/**
+ * Canonical + hreflang for an article. Each translated language version is
+ * self-canonical; a language with no translation (content falls back to
+ * English) canonicalises to the English page and is left out of hreflang.
+ */
+function articleAlternates(path: string, locale: string, article: SanityArticle) {
+  const prefix = LOCALE_URL[locale as keyof typeof LOCALE_URL] ?? "en";
+  const has = { "zh-hk": article.translated?.zhTW ?? false, "zh-cn": article.translated?.zhCN ?? false };
+  const all = buildAlternates(path, "en");
+  const languages: Record<string, string> = { "x-default": all.languages["x-default"], en: all.languages.en };
+  if (has["zh-hk"]) languages["zh-HK"] = all.languages["zh-HK"];
+  if (has["zh-cn"]) languages["zh-Hans"] = all.languages["zh-Hans"];
+  const selfOk = prefix === "en" || has[prefix as "zh-hk" | "zh-cn"];
+  const canonical = selfOk ? buildAlternates(path, prefix as "en" | "zh-hk" | "zh-cn").canonical : all.canonical;
+  return { canonical, languages };
 }
 
 // ── Page ─────────────────────────────────────────────────────────────────────
@@ -114,7 +160,16 @@ export default async function ArticlePostPage({ params }: { params: Promise<Para
           description: article.description,
           author: { "@type": "Organization", name: article.author },
           datePublished: article.publishedAt,
-          publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+          ...(article.updatedAt ? { dateModified: article.updatedAt } : {}),
+          mainEntityOfPage: `${SITE_URL}/${LOCALE_URL[locale]}/resources/articles/${slug}`,
+          inLanguage: { en: "en", "zh-TW": "zh-HK", "zh-CN": "zh-CN" }[locale] ?? "en",
+          ...(article.coverImage?.asset ? { image: urlFor(article.coverImage).width(1200).height(630).fit("crop").url() } : {}),
+          publisher: {
+            "@type": "Organization",
+            name: SITE_NAME,
+            url: SITE_URL,
+            logo: { "@type": "ImageObject", url: `${SITE_URL}/logos/mixcare-logo-257ebb39.png` },
+          },
         },
       ]} />
       <AppNavbar />

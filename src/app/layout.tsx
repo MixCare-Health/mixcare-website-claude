@@ -91,6 +91,9 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+// BCP 47 language tags for <html lang>: the zh-hk site is Traditional Chinese for Hong Kong
+const HTML_LANG: Record<string, string> = { en: "en", "zh-TW": "zh-HK", "zh-CN": "zh-CN" };
+
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -103,7 +106,7 @@ export default async function RootLayout({
     : null;
 
   return (
-    <html lang={locale} className="light">
+    <html lang={HTML_LANG[locale] ?? "en"} className="light">
       <body className={inter.className}>
         {/* Google Tag Manager (noscript) — immediately after <body> */}
         <noscript>

@@ -9,12 +9,13 @@ import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
 import { allWhitepapersQuery, type SanityWhitepaperListItem } from "@/lib/sanity.queries";
 import ResourcesTabs from "@/components/resources/ResourcesTabs";
 import WhitepapersBrowser from "@/components/resources/WhitepapersBrowser";
+import { withLocalizedAlternates } from "@/lib/seo.server";
 
 export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/resources/whitepapers");
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "Whitepapers & Guides — Free Health Benefits Resources | MixCare Health",
   description:
     "Download free whitepapers and guides on AI in insurance claims, Asia-Pacific employee benefits trends, and building flexible benefits programmes.",
@@ -79,4 +80,8 @@ export default async function WhitepapersPage() {
       <Footer />
     </main>
   );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withLocalizedAlternates(baseMetadata, "/resources/whitepapers");
 }

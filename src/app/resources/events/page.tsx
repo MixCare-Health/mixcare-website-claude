@@ -10,12 +10,13 @@ import { allEventsQuery, type SanityEventListItem } from "@/lib/sanity.queries";
 import ResourcesTabs from "@/components/resources/ResourcesTabs";
 import EventsBrowser from "@/components/resources/EventsBrowser";
 import { Calendar } from "lucide-react";
+import { withLocalizedAlternates } from "@/lib/seo.server";
 
 export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/resources/events");
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: `Events | ${SITE_NAME}`,
   description:
     "MixCare Health events — conferences, webinars, workshops, and networking events across Hong Kong, Macau, and Singapore.",
@@ -101,4 +102,8 @@ export default async function EventsPage() {
       <Footer />
     </main>
   );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withLocalizedAlternates(baseMetadata, "/resources/events");
 }

@@ -14,12 +14,14 @@ import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
 import { homePageQuery, siteSettingsQuery } from "@/lib/sanity.queries";
 import type { SanityHomePage, SanitySiteSettings } from "@/lib/sanity.queries";
 import { urlFor } from "@/sanity/lib/image";
+import { localizedAlternates } from "@/lib/seo.server";
 
 export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/");
 
 export async function generateMetadata(): Promise<Metadata> {
+  const { canonical, languages } = await localizedAlternates("/");
   const locale = await getLocale();
   const sanityLocale = toSanityLocale(locale);
   const siteSettings: SanitySiteSettings | null = isSanityConfigured

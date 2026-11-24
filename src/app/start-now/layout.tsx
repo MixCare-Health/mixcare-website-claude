@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
+import { withLocalizedAlternates } from "@/lib/seo.server";
 
 const { canonical, languages } = buildAlternates("/start-now");
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: `Start Now — Flexible Benefits Pricing for SMBs | ${SITE_NAME}`,
   description:
     "Get started with MixCare Health today. Transparent pricing for small and medium businesses — FSA wallets, wellness marketplace, and outpatient benefits. No setup fee, no HR team required.",
@@ -33,4 +34,8 @@ export const metadata: Metadata = {
 
 export default function StartNowLayout({ children }: { children: React.ReactNode }) {
   return children;
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withLocalizedAlternates(baseMetadata, "/start-now");
 }

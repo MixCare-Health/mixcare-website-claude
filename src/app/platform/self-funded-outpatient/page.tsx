@@ -15,12 +15,14 @@ import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
 import { JsonLd, webPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
 import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
 import { platformPageByIdQuery, type SanityPlatformPage } from "@/lib/sanity.queries";
+import { localizedAlternates } from "@/lib/seo.server";
 
 export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/platform/self-funded-outpatient");
 
 export async function generateMetadata(): Promise<Metadata> {
+  const { canonical, languages } = await localizedAlternates("/platform/self-funded-outpatient");
   const locale = await getLocale();
   const t = getTranslations(locale);
   const meta = t.selfFundedOutpatient.meta;

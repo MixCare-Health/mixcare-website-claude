@@ -10,12 +10,13 @@ import { allPressItemsQuery, type SanityPressItemListItem } from "@/lib/sanity.q
 import ResourcesTabs from "@/components/resources/ResourcesTabs";
 import MediaCoverageBrowser from "@/components/resources/MediaCoverageBrowser";
 import { Newspaper } from "lucide-react";
+import { withLocalizedAlternates } from "@/lib/seo.server";
 
 export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/resources/media-coverage");
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "媒體報道 — Media Coverage | MixCare Health",
   description:
     "MixCare Health in the news — press coverage, press releases, interviews, and industry awards across Hong Kong, Macau, and Singapore.",
@@ -95,4 +96,8 @@ export default async function MediaCoveragePage() {
       <Footer />
     </main>
   );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withLocalizedAlternates(baseMetadata, "/resources/media-coverage");
 }

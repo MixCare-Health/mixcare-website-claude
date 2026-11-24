@@ -13,8 +13,9 @@ import {
   type SanityStartNowPage,
 } from "@/lib/sanity.queries";
 import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
+import { withLocalizedAlternates } from "@/lib/seo.server";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: `Start Now — Launch Your Employee Benefits Plan | ${SITE_NAME}`,
   description:
     "Get started with MixCare Health in minutes. Choose a plan, set up your employee benefits wallet, and give your team access to digital health and wellness services across Hong Kong, Macau, and Singapore.",
@@ -292,4 +293,8 @@ export default async function StartNowPage() {
       <Footer />
     </main>
   );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withLocalizedAlternates(baseMetadata, "/start-now");
 }

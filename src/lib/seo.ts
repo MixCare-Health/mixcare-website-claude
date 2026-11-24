@@ -20,15 +20,18 @@ export const LOCALE_PREFIXES = ["en", "zh-hk", "zh-cn"] as const;
 
 /**
  * Build the canonical URL and hreflang alternates for a given page path.
- * @param path  Page path without locale prefix, e.g. "/platform/fsa"
+ * The canonical is self-referencing for the requested language version
+ * (Chinese pages must not canonicalise to English, or Google drops them).
+ * @param path    Page path without locale prefix, e.g. "/platform/fsa"
+ * @param prefix  URL locale prefix of the page being rendered ("en" | "zh-hk" | "zh-cn")
  */
-export function buildAlternates(path: string) {
+export function buildAlternates(path: string, prefix: (typeof LOCALE_PREFIXES)[number] = "en") {
   const cleanPath = path === "/" ? "" : path;
-  const canonical = `${SITE_URL}/en${cleanPath}`;
+  const canonical = `${SITE_URL}/${prefix}${cleanPath}`;
 
   const languages: Record<string, string> = {
-    "x-default": canonical,
-    en: canonical,
+    "x-default": `${SITE_URL}/en${cleanPath}`,
+    en: `${SITE_URL}/en${cleanPath}`,
     "zh-HK": `${SITE_URL}/zh-hk${cleanPath}`,
     "zh-Hans": `${SITE_URL}/zh-cn${cleanPath}`,
   };
