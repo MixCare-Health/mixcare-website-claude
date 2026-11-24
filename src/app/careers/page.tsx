@@ -6,12 +6,13 @@ import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
 import { getLocale } from "@/lib/locale.server";
 import { getTranslations } from "@/translations";
 import Link from "next/link";
+import { withLocalizedAlternates } from "@/lib/seo.server";
 
 export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/careers");
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "Careers — MixCare Health | Join Our Team",
   description:
     "Explore career opportunities at MixCare Health. We're building the next generation of AI-powered health and wellness benefits across Asia-Pacific.",
@@ -131,4 +132,8 @@ export default async function CareersPage() {
       <Footer />
     </main>
   );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withLocalizedAlternates(baseMetadata, "/careers");
 }

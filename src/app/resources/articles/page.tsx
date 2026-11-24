@@ -9,12 +9,13 @@ import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
 import { allArticlesQuery, type SanityArticleListItem } from "@/lib/sanity.queries";
 import ArticlesBrowser from "@/components/resources/ArticlesBrowser";
 import ResourcesTabs from "@/components/resources/ResourcesTabs";
+import { withLocalizedAlternates } from "@/lib/seo.server";
 
 export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/resources/articles");
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "Health Benefits Blog — Browse All Articles | MixCare Health",
   description:
     "Expert articles on AI-powered claims, flexible benefits, FSA, employee wellness, and HR compliance across Hong Kong, Macau, and Singapore.",
@@ -79,4 +80,8 @@ export default async function ArticlesPage() {
       <Footer />
     </main>
   );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withLocalizedAlternates(baseMetadata, "/resources/articles");
 }

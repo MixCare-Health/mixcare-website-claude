@@ -4,10 +4,11 @@ import CookieViewer from "@/components/legal/CookieViewer";
 import { buildAlternates, SITE_NAME } from "@/lib/seo";
 import { getLocale } from "@/lib/locale.server";
 import type { Metadata } from "next";
+import { withLocalizedAlternates } from "@/lib/seo.server";
 
 const { canonical, languages } = buildAlternates("/cookies-policy");
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: `Cookies Policy | ${SITE_NAME}`,
   description:
     "Cookies Policy for MixCare Health services in Hong Kong, Macau, and Singapore.",
@@ -36,4 +37,8 @@ export default async function CookiesPolicyPage() {
       <Footer />
     </main>
   );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withLocalizedAlternates(baseMetadata, "/cookies-policy");
 }

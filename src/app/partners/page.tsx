@@ -12,8 +12,9 @@ import {
   type SanityPartnersPage,
 } from "@/lib/sanity.queries";
 import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
+import { withLocalizedAlternates } from "@/lib/seo.server";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: `Become a Partner — Brokers & Providers | ${SITE_NAME}`,
   description:
     "Partner with MixCare Health as a broker or healthcare provider. Join our growing network and offer clients AI-powered employee benefits solutions across Hong Kong, Macau, and Singapore.",
@@ -230,4 +231,8 @@ export default async function PartnersPage() {
       <Footer />
     </main>
   );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withLocalizedAlternates(baseMetadata, "/partners");
 }

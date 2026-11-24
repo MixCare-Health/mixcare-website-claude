@@ -11,12 +11,14 @@ import { JsonLd, webPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd
 import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
 import { audiencePageByIdQuery, type SanityAudiencePage } from "@/lib/sanity.queries";
 import { solutionHref } from "@/lib/solutionHref";
+import { localizedAlternates } from "@/lib/seo.server";
 
 export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/who-we-serve/enterprises");
 
 export async function generateMetadata(): Promise<Metadata> {
+  const { canonical, languages } = await localizedAlternates("/who-we-serve/enterprises");
   const locale = await getLocale();
   const t = getTranslations(locale);
   const p = t.whoWeServe.enterprises;

@@ -4,10 +4,11 @@ import TcViewer from "@/components/legal/TcViewer";
 import { buildAlternates, SITE_NAME } from "@/lib/seo";
 import { getLocale } from "@/lib/locale.server";
 import type { Metadata } from "next";
+import { withLocalizedAlternates } from "@/lib/seo.server";
 
 const { canonical, languages } = buildAlternates("/terms-and-conditions");
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: `Terms & Conditions | ${SITE_NAME}`,
   description:
     "Terms and Conditions for MixCare Health services in Hong Kong, Macau, and Singapore.",
@@ -36,4 +37,8 @@ export default async function TermsAndConditionsPage() {
       <Footer />
     </main>
   );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withLocalizedAlternates(baseMetadata, "/terms-and-conditions");
 }

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
+import { withLocalizedAlternates } from "@/lib/seo.server";
 
 const { canonical, languages } = buildAlternates("/get-a-demo");
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: `Get a Demo — See MixCare in Action | ${SITE_NAME}`,
   description:
     "Book a personalised demo of MixCare Health's digital health and wellness platform. We'll walk you through self-funded outpatient, FSA wallets, wellness marketplace, and more.",
@@ -33,4 +34,8 @@ export const metadata: Metadata = {
 
 export default function GetADemoLayout({ children }: { children: React.ReactNode }) {
   return children;
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withLocalizedAlternates(baseMetadata, "/get-a-demo");
 }

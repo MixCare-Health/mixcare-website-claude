@@ -29,6 +29,17 @@ export const articleBySlugQuery = `
     "description": coalesce(description[$locale], description.en),
     "coverImage":  coverImage,
     "externalUrl": externalUrl,
+    "updatedAt":   _updatedAt,
+    // SEO tab (sanity-plugin-seo). Single-language (English) fields.
+    "seo": seo {
+      metaTitle,
+      metaDescription,
+      "ogTitle":       openGraph.title,
+      "ogDescription": openGraph.description,
+      "ogImage":       openGraph.image,
+    },
+    // Which language versions have their own translation (used for hreflang / canonical)
+    "translated": { "zhTW": defined(title.zhTW), "zhCN": defined(title.zhCN) },
     "sections": sections[] {
       "heading": coalesce(heading[$locale], heading.en),
       "body":    coalesce(body[$locale],    body.en),
@@ -76,7 +87,18 @@ export type SanityArticleSection = {
   bullets?: string[];
 };
 
+export type SanityArticleSeo = {
+  metaTitle?: string;
+  metaDescription?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: SanityImageRef;
+};
+
 export type SanityArticle = SanityArticleListItem & {
+  updatedAt?: string;
+  seo?: SanityArticleSeo | null;
+  translated?: { zhTW: boolean; zhCN: boolean };
   sections: SanityArticleSection[];
   externalUrl?: string;
 };

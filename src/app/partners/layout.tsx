@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
+import { withLocalizedAlternates } from "@/lib/seo.server";
 
 const { canonical, languages } = buildAlternates("/partners");
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: `Partner with MixCare — Brokers & Wellness Providers | ${SITE_NAME}`,
   description:
     "Become a MixCare partner. Brokers: deliver modern digital health benefits to your clients. Wellness providers: join our 3,000+ service network and reach corporate employees across Asia-Pacific.",
@@ -29,4 +30,8 @@ export const metadata: Metadata = {
 
 export default function PartnersLayout({ children }: { children: React.ReactNode }) {
   return children;
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withLocalizedAlternates(baseMetadata, "/partners");
 }

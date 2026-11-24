@@ -4,10 +4,11 @@ import PrivacyViewer from "@/components/legal/PrivacyViewer";
 import { buildAlternates, SITE_NAME } from "@/lib/seo";
 import { getLocale } from "@/lib/locale.server";
 import type { Metadata } from "next";
+import { withLocalizedAlternates } from "@/lib/seo.server";
 
 const { canonical, languages } = buildAlternates("/privacy-policy");
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: `Privacy Policy | ${SITE_NAME}`,
   description: "MixCare Health Privacy Policy for Hong Kong, Macau, and Singapore.",
   alternates: { canonical, languages },
@@ -35,4 +36,8 @@ export default async function PrivacyPolicyPage() {
       <Footer />
     </main>
   );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withLocalizedAlternates(baseMetadata, "/privacy-policy");
 }
