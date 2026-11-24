@@ -4,7 +4,7 @@ import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
 const { canonical, languages } = buildAlternates("/partners");
 
 export const metadata: Metadata = {
-  title: "Partner with MixCare — Brokers & Wellness Providers",
+  title: `Partner with MixCare — Brokers & Wellness Providers | ${SITE_NAME}`,
   description:
     "Become a MixCare partner. Brokers: deliver modern digital health benefits to your clients. Wellness providers: join our 3,000+ service network and reach corporate employees across Asia-Pacific.",
   keywords: [

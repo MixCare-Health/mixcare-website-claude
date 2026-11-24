@@ -10,6 +10,7 @@ import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
 import { JsonLd, webPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
 import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
 import { audiencePageByIdQuery, type SanityAudiencePage } from "@/lib/sanity.queries";
+import { solutionHref } from "@/lib/solutionHref";
 
 export const revalidate = 60;
 
@@ -75,7 +76,7 @@ export default async function SmallBusinessPage() {
   const solutions = page
     ? (page.solutions ?? []).map((s) => ({ challenge: s.desc, solution: s.title }))
     : p.solutions;
-  const featuredSolutions = page?.featuredSolutions ?? p.featuredSolutions.map((s, i) => ({ label: s.label, desc: s.desc, href: featuredHrefs[i] }));
+  const featuredSolutions = page?.featuredSolutions ?? p.featuredSolutions.map((s, i) => ({ label: s.label, desc: s.desc, href: solutionHref(s.label, i, featuredHrefs) }));
   const metrics = page?.metrics ?? p.metrics.map((m) => ({ value: m.value, label: m.label }));
 
   return (
@@ -102,7 +103,7 @@ export default async function SmallBusinessPage() {
         featuredSolutions={featuredSolutions.map((s, i) => ({
           label: s.label,
           desc: s.desc,
-          href: s.href ? localePath(locale, s.href) : localePath(locale, featuredHrefs[i]),
+          href: s.href ? localePath(locale, s.href) : localePath(locale, solutionHref(s.label, i, featuredHrefs)),
         }))}
         metrics={metrics}
         testimonialQuote={page?.testimonial.quote ?? p.testimonial.quote}

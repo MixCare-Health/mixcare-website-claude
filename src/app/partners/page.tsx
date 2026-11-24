@@ -14,7 +14,7 @@ import {
 import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Become a Partner — Brokers & Providers",
+  title: `Become a Partner — Brokers & Providers | ${SITE_NAME}`,
   description:
     "Partner with MixCare Health as a broker or healthcare provider. Join our growing network and offer clients AI-powered employee benefits solutions across Hong Kong, Macau, and Singapore.",
   keywords: [

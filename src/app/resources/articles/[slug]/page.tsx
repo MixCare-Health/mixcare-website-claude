@@ -59,6 +59,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   return {
     title: `${article.title} | ${SITE_NAME}`,
     description: article.description,
+    // Articles with no body sections (old newsletter stubs) render as near-empty pages: keep them out of search
+    ...(!(article.sections && article.sections.length) ? { robots: { index: false, follow: true } } : {}),
     alternates: { canonical: `${SITE_URL}/en/resources/articles/${slug}` },
     openGraph: {
       title: article.title,
@@ -166,7 +168,7 @@ export default async function ArticlePostPage({ params }: { params: Promise<Para
                 {article.description}
               </p>
               <div className="space-y-8">
-                {article.sections.map((section, i) => (
+                {(article.sections ?? []).map((section, i) => (
                   <section key={i}>
                     <h2 className="text-xl font-extrabold text-slate-900 mb-3">{section.heading}</h2>
                     <RichTextRenderer value={section.body} />

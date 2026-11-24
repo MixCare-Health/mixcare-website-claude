@@ -4,7 +4,7 @@ import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
 const { canonical, languages } = buildAlternates("/get-a-demo");
 
 export const metadata: Metadata = {
-  title: "Get a Demo — See MixCare in Action",
+  title: `Get a Demo — See MixCare in Action | ${SITE_NAME}`,
   description:
     "Book a personalised demo of MixCare Health's digital health and wellness platform. We'll walk you through self-funded outpatient, FSA wallets, wellness marketplace, and more.",
   keywords: [
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     images: ["/opengraph-image.png"],
   },
   robots: {
-    index: false,
+    index: true,
     follow: true,
   },
 };

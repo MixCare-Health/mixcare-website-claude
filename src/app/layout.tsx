@@ -29,7 +29,8 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(SITE_URL),
     title: {
       default: `${SITE_NAME} — AI-Powered Digital Health & Wellness Platform`,
-      template: `%s | ${SITE_NAME}`,
+      // Page titles already include the brand, so no suffix is added here (avoids "| MixCare Health | MixCare Health").
+      template: "%s",
     },
     description:
       "MixCare Health is an AI-powered digital health and wellness platform for insurers, enterprises, and SMBs across Hong Kong, Macau, and Singapore. Self-funded outpatient, FSA, wellness marketplace and more.",

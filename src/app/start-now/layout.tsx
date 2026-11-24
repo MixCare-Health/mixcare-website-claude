@@ -4,7 +4,7 @@ import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
 const { canonical, languages } = buildAlternates("/start-now");
 
 export const metadata: Metadata = {
-  title: "Start Now — Flexible Benefits Pricing for SMBs",
+  title: `Start Now — Flexible Benefits Pricing for SMBs | ${SITE_NAME}`,
   description:
     "Get started with MixCare Health today. Transparent pricing for small and medium businesses — FSA wallets, wellness marketplace, and outpatient benefits. No setup fee, no HR team required.",
   keywords: [

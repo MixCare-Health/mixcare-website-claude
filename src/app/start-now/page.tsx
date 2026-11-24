@@ -15,7 +15,7 @@ import {
 import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Start Now — Launch Your Employee Benefits Plan",
+  title: `Start Now — Launch Your Employee Benefits Plan | ${SITE_NAME}`,
   description:
     "Get started with MixCare Health in minutes. Choose a plan, set up your employee benefits wallet, and give your team access to digital health and wellness services across Hong Kong, Macau, and Singapore.",
   keywords: [

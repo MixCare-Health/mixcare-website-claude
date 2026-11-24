@@ -4,7 +4,7 @@ import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
 const { canonical, languages } = buildAlternates("/contact-us");
 
 export const metadata: Metadata = {
-  title: "Contact Us — Hong Kong & Singapore Offices",
+  title: `Contact Us — Hong Kong & Singapore Offices | ${SITE_NAME}`,
   description:
     "Get in touch with MixCare Health. We have offices in Hong Kong (Central) and Singapore. Reach us for sales enquiries, partnerships, or support.",
   keywords: [

@@ -17,7 +17,7 @@ export const revalidate = 60;
 const { canonical, languages } = buildAlternates("/trust");
 
 export const metadata: Metadata = {
-  title: "Security & Compliance — Trust Centre",
+  title: `Security & Compliance — Trust Centre | ${SITE_NAME}`,
   description:
     "Enterprise-grade security with ISO 27001 certification, PDPO and GDPR compliance. Learn how MixCare protects your employee health data across Hong Kong and Singapore.",
   keywords: [
