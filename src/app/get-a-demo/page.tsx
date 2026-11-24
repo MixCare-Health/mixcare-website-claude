@@ -9,8 +9,9 @@ import type { SanityGetDemoPage } from "@/lib/sanity.queries";
 import { getLocale } from "@/lib/locale.server";
 import { getTranslations } from "@/translations";
 import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
+import { withLocalizedAlternates } from "@/lib/seo.server";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "Get a Demo — See MixCare Health in Action",
   description:
     "Book a personalised demo of MixCare Health's AI-powered employee benefits platform. See how self-funded outpatient, FSA, and wellness solutions work for insurers, enterprises, and SMBs in Hong Kong and Singapore.",
@@ -103,4 +104,8 @@ export default async function GetADemoPage() {
       <Footer />
     </main>
   );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withLocalizedAlternates(baseMetadata, "/get-a-demo");
 }

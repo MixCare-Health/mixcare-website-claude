@@ -11,13 +11,14 @@ import { getLocale } from "@/lib/locale.server";
 import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
 import { trustPageQuery, type SanityTrustPage } from "@/lib/sanity.queries";
 import { localePath } from "@/lib/locale";
+import { withLocalizedAlternates } from "@/lib/seo.server";
 
 export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/trust");
 
-export const metadata: Metadata = {
-  title: "Security & Compliance — Trust Centre",
+const baseMetadata: Metadata = {
+  title: `Security & Compliance — Trust Centre | ${SITE_NAME}`,
   description:
     "Enterprise-grade security with ISO 27001 certification, PDPO and GDPR compliance. Learn how MixCare protects your employee health data across Hong Kong and Singapore.",
   keywords: [
@@ -267,4 +268,8 @@ export default async function TrustPage() {
       <Footer />
     </main>
   );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withLocalizedAlternates(baseMetadata, "/trust");
 }

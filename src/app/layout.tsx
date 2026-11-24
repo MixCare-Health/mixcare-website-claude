@@ -29,7 +29,8 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(SITE_URL),
     title: {
       default: `${SITE_NAME} — AI-Powered Digital Health & Wellness Platform`,
-      template: `%s | ${SITE_NAME}`,
+      // Page titles already include the brand, so no suffix is added here (avoids "| MixCare Health | MixCare Health").
+      template: "%s",
     },
     description:
       "MixCare Health is an AI-powered digital health and wellness platform for insurers, enterprises, and SMBs across Hong Kong, Macau, and Singapore. Self-funded outpatient, FSA, wellness marketplace and more.",
@@ -90,6 +91,9 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+// BCP 47 language tags for <html lang>: the zh-hk site is Traditional Chinese for Hong Kong
+const HTML_LANG: Record<string, string> = { en: "en", "zh-TW": "zh-HK", "zh-CN": "zh-CN" };
+
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -102,7 +106,7 @@ export default async function RootLayout({
     : null;
 
   return (
-    <html lang={locale} className="light">
+    <html lang={HTML_LANG[locale] ?? "en"} className="light">
       <body className={inter.className}>
         {/* Google Tag Manager (noscript) — immediately after <body> */}
         <noscript>

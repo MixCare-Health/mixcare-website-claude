@@ -10,12 +10,15 @@ import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
 import { JsonLd, webPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
 import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
 import { audiencePageByIdQuery, type SanityAudiencePage } from "@/lib/sanity.queries";
+import { solutionHref } from "@/lib/solutionHref";
+import { localizedAlternates } from "@/lib/seo.server";
 
 export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/who-we-serve/brokers");
 
 export async function generateMetadata(): Promise<Metadata> {
+  const { canonical, languages } = await localizedAlternates("/who-we-serve/brokers");
   const locale = await getLocale();
   const t = getTranslations(locale);
   const p = t.whoWeServe.brokers;
@@ -76,7 +79,7 @@ export default async function BrokersPage() {
     ? (page.solutions ?? []).map((s) => ({ challenge: s.desc, solution: s.title }))
     : p.solutions;
   const featuredSolutions: Array<{ label: string; desc: string; href: string; tag?: string }> =
-    page?.featuredSolutions ?? p.featuredSolutions.map((s, i) => ({ label: s.label, desc: s.desc, href: featuredHrefs[i], tag: s.tag }));
+    page?.featuredSolutions ?? p.featuredSolutions.map((s, i) => ({ label: s.label, desc: s.desc, href: solutionHref(s.label, i, featuredHrefs), tag: s.tag }));
   const metrics = page?.metrics ?? p.metrics.map((m) => ({ value: m.value, label: m.label }));
 
   return (
@@ -103,7 +106,7 @@ export default async function BrokersPage() {
         featuredSolutions={featuredSolutions.map((s, i) => ({
           label: s.label,
           desc: s.desc,
-          href: s.href ? localePath(locale, s.href) : localePath(locale, featuredHrefs[i]),
+          href: s.href ? localePath(locale, s.href) : localePath(locale, solutionHref(s.label, i, featuredHrefs)),
           tag: s.tag,
         }))}
         metrics={metrics}

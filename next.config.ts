@@ -35,6 +35,8 @@ const nextConfig: NextConfig = {
       ...r("/terms-conditions",   "/en/terms-and-conditions"),
       ...r("/privacy-policy",     "/en/privacy-policy"),
       ...r("/press",              "/en/resources/media-coverage"),
+      // Sanity nav links to "wellness-events" but the route is "wellness-event"
+      ...r("/:locale(en|zh-hk|zh-cn)/platform/wellness-events", "/:locale/platform/wellness-event"),
       ...r("/mixcare-health-pnc-aso-demo",
           "https://meetings-na2.hubspot.com/alex-wong9/mixcare-exploration-meeting-"),
 

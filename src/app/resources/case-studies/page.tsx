@@ -9,12 +9,13 @@ import { sanityClient, isSanityConfigured, toSanityLocale } from "@/lib/sanity";
 import { allCaseStudiesQuery, type SanityCaseStudyListItem } from "@/lib/sanity.queries";
 import ResourcesTabs from "@/components/resources/ResourcesTabs";
 import CaseStudiesBrowser from "@/components/resources/CaseStudiesBrowser";
+import { withLocalizedAlternates } from "@/lib/seo.server";
 
 export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/resources/case-studies");
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "Client Case Studies — Real Results with MixCare Health",
   description:
     "See how insurers, enterprises, and SMBs across Hong Kong and Singapore achieved measurable results with MixCare's AI-powered health benefits platform.",
@@ -79,4 +80,8 @@ export default async function CaseStudiesPage() {
       <Footer />
     </main>
   );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withLocalizedAlternates(baseMetadata, "/resources/case-studies");
 }

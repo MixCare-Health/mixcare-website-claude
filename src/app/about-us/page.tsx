@@ -6,12 +6,13 @@ import type { Metadata } from "next";
 import { getLocale } from "@/lib/locale.server";
 import { getTranslations } from "@/translations";
 import { buildAlternates, ogImage, SITE_NAME } from "@/lib/seo";
+import { withLocalizedAlternates } from "@/lib/seo.server";
 
 export const revalidate = 60;
 
 const { canonical, languages } = buildAlternates("/about-us");
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "About Us — MixCare Health | Our Mission, Team & Story",
   description:
     "MixCare Health is a data-driven health and wellness platform improving access to thousands of health and wellness services through an AI-powered healthcare platform.",
@@ -204,4 +205,8 @@ export default async function AboutUsPage() {
       <Footer />
     </main>
   );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withLocalizedAlternates(baseMetadata, "/about-us");
 }
